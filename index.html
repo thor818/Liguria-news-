@@ -279,7 +279,7 @@
   .guides { margin-top: 26px; background: var(--navy); color: #fff; border-radius: 24px; padding: 26px; display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: center; }
   .guides h3 { margin: 0; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1; }
   .guides p { margin: 6px 0 0; color: #b8c7d3; font-size: .9rem; }
-  .guides .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+  .guides .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
   .guides .links a { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; padding: 14px; text-decoration: none; font-weight: 600; font-size: .9rem; transition: background .2s; }
   .guides .links a:hover { background: var(--coral); }
   .guides.book { margin-top: 8px; background: linear-gradient(120deg, var(--sea), var(--navy)); }
@@ -523,7 +523,8 @@
         <div class="dishes" id="dishes"></div>
       </div>
       <div>
-        <div class="chips" id="tagChips" style="margin-bottom:14px"></div>
+        <div class="chips" id="tagChips" style="margin-bottom:8px"></div>
+        <div class="chips" id="priceChips" style="margin-bottom:14px"></div>
         <div class="rests" id="rests"></div>
       </div>
     </div>
@@ -760,7 +761,7 @@ const CITIES = [
       nl: "De haven, de steegjes en UNESCO-paleizen: de hoofdstad van Ligurië.", zh: "港口、小巷与世界遗产宫殿：利古里亚首府。" },
     see: ["Acquario di Genova", "Via Garibaldi e Palazzi dei Rolli", "Cattedrale di San Lorenzo", "Spianata Castelletto", "Boccadasse", "Lanterna di Genova"],
     museums: ["Musei di Strada Nuova", "Palazzo Ducale", "Galata Museo del Mare", "Palazzo Reale"],
-    eat: ["Il Genovese", "Antica Sciamadda", "Antica Osteria di Vico Palla", "Pietro Romanengo fu Stefano", "Mercato Orientale"] },
+    eat: ["Trattoria Da Maria", "Trattoria Rosmarino", "Antica Friggitoria Carega", "Gelateria Amedeo (Boccadasse)", "Il Genovese", "Antica Sciamadda", "Antica Osteria di Vico Palla", "Pietro Romanengo fu Stefano", "Mercato Orientale"] },
   { id: "portofino", zone: "genova", img: "foto/portofino.jpg", where: "Liguria",
     name: { en: "Portofino & Camogli", zh: "波托菲诺与卡莫利" },
     t: { it: "Il borgo più famoso d'Italia e il paese dei pescatori, tra parco e mare.", fr: "Le village le plus célèbre d'Italie et le port des pêcheurs, entre parc et mer.",
@@ -768,7 +769,7 @@ const CITIES = [
       nl: "Het beroemdste dorp van Italië en het vissersstadje, tussen park en zee.", zh: "意大利最著名的小镇与渔村，坐落在公园与大海之间。" },
     see: ["Piazzetta di Portofino", "Castello Brown", "Faro di Portofino", "Abbazia di San Fruttuoso", "Castello della Dragonara (Camogli)"],
     museums: [],
-    eat: ["Da Puny (Portofino)", "Revello (Camogli)", "Manuelina (Recco)"] },
+    eat: ["Da Vittorio (Recco)", "Da Puny (Portofino)", "Revello (Camogli)", "Manuelina (Recco)"] },
   { id: "savona", zone: "savona", img: "foto/savona.jpg", where: "Savona",
     name: { fr: "Savone", en: "Savona", zh: "萨沃纳" },
     t: { it: "La fortezza sul mare, le torri medievali e la farinata più famosa.", fr: "La forteresse sur la mer, les tours médiévales et la farinata la plus célèbre.",
@@ -832,7 +833,7 @@ const CITIES = [
       nl: "De Rots, het casino en de haven: het prinsdom in één dag.", zh: "摩纳哥岩、赌场和港口：一天游遍公国。" },
     see: ["Palais Princier", "Casino de Monte-Carlo", "Jardin Exotique", "Port Hercule"],
     museums: ["Musée Océanographique", "Nouveau Musée National (Villa Sauber)"],
-    eat: ["Le Louis XV – Alain Ducasse", "Marché de la Condamine"] },
+    eat: ["Chez Roger (Marché de la Condamine)", "Stars'N'Bars", "Le Louis XV – Alain Ducasse", "Marché de la Condamine"] },
   { id: "eze", zone: "azur", img: "foto/capferrat.jpg", where: "Côte d'Azur",
     name: { en: "Èze, Cap Ferrat & Villefranche", zh: "埃兹、费拉角与滨海自由城" },
     t: { it: "Il borgo sospeso, le ville sul mare e la rada più bella della costa.", fr: "Le village perché, les villas sur la mer et la plus belle rade de la côte.",
@@ -848,7 +849,7 @@ const CITIES = [
       nl: "De Promenade, de oude stad, markten en de musea van Matisse en Chagall.", zh: "海滨大道、老城、集市，以及马蒂斯与夏加尔博物馆。" },
     see: ["Promenade des Anglais", "Vieux-Nice", "Colline du Château", "Cours Saleya", "Place Masséna"],
     museums: ["Musée Matisse", "Musée national Marc Chagall", "MAMAC", "Fondation Maeght (Saint-Paul-de-Vence)"],
-    eat: ["La Merenda", "Chez Pipo", "L'Alchimie"] },
+    eat: ["Lou Pilha Leva", "Chez Thérésa (Cours Saleya)", "Acchiardo", "Le Safari", "Fenocchio", "La Merenda", "Chez Pipo", "L'Alchimie"] },
   { id: "antibes", zone: "azur", img: "foto/antibes.jpg", where: "Antibes",
     name: { en: "Antibes", zh: "昂蒂布" },
     t: { it: "Bastioni sul mare, il porto degli yacht e il museo di Picasso.", fr: "Remparts sur la mer, le port des yachts et le musée Picasso.",
@@ -864,7 +865,7 @@ const CITIES = [
       nl: "De Croisette, het festival en de Lérins-eilanden vlak bij de haven.", zh: "十字大道、电影节宫，以及港口外的莱兰群岛。" },
     see: ["La Croisette", "Palais des Festivals", "Le Suquet", "Îles de Lérins"],
     museums: ["Musée des Explorations du Monde", "Musée de la Mer (Fort Royal)"],
-    eat: ["Marché Forville"] }
+    eat: ["Aux Bons Enfants", "Marché Forville"] }
 ];
 
 /* ---------- Siti ufficiali e prenotazione attività (link nella lingua del lettore) ---------- */
@@ -1053,6 +1054,20 @@ const RESTAURANTS = [
     it: "Cucina franco-giapponese con terrazza nel centro di Mentone.", fr: "Cuisine franco-japonaise avec terrasse au cœur de Menton.",
     en: "French-Japanese cooking with a terrace in the heart of Menton.", de: "Französisch-japanische Küche mit Terrasse im Zentrum von Menton.",
     nl: "Frans-Japanse keuken met terras in het centrum van Menton.", zh: "芒通市中心带露台的法日融合料理。" } },
+  { name: "Trattoria Da Maria", place: "Genova, Vico Testadoro", zone: "genova", tag: "trad", price: "€", icon: "🍝", q: "Trattoria Da Maria Vico Testadoro Genova", t: { it: "Trattoria popolare: piatti genovesi a prezzi di una volta.", fr: "Trattoria populaire : plats génois à petits prix.", en: "Down-to-earth trattoria: Genoese dishes at old-style prices.", de: "Volkstümliche Trattoria: Genueser Gerichte zu kleinen Preisen.", nl: "Volkse trattoria: Genuese gerechten voor ouderwetse prijzen.", zh: "平价老式小馆：热那亚家常菜。" } },
+  { name: "Trattoria Rosmarino", place: "Genova, Salita del Fondaco", zone: "genova", tag: "trad", price: "€€", icon: "🌿", q: "Trattoria Rosmarino Genova", t: { it: "Cucina ligure di casa nel centro storico.", fr: "Cuisine ligure familiale dans la vieille ville.", en: "Home-style Ligurian cooking in the old town.", de: "Ligurische Hausmannskost in der Altstadt.", nl: "Huiselijke Ligurische keuken in de oude stad.", zh: "老城里的利古里亚家常菜。" } },
+  { name: "Antica Osteria di Vico Palla", place: "Genova, Porto Antico", zone: "genova", tag: "trad", price: "€€", icon: "🐟", q: "Antica Osteria di Vico Palla Genova", t: { it: "Osteria storica vicino al porto: pesce e piatti liguri.", fr: "Osteria historique près du port : poisson et plats ligures.", en: "Historic osteria by the harbour: fish and Ligurian dishes.", de: "Historische Osteria am Hafen: Fisch und ligurische Gerichte.", nl: "Historische osteria bij de haven: vis en Ligurische gerechten.", zh: "港口边的老酒馆：海鲜与利古里亚菜。" } },
+  { name: "Antica Friggitoria Carega", place: "Genova, Sottoripa", zone: "genova", tag: "street", price: "€", icon: "🦐", q: "Antica Friggitoria Carega Sottoripa Genova", t: { it: "Frittelle e pesce fritto da asporto sotto i portici.", fr: "Beignets et friture de poisson à emporter sous les arcades.", en: "Fritters and fried fish to take away under the arcades.", de: "Krapfen und frittierter Fisch zum Mitnehmen unter den Arkaden.", nl: "Beignets en gefrituurde vis om mee te nemen onder de arcaden.", zh: "拱廊下的炸饼与炸海鲜外卖。" } },
+  { name: "Gelateria Amedeo", place: "Genova, Boccadasse", zone: "genova", tag: "sweet", price: "€", icon: "🍦", q: "Gelateria Amedeo Boccadasse", t: { it: "Gelato artigianale con vista sul borgo dei pescatori.", fr: "Glace artisanale face au village de pêcheurs.", en: "Artisan gelato overlooking the fishing village.", de: "Handgemachtes Eis mit Blick aufs Fischerdorf.", nl: "Ambachtelijk ijs met uitzicht op het vissersdorp.", zh: "手工冰淇淋，眺望渔村。" } },
+  { name: "Da Vittorio", place: "Recco", zone: "genova", tag: "trad", price: "€€", icon: "🧀", q: "Ristorante Da Vittorio Recco", t: { it: "Focaccia col formaggio e cucina ligure nella sua patria.", fr: "Focaccia au fromage et cuisine ligure dans sa ville natale.", en: "Cheese focaccia and Ligurian cooking in its home town.", de: "Käse-Focaccia und ligurische Küche in ihrer Heimat.", nl: "Focaccia met kaas en Ligurische keuken in haar thuisstad.", zh: "在发源地品尝奶酪佛卡夏与利古里亚菜。" } },
+  { name: "Lou Pilha Leva", place: "Nice, Vieux-Nice", zone: "azur", tag: "street", price: "€", icon: "🥞", q: "Lou Pilha Leva Nice", t: { it: "Socca, pissaladière e frittelle da mangiare all'aperto.", fr: "Socca, pissaladière et beignets à déguster dehors.", en: "Socca, pissaladière and fritters to eat outdoors.", de: "Socca, Pissaladière und Krapfen zum Essen im Freien.", nl: "Socca, pissaladière en beignets om buiten te eten.", zh: "户外享用鹰嘴豆饼、洋葱挞和炸饼。" } },
+  { name: "Chez Thérésa", place: "Nice, Cours Saleya", zone: "azur", tag: "street", price: "€", icon: "🔥", q: "Chez Theresa socca Cours Saleya Nice", t: { it: "La socca del mercato, calda dal forno.", fr: "La socca du marché, toute chaude sortie du four.", en: "The market's socca, hot from the oven.", de: "Die Socca vom Markt, ofenfrisch.", nl: "De socca van de markt, warm uit de oven.", zh: "集市上刚出炉的热鹰嘴豆饼。" } },
+  { name: "Acchiardo", place: "Nice, Vieux-Nice", zone: "azur", tag: "trad", price: "€€", icon: "🍲", q: "Acchiardo Nice", t: { it: "Bistrot di famiglia con i classici nizzardi.", fr: "Bistrot familial et classiques niçois.", en: "Family bistro serving Niçoise classics.", de: "Familienbistro mit Nizzaer Klassikern.", nl: "Familiebistro met Niçoise klassiekers.", zh: "家族小馆，供应尼斯经典菜。" } },
+  { name: "Le Safari", place: "Nice, Cours Saleya", zone: "azur", tag: "trad", price: "€€", icon: "🍅", q: "Le Safari Cours Saleya Nice", t: { it: "Cucina nizzarda in terrazza sul mercato dei fiori.", fr: "Cuisine niçoise en terrasse sur le marché aux fleurs.", en: "Niçoise cooking on a terrace over the flower market.", de: "Nizzaer Küche auf der Terrasse am Blumenmarkt.", nl: "Niçoise keuken op een terras aan de bloemenmarkt.", zh: "花市旁露台上的尼斯菜。" } },
+  { name: "Fenocchio", place: "Nice, Place Rossetti", zone: "azur", tag: "sweet", price: "€", icon: "🍦", q: "Fenocchio glacier Place Rossetti Nice", t: { it: "Gelati dai gusti sorprendenti: lavanda, pomodoro, olive…", fr: "Glaces aux parfums étonnants : lavande, tomate, olive…", en: "Ice cream in surprising flavours: lavender, tomato, olive…", de: "Eis in überraschenden Sorten: Lavendel, Tomate, Olive…", nl: "IJs in verrassende smaken: lavendel, tomaat, olijf…", zh: "口味惊喜的冰淇淋：薰衣草、番茄、橄榄……" } },
+  { name: "Aux Bons Enfants", place: "Cannes, Le Suquet", zone: "azur", tag: "trad", price: "€€", icon: "🍷", q: "Aux Bons Enfants Cannes", t: { it: "Cucina provenzale di famiglia, semplice e genuina.", fr: "Cuisine provençale familiale, simple et sincère.", en: "Family Provençal cooking, simple and honest.", de: "Provenzalische Familienküche, einfach und ehrlich.", nl: "Provençaalse familiekeuken, eenvoudig en eerlijk.", zh: "朴实地道的普罗旺斯家常菜。" } },
+  { name: "Chez Roger", place: "Monaco, Marché de la Condamine", zone: "azur", tag: "street", price: "€", icon: "🥟", q: "Chez Roger socca Marché de la Condamine Monaco", t: { it: "Socca e barbajuan al mercato della Condamine.", fr: "Socca et barbajuans au marché de la Condamine.", en: "Socca and barbajuan at the Condamine market.", de: "Socca und Barbajuan auf dem Markt La Condamine.", nl: "Socca en barbajuan op de markt van La Condamine.", zh: "康达明集市的鹰嘴豆饼与摩纳哥炸饺。" } },
+  { name: "Stars'N'Bars", place: "Monaco, Port Hercule", zone: "azur", tag: "street", price: "€€", icon: "🍔", q: "Stars N Bars Monaco", t: { it: "Burger e sport sul porto, ideale per le famiglie.", fr: "Burgers et sport sur le port, idéal en famille.", en: "Burgers and sport on the harbour, great for families.", de: "Burger und Sport am Hafen, ideal für Familien.", nl: "Burgers en sport aan de haven, ideaal voor gezinnen.", zh: "港口边的汉堡与体育吧，适合全家。" } },
   { name: "Balzola", place: "Alassio", zone: "savona", tag: "sweet", price: "€€", icon: "🍫", q: "Pasticceria Balzola Alassio", t: {
     it: "La pasticceria dove sono nati i Baci di Alassio.", fr: "La pâtisserie où sont nés les Baci di Alassio.",
     en: "The pastry shop where Baci di Alassio were born.", de: "Die Konditorei, in der die Baci di Alassio erfunden wurden.",
@@ -1080,6 +1095,7 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    prices: { p1: "€ Economico", p2: "€€ Medio", p3: "€€€+ Alto livello" },
     sportSub: n => `${n} attività tra mare, montagna e cielo. Tocca per prenotare.`,
     cityHint: "Scegli una città: cosa vedere, i musei e dove mangiare. Tocca un nome per aprire la mappa.", cityLabels: { see: "Da vedere", museums: "Musei", eat: "Dove mangiare" },
     bookSub: "Sport, avventura e natura: prenota sui siti ufficiali.",
@@ -1109,13 +1125,14 @@ const I18N = {
     all: "Tutto", events1: "evento", eventsN: "eventi", maps: "Mappa",
     today: "Oggi", tomorrow: "Domani", inDays: (n) => `Tra ${n} giorni`, now: "In corso",
     lvl: ["Facile", "Media", "Impegnativa"],
-    tags: { michelin: "Stellato", modern: "Cucina moderna", trad: "Tradizione", street: "Street food", sweet: "Pasticceria" },
+    tags: { michelin: "Stellato", modern: "Cucina moderna", trad: "Tradizione", street: "Street food", sweet: "Dolci e gelati" },
     zones: { genova: "Genova", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Sagre", feste: "🎉 Feste", musica: "🎶 Musica", mercatini: "🎄 Mercatini", cultura: "🏛️ Cultura", sport: "🚵 Sport" },
     map: { italy: "ITALIA", france: "FRANCIA", sea: "Mar Ligure" },
     locale: "it-IT"
   },
   fr: {
+    prices: { p1: "€ Petit prix", p2: "€€ Moyen", p3: "€€€+ Haut de gamme" },
     sportSub: n => `${n} activités entre mer, montagne et ciel. Touchez pour réserver.`,
     cityHint: "Choisissez une ville : que voir, les musées et où manger. Touchez un nom pour ouvrir la carte.", cityLabels: { see: "À voir", museums: "Musées", eat: "Où manger" },
     bookSub: "Sport, aventure et nature : réservez sur les sites officiels.",
@@ -1145,13 +1162,14 @@ const I18N = {
     all: "Tout", events1: "événement", eventsN: "événements", maps: "Carte",
     today: "Aujourd'hui", tomorrow: "Demain", inDays: (n) => `Dans ${n} jours`, now: "En cours",
     lvl: ["Facile", "Moyenne", "Difficile"],
-    tags: { michelin: "Étoilé", modern: "Cuisine moderne", trad: "Tradition", street: "Street food", sweet: "Pâtisserie" },
+    tags: { michelin: "Étoilé", modern: "Cuisine moderne", trad: "Tradition", street: "Street food", sweet: "Pâtisseries et glaces" },
     zones: { genova: "Gênes", savona: "Savone", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Fêtes gourmandes", feste: "🎉 Fêtes", musica: "🎶 Musique", mercatini: "🎄 Marchés", cultura: "🏛️ Culture", sport: "🚵 Sport" },
     map: { italy: "ITALIE", france: "FRANCE", sea: "Mer Ligure" },
     locale: "fr-FR"
   },
   en: {
+    prices: { p1: "€ Budget", p2: "€€ Mid-range", p3: "€€€+ Fine dining" },
     sportSub: n => `${n} activities between sea, mountains and sky. Tap to book.`,
     cityHint: "Pick a town: what to see, museums and where to eat. Tap a name to open the map.", cityLabels: { see: "What to see", museums: "Museums", eat: "Where to eat" },
     bookSub: "Sport, adventure and nature: book on the official websites.",
@@ -1181,13 +1199,14 @@ const I18N = {
     all: "All", events1: "event", eventsN: "events", maps: "Map",
     today: "Today", tomorrow: "Tomorrow", inDays: (n) => `In ${n} days`, now: "On now",
     lvl: ["Easy", "Moderate", "Challenging"],
-    tags: { michelin: "Michelin-starred", modern: "Modern cuisine", trad: "Traditional", street: "Street food", sweet: "Pastry" },
+    tags: { michelin: "Michelin-starred", modern: "Modern cuisine", trad: "Traditional", street: "Street food", sweet: "Sweets & ice cream" },
     zones: { genova: "Genoa", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Food festivals", feste: "🎉 Celebrations", musica: "🎶 Music", mercatini: "🎄 Markets", cultura: "🏛️ Culture", sport: "🚵 Sport" },
     map: { italy: "ITALY", france: "FRANCE", sea: "Ligurian Sea" },
     locale: "en-GB"
   },
   de: {
+    prices: { p1: "€ Günstig", p2: "€€ Mittel", p3: "€€€+ Gehoben" },
     sportSub: n => `${n} Aktivitäten zwischen Meer, Bergen und Himmel. Antippen zum Buchen.`,
     cityHint: "Wähle einen Ort: Sehenswertes, Museen und gutes Essen. Tippe auf einen Namen für die Karte.", cityLabels: { see: "Sehenswert", museums: "Museen", eat: "Essen" },
     bookSub: "Sport, Abenteuer und Natur: auf den offiziellen Seiten buchen.",
@@ -1217,13 +1236,14 @@ const I18N = {
     all: "Alle", events1: "Event", eventsN: "Events", maps: "Karte",
     today: "Heute", tomorrow: "Morgen", inDays: (n) => `In ${n} Tagen`, now: "Läuft gerade",
     lvl: ["Leicht", "Mittel", "Anspruchsvoll"],
-    tags: { michelin: "Sterneküche", modern: "Moderne Küche", trad: "Traditionell", street: "Streetfood", sweet: "Konditorei" },
+    tags: { michelin: "Sterneküche", modern: "Moderne Küche", trad: "Traditionell", street: "Streetfood", sweet: "Süßes & Eis" },
     zones: { genova: "Genua", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Dorffeste", feste: "🎉 Feste", musica: "🎶 Musik", mercatini: "🎄 Märkte", cultura: "🏛️ Kultur", sport: "🚵 Sport" },
     map: { italy: "ITALIEN", france: "FRANKREICH", sea: "Ligurisches Meer" },
     locale: "de-DE"
   },
   nl: {
+    prices: { p1: "€ Voordelig", p2: "€€ Gemiddeld", p3: "€€€+ Topklasse" },
     sportSub: n => `${n} activiteiten tussen zee, bergen en lucht. Tik om te boeken.`,
     cityHint: "Kies een plaats: wat te zien, musea en waar te eten. Tik op een naam voor de kaart.", cityLabels: { see: "Bezienswaardig", museums: "Musea", eat: "Eten" },
     bookSub: "Sport, avontuur en natuur: boek op de officiële websites.",
@@ -1253,13 +1273,14 @@ const I18N = {
     all: "Alles", events1: "evenement", eventsN: "evenementen", maps: "Kaart",
     today: "Vandaag", tomorrow: "Morgen", inDays: (n) => `Over ${n} dagen`, now: "Nu bezig",
     lvl: ["Makkelijk", "Gemiddeld", "Zwaar"],
-    tags: { michelin: "Sterrenrestaurant", modern: "Moderne keuken", trad: "Traditioneel", street: "Streetfood", sweet: "Banketbakker" },
+    tags: { michelin: "Sterrenrestaurant", modern: "Moderne keuken", trad: "Traditioneel", street: "Streetfood", sweet: "Zoet & ijs" },
     zones: { genova: "Genua", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Eetfeesten", feste: "🎉 Feesten", musica: "🎶 Muziek", mercatini: "🎄 Markten", cultura: "🏛️ Cultuur", sport: "🚵 Sport" },
     map: { italy: "ITALIË", france: "FRANKRIJK", sea: "Ligurische Zee" },
     locale: "nl-NL"
   },
   zh: {
+    prices: { p1: "€ 平价", p2: "€€ 中档", p3: "€€€+ 高端" },
     sportSub: n => `${n}项海上、山间与空中活动，点击即可预订。`,
     cityHint: "选择城市：景点、博物馆和美食。点击名称打开地图。", cityLabels: { see: "景点", museums: "博物馆", eat: "美食" },
     bookSub: "运动、探险与自然：在官方网站预订。",
@@ -1289,7 +1310,7 @@ const I18N = {
     all: "全部", events1: "场活动", eventsN: "场活动", maps: "地图",
     today: "今天", tomorrow: "明天", inDays: (n) => `${n}天后`, now: "进行中",
     lvl: ["简单", "中等", "较难"],
-    tags: { michelin: "米其林星级", modern: "创意料理", trad: "传统风味", street: "街头小吃", sweet: "甜点" },
+    tags: { michelin: "米其林星级", modern: "创意料理", trad: "传统风味", street: "街头小吃", sweet: "甜点与冰淇淋" },
     zones: { genova: "热那亚", savona: "萨沃纳", imperia: "因佩里亚", azur: "蔚蓝海岸" },
     cats: { sagre: "🍝 美食节", feste: "🎉 节庆", musica: "🎶 音乐", mercatini: "🎄 集市", cultura: "🏛️ 文化", sport: "🚵 运动" },
     map: { italy: "意大利", france: "法国", sea: "利古里亚海" },
@@ -1308,7 +1329,8 @@ const pickLang = (l) => (l = (l || "").slice(0, 2).toLowerCase()) in LANGS ? l :
 let lang = pickLang(navigator.language) || "it";
 try { lang = pickLang(localStorage.getItem("riviera-lang")) || lang; } catch (e) {}
 lang = pickLang(new URLSearchParams(location.search).get("lang")) || lang;
-let zone = "all", cat = "all", tag = "all";
+let zone = "all", cat = "all", tag = "all", price = "all";
+const priceLevel = (p) => p.length >= 3 ? "p3" : p.length === 2 ? "p2" : "p1";
 
 /* Costa scelta: "lig" (Liguria), "azur" (Costa Azzurra) o "all" (tutte e due).
    Link diretto: ?region=liguria oppure ?region=azur */
@@ -1350,6 +1372,7 @@ function countdown(e) {
 function chips(el, items, current, onPick) {
   el.innerHTML = [["all", T().all], ...Object.entries(items)]
     .map(([k, v]) => `<button class="chip ${k === current ? "on" : ""}" data-k="${k}">${esc(v)}</button>`).join("");
+  if (!el.querySelector(".on")) el.firstElementChild.classList.add("on");
   el.onclick = (ev) => { const b = ev.target.closest(".chip"); if (b) onPick(b.dataset.k); };
 }
 
@@ -1496,7 +1519,8 @@ function renderHikes() {
 function renderEat() {
   $("#dishes").innerHTML = DISHES.filter((d) => inRegion(d[3])).map(([i, n, w]) => `<span class="dish">${i} ${esc(n)} <small>· ${esc(w)}</small></span>`).join("");
   chips($("#tagChips"), T().tags, tag, (k) => { tag = k; renderEat(); });
-  $("#rests").innerHTML = RESTAURANTS.filter((r) => ofRegion(r) && (tag === "all" || r.tag === tag)).map((r, i) => `
+  chips($("#priceChips"), T().prices, price, (k) => { price = k; renderEat(); });
+  $("#rests").innerHTML = RESTAURANTS.filter((r) => ofRegion(r) && (tag === "all" || r.tag === tag) && (price === "all" || priceLevel(r.price) === price)).map((r, i) => `
     <a class="rest" href="${maps(r.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 30}ms">
       <span class="ic">${r.icon}</span>
       <div>
