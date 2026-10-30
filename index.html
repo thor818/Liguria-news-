@@ -232,6 +232,7 @@
   .site.it::after { background: linear-gradient(140deg, rgba(15,122,90,.88), rgba(11,42,64,.75)); }
   .site.fr::after { background: linear-gradient(140deg, rgba(35,83,200,.88), rgba(11,42,64,.75)); }
   .site .flag { font-size: 2.4rem; }
+  .site .brand { display: inline-block; margin-top: 10px; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: rgba(255,255,255,.18); padding: 5px 11px; border-radius: 999px; }
   .site h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 3.2rem; line-height: 1; margin: 6px 0 10px; }
   .site p { margin: 0; opacity: .9; max-width: 36ch; }
   .site .btn { align-self: flex-start; background: #fff; color: var(--ink); }
@@ -482,9 +483,9 @@
       </div>
     </div>
     <div class="sites">
-      <a class="site it" href="https://www.ESEMPIO-SITO-ITALIANO.it" target="_blank" rel="noopener">
+      <a class="site it" id="siteItLink" href="https://rivierarent.it/" target="_blank" rel="noopener">
         <img src="foto/camogli.jpg" alt="" loading="lazy">
-        <div><div class="flag">🇮🇹</div><h3>Liguria</h3><p data-i18n="siteIt"></p></div>
+        <div><div class="flag">🇮🇹</div><span class="brand">Riviera Rent</span><h3>Liguria</h3><p data-i18n="siteIt"></p></div>
         <span class="btn"><span data-i18n="visit"></span> <span class="arr">→</span></span>
       </a>
       <a class="site fr" href="https://www.EXEMPLE-SITE-FRANCAIS.fr" target="_blank" rel="noopener">
@@ -814,7 +815,7 @@ const I18N = {
     eatEyebrow: "A tavola", eatSub: "Dagli stellati alle focaccerie storiche: dove si mangia bene, e cosa ordinare.",
     oil: "Olio", guidesSub: "Recensioni e nuove aperture: le guide da seguire.",
     stayEyebrow: "Vacanze", staySub: "Alloggi, attività e prenotazioni sui nostri portali.",
-    siteIt: "Riviera di Ponente e di Levante: hotel, case vacanza, escursioni.",
+    siteIt: "Case vacanza in Liguria, scelte e gestite da noi.",
     siteFr: "Da Mentone a Cannes: soggiorni, attività e idee di viaggio.",
     visit: "Visita il sito",
     newsTitle: "il giornalino nella tua email", newsSub: "Ogni mese il meglio della Riviera. Niente spam, promesso.",
@@ -845,7 +846,7 @@ const I18N = {
     eatEyebrow: "À table", eatSub: "Des étoilés aux fours historiques : où bien manger, et quoi commander.",
     oil: "Huile", guidesSub: "Critiques et nouvelles adresses : les guides à suivre.",
     stayEyebrow: "Vacances", staySub: "Hébergements, activités et réservations sur nos portails.",
-    siteIt: "Riviera du Ponant et du Levant : hôtels, locations, excursions.",
+    siteIt: "Locations de vacances en Ligurie, sélectionnées et gérées par nous.",
     siteFr: "De Menton à Cannes : séjours, activités et idées de voyage.",
     visit: "Visiter le site",
     newsTitle: "le journal dans votre boîte mail", newsSub: "Chaque mois, le meilleur de la Riviera. Sans spam, promis.",
@@ -876,7 +877,7 @@ const I18N = {
     eatEyebrow: "Food", eatSub: "From Michelin stars to historic focaccia bakeries: where to eat well, and what to order.",
     oil: "Olive oil", guidesSub: "Reviews and new openings: the guides to follow.",
     stayEyebrow: "Holidays", staySub: "Accommodation, activities and bookings on our websites.",
-    siteIt: "Western and Eastern Riviera: hotels, holiday homes, excursions.",
+    siteIt: "Holiday homes in Liguria, hand-picked and managed by us.",
     siteFr: "From Menton to Cannes: stays, activities and travel ideas.",
     visit: "Visit the website",
     newsTitle: "in your inbox", newsSub: "The best of the Riviera, every month. No spam, promise.",
@@ -907,7 +908,7 @@ const I18N = {
     eatEyebrow: "Genuss", eatSub: "Von Sterneküche bis zur historischen Focacceria: wo man gut isst und was man bestellt.",
     oil: "Olivenöl", guidesSub: "Kritiken und Neueröffnungen: die Guides zum Folgen.",
     stayEyebrow: "Urlaub", staySub: "Unterkünfte, Aktivitäten und Buchungen auf unseren Portalen.",
-    siteIt: "Riviera di Ponente und di Levante: Hotels, Ferienwohnungen, Ausflüge.",
+    siteIt: "Ferienwohnungen in Ligurien, von uns ausgewählt und betreut.",
     siteFr: "Von Menton bis Cannes: Aufenthalte, Aktivitäten und Reiseideen.",
     visit: "Zur Website",
     newsTitle: "in deinem Postfach", newsSub: "Jeden Monat das Beste der Riviera. Kein Spam, versprochen.",
@@ -938,7 +939,7 @@ const I18N = {
     eatEyebrow: "Eten", eatSub: "Van sterrenrestaurants tot historische focacceria's: waar je goed eet en wat je bestelt.",
     oil: "Olijfolie", guidesSub: "Recensies en nieuwe openingen: de gidsen om te volgen.",
     stayEyebrow: "Vakantie", staySub: "Accommodaties, activiteiten en boekingen op onze websites.",
-    siteIt: "Riviera di Ponente en di Levante: hotels, vakantiehuizen, uitstapjes.",
+    siteIt: "Vakantiehuizen in Ligurië, door ons geselecteerd en beheerd.",
     siteFr: "Van Menton tot Cannes: verblijven, activiteiten en reisideeën.",
     visit: "Bezoek de website",
     newsTitle: "in je mailbox", newsSub: "Elke maand het beste van de Rivièra. Geen spam, beloofd.",
@@ -969,7 +970,7 @@ const I18N = {
     eatEyebrow: "美食", eatSub: "从米其林星级到百年佛卡夏老店：哪里好吃，点什么。",
     oil: "橄榄油", guidesSub: "最新点评与新店开业：值得关注的美食指南。",
     stayEyebrow: "度假", staySub: "在我们的网站预订住宿和活动。",
-    siteIt: "利古里亚东西海岸：酒店、度假屋、短途游。",
+    siteIt: "利古里亚度假屋，由我们精选并管理。",
     siteFr: "从芒通到戛纳：住宿、活动与旅行灵感。",
     visit: "访问网站",
     newsTitle: "订阅电子月刊", newsSub: "每月精选里维埃拉之最，绝无垃圾邮件。",
@@ -988,6 +989,9 @@ const I18N = {
     locale: "zh-CN"
   }
 };
+
+/* I nostri siti: Riviera Rent in italiano, nelle altre lingue la versione inglese */
+const SITE_IT = { it: "https://rivierarent.it/", other: "https://rivierarent.it/en/" };
 
 /* Punti sulla mappa: [x, y, spostamento etichetta x, y] */
 const PINS = { genova: [922, 36, -40, 46], savona: [718, 74, 20, -4], imperia: [514, 232, -30, 50], azur: [168, 306, -56, 52] };
@@ -1155,6 +1159,7 @@ function renderLangMenu() {
 function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
+  $("#siteItLink").href = lang === "it" ? SITE_IT.it : SITE_IT.other;
   renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderTodo(); renderHikes(); renderEat();
 }
 

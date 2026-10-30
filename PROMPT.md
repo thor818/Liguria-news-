@@ -34,7 +34,7 @@ At least **6 languages**, switchable from a menu at the top: **Italian, French, 
    - Renowned restaurants (Michelin-starred), traditional restaurants with typical local cuisine, historic street food, pastry shops, filterable by type, with place, price range and a map link (e.g. Mirazur, Le Louis XV, Da Puny, Il Genovese, Antica Sciamadda, Manuelina in Recco, Revello in Camogli, La Merenda, Chez Pipo, Balzola in Alassio).
    - Typical dishes: pesto, focaccia di Recco, farinata/socca, pissaladière, salade niçoise, brandacujun, cappon magro, barbagiuai, Baci di Alassio, Taggiasca olive oil.
    - "Food news": links to the guides that publish reviews and articles on new restaurants (Michelin Guide, Gambero Rosso, Slow Food, Gault&Millau).
-8. **Where to stay**: two big cards linking to our Italian website (Liguria) and our French website (Côte d'Azur).
+8. **Where to stay**: two big cards linking to our Italian website **Riviera Rent** (https://rivierarent.it — holiday homes in Liguria; English version at https://rivierarent.it/en/ for the other languages) and our French website (Côte d'Azur).
 9. **Newsletter sign-up**: email form to receive the newsletter every month (to connect to Mailchimp, Brevo or similar).
 10. **Footer**: tagline, disclaimer ("dates and programmes may change, always check with the organiser"), photo credits.
 
@@ -44,7 +44,7 @@ At least **6 languages**, switchable from a menu at the top: **Italian, French, 
 - A README explaining how to update it.
 
 ## To fill in with real data
-- Real addresses of our Italian and French websites.
+- Our French website address (the Italian one is done).
 - Real events of the month with verified dates and links.
 - Check that restaurants are open and the details are correct.
 - Our own photos when available.

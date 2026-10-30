@@ -29,7 +29,7 @@ Tutti i contenuti sono in cima allo `<script>` di `index.html`, sotto **CONTENUT
 
 ## Da completare
 
-- Link ai vostri siti: cercare `ESEMPIO-SITO-ITALIANO` e `EXEMPLE-SITE-FRANCAIS`.
+- Sito italiano: Riviera Rent (`SITE_IT`, già collegato). Sito francese: cercare `EXEMPLE-SITE-FRANCAIS`.
 - Iscrizione newsletter: collegare il `<form>` al vostro servizio (Mailchimp, Brevo, ...).
 - Gli eventi del N° 1 sono esempi: verificare date e link prima di pubblicare.
 - Ristoranti, tempi e distanze dei sentieri: verificare prima di pubblicare.
