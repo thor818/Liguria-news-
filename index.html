@@ -224,13 +224,12 @@
   .guides .links small { display: block; font-weight: 400; color: #b8c7d3; font-size: .75rem; margin-top: 2px; }
 
   /* ---------- Siti ---------- */
-  .sites { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .site { position: relative; overflow: hidden; border-radius: 28px; padding: 40px; min-height: 320px; color: #fff; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; isolation: isolate; transition: transform .25s; }
+  .sites { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  .site { position: relative; overflow: hidden; border-radius: 28px; padding: 40px; min-height: 380px; color: #fff; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; isolation: isolate; transition: transform .25s; }
   .site:hover { transform: translateY(-4px); }
   .site img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
   .site::after { content: ""; position: absolute; inset: 0; z-index: -1; }
-  .site.it::after { background: linear-gradient(140deg, rgba(15,122,90,.88), rgba(11,42,64,.75)); }
-  .site.fr::after { background: linear-gradient(140deg, rgba(35,83,200,.88), rgba(11,42,64,.75)); }
+  .site.it::after { background: linear-gradient(100deg, rgba(11,42,64,.88), rgba(11,42,64,.15) 75%); }
   .site .flag { font-size: 2.4rem; }
   .site .brand { display: inline-block; margin-top: 10px; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: rgba(255,255,255,.18); padding: 5px 11px; border-radius: 999px; }
   .site h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 3.2rem; line-height: 1; margin: 6px 0 10px; }
@@ -262,7 +261,7 @@
   @media (max-width: 1100px) { .nav { display: none; } .index { grid-template-columns: repeat(4, 1fr); } }
   @media (max-width: 900px) {
     .hero { padding-top: 96px; }
-    .hero-grid, .sites, .news, footer .wrap, .eat, .guides { grid-template-columns: minmax(0, 1fr); }
+    .hero-grid, .news, footer .wrap, .eat, .guides { grid-template-columns: minmax(0, 1fr); }
     .cover { aspect-ratio: 4 / 3.6; }
     .index { grid-template-columns: repeat(4, 1fr); gap: 8px; }
     .index a { padding: 12px 10px; }
@@ -473,7 +472,7 @@
   </section>
 
   <!-- ================= WHERE TO STAY =================
-       Sostituire gli href con gli indirizzi reali dei vostri siti -->
+       Il nostro sito: Riviera Rent -->
   <section id="stay" class="reveal">
     <div class="head">
       <div>
@@ -486,11 +485,6 @@
       <a class="site it" id="siteItLink" href="https://rivierarent.it/" target="_blank" rel="noopener">
         <img src="foto/camogli.jpg" alt="" loading="lazy">
         <div><div class="flag">🇮🇹</div><span class="brand">Riviera Rent</span><h3>Liguria</h3><p data-i18n="siteIt"></p></div>
-        <span class="btn"><span data-i18n="visit"></span> <span class="arr">→</span></span>
-      </a>
-      <a class="site fr" href="https://www.EXEMPLE-SITE-FRANCAIS.fr" target="_blank" rel="noopener">
-        <img src="foto/nizza.jpg" alt="" loading="lazy">
-        <div><div class="flag">🇫🇷</div><h3>Côte d'Azur</h3><p data-i18n="siteFr"></p></div>
         <span class="btn"><span data-i18n="visit"></span> <span class="arr">→</span></span>
       </a>
     </div>
@@ -814,9 +808,8 @@ const I18N = {
     hikeEyebrow: "Sentieri", hikeSub: "Passeggiate tra mare e monti. Tempi e distanze indicativi.",
     eatEyebrow: "A tavola", eatSub: "Dagli stellati alle focaccerie storiche: dove si mangia bene, e cosa ordinare.",
     oil: "Olio", guidesSub: "Recensioni e nuove aperture: le guide da seguire.",
-    stayEyebrow: "Vacanze", staySub: "Alloggi, attività e prenotazioni sui nostri portali.",
+    stayEyebrow: "Vacanze", staySub: "Case vacanza in Liguria su Riviera Rent.",
     siteIt: "Case vacanza in Liguria, scelte e gestite da noi.",
-    siteFr: "Da Mentone a Cannes: soggiorni, attività e idee di viaggio.",
     visit: "Visita il sito",
     newsTitle: "il giornalino nella tua email", newsSub: "Ogni mese il meglio della Riviera. Niente spam, promesso.",
     subscribe: "Iscriviti", thanks: "Grazie! ✓",
@@ -845,9 +838,8 @@ const I18N = {
     hikeEyebrow: "Sentiers", hikeSub: "Balades entre mer et montagne. Durées et distances indicatives.",
     eatEyebrow: "À table", eatSub: "Des étoilés aux fours historiques : où bien manger, et quoi commander.",
     oil: "Huile", guidesSub: "Critiques et nouvelles adresses : les guides à suivre.",
-    stayEyebrow: "Vacances", staySub: "Hébergements, activités et réservations sur nos portails.",
+    stayEyebrow: "Vacances", staySub: "Locations de vacances en Ligurie sur Riviera Rent.",
     siteIt: "Locations de vacances en Ligurie, sélectionnées et gérées par nous.",
-    siteFr: "De Menton à Cannes : séjours, activités et idées de voyage.",
     visit: "Visiter le site",
     newsTitle: "le journal dans votre boîte mail", newsSub: "Chaque mois, le meilleur de la Riviera. Sans spam, promis.",
     subscribe: "S'inscrire", thanks: "Merci ! ✓",
@@ -876,9 +868,8 @@ const I18N = {
     hikeEyebrow: "Trails", hikeSub: "Walks between sea and mountains. Times and distances are approximate.",
     eatEyebrow: "Food", eatSub: "From Michelin stars to historic focaccia bakeries: where to eat well, and what to order.",
     oil: "Olive oil", guidesSub: "Reviews and new openings: the guides to follow.",
-    stayEyebrow: "Holidays", staySub: "Accommodation, activities and bookings on our websites.",
+    stayEyebrow: "Holidays", staySub: "Holiday homes in Liguria on Riviera Rent.",
     siteIt: "Holiday homes in Liguria, hand-picked and managed by us.",
-    siteFr: "From Menton to Cannes: stays, activities and travel ideas.",
     visit: "Visit the website",
     newsTitle: "in your inbox", newsSub: "The best of the Riviera, every month. No spam, promise.",
     subscribe: "Subscribe", thanks: "Thank you! ✓",
@@ -907,9 +898,8 @@ const I18N = {
     hikeEyebrow: "Wanderwege", hikeSub: "Touren zwischen Meer und Bergen. Zeiten und Strecken sind ungefähre Angaben.",
     eatEyebrow: "Genuss", eatSub: "Von Sterneküche bis zur historischen Focacceria: wo man gut isst und was man bestellt.",
     oil: "Olivenöl", guidesSub: "Kritiken und Neueröffnungen: die Guides zum Folgen.",
-    stayEyebrow: "Urlaub", staySub: "Unterkünfte, Aktivitäten und Buchungen auf unseren Portalen.",
+    stayEyebrow: "Urlaub", staySub: "Ferienwohnungen in Ligurien auf Riviera Rent.",
     siteIt: "Ferienwohnungen in Ligurien, von uns ausgewählt und betreut.",
-    siteFr: "Von Menton bis Cannes: Aufenthalte, Aktivitäten und Reiseideen.",
     visit: "Zur Website",
     newsTitle: "in deinem Postfach", newsSub: "Jeden Monat das Beste der Riviera. Kein Spam, versprochen.",
     subscribe: "Abonnieren", thanks: "Danke! ✓",
@@ -938,9 +928,8 @@ const I18N = {
     hikeEyebrow: "Wandelpaden", hikeSub: "Wandelingen tussen zee en bergen. Tijden en afstanden zijn bij benadering.",
     eatEyebrow: "Eten", eatSub: "Van sterrenrestaurants tot historische focacceria's: waar je goed eet en wat je bestelt.",
     oil: "Olijfolie", guidesSub: "Recensies en nieuwe openingen: de gidsen om te volgen.",
-    stayEyebrow: "Vakantie", staySub: "Accommodaties, activiteiten en boekingen op onze websites.",
+    stayEyebrow: "Vakantie", staySub: "Vakantiehuizen in Ligurië op Riviera Rent.",
     siteIt: "Vakantiehuizen in Ligurië, door ons geselecteerd en beheerd.",
-    siteFr: "Van Menton tot Cannes: verblijven, activiteiten en reisideeën.",
     visit: "Bezoek de website",
     newsTitle: "in je mailbox", newsSub: "Elke maand het beste van de Rivièra. Geen spam, beloofd.",
     subscribe: "Inschrijven", thanks: "Bedankt! ✓",
@@ -969,9 +958,8 @@ const I18N = {
     hikeEyebrow: "徒步路线", hikeSub: "山海之间的步道。时间和距离仅供参考。",
     eatEyebrow: "美食", eatSub: "从米其林星级到百年佛卡夏老店：哪里好吃，点什么。",
     oil: "橄榄油", guidesSub: "最新点评与新店开业：值得关注的美食指南。",
-    stayEyebrow: "度假", staySub: "在我们的网站预订住宿和活动。",
+    stayEyebrow: "度假", staySub: "在 Riviera Rent 预订利古里亚度假屋。",
     siteIt: "利古里亚度假屋，由我们精选并管理。",
-    siteFr: "从芒通到戛纳：住宿、活动与旅行灵感。",
     visit: "访问网站",
     newsTitle: "订阅电子月刊", newsSub: "每月精选里维埃拉之最，绝无垃圾邮件。",
     subscribe: "订阅", thanks: "谢谢！✓",

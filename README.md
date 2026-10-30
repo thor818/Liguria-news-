@@ -13,7 +13,7 @@ La pagina è `index.html`, le foto sono nella cartella `foto/`. Si apre con qual
 | What to do | esperienze | `TODO` |
 | Hiking | sentieri con durata, km e difficoltà | `HIKES` |
 | Where to eat | ristoranti, piatti tipici, guide gastronomiche | `RESTAURANTS`, `DISHES`, `GUIDES` |
-| Where to stay | link ai vostri siti italiano e francese | sezione `#stay` |
+| Where to stay | link a Riviera Rent | sezione `#stay`, `SITE_IT` |
 
 ## Come aggiornarlo per un nuovo numero
 
@@ -29,7 +29,7 @@ Tutti i contenuti sono in cima allo `<script>` di `index.html`, sotto **CONTENUT
 
 ## Da completare
 
-- Sito italiano: Riviera Rent (`SITE_IT`, già collegato). Sito francese: cercare `EXEMPLE-SITE-FRANCAIS`.
+- Il link a Riviera Rent è in `SITE_IT` (italiano → rivierarent.it, altre lingue → rivierarent.it/en/).
 - Iscrizione newsletter: collegare il `<form>` al vostro servizio (Mailchimp, Brevo, ...).
 - Gli eventi del N° 1 sono esempi: verificare date e link prima di pubblicare.
 - Ristoranti, tempi e distanze dei sentieri: verificare prima di pubblicare.

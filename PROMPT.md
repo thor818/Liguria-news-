@@ -3,7 +3,7 @@
 Create a beautiful, modern, magazine-style web newsletter called **"Live Riviera — How to live Liguria & the French Riviera"**.
 
 ## Purpose
-A monthly newsletter about what happens and what to do in the provinces of **Genoa, Savona and Imperia** (Liguria, Italy) and on the **Côte d'Azur** (French Riviera: Menton, Monaco, Nice, Èze, Villefranche, Cap Ferrat, Cannes). It must link to our two tourism websites, one Italian and one French, so visitors know about food festivals (sagre), celebrations, events, holidays and activities, and can go straight to the organisers' websites and to our booking sites.
+A monthly newsletter about what happens and what to do in the provinces of **Genoa, Savona and Imperia** (Liguria, Italy) and on the **Côte d'Azur** (French Riviera: Menton, Monaco, Nice, Èze, Villefranche, Cap Ferrat, Cannes). It must link to our website **Riviera Rent** (https://rivierarent.it), so visitors know about food festivals (sagre), celebrations, events, holidays and activities, and can go straight to the organisers' websites and to Riviera Rent to book a holiday home.
 
 ## Style
 - Modern, elegant, visual, like a travel magazine. People must want to look at it.
@@ -16,7 +16,7 @@ A monthly newsletter about what happens and what to do in the provinces of **Gen
 ## Languages
 At least **6 languages**, switchable from a menu at the top: **Italian, French, English, German, Dutch, Chinese**.
 - The page opens in the visitor's browser language and remembers the choice.
-- A link parameter (e.g. `?lang=fr`) opens it directly in a language, so each of our websites can link to its own language.
+- A link parameter (e.g. `?lang=fr`) opens it directly in a language, so each link can open the right language.
 - Section titles stay in English as a brand: What's on, Where to go, What to see, What to do, Hiking, Where to eat, Where to stay. Everything else is translated.
 
 ## Sections
@@ -34,7 +34,7 @@ At least **6 languages**, switchable from a menu at the top: **Italian, French, 
    - Renowned restaurants (Michelin-starred), traditional restaurants with typical local cuisine, historic street food, pastry shops, filterable by type, with place, price range and a map link (e.g. Mirazur, Le Louis XV, Da Puny, Il Genovese, Antica Sciamadda, Manuelina in Recco, Revello in Camogli, La Merenda, Chez Pipo, Balzola in Alassio).
    - Typical dishes: pesto, focaccia di Recco, farinata/socca, pissaladière, salade niçoise, brandacujun, cappon magro, barbagiuai, Baci di Alassio, Taggiasca olive oil.
    - "Food news": links to the guides that publish reviews and articles on new restaurants (Michelin Guide, Gambero Rosso, Slow Food, Gault&Millau).
-8. **Where to stay**: two big cards linking to our Italian website **Riviera Rent** (https://rivierarent.it — holiday homes in Liguria; English version at https://rivierarent.it/en/ for the other languages) and our French website (Côte d'Azur).
+8. **Where to stay**: one big card linking to our website **Riviera Rent** (https://rivierarent.it — holiday homes in Liguria; the English version https://rivierarent.it/en/ for all languages except Italian).
 9. **Newsletter sign-up**: email form to receive the newsletter every month (to connect to Mailchimp, Brevo or similar).
 10. **Footer**: tagline, disclaimer ("dates and programmes may change, always check with the organiser"), photo credits.
 
@@ -44,7 +44,6 @@ At least **6 languages**, switchable from a menu at the top: **Italian, French, 
 - A README explaining how to update it.
 
 ## To fill in with real data
-- Our French website address (the Italian one is done).
 - Real events of the month with verified dates and links.
 - Check that restaurants are open and the details are correct.
 - Our own photos when available.
