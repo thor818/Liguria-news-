@@ -23,23 +23,15 @@ At least **6 languages**, switchable from a menu at the top: **Italian, French, 
 - Section titles stay in English as a brand: What's on, Where to go, What to see, What to do, Hiking, Where to eat, Where to stay. Everything else is translated.
 
 ## Sections
-1. **Cover**: name, issue number and month, short tagline, big photo of the Riviera (e.g. Portofino), counters (upcoming events, places, languages), a scrolling ticker with upcoming events, and an index of all sections.
-2. **What's on**: events, food festivals, celebrations, Christmas markets, concerts, culture, sport.
-   - 3 featured events in a large photo layout.
-   - Agenda cards with photo, date, area, one line of text, a "in X days" countdown and a link to the organiser.
-   - Filters by area (Genoa, Savona, Imperia, Côte d'Azur) and by type.
-   - Past events disappear automatically.
-3. **Where to go**: an illustrated interactive map of the coast from Cannes to Genoa (Italy/France border shown). Tapping an area shows its events.
-4. **What to see**: must-see places (Portofino, Genoa old town and Rolli palaces, Promenade des Anglais, Monaco, Menton, Èze, Camogli…), photo tiles linking to Google Maps.
-5. **What to do**: experiences in a swipeable carousel (whale watching in the Pelagos Sanctuary, mountain biking in Finale Ligure, snorkelling and diving, beaches, sunset aperitivo, hill villages like Apricale and Dolceacqua).
-6. **Hiking**: trails with photo, duration, distance and difficulty (e.g. Portofino → San Fruttuoso, Sentiero del Pellegrino Varigotti–Noli, Riviera dei Fiori cycle path, Cap Ferrat coastal path, Chemin de Nietzsche in Èze, Beigua Park).
-7. **Where to eat**: **very important section**.
-   - Renowned restaurants (Michelin-starred), traditional restaurants with typical local cuisine, historic street food, pastry shops, filterable by type, with place, price range and a map link (e.g. Mirazur, Le Louis XV, Da Puny, Il Genovese, Antica Sciamadda, Manuelina in Recco, Revello in Camogli, La Merenda, Chez Pipo, Balzola in Alassio).
-   - Typical dishes: pesto, focaccia di Recco, farinata/socca, pissaladière, salade niçoise, brandacujun, cappon magro, barbagiuai, Baci di Alassio, Taggiasca olive oil.
-   - "Food news": links to the guides that publish reviews and articles on new restaurants (Michelin Guide, Gambero Rosso, Slow Food, Gault&Millau).
-8. **Where to stay**: one big card linking to our website **Riviera Rent** (https://rivierarent.it — holiday homes in Liguria; the English version https://rivierarent.it/en/ for all languages except Italian).
-9. **Newsletter sign-up**: email form to receive the newsletter every month (to connect to Mailchimp, Brevo or similar).
-10. **Footer**: tagline, disclaimer ("dates and programmes may change, always check with the organiser"), photo credits.
+Keep it simple, with few big sections, like the menu of the Cannes tourism website (Explorer · Que faire · Où manger · Où dormir · Agenda). A "Menu" button opens a full-screen menu with only these five big entries and arrows, plus links to Riviera Rent and the newsletter.
+
+1. **Cover**: name, issue number and month, short tagline, big photo (Portofino for Liguria, Nice for the Côte d'Azur), small counters, then **"Choose your Riviera"**: Liguria / Côte d'Azur / Both.
+2. **Explore**: must-see places as photo tiles linking to Google Maps (Portofino, Genoa old town, Genoa by the sea, Camogli, Promenade des Anglais, Monaco, Menton, Èze) and an illustrated interactive map of the coast from Cannes to Genoa; tapping an area shows its events.
+3. **What to do**: experiences in a swipeable carousel (whale watching in the Pelagos Sanctuary, mountain biking in Finale Ligure, diving, beaches, sunset aperitivo, Monaco from above, hill villages) and **Hiking trails** with photo, duration, distance and difficulty (Portofino → San Fruttuoso, Sentiero del Pellegrino, Riviera dei Fiori cycle path, Cap Ferrat coastal path, Chemin de Nietzsche, Beigua Park).
+4. **Where to eat**: **very important**. Renowned and Michelin-starred restaurants, traditional local cuisine, historic street food and pastry shops, filterable by type, with place, price range and map link (Mirazur, Le Louis XV, Da Puny, Il Genovese, Antica Sciamadda, Manuelina, Revello, La Merenda, Chez Pipo, Balzola); typical dishes of each coast (pesto, focaccia di Recco, farinata/socca, brandacujun, cappon magro, barbagiuai, Baci di Alassio, Taggiasca oil, pissaladière, salade niçoise, pan bagnat, tourte de blettes, barbajuan); "Food news" links to the guides that review new restaurants (Michelin, Gambero Rosso, Slow Food, Gault&Millau).
+5. **Where to stay**: one big card linking to our website **Riviera Rent** (https://rivierarent.it — holiday homes in Liguria; https://rivierarent.it/en/ for all languages except Italian).
+6. **What's on** (agenda): food festivals, celebrations, Christmas markets, concerts, culture, sport; 3 featured events in a large photo layout, then cards with photo, date, area, one line, an "in X days" countdown and a link to the organiser; filters by area and type; past events disappear automatically.
+7. **Newsletter sign-up** and **footer** with disclaimer and photo credits.
 
 ## Easy to update
 - One simple static website (an `index.html` page plus a `foto/` folder), no complex technology, publishable on any hosting.

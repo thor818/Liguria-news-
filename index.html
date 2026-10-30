@@ -43,9 +43,6 @@
   @media (max-width: 1220px) { .bar { margin: 0 12px; } }
   .logo { font-family: "Instrument Serif", serif; font-size: 1.7rem; text-decoration: none; letter-spacing: -.01em; white-space: nowrap; }
   .logo i { color: var(--coral); }
-  .nav { display: flex; gap: 2px; }
-  .nav a { text-decoration: none; font-size: .88rem; font-weight: 500; color: var(--muted); padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
-  .nav a:hover { background: var(--bg); color: var(--ink); }
   .reg { display: flex; background: var(--bg); border-radius: 999px; padding: 4px; gap: 2px; }
   .reg button { border: 0; background: none; padding: 7px 12px; border-radius: 999px; font: 600 .8rem Inter, sans-serif; cursor: pointer; color: var(--muted); white-space: nowrap; }
   .reg button.on { background: var(--coral); color: #fff; }
@@ -58,6 +55,32 @@
   .lang-list button:hover { background: var(--bg); }
   .lang-list button.on { background: var(--navy); color: #fff; }
   .lang-list button.on b { color: var(--lemon); }
+
+  /* ---------- Menu a schermo intero ---------- */
+  .menu-btn { display: flex; align-items: center; gap: 10px; border: 0; background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 999px; font: 600 .85rem Inter, sans-serif; cursor: pointer; }
+  .burger, .burger::before, .burger::after { display: block; width: 16px; height: 2px; background: currentColor; border-radius: 2px; position: relative; }
+  .burger::before, .burger::after { content: ""; position: absolute; left: 0; }
+  .burger::before { top: -5px; } .burger::after { top: 5px; }
+  .menu { position: fixed; inset: 0; z-index: 50; background: linear-gradient(160deg, var(--sea), var(--navy) 70%); color: #fff; overflow-y: auto;
+    padding: calc(22px + env(safe-area-inset-top, 0px)) max(28px, env(safe-area-inset-right, 0px)) calc(28px + env(safe-area-inset-bottom, 0px)) max(28px, env(safe-area-inset-left, 0px));
+    display: flex; flex-direction: column; gap: 34px; animation: menuIn .25s ease; }
+  .menu[hidden] { display: none; }
+  @keyframes menuIn { from { opacity: 0; transform: translateY(-10px); } }
+  .menu-top { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; width: 100%; margin: 0 auto; }
+  .menu-top .logo { color: #fff; }
+  .menu-close { border: 0; background: none; color: #fff; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; font: 600 .72rem Inter, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+  .menu-close .x { font-size: 2rem; line-height: 1; letter-spacing: 0; }
+  .menu-main { display: grid; max-width: 1100px; width: 100%; margin: 0 auto; }
+  .menu-main a { display: flex; justify-content: space-between; align-items: center; text-decoration: none; font-family: "Instrument Serif", serif; font-size: clamp(2.6rem, 8vw, 4.6rem); line-height: 1.1; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.14); transition: padding .2s, color .2s; }
+  .menu-main a:hover { padding-left: 10px; color: var(--lemon); }
+  .menu-main i { font-style: normal; color: var(--coral); font-family: Inter, sans-serif; font-weight: 300; font-size: .8em; }
+  .menu-sub { display: grid; gap: 12px; max-width: 1100px; width: 100%; margin: 0 auto; }
+  .menu-sub a { color: #fff; font-weight: 600; font-size: 1.1rem; text-decoration: none; }
+  .menu-sub a:hover { color: var(--lemon); }
+  .sub-head { margin: 48px 0 20px; }
+  .sub-head h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1; margin: 0 0 8px; }
+  .sub-head p { margin: 0; color: var(--muted); }
+  .sub-head:has(> p:only-child) { margin: 26px 0 12px; }
 
   /* ---------- Copertina ---------- */
   .hero { padding: 116px 0 0; }
@@ -87,7 +110,7 @@
   .cover .stat span { font-size: .75rem; color: var(--muted); font-weight: 500; }
 
   /* ---------- Scelta della costa ---------- */
-  .choose-head { margin-top: 48px; display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; }
+  .choose-head { margin-top: 56px; display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; }
   .choose-head h2 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; margin: 0; }
   .choose-head p { margin: 0; color: var(--muted); }
   .choose { display: grid; grid-template-columns: 1fr 1fr 190px; gap: 14px; margin-top: 18px; }
@@ -107,20 +130,6 @@
   .pick.both .flags { font-size: 2rem; }
   .pin.off { opacity: .3; }
   .see .tile.w2 { grid-column: span 2; }
-
-  /* ---------- Ticker ---------- */
-  .ticker { margin: 56px -10px 0; background: var(--navy); color: #fff; overflow: hidden; white-space: nowrap; padding: 16px 0; transform: rotate(-1deg); }
-  .ticker .track { display: inline-flex; gap: 46px; animation: marquee 50s linear infinite; padding-left: 46px; }
-  .ticker span { font-family: "Instrument Serif", serif; font-size: 1.5rem; }
-  .ticker span small { font-family: Inter, sans-serif; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--lemon); margin-right: 10px; vertical-align: 3px; }
-  @keyframes marquee { to { transform: translateX(-50%); } }
-
-  /* ---------- Indice delle rubriche ---------- */
-  .index { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 56px; }
-  .index a { text-decoration: none; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 16px 14px; transition: transform .2s, background .2s; }
-  .index a:hover { transform: translateY(-3px); background: var(--navy); color: #fff; }
-  .index b { display: block; font-size: 1.6rem; }
-  .index span { font-family: "Instrument Serif", serif; font-size: 1.35rem; line-height: 1.1; }
 
   section { padding-top: 96px; scroll-margin-top: 70px; }
   .head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
@@ -282,10 +291,12 @@
     .reveal { opacity: 1; transform: none; }
   }
 
-  .reg .txt { display: none; }
-  @media (max-width: 1100px) and (min-width: 561px) { .reg .txt { display: inline; } }
-  @media (max-width: 560px) { .bar { padding-left: 16px; } .logo { font-size: 1.45rem; } .lang summary { padding: 10px 12px; } }
-  @media (max-width: 1100px) { .nav { display: none; } .index { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 760px) { .reg .txt { display: none; } }
+  @media (max-width: 560px) {
+    .bar { padding-left: 14px; gap: 6px; } .logo { font-size: 1.35rem; }
+    .lang summary { padding: 10px 11px; } .reg button { padding: 7px 8px; }
+    .menu-btn { padding: 12px 13px; } .menu-btn [data-i18n] { display: none; }
+  }
   @media (max-width: 900px) {
     .hero { padding-top: 96px; }
     .hero-grid, .news, footer .wrap, .eat, .guides { grid-template-columns: minmax(0, 1fr); }
@@ -297,9 +308,6 @@
     .pick:not(.on) .check { display: none; }
     .pick.both { grid-column: span 2; min-height: 64px; flex-direction: row; gap: 12px; }
     .pick.both b { font-size: 1.5rem; }
-    .index { grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .index a { padding: 12px 10px; }
-    .index span { font-size: 1.1rem; }
     .bento { grid-template-columns: 1fr; grid-template-rows: none; }
     .tile.big { grid-row: auto; min-height: 380px; }
     .tile.big .emo { font-size: 5.5rem; top: 26px; right: 28px; }
@@ -327,22 +335,33 @@
 <header class="topbar">
   <div class="bar">
     <a class="logo" href="#">Live <i>Riviera</i></a>
-    <nav class="nav">
-      <a href="#on">What's on</a>
-      <a href="#go">Where to go</a>
-      <a href="#see">What to see</a>
-      <a href="#do">What to do</a>
-      <a href="#hike">Hiking</a>
-      <a href="#eat">Where to eat</a>
-      <a href="#stay">Stay</a>
-    </nav>
     <div class="reg" id="regBar" role="group" aria-label="Riviera"></div>
     <details class="lang" id="langMenu">
       <summary aria-label="Language">🌐 <span id="langCur">IT</span> ▾</summary>
       <div class="lang-list" id="langList"></div>
     </details>
+    <button class="menu-btn" id="menuBtn" aria-controls="menu" aria-expanded="false"><span class="burger"></span><span data-i18n="menu"></span></button>
   </div>
 </header>
+
+<!-- Menu a schermo intero: poche voci grandi -->
+<div class="menu" id="menu" hidden>
+  <div class="menu-top">
+    <span class="logo">Live <i>Riviera</i></span>
+    <button class="menu-close" id="menuClose"><span class="x">✕</span><span data-i18n="close"></span></button>
+  </div>
+  <nav class="menu-main">
+    <a href="#explore">Explore<i>›</i></a>
+    <a href="#do">What to do<i>›</i></a>
+    <a href="#eat">Where to eat<i>›</i></a>
+    <a href="#stay">Where to stay<i>›</i></a>
+    <a href="#on">What's on<i>›</i></a>
+  </nav>
+  <div class="menu-sub">
+    <a href="https://rivierarent.it/" id="menuRent" target="_blank" rel="noopener">Riviera Rent ↗</a>
+    <a href="#news" data-i18n="newsletter"></a>
+  </div>
+</div>
 
 <!-- ================= COPERTINA ================= -->
 <div class="hero">
@@ -376,50 +395,21 @@
     <div class="choose" id="choose"></div>
   </div>
 
-  <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
-
-  <!-- Indice delle rubriche -->
-  <div class="wrap">
-    <nav class="index reveal">
-      <a href="#on"><b>🎉</b><span>What's on</span></a>
-      <a href="#go"><b>🧭</b><span>Where to go</span></a>
-      <a href="#see"><b>👀</b><span>What to see</span></a>
-      <a href="#do"><b>🌊</b><span>What to do</span></a>
-      <a href="#hike"><b>🥾</b><span>Hiking</span></a>
-      <a href="#eat"><b>🍝</b><span>Where to eat</span></a>
-      <a href="#stay"><b>🏨</b><span>Where to stay</span></a>
-    </nav>
-  </div>
 </div>
 
 <main class="wrap">
 
-  <!-- ================= WHAT'S ON ================= -->
-  <section id="on" class="reveal">
+  <!-- ================= EXPLORE: dove andare e cosa vedere ================= -->
+  <section id="explore" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow"><span class="num">01</span><span data-i18n="onEyebrow"></span></span>
-        <h2>What's <em>on</em></h2>
-        <p data-i18n="onSub"></p>
+        <span class="eyebrow"><span class="num">01</span><span data-i18n="exploreEyebrow"></span></span>
+        <h2>Explore <em>the Riviera</em></h2>
+        <p data-i18n="exploreSub"></p>
       </div>
     </div>
-    <div class="bento" id="bento"></div>
-    <div class="filters">
-      <div class="chips" id="zoneChips"></div>
-      <div class="chips" id="catChips"></div>
-    </div>
-    <div class="grid" id="grid"></div>
-  </section>
-
-  <!-- ================= WHERE TO GO ================= -->
-  <section id="go" class="reveal">
-    <div class="head">
-      <div>
-        <span class="eyebrow"><span class="num">02</span><span data-i18n="goEyebrow"></span></span>
-        <h2>Where to <em>go</em></h2>
-        <p data-i18n="goSub"></p>
-      </div>
-    </div>
+    <div class="see" id="seeGrid"></div>
+    <div class="sub-head"><p data-i18n="goSub"></p></div>
     <div class="map">
       <svg viewBox="0 0 1000 420" role="img" aria-label="Liguria — Côte d'Azur">
         <defs>
@@ -445,23 +435,11 @@
     </div>
   </section>
 
-  <!-- ================= WHAT TO SEE ================= -->
-  <section id="see" class="reveal">
-    <div class="head">
-      <div>
-        <span class="eyebrow"><span class="num">03</span><span data-i18n="seeEyebrow"></span></span>
-        <h2>What to <em>see</em></h2>
-        <p data-i18n="seeSub"></p>
-      </div>
-    </div>
-    <div class="see" id="seeGrid"></div>
-  </section>
-
   <!-- ================= WHAT TO DO ================= -->
   <section id="do" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow"><span class="num">04</span><span data-i18n="doEyebrow"></span></span>
+        <span class="eyebrow"><span class="num">02</span><span data-i18n="doEyebrow"></span></span>
         <h2>What to <em>do</em></h2>
         <p data-i18n="doSub"></p>
       </div>
@@ -471,16 +449,9 @@
       </div>
     </div>
     <div class="rail" id="rail"></div>
-  </section>
-
-  <!-- ================= HIKING ================= -->
-  <section id="hike" class="reveal">
-    <div class="head">
-      <div>
-        <span class="eyebrow"><span class="num">05</span><span data-i18n="hikeEyebrow"></span></span>
-        <h2>Where to <em>hike</em></h2>
-        <p data-i18n="hikeSub"></p>
-      </div>
+    <div class="sub-head">
+      <h3>Hiking <em>trails</em></h3>
+      <p data-i18n="hikeSub"></p>
     </div>
     <div class="grid" id="hikeGrid"></div>
   </section>
@@ -489,7 +460,7 @@
   <section id="eat" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow"><span class="num">06</span><span data-i18n="eatEyebrow"></span></span>
+        <span class="eyebrow"><span class="num">03</span><span data-i18n="eatEyebrow"></span></span>
         <h2>Where to <em>eat</em></h2>
         <p data-i18n="eatSub"></p>
       </div>
@@ -520,7 +491,7 @@
   <section id="stay" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow"><span class="num">07</span><span data-i18n="stayEyebrow"></span></span>
+        <span class="eyebrow"><span class="num">04</span><span data-i18n="stayEyebrow"></span></span>
         <h2>Where to <em>stay</em></h2>
         <p data-i18n="staySub"></p>
       </div>
@@ -534,9 +505,26 @@
     </div>
   </section>
 
+  <!-- ================= WHAT'S ON: agenda ================= -->
+  <section id="on" class="reveal">
+    <div class="head">
+      <div>
+        <span class="eyebrow"><span class="num">05</span><span data-i18n="onEyebrow"></span></span>
+        <h2>What's <em>on</em></h2>
+        <p data-i18n="onSub"></p>
+      </div>
+    </div>
+    <div class="bento" id="bento"></div>
+    <div class="filters">
+      <div class="chips" id="zoneChips"></div>
+      <div class="chips" id="catChips"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
   <!-- ================= NEWSLETTER =================
        Collegare l'action del form al vostro servizio (Mailchimp, Brevo, ...) -->
-  <div class="news reveal">
+  <div class="news reveal" id="news">
     <div>
       <h2>Live <em>Riviera</em> — <span data-i18n="newsTitle"></span></h2>
       <p data-i18n="newsSub"></p>
@@ -854,6 +842,7 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    exploreEyebrow: "Dove andare", exploreSub: "I luoghi da non perdere e le zone della Riviera.", close: "Chiudi", newsletter: "Ricevi il giornalino ✉", menu: "Menu",
     chooseSub: "Guarda solo la Liguria, solo la Costa Azzurra, o tutte e due.", regions: { lig: "Liguria", azur: "Costa Azzurra", all: "Tutte e due" },
     regionSub: { lig: "Genova · Savona · Imperia", azur: "Mentone · Monaco · Nizza · Cannes" }, selected: "Selezionata", pick: "Scegli",
     issue: "N° 1 · Novembre 2026",
@@ -886,6 +875,7 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    exploreEyebrow: "Où aller", exploreSub: "Les lieux incontournables et les zones de la Riviera.", close: "Fermer", newsletter: "Recevoir le journal ✉", menu: "Menu",
     chooseSub: "Ne voir que la Ligurie, que la Côte d'Azur, ou les deux.", regions: { lig: "Ligurie", azur: "Côte d'Azur", all: "Les deux" },
     regionSub: { lig: "Gênes · Savone · Imperia", azur: "Menton · Monaco · Nice · Cannes" }, selected: "Sélectionnée", pick: "Choisir",
     issue: "N° 1 · Novembre 2026",
@@ -918,6 +908,7 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    exploreEyebrow: "Where to go", exploreSub: "The must-see places and the areas of the Riviera.", close: "Close", newsletter: "Get the newsletter ✉", menu: "Menu",
     chooseSub: "See only Liguria, only the French Riviera, or both.", regions: { lig: "Liguria", azur: "French Riviera", all: "Both" },
     regionSub: { lig: "Genoa · Savona · Imperia", azur: "Menton · Monaco · Nice · Cannes" }, selected: "Selected", pick: "Choose",
     issue: "No. 1 · November 2026",
@@ -950,6 +941,7 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    exploreEyebrow: "Wohin", exploreSub: "Die schönsten Orte und die Regionen der Riviera.", close: "Schließen", newsletter: "Newsletter erhalten ✉", menu: "Menü",
     chooseSub: "Nur Ligurien, nur die Côte d'Azur oder beides ansehen.", regions: { lig: "Ligurien", azur: "Côte d'Azur", all: "Beides" },
     regionSub: { lig: "Genua · Savona · Imperia", azur: "Menton · Monaco · Nizza · Cannes" }, selected: "Ausgewählt", pick: "Wählen",
     issue: "Nr. 1 · November 2026",
@@ -982,6 +974,7 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    exploreEyebrow: "Waarheen", exploreSub: "De mooiste plekken en de gebieden van de Rivièra.", close: "Sluiten", newsletter: "Ontvang de nieuwsbrief ✉", menu: "Menu",
     chooseSub: "Bekijk alleen Ligurië, alleen de Côte d'Azur, of allebei.", regions: { lig: "Ligurië", azur: "Côte d'Azur", all: "Allebei" },
     regionSub: { lig: "Genua · Savona · Imperia", azur: "Menton · Monaco · Nice · Cannes" }, selected: "Gekozen", pick: "Kiezen",
     issue: "Nr. 1 · November 2026",
@@ -1014,6 +1007,7 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    exploreEyebrow: "去哪儿", exploreSub: "必看景点与里维埃拉各地区。", close: "关闭", newsletter: "订阅月刊 ✉", menu: "菜单",
     chooseSub: "只看利古里亚、只看蔚蓝海岸，或两者都看。", regions: { lig: "利古里亚", azur: "蔚蓝海岸", all: "两者都看" },
     regionSub: { lig: "热那亚 · 萨沃纳 · 因佩里亚", azur: "芒通 · 摩纳哥 · 尼斯 · 戛纳" }, selected: "已选择", pick: "选择",
     issue: "第1期 · 2026年11月",
@@ -1104,8 +1098,6 @@ function chips(el, items, current, onPick) {
 }
 
 function renderTicker() {
-  const items = shown().map((e) => `<span><small>${esc(fmtDate(e))}</small>${esc(tx(e)[0])}</span>`).join("");
-  $("#ticker").innerHTML = items + items;
   $("#statEvents").textContent = shown().length;
   $("#statPlaces").textContent = [...SEE, ...HIKES, ...RESTAURANTS].filter(ofRegion).length;
   $("#statLangs").textContent = Object.keys(LANGS).length;
@@ -1257,7 +1249,7 @@ function renderLangMenu() {
 function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
-  $("#siteItLink").href = lang === "it" ? SITE_IT.it : SITE_IT.other;
+  $("#siteItLink").href = $("#menuRent").href = lang === "it" ? SITE_IT.it : SITE_IT.other;
   renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderTodo(); renderHikes(); renderEat();
 }
 
@@ -1271,12 +1263,23 @@ $("#langList").addEventListener("click", (ev) => {
 });
 document.addEventListener("click", (ev) => { if (!ev.target.closest("#langMenu")) $("#langMenu").open = false; });
 
+/* Menu a schermo intero */
+const openMenu = (open) => {
+  $("#menu").hidden = !open;
+  $("#menuBtn").setAttribute("aria-expanded", open);
+  document.body.style.overflow = open ? "hidden" : "";
+};
+$("#menuBtn").addEventListener("click", () => openMenu(true));
+$("#menuClose").addEventListener("click", () => openMenu(false));
+$("#menu").addEventListener("click", (ev) => { if (ev.target.closest("a")) openMenu(false); });
+document.addEventListener("keydown", (ev) => { if (ev.key === "Escape") openMenu(false); });
+
 $("#regBar").addEventListener("click", (ev) => { const b = ev.target.closest("button"); if (b) setRegion(b.dataset.r); });
 $("#choose").addEventListener("click", (ev) => {
   const b = ev.target.closest("button");
   if (!b) return;
   setRegion(b.dataset.r);
-  $("#on").scrollIntoView({ behavior: "smooth" });
+  $("#explore").scrollIntoView({ behavior: "smooth" });
 });
 
 document.querySelectorAll(".rail-nav button").forEach((b) => b.addEventListener("click", () => {

@@ -11,15 +11,15 @@ Le esperienze (`TODO`) e i piatti (`DISHES`) hanno il campo costa: `lig`, `azur`
 
 ## Le rubriche
 
+Cinque rubriche, raggiungibili anche dal menu a schermo intero (pulsante ☰ in alto):
+
 | Rubrica | Cosa contiene | Dove si modifica in `index.html` |
 |---|---|---|
-| What's on | eventi, sagre, feste (in primo piano + agenda filtrabile) | `EVENTS` |
-| Where to go | mappa delle zone, collegata all'agenda | `PINS` |
-| What to see | luoghi da vedere | `SEE` |
-| What to do | esperienze | `TODO` |
-| Hiking | sentieri con durata, km e difficoltà | `HIKES` |
+| Explore | luoghi da vedere e mappa delle zone | `SEE`, `PINS` |
+| What to do | esperienze e sentieri (Hiking) | `TODO`, `HIKES` |
 | Where to eat | ristoranti, piatti tipici, guide gastronomiche | `RESTAURANTS`, `DISHES`, `GUIDES` |
 | Where to stay | link a Riviera Rent | sezione `#stay`, `SITE_IT` |
+| What's on | agenda: eventi, sagre, feste | `EVENTS` |
 
 ## Come aggiornarlo per un nuovo numero
 
