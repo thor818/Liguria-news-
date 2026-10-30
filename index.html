@@ -873,7 +873,12 @@ const EVENTS = [
     en: ["Lemon Festival", "Menton", "Giant floats made of citrus fruit: save the date!"],
     de: ["Zitronenfest", "Menton", "Riesige Festwagen aus Zitrusfrüchten: jetzt schon vormerken!"],
     nl: ["Citroenfeest", "Menton", "Reusachtige praalwagens van citrusvruchten: zet het alvast in je agenda!"],
-    zh: ["柠檬节", "芒通", "用柑橘堆成的巨型花车，快记进日历！"] } }
+    zh: ["柠檬节", "芒通", "用柑橘堆成的巨型花车，快记进日历！"] } },
+  { zone: "azur", cat: "sport", icon: "🏎️", date: "2027-01-21", end: "2027-01-24", img: "", url: "https://acm.mc", t: { it: ["Rallye Monte-Carlo", "Monaco e Alpi Marittime", "Il rally più famoso del mondo tra i tornanti delle Alpi."], fr: ["Rallye Monte-Carlo", "Monaco et Alpes-Maritimes", "Le rallye le plus célèbre du monde dans les lacets des Alpes."], en: ["Rallye Monte-Carlo", "Monaco & Alpes-Maritimes", "The world's most famous rally on the Alpine hairpins."] } },
+  { zone: "imperia", cat: "musica", icon: "🎤", date: "2027-02-16", end: "2027-02-20", img: "", url: "https://www.rai.it/festivaldisanremo/", t: { it: ["Festival di Sanremo", "Sanremo, Teatro Ariston", "La 77ª edizione del festival della canzone italiana."], fr: ["Festival de Sanremo", "Sanremo, Teatro Ariston", "La 77e édition du festival de la chanson italienne."], en: ["Sanremo Music Festival", "Sanremo, Teatro Ariston", "The 77th edition of the Italian song festival."] } },
+  { zone: "azur", cat: "sport", icon: "🎾", date: "2027-04-03", end: "2027-04-11", img: "", url: "https://montecarlotennismasters.com", t: { it: ["Rolex Monte-Carlo Masters", "Monte-Carlo Country Club", "Il grande tennis sulla terra rossa sopra il mare."], fr: ["Rolex Monte-Carlo Masters", "Monte-Carlo Country Club", "Le grand tennis sur terre battue face à la mer."], en: ["Rolex Monte-Carlo Masters", "Monte-Carlo Country Club", "Top-level clay-court tennis above the sea."] } },
+  { zone: "azur", cat: "cultura", icon: "🎬", date: "2027-05-11", end: "2027-05-22", img: "", url: "https://www.festival-cannes.com", t: { it: ["Festival di Cannes", "Cannes, Palais des Festivals", "L'80ª edizione del festival del cinema più famoso."], fr: ["Festival de Cannes", "Cannes, Palais des Festivals", "La 80e édition du plus célèbre festival de cinéma."], en: ["Cannes Film Festival", "Cannes, Palais des Festivals", "The 80th edition of the world's most famous film festival."] } },
+  { zone: "azur", cat: "sport", icon: "🏁", date: "2027-06-03", end: "2027-06-06", img: "", url: "https://acm.mc", t: { it: ["Gran Premio di Monaco", "Circuit de Monaco", "Formula 1 tra le strade del Principato, con la prima Sprint."], fr: ["Grand Prix de Monaco", "Circuit de Monaco", "La F1 dans les rues de la Principauté, avec le premier Sprint."], en: ["Monaco Grand Prix", "Circuit de Monaco", "F1 through the Principality's streets, with its first Sprint."] } }
 ];
 
 /* ---------- WHAT TO SEE: luoghi da vedere (il primo è il più grande) ---------- */
@@ -1001,7 +1006,10 @@ const CITIES = [
    "Sentiero di Punta Manara",
    "Mercato antiquario di Chiavari"
   ],
-  "eat": [],
+  "eat": [
+   "Rezzano Cucina e Vino (stella Michelin)",
+   "Impronta d'Acqua (stella Michelin, Cavi di Lavagna)"
+  ],
   "taste": [
    "Sedie di Chiavari",
    "Seta e velluto di Zoagli",
@@ -1073,7 +1081,8 @@ const CITIES = [
    "Da Vittorio (Recco)",
    "Da Puny (Portofino)",
    "Revello (Camogli)",
-   "Manuelina (Recco)"
+   "Manuelina (Recco)",
+   "Cracco Portofino (stella Michelin)"
   ],
   "taste": [
    "Focaccia di Recco col formaggio IGP",
@@ -1155,7 +1164,11 @@ const CITIES = [
    "Klainguti",
    "Pasticceria Mangini",
    "Caffè degli Specchi",
-   "Mercato Orientale"
+   "Mercato Orientale",
+   "Il Marin (stella Michelin)",
+   "San Giorgio (stella Michelin)",
+   "Antica Focacceria Gran Ristoro",
+   "Pasticceria Profumo"
   ],
   "taste": [
    "Pesto genovese",
@@ -1392,7 +1405,9 @@ const CITIES = [
    "Sentiero del Pellegrino Varigotti–Noli",
    "Altopiano delle Manie"
   ],
-  "eat": [],
+  "eat": [
+   "Vescovado (stella Michelin, Noli)"
+  ],
   "taste": [
    "Cicciarelli fritti di Noli",
    "Olio di oliva Colombaia delle Manie",
@@ -1430,7 +1445,9 @@ const CITIES = [
   "museums": [
    "Museo Archeologico del Finale"
   ],
-  "eat": [],
+  "eat": [
+   "Ai Torchi (Finalborgo)"
+  ],
   "do": [
    "Mountain bike sui trail del Finalese",
    "Arrampicata sulle falesie",
@@ -1639,7 +1656,8 @@ const CITIES = [
    "Escursione in barca alla Gallinara"
   ],
   "eat": [
-   "Pasticceria Balzola (Alassio)"
+   "Pasticceria Balzola (Alassio)",
+   "Nove (stella Michelin)"
   ],
   "taste": [
    "Baci di Alassio",
@@ -1754,7 +1772,8 @@ const CITIES = [
    "Villa Grock – Museo del Clown"
   ],
   "eat": [
-   "Calata Cuneo (Oneglia)"
+   "Calata Cuneo (Oneglia)",
+   "Sarri (stella Michelin)"
   ],
   "taste": [
    "Olive taggiasche",
@@ -1801,7 +1820,9 @@ const CITIES = [
    "Visita a un frantoio",
    "Trekking tra gli uliveti della Valle del Prino"
   ],
-  "eat": [],
+  "eat": [
+   "Equilibrio (stella Michelin, Dolcedo)"
+  ],
   "taste": [
    "Olio extravergine Riviera Ligure DOP",
    "Olive taggiasche",
@@ -1916,7 +1937,8 @@ const CITIES = [
    "Palazzo Borea d'Olmo"
   ],
   "eat": [
-   "Mercato Annonario"
+   "Mercato Annonario",
+   "Paolo e Barbara (stella Michelin)"
   ],
   "taste": [
    "Sardenaira (pizza sanremasca)",
@@ -2000,7 +2022,9 @@ const CITIES = [
    "Sentiero tra i borghi della Val Nervia",
    "Festa della Michetta (agosto)"
   ],
-  "eat": [],
+  "eat": [
+   "Gastone (Dolceacqua)"
+  ],
   "taste": [
    "Rossese di Dolceacqua",
    "Michetta di Dolceacqua",
@@ -2040,7 +2064,9 @@ const CITIES = [
    "Museo Preistorico dei Balzi Rossi",
    "Museo Archeologico Girolamo Rossi (Forte dell'Annunziata)"
   ],
-  "eat": [],
+  "eat": [
+   "Casa Buono (stella Michelin)"
+  ],
   "taste": [
    "Fiori",
    "Agrumi",
@@ -2205,7 +2231,11 @@ const CITIES = [
    "Chez Roger (Marché de la Condamine)",
    "Stars'N'Bars",
    "Le Louis XV – Alain Ducasse",
-   "Marché de la Condamine"
+   "Marché de la Condamine",
+   "Les Ambassadeurs",
+   "Blue Bay Marcel Ravin",
+   "L'Abysse Monte-Carlo",
+   "Robuchon Monaco"
   ],
   "taste": [
    "Barbajuans",
@@ -2246,7 +2276,11 @@ const CITIES = [
    "Montée à pied depuis la mer",
    "La Grande Corniche en voiture ou à vélo"
   ],
-  "eat": [],
+  "eat": [
+   "La Chèvre d'Or",
+   "Château Eza",
+   "La Table du Cap Estel"
+  ],
   "taste": [
    "Parfums",
    "Huile d'olive"
@@ -2281,7 +2315,9 @@ const CITIES = [
   "do": [
    "Promenade Beaulieu – Saint-Jean-Cap-Ferrat"
   ],
-  "eat": [],
+  "eat": [
+   "Le Restaurant des Rois"
+  ],
   "taste": [
    "Poisson du jour"
   ]
@@ -2319,7 +2355,10 @@ const CITIES = [
    "Tour du Cap Ferrat à pied",
    "Snorkeling à la Plage Paloma"
   ],
-  "eat": [],
+  "eat": [
+   "La Mère Germaine",
+   "Le Cap (Cap Ferrat)"
+  ],
   "taste": [
    "Poissons et fruits de mer",
    "Socca"
@@ -2375,7 +2414,9 @@ const CITIES = [
    "Fenocchio",
    "La Merenda",
    "Chez Pipo",
-   "L'Alchimie"
+   "L'Alchimie",
+   "Flaveur",
+   "René Socca"
   ],
   "taste": [
    "Socca",
@@ -2452,7 +2493,8 @@ const CITIES = [
    "Galeries d'art du village"
   ],
   "eat": [
-   "La Colombe d'Or (Saint-Paul-de-Vence)"
+   "La Colombe d'Or (Saint-Paul-de-Vence)",
+   "La Table de Pierre"
   ],
   "taste": [
    "Huile d'olive",
@@ -2525,7 +2567,9 @@ const CITIES = [
   "do": [
    "Ateliers de verre soufflé"
   ],
-  "eat": [],
+  "eat": [
+   "Les Terraillers"
+  ],
   "taste": [
    "Verre soufflé",
    "Huile d'olive"
@@ -2569,7 +2613,9 @@ const CITIES = [
    "Le Village (club, Juan-les-Pins)"
   ],
   "eat": [
-   "Marché Provençal"
+   "Marché Provençal",
+   "Les Pêcheurs",
+   "Louroc"
   ],
   "taste": [
    "Marché provençal",
@@ -2729,7 +2775,9 @@ const CITIES = [
   ],
   "eat": [
    "Aux Bons Enfants",
-   "Marché Forville"
+   "Marché Forville",
+   "La Palme d'Or",
+   "Astoux et Brun"
   ],
   "taste": [
    "Vin des moines de Lérins",
@@ -2769,7 +2817,11 @@ const CITIES = [
    "Kayak et snorkeling dans les calanques",
    "Golf à Mandelieu"
   ],
-  "eat": [],
+  "eat": [
+   "Mareluna (Théoule)",
+   "L'Or Bleu (Théoule)",
+   "Bessem (Mandelieu)"
+  ],
   "taste": [
    "Poissons et bouillabaisse",
    "Mimosa (Mandelieu, février)"
@@ -2806,7 +2858,18 @@ const NIGHT = [
   { zone: "azur", type: "club", icon: "🪩", name: "Le Village", place: "Juan-les-Pins", q: "Le Village Juan-les-Pins", t: { it: "Uno dei club più popolari della Riviera, con DJ famosi.", fr: "L'un des clubs les plus populaires de la Riviera, avec des DJ célèbres.", en: "One of the Riviera's most popular clubs, with big-name DJs." } },
   { zone: "azur", type: "bar", icon: "🍸", name: "Pam Pam", place: "Juan-les-Pins", q: "Pam Pam Juan-les-Pins", t: { it: "Cocktail bar storico con DJ nel fine settimana.", fr: "Bar à cocktails historique avec DJ le week-end.", en: "Historic cocktail bar with DJs at weekends." } },
   { zone: "azur", type: "live", icon: "🎺", name: "Le New Orleans", place: "Juan-les-Pins", q: "Le New Orleans Juan-les-Pins", t: { it: "Vino, cocktail e musica dal vivo nel cuore di Juan.", fr: "Vins, cocktails et musique live au cœur de Juan.", en: "Wine, cocktails and live music in the heart of Juan." } },
-  { zone: "azur", type: "area", icon: "🍹", name: "Vieil Antibes", place: "Antibes", q: "Vieil Antibes", t: { it: "Bar e pub nei vicoli dietro il porto Vauban.", fr: "Bars et pubs dans les ruelles derrière le port Vauban.", en: "Bars and pubs in the lanes behind Port Vauban." } }
+  { zone: "azur", type: "area", icon: "🍹", name: "Vieil Antibes", place: "Antibes", q: "Vieil Antibes", t: { it: "Bar e pub nei vicoli dietro il porto Vauban.", fr: "Bars et pubs dans les ruelles derrière le port Vauban.", en: "Bars and pubs in the lanes behind Port Vauban." } },
+  { zone: "genova", type: "club", icon: "🪩", name: "Gradisca Club", place: "Genova", q: "Gradisca Club Genova", t: { it: "Club di musica elettronica e serate techno.", fr: "Club de musique électronique et soirées techno.", en: "Electronic music club and techno nights." } },
+  { zone: "genova", type: "bar", icon: "🍹", name: "Banano Tsunami", place: "Genova, Porto Antico", q: "Banano Tsunami Genova", t: { it: "Cocktail e musica sul porto.", fr: "Cocktails et musique sur le port.", en: "Cocktails and music on the harbour." } },
+  { zone: "savona", type: "club", icon: "🪩", name: "Al Porto", place: "Alassio", q: "Discoteca Al Porto Alassio", t: { it: "Discoteca sul porto Luca Ferrari di Alassio.", fr: "Discothèque sur le port d'Alassio.", en: "Club on Alassio's marina." } },
+  { zone: "savona", type: "club", icon: "🪩", name: "Essaouira", place: "Albenga", q: "Essaouira Albenga", t: { it: "Club estivo nella piana di Albenga.", fr: "Club d'été dans la plaine d'Albenga.", en: "Summer club in the Albenga plain." } },
+  { zone: "imperia", type: "bar", icon: "🍸", name: "Victory Morgana Bay", place: "Sanremo", q: "Victory Morgana Bay Sanremo", t: { it: "Ristorante, lounge e serate sul mare di Sanremo.", fr: "Restaurant, lounge et soirées face à la mer.", en: "Restaurant, lounge and nights by the sea." } },
+  { zone: "azur", type: "club", icon: "🪩", name: "High Club", place: "Nice, Promenade des Anglais", q: "High Club Nice", t: { it: "Il grande club sulla Promenade des Anglais.", fr: "Le grand club de la Promenade des Anglais.", en: "The big club on the Promenade des Anglais." } },
+  { zone: "azur", type: "bar", icon: "🍺", name: "Wayne's", place: "Nice, Vieux-Nice", q: "Wayne's Bar Nice", t: { it: "Pub con band dal vivo e si balla sui tavoli.", fr: "Pub avec groupes live, on danse sur les tables.", en: "Pub with live bands and dancing on the tables." } },
+  { zone: "azur", type: "club", icon: "🪩", name: "Buddha-Bar Monte-Carlo", place: "Monaco", q: "Buddha-Bar Monte-Carlo", t: { it: "Ristorante e lounge con DJ accanto al Casinò.", fr: "Restaurant et lounge avec DJ à côté du Casino.", en: "Restaurant and lounge with DJs next to the Casino." } },
+  { zone: "azur", type: "live", icon: "🎷", name: "La Note Bleue", place: "Monaco, Larvotto", q: "La Note Bleue Monaco", t: { it: "Jazz e concerti sulla spiaggia del Larvotto.", fr: "Jazz et concerts sur la plage du Larvotto.", en: "Jazz and concerts on Larvotto beach." } },
+  { zone: "azur", type: "club", icon: "🪩", name: "Gotha Club", place: "Cannes", q: "Gotha Club Cannes", t: { it: "Club accanto al Palais des Festivals.", fr: "Club à côté du Palais des Festivals.", en: "Club next to the Palais des Festivals." } },
+  { zone: "azur", type: "bar", icon: "🍺", name: "Blue Lady Pub", place: "Antibes, Port Vauban", q: "Blue Lady Pub Antibes", t: { it: "Il pub degli equipaggi degli yacht.", fr: "Le pub des équipages de yachts.", en: "The yacht crews' pub." } }
 ];
 
 /* ---------- ARTISTS' RIVIERA: artisti, musei e fondazioni ---------- */
@@ -2897,7 +2960,11 @@ const FAMILY = [
   { region: "azur", icon: "🏙️", site: "cotedazur", place: "Grasse", q: "Palomano 129 route de la Paoute Grasse", t: { it: "Palomano", fr: "Palomano", en: "Palomano", de: "Palomano", nl: "Palomano", zh: "Palomano" } },
   { region: "lig", zone: "genova", icon: "🐠", site: "cotedazur", place: "Genova, Porto Antico", q: "Acquario di Genova", t: { it: "Acquario di Genova", fr: "Aquarium de Gênes", en: "Genoa Aquarium", de: "Aquarium von Genua", nl: "Aquarium van Genua", zh: "热那亚水族馆" } },
   { region: "lig", zone: "genova", icon: "🧪", site: "cotedazur", place: "Genova, Porto Antico", q: "Città dei Bambini e dei Ragazzi Genova", t: { it: "La Città dei Bambini e dei Ragazzi", fr: "La Città dei Bambini e dei Ragazzi", en: "La Città dei Bambini e dei Ragazzi", de: "La Città dei Bambini e dei Ragazzi", nl: "La Città dei Bambini e dei Ragazzi", zh: "La Città dei Bambini e dei Ragazzi" } },
-  { region: "lig", zone: "genova", icon: "🌐", site: "cotedazur", place: "Genova, Porto Antico", q: "Biosfera Genova", t: { it: "Biosfera", fr: "Biosfera", en: "Biosfera", de: "Biosfera", nl: "Biosfera", zh: "Biosfera" } }
+  { region: "lig", zone: "genova", icon: "🌐", site: "cotedazur", place: "Genova, Porto Antico", q: "Biosfera Genova", t: { it: "Biosfera", fr: "Biosfera", en: "Biosfera", de: "Biosfera", nl: "Biosfera", zh: "Biosfera" } },
+  { region: "lig", zone: "savona", icon: "💦", site: "cotedazur", place: "Ceriale", q: "Le Caravelle Ceriale", t: { it: "Parco acquatico Le Caravelle", fr: "Parc aquatique Le Caravelle", en: "Le Caravelle water park" } },
+  { region: "lig", zone: "savona", icon: "🦇", site: "cotedazur", place: "Toirano", q: "Grotte di Toirano", t: { it: "Grotte di Toirano", fr: "Grottes de Toirano", en: "Toirano Caves" } },
+  { region: "azur", icon: "🦩", site: "cotedazur", place: "Nice", q: "Parc Phoenix Nice", t: { it: "Parc Phoenix", fr: "Parc Phoenix", en: "Parc Phoenix" } },
+  { region: "azur", icon: "🐢", site: "cotedazur", place: "Monaco", q: "Musée Océanographique Monaco", t: { it: "Museo Oceanografico", fr: "Musée Océanographique", en: "Oceanographic Museum" } }
 ];
 
 /* ---------- WHAT TO DO: esperienze ----------
@@ -2992,7 +3059,12 @@ const HIKES = [
     en: ["Beigua Park", "UNESCO Geopark: ridges with views from the sea to the Alps."],
     de: ["Beigua-Park", "UNESCO-Geopark: Grate mit Blick vom Meer bis zu den Alpen."],
     nl: ["Beigua-park", "UNESCO Geopark: bergkammen met uitzicht van zee tot de Alpen."],
-    zh: ["贝瓜公园", "联合国教科文组织地质公园：山脊上可远眺大海与阿尔卑斯山。"] } }
+    zh: ["贝瓜公园", "联合国教科文组织地质公园：山脊上可远眺大海与阿尔卑斯山。"] } },
+  { zone: "genova", icon: "🥾", img: "", time: "2,5 h", km: "6 km", level: 2, q: "Camogli San Rocco Punta Chiappa", t: { it: ["Camogli → Punta Chiappa", "Da San Rocco alla punta sul mare nel Parco di Portofino."], fr: ["Camogli → Punta Chiappa", "De San Rocco à la pointe sur la mer, Parc de Portofino."], en: ["Camogli → Punta Chiappa", "From San Rocco to the sea point in Portofino Park."] } },
+  { zone: "genova", icon: "🌊", img: "", time: "1 h", km: "2 km", level: 1, q: "Passeggiata Anita Garibaldi Nervi", t: { it: ["Passeggiata di Nervi", "Sentiero sugli scogli fino ai parchi di Nervi."], fr: ["Promenade de Nervi", "Sentier sur les rochers jusqu'aux parcs de Nervi."], en: ["Nervi seaside walk", "A path on the rocks to the Nervi parks."] } },
+  { zone: "savona", icon: "🏛️", img: "", time: "2 h", km: "6 km", level: 1, q: "Via Julia Augusta Albenga Alassio", t: { it: ["Via Julia Augusta", "La strada romana da Albenga ad Alassio, tra mare e ulivi."], fr: ["Via Julia Augusta", "La voie romaine d'Albenga à Alassio, entre mer et oliviers."], en: ["Via Julia Augusta", "The Roman road from Albenga to Alassio, between sea and olive trees."] } },
+  { zone: "azur", icon: "🌊", img: "", time: "1,5 h", km: "4 km", level: 2, q: "Sentier de Tire-Poil Cap d'Antibes", t: { it: ["Sentiero di Tire-Poil", "Il giro del Cap d'Antibes tra rocce e mare turchese."], fr: ["Sentier de Tire-Poil", "Le tour du Cap d'Antibes entre rochers et eau turquoise."], en: ["Tire-Poil path", "Around Cap d'Antibes among rocks and turquoise sea."] } },
+  { zone: "azur", icon: "🌲", img: "", time: "2 h", km: "5 km", level: 1, q: "Parc du Mont Boron Nice", t: { it: ["Mont Boron", "Pinete con vista sulla Baia degli Angeli e Villefranche."], fr: ["Mont Boron", "Pinèdes avec vue sur la Baie des Anges et Villefranche."], en: ["Mont Boron", "Pine woods overlooking the Baie des Anges and Villefranche."] } }
 ];
 
 /* ---------- WHERE TO EAT: ristoranti ----------
@@ -3056,6 +3128,31 @@ const RESTAURANTS = [
   { name: "Aux Bons Enfants", place: "Cannes, Le Suquet", zone: "azur", tag: "trad", price: "€€", icon: "🍷", q: "Aux Bons Enfants Cannes", t: { it: "Cucina provenzale di famiglia, semplice e genuina.", fr: "Cuisine provençale familiale, simple et sincère.", en: "Family Provençal cooking, simple and honest.", de: "Provenzalische Familienküche, einfach und ehrlich.", nl: "Provençaalse familiekeuken, eenvoudig en eerlijk.", zh: "朴实地道的普罗旺斯家常菜。" } },
   { name: "Chez Roger", place: "Monaco, Marché de la Condamine", zone: "azur", tag: "street", price: "€", icon: "🥟", q: "Chez Roger socca Marché de la Condamine Monaco", t: { it: "Socca e barbajuan al mercato della Condamine.", fr: "Socca et barbajuans au marché de la Condamine.", en: "Socca and barbajuan at the Condamine market.", de: "Socca und Barbajuan auf dem Markt La Condamine.", nl: "Socca en barbajuan op de markt van La Condamine.", zh: "康达明集市的鹰嘴豆饼与摩纳哥炸饺。" } },
   { name: "Stars'N'Bars", place: "Monaco, Port Hercule", zone: "azur", tag: "street", price: "€€", icon: "🍔", q: "Stars N Bars Monaco", t: { it: "Burger e sport sul porto, ideale per le famiglie.", fr: "Burgers et sport sur le port, idéal en famille.", en: "Burgers and sport on the harbour, great for families.", de: "Burger und Sport am Hafen, ideal für Familien.", nl: "Burgers en sport aan de haven, ideaal voor gezinnen.", zh: "港口边的汉堡与体育吧，适合全家。" } },
+  { name: "Il Marin", place: "Genova, Porto Antico", zone: "genova", tag: "michelin", price: "€€€", icon: "⭐", q: "Il Marin Eataly Genova", t: { it: "Stella Michelin: pesce del Mar Ligure con vista sul porto.", fr: "Étoile Michelin : poissons de la mer Ligure face au port.", en: "Michelin star: Ligurian Sea fish with a view of the harbour." } },
+  { name: "San Giorgio", place: "Genova", zone: "genova", tag: "michelin", price: "€€€", icon: "⭐", q: "Ristorante San Giorgio Genova", t: { it: "Stella Michelin: cucina genovese rivisitata.", fr: "Étoile Michelin : cuisine génoise revisitée.", en: "Michelin star: Genoese cooking, reinvented." } },
+  { name: "Cracco Portofino", place: "Portofino", zone: "genova", tag: "michelin", price: "€€€€", icon: "⭐", q: "Cracco Portofino", t: { it: "Nuova stella 2026 sulla piazzetta di Portofino.", fr: "Nouvelle étoile 2026 sur la piazzetta de Portofino.", en: "New 2026 star on Portofino's piazzetta." } },
+  { name: "Rezzano Cucina e Vino", place: "Sestri Levante", zone: "genova", tag: "michelin", price: "€€€", icon: "⭐", q: "Rezzano Cucina e Vino Sestri Levante", t: { it: "Nuova stella 2026 tra le due baie di Sestri.", fr: "Nouvelle étoile 2026 entre les deux baies de Sestri.", en: "New 2026 star between Sestri's two bays." } },
+  { name: "Impronta d'Acqua", place: "Cavi di Lavagna", zone: "genova", tag: "michelin", price: "€€€", icon: "⭐", q: "Impronta d'Acqua Cavi di Lavagna", t: { it: "Stella Michelin con cucina di mare creativa.", fr: "Étoile Michelin, cuisine de la mer créative.", en: "Michelin star, creative seafood." } },
+  { name: "Antica Focacceria Gran Ristoro", place: "Genova, Sottoripa", zone: "genova", tag: "street", price: "€", icon: "🥪", q: "Gran Ristoro Sottoripa Genova", t: { it: "Panini farciti storici sotto i portici del porto.", fr: "Sandwichs garnis historiques sous les arcades du port.", en: "Historic stuffed sandwiches under the harbour arcades." } },
+  { name: "Pasticceria Profumo", place: "Genova, Via del Portello", zone: "genova", tag: "sweet", price: "€€", icon: "🍰", q: "Pasticceria Profumo Genova", t: { it: "Pasticceria storica genovese, dal 1827.", fr: "Pâtisserie génoise historique, depuis 1827.", en: "Historic Genoese pastry shop since 1827." } },
+  { name: "Vescovado", place: "Noli", zone: "savona", tag: "michelin", price: "€€€", icon: "⭐", q: "Ristorante Vescovado Noli", t: { it: "Stella Michelin da 24 anni nel palazzo vescovile sul mare.", fr: "Étoile Michelin depuis 24 ans dans le palais épiscopal face à la mer.", en: "Michelin star for 24 years in the bishop's palace by the sea." } },
+  { name: "Nove", place: "Alassio", zone: "savona", tag: "michelin", price: "€€€", icon: "⭐", q: "Ristorante Nove Alassio", t: { it: "Stella Michelin in una villa sul mare di Alassio.", fr: "Étoile Michelin dans une villa face à la mer.", en: "Michelin star in a seaside villa." } },
+  { name: "Vignamare", place: "Andora, Colla Micheri", zone: "savona", tag: "michelin", price: "€€€€", icon: "⭐", q: "Vignamare Andora", t: { it: "Stella Michelin tra le vigne con vista sul golfo.", fr: "Étoile Michelin dans les vignes avec vue sur le golfe.", en: "Michelin star among the vines overlooking the bay." } },
+  { name: "Osteria Colla Micheri", place: "Andora, Colla Micheri", zone: "savona", tag: "trad", price: "€€", icon: "🍷", q: "Osteria Colla Micheri", t: { it: "Cucina ligure nel borgo di Thor Heyerdahl.", fr: "Cuisine ligure dans le hameau de Thor Heyerdahl.", en: "Ligurian cooking in Thor Heyerdahl's hamlet." } },
+  { name: "Ai Torchi", place: "Finalborgo", zone: "savona", tag: "trad", price: "€€€", icon: "🫒", q: "Ristorante Ai Torchi Finalborgo", t: { it: "In un antico frantoio dentro le mura di Finalborgo.", fr: "Dans un ancien moulin à huile au cœur de Finalborgo.", en: "In an old olive mill inside Finalborgo's walls." } },
+  { name: "Sarri", place: "Imperia, Oneglia", zone: "imperia", tag: "michelin", price: "€€€", icon: "⭐", q: "Ristorante Sarri Imperia", t: { it: "Stella Michelin sul mare di Imperia.", fr: "Étoile Michelin face à la mer d'Imperia.", en: "Michelin star on Imperia's seafront." } },
+  { name: "Paolo e Barbara", place: "Sanremo", zone: "imperia", tag: "michelin", price: "€€€€", icon: "⭐", q: "Paolo e Barbara Sanremo", t: { it: "Stella Michelin: orto, mare e montagna della Riviera dei Fiori.", fr: "Étoile Michelin : potager, mer et montagne de la Riviera des Fleurs.", en: "Michelin star: garden, sea and mountains of the Riviera dei Fiori." } },
+  { name: "Casa Buono", place: "Ventimiglia", zone: "imperia", tag: "michelin", price: "€€€", icon: "⭐", q: "Casa Buono Ventimiglia", t: { it: "Stella Michelin a due passi dal confine francese.", fr: "Étoile Michelin à deux pas de la frontière.", en: "Michelin star a stone's throw from the French border." } },
+  { name: "Equilibrio", place: "Dolcedo", zone: "imperia", tag: "michelin", price: "€€€", icon: "⭐", q: "Ristorante Equilibrio Dolcedo", t: { it: "Stella Michelin nell'entroterra tra gli ulivi.", fr: "Étoile Michelin dans l'arrière-pays, parmi les oliviers.", en: "Michelin star inland among the olive groves." } },
+  { name: "Gastone", place: "Dolceacqua", zone: "imperia", tag: "trad", price: "€€", icon: "🍷", q: "Ristorante Gastone Dolceacqua", t: { it: "Cucina dell'entroterra e Rossese davanti al ponte di Monet.", fr: "Cuisine de l'arrière-pays et Rossese face au pont de Monet.", en: "Hinterland cooking and Rossese facing Monet's bridge." } },
+  { name: "La Chèvre d'Or", place: "Èze", zone: "azur", tag: "michelin", price: "€€€€", icon: "⭐", q: "La Chèvre d'Or Èze", t: { it: "Due stelle Michelin sospese sul mare.", fr: "Deux étoiles Michelin suspendues au-dessus de la mer.", en: "Two Michelin stars hanging above the sea." } },
+  { name: "Flaveur", place: "Nice", zone: "azur", tag: "michelin", price: "€€€€", icon: "⭐", q: "Flaveur Nice", t: { it: "Due stelle Michelin nel centro di Nizza.", fr: "Deux étoiles Michelin au cœur de Nice.", en: "Two Michelin stars in the heart of Nice." } },
+  { name: "La Palme d'Or", place: "Cannes, Hôtel Martinez", zone: "azur", tag: "michelin", price: "€€€€", icon: "⭐", q: "La Palme d'Or Cannes", t: { it: "Stella Michelin sulla Croisette.", fr: "Étoile Michelin sur la Croisette.", en: "Michelin star on La Croisette." } },
+  { name: "Les Pêcheurs", place: "Antibes, Cap d'Antibes", zone: "azur", tag: "michelin", price: "€€€€", icon: "⭐", q: "Les Pêcheurs Antibes", t: { it: "Stella Michelin con i piedi nell'acqua.", fr: "Étoile Michelin les pieds dans l'eau.", en: "Michelin star right on the water." } },
+  { name: "René Socca", place: "Nice, Vieux-Nice", zone: "azur", tag: "street", price: "€", icon: "🥞", q: "René Socca Nice", t: { it: "Socca e panisse al banco, un'istituzione del Vieux-Nice.", fr: "Socca et panisses au comptoir, une institution du Vieux-Nice.", en: "Socca and panisse at the counter, a Vieux-Nice institution." } },
+  { name: "Astoux et Brun", place: "Cannes", zone: "azur", tag: "trad", price: "€€€", icon: "🦪", q: "Astoux et Brun Cannes", t: { it: "Frutti di mare e ostriche, un classico di Cannes.", fr: "Fruits de mer et huîtres, un classique cannois.", en: "Seafood and oysters, a Cannes classic." } },
+  { name: "La Mère Germaine", place: "Villefranche-sur-Mer", zone: "azur", tag: "trad", price: "€€€", icon: "🐟", q: "La Mère Germaine Villefranche", t: { it: "Pesce e bouillabaisse sul porto dal 1938.", fr: "Poissons et bouillabaisse sur le port depuis 1938.", en: "Fish and bouillabaisse on the harbour since 1938." } },
+  { name: "La Colombe d'Or", place: "Saint-Paul-de-Vence", zone: "azur", tag: "trad", price: "€€€€", icon: "🎨", q: "La Colombe d'Or Saint-Paul-de-Vence", t: { it: "La locanda degli artisti, con opere di Picasso e Miró alle pareti.", fr: "L'auberge des artistes, avec Picasso et Miró aux murs.", en: "The artists' inn, with Picasso and Miró on the walls." } },
   { name: "Balzola", place: "Alassio", zone: "savona", tag: "sweet", price: "€€", icon: "🍫", q: "Pasticceria Balzola Alassio", t: {
     it: "La pasticceria dove sono nati i Baci di Alassio.", fr: "La pâtisserie où sont nés les Baci di Alassio.",
     en: "The pastry shop where Baci di Alassio were born.", de: "Die Konditorei, in der die Baci di Alassio erfunden wurden.",
