@@ -1,31 +1,38 @@
-# La Riviera — il giornalino degli eventi
+# Live Riviera — How to live Liguria & the French Riviera
 
 Giornalino web in 6 lingue (italiano, français, English, Deutsch, Nederlands, 中文) con gli eventi di Genova, Savona, Imperia e Costa Azzurra.
 La pagina è `index.html`, le foto sono nella cartella `foto/`. Si apre con qualsiasi browser e si pubblica su qualsiasi hosting.
 
+## Le rubriche
+
+| Rubrica | Cosa contiene | Dove si modifica in `index.html` |
+|---|---|---|
+| What's on | eventi, sagre, feste (in primo piano + agenda filtrabile) | `EVENTS` |
+| Where to go | mappa delle zone, collegata all'agenda | `PINS` |
+| What to see | luoghi da vedere | `SEE` |
+| What to do | esperienze | `TODO` |
+| Hiking | sentieri con durata, km e difficoltà | `HIKES` |
+| Where to eat | ristoranti, piatti tipici, guide gastronomiche | `RESTAURANTS`, `DISHES`, `GUIDES` |
+| Where to stay | link ai vostri siti italiano e francese | sezione `#stay` |
+
 ## Come aggiornarlo per un nuovo numero
 
-Apri `index.html` e cerca **CONTENUTI DEL GIORNALINO**:
+Tutti i contenuti sono in cima allo `<script>` di `index.html`, sotto **CONTENUTI**.
 
-- `ISSUE` — numero e mese dell'edizione.
-- `EVENTS` — gli eventi. Ogni evento ha:
-  - `zone`: `genova` | `savona` | `imperia` | `azur`
-  - `cat`: `sagre` | `feste` | `musica` | `mercatini` | `cultura` | `sport`
-  - `date`: data di inizio `AAAA-MM-GG` (serve per l'ordine e il badge)
-  - `icon`: un'emoji
-  - `t`: per ogni lingua (`it`, `fr`, `en`, `de`, `nl`, `zh`) titolo, luogo e una frase breve. Se una lingua manca si usa l'inglese.
-  - `end`: data di fine (facoltativa, per eventi di più giorni)
-  - `img`: foto nella cartella `foto/` (es. `foto/olioliva.jpg`); se vuota si usa l'illustrazione
-  - `url`: link alla pagina dell'evento o dell'organizzatore
-  - `featured: 1` = evento grande in primo piano, `2` e `3` = riquadri accanto
-  - Gli eventi già finiti spariscono da soli.
-- `TODO` — le schede "Cosa fare" (sostituire `url: "#"` con le pagine dei vostri siti).
+- Ogni voce ha `t` con i testi nelle 6 lingue (`it`, `fr`, `en`, `de`, `nl`, `zh`); se una lingua manca si usa l'inglese.
+- `zone`: `genova` | `savona` | `imperia` | `azur`
+- `img`: foto nella cartella `foto/`; se vuota si usa un'illustrazione con l'emoji.
+- Eventi: `date` / `end` in formato `AAAA-MM-GG`; `featured: 1/2/3` per il primo piano. Gli eventi finiti spariscono da soli.
+- Luoghi, sentieri e ristoranti: `q` è la ricerca che apre Google Maps.
+- Ristoranti: `tag` = `michelin` | `trad` | `street` | `sweet`, `price` da `€` a `€€€€`.
+- Testi dell'interfaccia: oggetto `I18N`, una sezione per lingua.
 
 ## Da completare
 
 - Link ai vostri siti: cercare `ESEMPIO-SITO-ITALIANO` e `EXEMPLE-SITE-FRANCAIS`.
 - Iscrizione newsletter: collegare il `<form>` al vostro servizio (Mailchimp, Brevo, ...).
 - Gli eventi del N° 1 sono esempi: verificare date e link prima di pubblicare.
+- Ristoranti, tempi e distanze dei sentieri: verificare prima di pubblicare.
 
 ## Collegamento dai vostri siti
 
@@ -35,6 +42,5 @@ Senza parametro si usa la lingua del browser del visitatore.
 
 ## Foto
 
-Le foto vengono da Wikimedia Commons con licenza libera (CC BY / CC BY-SA / CC0).
-Autori e licenze sono elencati in fondo alla pagina ("Crediti foto") e in `foto/CREDITI.md`:
-se sostituite una foto, aggiornate anche il credito.
+Le foto vengono da [Pexels](https://www.pexels.com) e si usano gratis, anche per scopi commerciali ([licenza Pexels](https://www.pexels.com/license/)).
+L'elenco con il link a ogni foto è in `foto/CREDITI.md`. Se aggiungete una foto, mettetela in `foto/` e scrivete il percorso nel campo `img`.

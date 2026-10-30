@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Riviera — Eventi in Liguria e Costa Azzurra</title>
-<meta name="description" content="Sagre, feste, eventi e cose da fare tra Genova, Savona, Imperia e la Costa Azzurra.">
+<title>Live Riviera — How to live Liguria &amp; the French Riviera</title>
+<meta name="description" content="What's on, where to go, what to see, what to do, where to hike and where to eat between Genoa, Savona, Imperia and the Côte d'Azur.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,33 +19,35 @@
     --sea: #1263a0;
     --coral: #ef6a45;
     --lemon: #ffd23f;
+    --olive: #6b7f3a;
     --radius: 22px;
     --shadow: 0 1px 2px rgba(19,32,44,.04), 0 10px 30px rgba(19,32,44,.07);
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; overflow-x: clip; }
-  body { margin: 0; font-family: Inter, system-ui, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body { margin: 0; font-family: Inter, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.5; -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
   img { max-width: 100%; display: block; }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
   em { font-style: italic; color: var(--coral); }
+  .serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
 
   /* ---------- Barra in alto ---------- */
   .topbar { position: fixed; inset: 12px 0 auto; z-index: 20; pointer-events: none; }
   .bar {
-    pointer-events: auto; max-width: 1160px; margin: 0 auto; height: 58px; padding: 0 8px 0 22px;
+    pointer-events: auto; max-width: 1180px; margin: 0 auto; height: 58px; padding: 0 8px 0 22px;
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    background: rgba(255, 253, 249, .8); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    background: rgba(255, 253, 249, .82); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4);
     border: 1px solid rgba(231, 223, 210, .9); border-radius: 999px; box-shadow: var(--shadow);
   }
-  @media (max-width: 1200px) { .bar { margin: 0 12px; } }
-  .logo { font-family: "Instrument Serif", serif; font-size: 1.7rem; text-decoration: none; letter-spacing: -.01em; }
+  @media (max-width: 1220px) { .bar { margin: 0 12px; } }
+  .logo { font-family: "Instrument Serif", serif; font-size: 1.7rem; text-decoration: none; letter-spacing: -.01em; white-space: nowrap; }
   .logo i { color: var(--coral); }
-  .nav { display: flex; gap: 4px; }
-  .nav a { text-decoration: none; font-size: .9rem; font-weight: 500; color: var(--muted); padding: 8px 14px; border-radius: 999px; }
+  .nav { display: flex; gap: 2px; }
+  .nav a { text-decoration: none; font-size: .88rem; font-weight: 500; color: var(--muted); padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
   .nav a:hover { background: var(--bg); color: var(--ink); }
   .lang { position: relative; }
-  .lang summary { list-style: none; cursor: pointer; background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 999px; font: 600 .85rem Inter, sans-serif; user-select: none; }
+  .lang summary { list-style: none; cursor: pointer; background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 999px; font: 600 .85rem Inter, sans-serif; user-select: none; white-space: nowrap; }
   .lang summary::-webkit-details-marker { display: none; }
   .lang-list { position: absolute; right: 0; top: calc(100% + 10px); background: var(--paper); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 20px 40px rgba(19,32,44,.16); padding: 6px; min-width: 190px; display: grid; }
   .lang-list button { border: 0; background: none; text-align: left; padding: 10px 14px; border-radius: 12px; font: 500 .92rem Inter, sans-serif; cursor: pointer; color: var(--ink); }
@@ -55,13 +57,14 @@
   .lang-list button.on b { color: var(--lemon); }
 
   /* ---------- Copertina ---------- */
-  .hero { padding: 120px 0 0; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+  .hero { padding: 116px 0 0; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; }
   .pill { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--sea); background: #e3eef7; padding: 7px 14px; border-radius: 999px; }
   .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); animation: pulse 2s infinite; }
   @keyframes pulse { 50% { opacity: .3; } }
-  .hero h1 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(3.2rem, 8.5vw, 7.2rem); line-height: .92; letter-spacing: -.025em; margin: 22px 0; }
-  .hero p { font-size: 1.15rem; color: var(--muted); max-width: 40ch; margin: 0 0 30px; }
+  .hero h1 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(3rem, 7.4vw, 6.4rem); line-height: .94; letter-spacing: -.025em; margin: 22px 0; }
+  .hero h1 small { display: block; font-size: .42em; line-height: 1.15; color: var(--muted); margin-top: 14px; letter-spacing: 0; }
+  .hero p { font-size: 1.12rem; color: var(--muted); max-width: 42ch; margin: 0 0 30px; }
   .cta { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: .95rem; padding: 14px 22px; border-radius: 999px; border: 0; cursor: pointer; transition: transform .2s; }
   .btn:hover { transform: translateY(-2px); }
@@ -70,30 +73,96 @@
   .btn .arr { transition: transform .2s; }
   .btn:hover .arr { transform: translateX(4px); }
 
-  .scene { border-radius: 32px; overflow: hidden; aspect-ratio: 1 / 1.02; box-shadow: var(--shadow); position: relative; }
-  .scene svg { width: 100%; height: 100%; display: block; }
-  .scene .sun { animation: rise 6s ease-in-out infinite alternate; }
-  @keyframes rise { to { transform: translateY(-14px); } }
-  .scene .boat { animation: sail 16s linear infinite; }
-  @keyframes sail { from { transform: translateX(-80px); } to { transform: translateX(560px); } }
-  .scene .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .scene .stat { position: absolute; left: 18px; bottom: 18px; right: 18px; display: flex; gap: 10px; }
-  .scene .stat div { flex: 1; background: rgba(255,255,255,.88); backdrop-filter: blur(8px); border-radius: 16px; padding: 12px 14px; }
-  .scene .stat b { display: block; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1; }
-  .scene .stat span { font-size: .75rem; color: var(--muted); font-weight: 500; }
+  .cover { position: relative; border-radius: 32px; overflow: hidden; aspect-ratio: 1 / 1.05; box-shadow: var(--shadow); background: linear-gradient(160deg, #3fa7d6, #0b2a40); }
+  .cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: zoom 18s ease-in-out infinite alternate; }
+  @keyframes zoom { to { transform: scale(1.08); } }
+  .cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,20,30,.55), transparent 45%); }
+  .cover .tag { position: absolute; top: 18px; left: 18px; z-index: 1; background: rgba(255,255,255,.9); backdrop-filter: blur(8px); padding: 7px 13px; border-radius: 999px; font-size: .78rem; font-weight: 600; }
+  .cover .stat { position: absolute; left: 18px; bottom: 18px; right: 18px; display: flex; gap: 10px; z-index: 1; }
+  .cover .stat div { flex: 1; background: rgba(255,255,255,.9); backdrop-filter: blur(8px); border-radius: 16px; padding: 12px 14px; }
+  .cover .stat b { display: block; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1; }
+  .cover .stat span { font-size: .75rem; color: var(--muted); font-weight: 500; }
 
   /* ---------- Ticker ---------- */
   .ticker { margin: 56px -10px 0; background: var(--navy); color: #fff; overflow: hidden; white-space: nowrap; padding: 16px 0; transform: rotate(-1deg); }
-  .ticker .track { display: inline-flex; gap: 46px; animation: marquee 45s linear infinite; padding-left: 46px; }
+  .ticker .track { display: inline-flex; gap: 46px; animation: marquee 50s linear infinite; padding-left: 46px; }
   .ticker span { font-family: "Instrument Serif", serif; font-size: 1.5rem; }
   .ticker span small { font-family: Inter, sans-serif; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--lemon); margin-right: 10px; vertical-align: 3px; }
   @keyframes marquee { to { transform: translateX(-50%); } }
 
-  section { padding-top: 96px; }
+  /* ---------- Indice delle rubriche ---------- */
+  .index { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 56px; }
+  .index a { text-decoration: none; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 16px 14px; transition: transform .2s, background .2s; }
+  .index a:hover { transform: translateY(-3px); background: var(--navy); color: #fff; }
+  .index b { display: block; font-size: 1.6rem; }
+  .index span { font-family: "Instrument Serif", serif; font-size: 1.35rem; line-height: 1.1; }
+
+  section { padding-top: 96px; scroll-margin-top: 70px; }
   .head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
-  .head h2 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1; letter-spacing: -.02em; margin: 0; }
-  .head p { margin: 10px 0 0; color: var(--muted); max-width: 46ch; }
+  .head h2 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: .95; letter-spacing: -.02em; margin: 0; }
+  .head p { margin: 12px 0 0; color: var(--muted); max-width: 50ch; }
   .eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 10px; display: block; }
+  .num { font-family: "Instrument Serif", serif; color: var(--muted); font-size: 1.1rem; margin-right: 8px; }
+
+  /* ---------- Riquadri foto (primo piano, cosa vedere) ---------- */
+  .bento { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; margin-bottom: 44px; }
+  .tile { position: relative; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; min-height: 230px; isolation: isolate; }
+  .tile.big { grid-row: span 2; min-height: 480px; }
+  .tile .bg { position: absolute; inset: 0; z-index: -2; transition: transform .7s; }
+  .tile .bg img { width: 100%; height: 100%; object-fit: cover; }
+  .tile::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(8,20,30,.78), rgba(8,20,30,0) 62%); }
+  .tile:hover .bg { transform: scale(1.06); }
+  .tile .emo { position: absolute; top: 22px; right: 24px; font-size: 4.2rem; filter: drop-shadow(0 8px 16px rgba(0,0,0,.18)); }
+  .tile .bg:has(img) ~ .emo { display: none; }
+  .tile.big .emo { font-size: 8rem; top: 40px; right: 44px; }
+  .tile .when { font-size: .76rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .92; }
+  .tile h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1.05; margin: 6px 0 4px; }
+  .tile.big h3 { font-size: clamp(2.8rem, 5vw, 4.2rem); }
+  .tile p { margin: 0; opacity: .92; max-width: 44ch; font-size: .95rem; }
+  .tile .chip-z { position: absolute; top: 18px; left: 18px; background: rgba(255,255,255,.92); color: var(--ink); font-size: .74rem; font-weight: 600; padding: 6px 11px; border-radius: 999px; }
+
+  .see { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 260px; gap: 18px; }
+  .see .tile { min-height: 0; }
+  .see .tile:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .see .tile:nth-child(1) h3 { font-size: clamp(2.4rem, 4vw, 3.4rem); }
+  .see .tile:nth-child(4) { grid-column: span 2; }
+
+  /* ---------- Filtri ---------- */
+  .filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; border: 1px solid var(--line); background: var(--paper); padding: 9px 16px; border-radius: 999px; font: 500 .9rem Inter, sans-serif; cursor: pointer; color: var(--ink); transition: all .15s; }
+  .chip:hover { border-color: var(--ink); }
+  .chip.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  /* ---------- Schede eventi ---------- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 22px; }
+  .card { background: var(--paper); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); display: flex; flex-direction: column; text-decoration: none; transition: transform .25s, box-shadow .25s; animation: pop .4s ease both; }
+  @keyframes pop { from { opacity: 0; transform: translateY(12px); } }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(19,32,44,.12); }
+  .card .media { position: relative; aspect-ratio: 16 / 10; display: grid; place-items: center; font-size: 4rem; overflow: hidden; }
+  .card .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .card:hover .media img { transform: scale(1.06); }
+  .card .media:has(img) .emo { display: none; }
+  .badge { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); padding: 6px 11px; border-radius: 999px; font-size: .74rem; font-weight: 600; }
+  .badge.soon { left: auto; right: 12px; background: var(--lemon); }
+  .card .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .card .date { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); }
+  .card h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 1.7rem; line-height: 1.05; margin: 0; }
+  .card p { margin: 0; font-size: .93rem; color: var(--muted); }
+  .card .foot { margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: .85rem; color: var(--muted); }
+  .go { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; color: var(--ink); transition: background .2s, color .2s; }
+  .card:hover .go, .rest:hover .go { background: var(--coral); color: #fff; }
+  .empty { grid-column: 1 / -1; text-align: center; padding: 50px 20px; color: var(--muted); background: var(--paper); border-radius: var(--radius); border: 1px dashed var(--line); }
+  .stats { display: flex; gap: 14px; flex-wrap: wrap; font-size: .82rem; font-weight: 600; color: var(--ink); }
+  .dots { letter-spacing: 2px; color: var(--coral); }
+
+  .g-sagre { background: radial-gradient(circle at 30% 20%, #fff3c4, transparent 50%), linear-gradient(135deg, #ffd66b, #f39a3d); }
+  .g-feste { background: radial-gradient(circle at 70% 20%, #ffd9cb, transparent 50%), linear-gradient(135deg, #ff9a76, #e5533a); }
+  .g-musica { background: radial-gradient(circle at 30% 80%, #e7dcff, transparent 50%), linear-gradient(135deg, #a58bff, #5b3fc4); }
+  .g-mercatini { background: radial-gradient(circle at 70% 70%, #ffe1e4, transparent 50%), linear-gradient(135deg, #f7a3ab, #c8404f); }
+  .g-cultura { background: radial-gradient(circle at 30% 30%, #d5f0fb, transparent 50%), linear-gradient(135deg, #79c3e6, #1f6fa5); }
+  .g-sport, .g-hike { background: radial-gradient(circle at 70% 30%, #d9f7e2, transparent 50%), linear-gradient(135deg, #6fd394, #23874a); }
 
   /* ---------- Mappa ---------- */
   .map { background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 14px; box-shadow: var(--shadow); }
@@ -107,58 +176,6 @@
   .pin .n { font: 500 14px Inter, sans-serif; fill: var(--coral); }
   .town { font: 500 13px Inter, sans-serif; fill: #8a949d; }
 
-  /* ---------- In primo piano (bento) ---------- */
-  .bento { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; }
-  .tile { position: relative; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; display: flex; flex-direction: column; justify-content: flex-end; padding: 26px; min-height: 230px; isolation: isolate; }
-  .tile.big { grid-row: span 2; min-height: 480px; }
-  .tile .bg { position: absolute; inset: 0; z-index: -2; transition: transform .6s; }
-  .tile .bg img { width: 100%; height: 100%; object-fit: cover; }
-  .tile::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(8,20,30,.7), rgba(8,20,30,0) 62%); }
-  .tile:hover .bg { transform: scale(1.05); }
-  .tile .emo { position: absolute; top: 22px; right: 24px; font-size: 4.2rem; filter: drop-shadow(0 8px 16px rgba(0,0,0,.18)); transition: transform .4s; }
-  .tile:hover .emo { transform: rotate(-8deg) scale(1.08); }
-  .tile .bg:has(img) ~ .emo, .card .media:has(img) .emo { display: none; }
-  .tile.big .emo { font-size: 8rem; top: 40px; right: 44px; }
-  .tile .when { font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .92; }
-  .tile h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2.1rem; line-height: 1.05; margin: 6px 0 4px; }
-  .tile.big h3 { font-size: clamp(2.8rem, 5vw, 4.2rem); }
-  .tile p { margin: 0; opacity: .92; max-width: 42ch; }
-
-  /* ---------- Filtri ---------- */
-  .filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-  .chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
-  .chips::-webkit-scrollbar { display: none; }
-  .chip { flex: none; border: 1px solid var(--line); background: var(--paper); padding: 9px 16px; border-radius: 999px; font: 500 .9rem Inter, sans-serif; cursor: pointer; color: var(--ink); transition: all .15s; }
-  .chip:hover { border-color: var(--ink); }
-  .chip.on { background: var(--ink); color: #fff; border-color: var(--ink); }
-
-  /* ---------- Schede ---------- */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 22px; }
-  .card { background: var(--paper); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); display: flex; flex-direction: column; text-decoration: none; transition: transform .25s, box-shadow .25s; animation: pop .4s ease both; }
-  @keyframes pop { from { opacity: 0; transform: translateY(12px); } }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(19,32,44,.12); }
-  .card .media { position: relative; aspect-ratio: 16 / 10; display: grid; place-items: center; font-size: 4rem; overflow: hidden; }
-  .card .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .card .media .emo { transition: transform .35s; filter: drop-shadow(0 6px 12px rgba(0,0,0,.15)); }
-  .card:hover .media .emo { transform: scale(1.15) rotate(-6deg); }
-  .badge { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); padding: 6px 11px; border-radius: 999px; font-size: .74rem; font-weight: 600; }
-  .badge.soon { left: auto; right: 12px; background: var(--lemon); }
-  .card .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-  .card .date { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); }
-  .card h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 1.7rem; line-height: 1.05; margin: 0; }
-  .card p { margin: 0; font-size: .93rem; color: var(--muted); }
-  .card .foot { margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: .85rem; color: var(--muted); }
-  .card .go { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; color: var(--ink); transition: background .2s, color .2s; }
-  .card:hover .go { background: var(--coral); color: #fff; }
-  .empty { grid-column: 1 / -1; text-align: center; padding: 50px 20px; color: var(--muted); background: var(--paper); border-radius: var(--radius); border: 1px dashed var(--line); }
-
-  .g-sagre { background: radial-gradient(circle at 30% 20%, #fff3c4, transparent 50%), linear-gradient(135deg, #ffd66b, #f39a3d); }
-  .g-feste { background: radial-gradient(circle at 70% 20%, #ffd9cb, transparent 50%), linear-gradient(135deg, #ff9a76, #e5533a); }
-  .g-musica { background: radial-gradient(circle at 30% 80%, #e7dcff, transparent 50%), linear-gradient(135deg, #a58bff, #5b3fc4); }
-  .g-mercatini { background: radial-gradient(circle at 70% 70%, #ffe1e4, transparent 50%), linear-gradient(135deg, #f7a3ab, #c8404f); }
-  .g-cultura { background: radial-gradient(circle at 30% 30%, #d5f0fb, transparent 50%), linear-gradient(135deg, #79c3e6, #1f6fa5); }
-  .g-sport { background: radial-gradient(circle at 70% 30%, #d9f7e2, transparent 50%), linear-gradient(135deg, #6fd394, #23874a); }
-
   /* ---------- Cosa fare (carosello) ---------- */
   .rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 23%); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 20px 20px; margin: 0 -20px; scrollbar-width: none; }
   .rail::-webkit-scrollbar { display: none; }
@@ -166,26 +183,57 @@
   .exp:hover { transform: translateY(-6px); }
   .exp img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s; }
   .exp:hover img { transform: scale(1.06); }
-  .exp:has(img)::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(8,20,30,.8), rgba(8,20,30,0) 60%); }
-  .exp:has(img) .emo { display: none; }
-  .exp .emo { position: absolute; top: 20px; left: 20px; font-size: 3rem; }
-  .exp .num { position: absolute; top: 18px; right: 22px; font-family: "Instrument Serif", serif; font-size: 1.4rem; opacity: .6; }
+  .exp::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(8,20,30,.8), rgba(8,20,30,0) 60%); }
+  .exp .emo { position: absolute; top: 18px; left: 18px; font-size: 1.6rem; background: rgba(255,255,255,.9); width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; }
+  .exp .n { position: absolute; top: 18px; right: 22px; font-family: "Instrument Serif", serif; font-size: 1.4rem; opacity: .8; }
   .exp b { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1.05; }
-  .exp .sub { font-size: .88rem; opacity: .88; margin-top: 6px; }
+  .exp .sub { font-size: .88rem; opacity: .9; margin-top: 6px; }
   .rail-nav { display: flex; gap: 8px; }
   .rail-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); cursor: pointer; font-size: 1.1rem; color: var(--ink); }
   .rail-nav button:hover { background: var(--ink); color: #fff; }
 
+  /* ---------- Dove mangiare ---------- */
+  .eat { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 26px; align-items: start; }
+  .collage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: 220px 220px; gap: 12px; position: sticky; top: 90px; }
+  .collage figure { margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; }
+  .collage figure:first-child { grid-row: span 2; }
+  .collage img { width: 100%; height: 100%; object-fit: cover; }
+  .collage figcaption { position: absolute; left: 12px; bottom: 12px; background: rgba(255,255,255,.92); padding: 6px 12px; border-radius: 999px; font-size: .8rem; font-weight: 600; }
+  .dishes { grid-column: span 2; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .dish { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; font-size: .85rem; }
+  .dish small { color: var(--muted); }
+  .rests { display: grid; gap: 10px; }
+  .rest { display: grid; grid-template-columns: 48px 1fr auto; gap: 14px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; text-decoration: none; transition: transform .2s, box-shadow .2s; animation: pop .35s ease both; }
+  .rest:hover { transform: translateX(4px); box-shadow: var(--shadow); }
+  .rest .ic { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; font-size: 1.5rem; background: var(--bg); }
+  .rest h3 { margin: 0; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 1.45rem; line-height: 1.1; }
+  .rest p { margin: 2px 0 0; font-size: .88rem; color: var(--muted); }
+  .rest .meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 6px; font-size: .76rem; font-weight: 600; }
+  .t-michelin { background: #fde8e1; color: #b33a1a; }
+  .t-trad { background: #e8eedb; color: #4c5d23; }
+  .t-street { background: #fff2c2; color: #7a5a00; }
+  .t-sweet { background: #f6e1f0; color: #8a2b6c; }
+  .tagp { padding: 3px 9px; border-radius: 999px; }
+  .price { color: var(--muted); letter-spacing: 1px; }
+  .guides { margin-top: 26px; background: var(--navy); color: #fff; border-radius: 24px; padding: 26px; display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: center; }
+  .guides h3 { margin: 0; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1; }
+  .guides p { margin: 6px 0 0; color: #b8c7d3; font-size: .9rem; }
+  .guides .links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .guides .links a { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; padding: 14px; text-decoration: none; font-weight: 600; font-size: .9rem; transition: background .2s; }
+  .guides .links a:hover { background: var(--coral); }
+  .guides .links small { display: block; font-weight: 400; color: #b8c7d3; font-size: .75rem; margin-top: 2px; }
+
   /* ---------- Siti ---------- */
   .sites { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .site { position: relative; overflow: hidden; border-radius: 28px; padding: 40px; min-height: 300px; color: #fff; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; transition: transform .25s; }
+  .site { position: relative; overflow: hidden; border-radius: 28px; padding: 40px; min-height: 320px; color: #fff; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; isolation: isolate; transition: transform .25s; }
   .site:hover { transform: translateY(-4px); }
-  .site.it { background: linear-gradient(140deg, #0f7a5a, #0b2a40); }
-  .site.fr { background: linear-gradient(140deg, #2353c8, #0b2a40 75%); }
-  .site::before { content: ""; position: absolute; width: 340px; height: 340px; border-radius: 50%; right: -90px; top: -110px; background: rgba(255,255,255,.08); }
+  .site img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .site::after { content: ""; position: absolute; inset: 0; z-index: -1; }
+  .site.it::after { background: linear-gradient(140deg, rgba(15,122,90,.88), rgba(11,42,64,.75)); }
+  .site.fr::after { background: linear-gradient(140deg, rgba(35,83,200,.88), rgba(11,42,64,.75)); }
   .site .flag { font-size: 2.4rem; }
   .site h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 3.2rem; line-height: 1; margin: 6px 0 10px; }
-  .site p { margin: 0; opacity: .85; max-width: 36ch; }
+  .site p { margin: 0; opacity: .9; max-width: 36ch; }
   .site .btn { align-self: flex-start; background: #fff; color: var(--ink); }
 
   /* ---------- Newsletter ---------- */
@@ -199,11 +247,8 @@
   footer { margin-top: 96px; background: var(--navy); color: #b8c7d3; padding: 56px 0 40px; font-size: .9rem; }
   footer .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; }
   footer .logo { color: #fff; font-size: 2.4rem; }
-  .credits { margin-top: 14px; }
-  .credits summary { cursor: pointer; color: #fff; }
-  .credits ul { padding-left: 18px; font-size: .78rem; line-height: 1.6; }
-  .credits a { color: #b8c7d3; }
-  footer p { margin: 8px 0 0; max-width: 46ch; }
+  footer p { margin: 8px 0 0; max-width: 50ch; }
+  footer a { color: #fff; }
 
   /* ---------- Animazioni in entrata ---------- */
   .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
@@ -213,21 +258,31 @@
     .reveal { opacity: 1; transform: none; }
   }
 
+  @media (max-width: 1100px) { .nav { display: none; } .index { grid-template-columns: repeat(4, 1fr); } }
   @media (max-width: 900px) {
-    .nav { display: none; }
-    .hero { padding-top: 100px; }
-    .hero-grid, .sites, .news, footer .wrap { grid-template-columns: 1fr; }
-    .scene { aspect-ratio: 4 / 3.4; }
+    .hero { padding-top: 96px; }
+    .hero-grid, .sites, .news, footer .wrap, .eat, .guides { grid-template-columns: minmax(0, 1fr); }
+    .cover { aspect-ratio: 4 / 3.6; }
+    .index { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .index a { padding: 12px 10px; }
+    .index span { font-size: 1.1rem; }
     .bento { grid-template-columns: 1fr; grid-template-rows: none; }
     .tile.big { grid-row: auto; min-height: 380px; }
-    .tile .bg:has(img) ~ .emo, .card .media:has(img) .emo { display: none; }
-  .tile.big .emo { font-size: 5.5rem; top: 26px; right: 28px; }
+    .tile.big .emo { font-size: 5.5rem; top: 26px; right: 28px; }
+    .see { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+    .see .tile:nth-child(1) { grid-column: span 2; grid-row: span 1; min-height: 300px; }
+    .see .tile:nth-child(4) { grid-column: span 1; }
+    .see .tile { padding: 16px; }
+    .see .tile h3 { font-size: 1.5rem; }
+    .see .tile p { display: none; }
     .rail { grid-auto-columns: 72%; }
+    .collage { position: static; grid-template-rows: 160px 160px; }
+    .guides .links { grid-template-columns: 1fr 1fr; }
     .news { padding: 34px 24px; }
-    .site { padding: 30px; min-height: 240px; }
+    .site { padding: 30px; min-height: 260px; }
     section { padding-top: 72px; }
-    .scene .stat div { padding: 8px 10px; }
-    .scene .stat b { font-size: 1.5rem; }
+    .cover .stat div { padding: 8px 10px; }
+    .cover .stat b { font-size: 1.5rem; }
     .map { padding: 8px; overflow-x: auto; scrollbar-width: none; }
     .map svg { min-width: 760px; }
   }
@@ -237,12 +292,15 @@
 
 <header class="topbar">
   <div class="bar">
-    <a class="logo" href="#">La <i>Riviera</i></a>
+    <a class="logo" href="#">Live <i>Riviera</i></a>
     <nav class="nav">
-      <a href="#mappa" data-i18n="navMap"></a>
-      <a href="#eventi" data-i18n="navEvents"></a>
-      <a href="#cosa-fare" data-i18n="navTodo"></a>
-      <a href="#siti" data-i18n="navSites"></a>
+      <a href="#on">What's on</a>
+      <a href="#go">Where to go</a>
+      <a href="#see">What to see</a>
+      <a href="#do">What to do</a>
+      <a href="#hike">Hiking</a>
+      <a href="#eat">Where to eat</a>
+      <a href="#stay">Stay</a>
     </nav>
     <details class="lang" id="langMenu">
       <summary aria-label="Language">🌐 <span id="langCur">IT</span> ▾</summary>
@@ -255,74 +313,75 @@
 <div class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="pill" id="issue"></span>
-      <h1 data-i18n-html="heroTitle"></h1>
+      <span class="pill" data-i18n="issue"></span>
+      <h1>How to live <em>the Riviera</em><small>Liguria &amp; Côte d'Azur</small></h1>
       <p data-i18n="heroLead"></p>
       <div class="cta">
-        <a class="btn dark" href="#eventi"><span data-i18n="ctaEvents"></span> <span class="arr">→</span></a>
-        <a class="btn light" href="#mappa" data-i18n="ctaMap"></a>
+        <a class="btn dark" href="#on"><span data-i18n="ctaEvents"></span> <span class="arr">→</span></a>
+        <a class="btn light" href="#eat" data-i18n="ctaEat"></a>
       </div>
     </div>
-
-    <div class="scene" aria-hidden="true">
-      <svg viewBox="0 0 500 510" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#ffb37a"/><stop offset=".55" stop-color="#ffd9a8"/><stop offset="1" stop-color="#fff0d6"/>
-          </linearGradient>
-          <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#3fa7d6"/><stop offset="1" stop-color="#0b2a40"/>
-          </linearGradient>
-        </defs>
-        <rect width="500" height="510" fill="url(#sky)"/>
-        <circle class="sun" cx="330" cy="190" r="62" fill="#ffd23f"/>
-        <path d="M0 230 Q 90 150 190 210 T 380 190 T 500 175 V 300 H 0Z" fill="#9db06a"/>
-        <path d="M0 265 Q 120 205 230 250 T 500 235 V 310 H 0Z" fill="#7b8f3c"/>
-        <g transform="translate(40 228)">
-          <rect x="0" y="20" width="26" height="40" fill="#f3b07c"/><rect x="24" y="8" width="22" height="52" fill="#ef6a45"/>
-          <rect x="44" y="26" width="28" height="34" fill="#ffd9a8"/><rect x="70" y="0" width="16" height="60" fill="#e5533a"/>
-          <polygon points="70,0 78,-16 86,0" fill="#b9402c"/><rect x="84" y="18" width="30" height="42" fill="#f6c46b"/>
-          <rect x="112" y="30" width="24" height="30" fill="#f3b07c"/>
-          <g fill="#13202c" opacity=".35"><rect x="6" y="30" width="5" height="7"/><rect x="30" y="18" width="5" height="7"/><rect x="52" y="36" width="5" height="7"/><rect x="92" y="28" width="5" height="7"/><rect x="31" y="34" width="5" height="7"/><rect x="118" y="40" width="5" height="7"/></g>
-        </g>
-        <rect y="285" width="500" height="225" fill="url(#seaG)"/>
-        <g stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" fill="none">
-          <path d="M40 320 h40 M140 345 h60 M300 330 h50 M380 370 h70 M60 400 h50 M220 420 h40"/>
-        </g>
-        <path d="M290 292 Q 330 302 370 292" stroke="#ffd23f" stroke-width="5" stroke-linecap="round" fill="none" opacity=".7"/>
-        <g class="boat"><g transform="translate(0 300)">
-          <path d="M0 22 h46 l-8 10 h-30z" fill="#fffdf9"/><path d="M22 20 V -14 L44 18z" fill="#fffdf9"/><path d="M20 20 V -6 L4 18z" fill="#ef6a45"/>
-        </g></g>
-      </svg>
-      <img class="photo" src="foto/hero.jpg" alt="" onerror="this.remove()">
+    <div class="cover">
+      <img src="foto/hero.jpg" alt="Portofino">
+      <span class="tag">📍 Portofino</span>
       <div class="stat">
         <div><b id="statEvents">0</b><span data-i18n="statEvents"></span></div>
-        <div><b>4</b><span data-i18n="statZones"></span></div>
+        <div><b id="statPlaces">0</b><span data-i18n="statPlaces"></span></div>
         <div><b id="statLangs">6</b><span data-i18n="statLangs"></span></div>
       </div>
     </div>
   </div>
 
   <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
+
+  <!-- Indice delle rubriche -->
+  <div class="wrap">
+    <nav class="index reveal">
+      <a href="#on"><b>🎉</b><span>What's on</span></a>
+      <a href="#go"><b>🧭</b><span>Where to go</span></a>
+      <a href="#see"><b>👀</b><span>What to see</span></a>
+      <a href="#do"><b>🌊</b><span>What to do</span></a>
+      <a href="#hike"><b>🥾</b><span>Hiking</span></a>
+      <a href="#eat"><b>🍝</b><span>Where to eat</span></a>
+      <a href="#stay"><b>🏨</b><span>Where to stay</span></a>
+    </nav>
+  </div>
 </div>
 
 <main class="wrap">
 
-  <!-- ================= MAPPA ================= -->
-  <section id="mappa" class="reveal">
+  <!-- ================= WHAT'S ON ================= -->
+  <section id="on" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow" data-i18n="mapEyebrow"></span>
-        <h2 data-i18n-html="mapTitle"></h2>
-        <p data-i18n="mapSub"></p>
+        <span class="eyebrow"><span class="num">01</span><span data-i18n="onEyebrow"></span></span>
+        <h2>What's <em>on</em></h2>
+        <p data-i18n="onSub"></p>
+      </div>
+    </div>
+    <div class="bento" id="bento"></div>
+    <div class="filters">
+      <div class="chips" id="zoneChips"></div>
+      <div class="chips" id="catChips"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- ================= WHERE TO GO ================= -->
+  <section id="go" class="reveal">
+    <div class="head">
+      <div>
+        <span class="eyebrow"><span class="num">02</span><span data-i18n="goEyebrow"></span></span>
+        <h2>Where to <em>go</em></h2>
+        <p data-i18n="goSub"></p>
       </div>
     </div>
     <div class="map">
       <svg viewBox="0 0 1000 420" role="img" aria-label="Liguria — Côte d'Azur">
         <defs>
-          <linearGradient id="mapSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6ebf6"/><stop offset="1" stop-color="#a9d2ea"/></linearGradient>
+          <linearGradient id="mapSeaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6ebf6"/><stop offset="1" stop-color="#a9d2ea"/></linearGradient>
         </defs>
-        <rect width="1000" height="420" rx="18" fill="url(#mapSea)"/>
+        <rect width="1000" height="420" rx="18" fill="url(#mapSeaG)"/>
         <path d="M0 0 H1000 V58 C 970 48 945 36 922 36 C 880 36 820 44 770 58 C 740 66 728 70 718 74 C 680 96 640 130 610 160 C 590 180 560 205 514 232 C 480 248 440 255 400 259 C 350 266 300 272 273 280 C 255 286 245 292 236 294 C 210 300 190 304 168 306 C 130 318 90 342 50 362 C 30 370 15 374 0 376 Z" fill="#f4ede0" stroke="#e2d6c1" stroke-width="2"/>
         <path d="M286 277 L 300 200 L 330 130 L 345 60 L 360 0" stroke="#c9b99c" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
         <text x="430" y="110" font-family="Instrument Serif, serif" font-size="46" fill="#ddd0b8" letter-spacing="10" id="mapItaly">ITALIA</text>
@@ -335,46 +394,32 @@
           <circle cx="400" cy="259" r="4" fill="#8a949d"/><text x="378" y="286">Sanremo</text>
           <circle cx="577" cy="190" r="4" fill="#8a949d"/><text x="590" y="196">Alassio</text>
           <circle cx="640" cy="130" r="4" fill="#8a949d"/><text x="654" y="136">Finale Ligure</text>
+          <circle cx="975" cy="70" r="4" fill="#8a949d"/><text x="930" y="128">Portofino</text>
         </g>
         <g id="pins"></g>
       </svg>
     </div>
   </section>
 
-  <!-- ================= IN PRIMO PIANO ================= -->
-  <section class="reveal">
+  <!-- ================= WHAT TO SEE ================= -->
+  <section id="see" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow" data-i18n="featEyebrow"></span>
-        <h2 data-i18n-html="featTitle"></h2>
+        <span class="eyebrow"><span class="num">03</span><span data-i18n="seeEyebrow"></span></span>
+        <h2>What to <em>see</em></h2>
+        <p data-i18n="seeSub"></p>
       </div>
     </div>
-    <div class="bento" id="bento"></div>
+    <div class="see" id="seeGrid"></div>
   </section>
 
-  <!-- ================= AGENDA ================= -->
-  <section id="eventi" class="reveal">
+  <!-- ================= WHAT TO DO ================= -->
+  <section id="do" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow" data-i18n="eventsEyebrow"></span>
-        <h2 data-i18n-html="eventsTitle"></h2>
-        <p data-i18n="eventsSub"></p>
-      </div>
-    </div>
-    <div class="filters">
-      <div class="chips" id="zoneChips"></div>
-      <div class="chips" id="catChips"></div>
-    </div>
-    <div class="grid" id="grid"></div>
-  </section>
-
-  <!-- ================= COSA FARE ================= -->
-  <section id="cosa-fare" class="reveal">
-    <div class="head">
-      <div>
-        <span class="eyebrow" data-i18n="todoEyebrow"></span>
-        <h2 data-i18n-html="todoTitle"></h2>
-        <p data-i18n="todoSub"></p>
+        <span class="eyebrow"><span class="num">04</span><span data-i18n="doEyebrow"></span></span>
+        <h2>What to <em>do</em></h2>
+        <p data-i18n="doSub"></p>
       </div>
       <div class="rail-nav">
         <button aria-label="←" data-dir="-1">←</button>
@@ -384,21 +429,66 @@
     <div class="rail" id="rail"></div>
   </section>
 
-  <!-- ================= I NOSTRI SITI =================
-       Sostituire gli href con gli indirizzi reali dei vostri siti -->
-  <section id="siti" class="reveal">
+  <!-- ================= HIKING ================= -->
+  <section id="hike" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow" data-i18n="sitesEyebrow"></span>
-        <h2 data-i18n-html="sitesTitle"></h2>
+        <span class="eyebrow"><span class="num">05</span><span data-i18n="hikeEyebrow"></span></span>
+        <h2>Where to <em>hike</em></h2>
+        <p data-i18n="hikeSub"></p>
+      </div>
+    </div>
+    <div class="grid" id="hikeGrid"></div>
+  </section>
+
+  <!-- ================= WHERE TO EAT ================= -->
+  <section id="eat" class="reveal">
+    <div class="head">
+      <div>
+        <span class="eyebrow"><span class="num">06</span><span data-i18n="eatEyebrow"></span></span>
+        <h2>Where to <em>eat</em></h2>
+        <p data-i18n="eatSub"></p>
+      </div>
+    </div>
+    <div class="eat">
+      <div class="collage">
+        <figure><img src="foto/focaccia.jpg" alt="" loading="lazy"><figcaption>Focaccia</figcaption></figure>
+        <figure><img src="foto/pesto.jpg" alt="" loading="lazy"><figcaption>Pesto</figcaption></figure>
+        <figure><img src="foto/olio.jpg" alt="" loading="lazy"><figcaption data-i18n="oil"></figcaption></figure>
+        <div class="dishes" id="dishes"></div>
+      </div>
+      <div>
+        <div class="chips" id="tagChips" style="margin-bottom:14px"></div>
+        <div class="rests" id="rests"></div>
+      </div>
+    </div>
+    <div class="guides">
+      <div>
+        <h3>Food <em>news</em></h3>
+        <p data-i18n="guidesSub"></p>
+      </div>
+      <div class="links" id="guides"></div>
+    </div>
+  </section>
+
+  <!-- ================= WHERE TO STAY =================
+       Sostituire gli href con gli indirizzi reali dei vostri siti -->
+  <section id="stay" class="reveal">
+    <div class="head">
+      <div>
+        <span class="eyebrow"><span class="num">07</span><span data-i18n="stayEyebrow"></span></span>
+        <h2>Where to <em>stay</em></h2>
+        <p data-i18n="staySub"></p>
       </div>
     </div>
     <div class="sites">
       <a class="site it" href="https://www.ESEMPIO-SITO-ITALIANO.it" target="_blank" rel="noopener">
+        <img src="foto/camogli.jpg" alt="" loading="lazy">
         <div><div class="flag">🇮🇹</div><h3>Liguria</h3><p data-i18n="siteIt"></p></div>
         <span class="btn"><span data-i18n="visit"></span> <span class="arr">→</span></span>
       </a>
       <a class="site fr" href="https://www.EXEMPLE-SITE-FRANCAIS.fr" target="_blank" rel="noopener">
+        <img src="foto/nizza.jpg" alt="" loading="lazy">
         <div><div class="flag">🇫🇷</div><h3>Côte d'Azur</h3><p data-i18n="siteFr"></p></div>
         <span class="btn"><span data-i18n="visit"></span> <span class="arr">→</span></span>
       </a>
@@ -409,11 +499,11 @@
        Collegare l'action del form al vostro servizio (Mailchimp, Brevo, ...) -->
   <div class="news reveal">
     <div>
-      <h2 data-i18n-html="newsTitle"></h2>
+      <h2>Live <em>Riviera</em> — <span data-i18n="newsTitle"></span></h2>
       <p data-i18n="newsSub"></p>
     </div>
     <form action="#" id="newsForm">
-      <input type="email" required placeholder="nome@email.com" aria-label="Email">
+      <input type="email" required placeholder="name@email.com" aria-label="Email">
       <button class="btn dark" type="submit" data-i18n="subscribe"></button>
     </form>
   </div>
@@ -422,210 +512,321 @@
 <footer>
   <div class="wrap">
     <div>
-      <span class="logo">La <i>Riviera</i></span>
+      <span class="logo">Live <i style="color:var(--coral)">Riviera</i></span>
+      <p>How to live Liguria &amp; the French Riviera.</p>
       <p data-i18n="footer"></p>
     </div>
-    <div><p data-i18n="disclaimer"></p>
-      <details class="credits"><summary data-i18n="credits"></summary><ul id="creditList"><!-- CREDITS --></ul></details></div>
+    <div>
+      <p data-i18n="disclaimer"></p>
+      <p><span data-i18n="credits"></span>: <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a> (<a href="https://www.pexels.com/license/" target="_blank" rel="noopener">license</a>)</p>
+    </div>
   </div>
 </footer>
 
 <script>
 /* ============================================================
-   CONTENUTI DEL GIORNALINO — modifica qui per ogni nuovo numero
+   CONTENUTI — modifica qui per ogni nuovo numero
+   Lingue: it, fr, en, de, nl, zh — se una lingua manca si usa l'inglese.
    zone: genova | savona | imperia | azur
-   cat:  sagre | feste | musica | mercatini | cultura | sport
-   date / end: AAAA-MM-GG (end facoltativo, per eventi di più giorni)
-   img: foto nella cartella foto/ (se vuoto si usa l'illustrazione con l'emoji)
-   featured: 1 = copertina grande, 2 e 3 = riquadri accanto
-   Testi: it, fr, en, de, nl, zh — se una lingua manca si usa l'inglese.
-   Gli eventi già finiti spariscono da soli.
+   img: foto nella cartella foto/ (se vuoto si usa un'illustrazione con l'emoji)
    ============================================================ */
 const LANGS = { it: "Italiano", fr: "Français", en: "English", de: "Deutsch", nl: "Nederlands", zh: "中文" };
+const maps = (q) => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
 
+/* ---------- WHAT'S ON: eventi ----------
+   cat: sagre | feste | musica | mercatini | cultura | sport
+   date / end: AAAA-MM-GG (end facoltativo)
+   featured: 1 = grande in primo piano, 2 e 3 = riquadri accanto
+   Gli eventi già finiti spariscono da soli. */
 const EVENTS = [
-  {
-    featured: 1, zone: "imperia", cat: "sagre", icon: "🫒", date: "2026-11-13", end: "2026-11-15", img: "foto/olioliva.jpg",
-    url: "https://www.visitriviera.info",
-    t: {
-      it: ["Olioliva", "Imperia, Oneglia", "La festa dell'olio nuovo: assaggi, frantoi aperti e street food sul porto."],
-      fr: ["Olioliva", "Imperia, Oneglia", "La fête de l'huile nouvelle : dégustations, moulins ouverts et street food sur le port."],
-      en: ["Olioliva", "Imperia, Oneglia", "The new olive oil festival: tastings, open mills and street food on the harbour."],
-      de: ["Olioliva", "Imperia, Oneglia", "Das Fest des neuen Olivenöls: Verkostungen, offene Ölmühlen und Streetfood am Hafen."],
-      nl: ["Olioliva", "Imperia, Oneglia", "Het feest van de nieuwe olijfolie: proeverijen, open oliemolens en streetfood aan de haven."],
-      zh: ["新橄榄油节", "因佩里亚，奥内利亚", "庆祝新榨橄榄油：品鉴、开放油坊，港口还有街头美食。"]
-    }
-  },
-  {
-    featured: 2, zone: "azur", cat: "mercatini", icon: "🎄", date: "2026-11-28", end: "2027-01-04", img: "foto/natale-nizza.jpg",
-    url: "https://www.explorenicecotedazur.com",
-    t: {
-      it: ["Villaggio di Natale", "Nizza, Place Masséna", "Chalet in legno, ruota panoramica e vin brulé sotto le luci."],
-      fr: ["Village de Noël", "Nice, Place Masséna", "Chalets en bois, grande roue et vin chaud sous les lumières."],
-      en: ["Christmas Village", "Nice, Place Masséna", "Wooden chalets, a big wheel and mulled wine under the lights."],
-      de: ["Weihnachtsdorf", "Nizza, Place Masséna", "Holzhütten, Riesenrad und Glühwein unter funkelnden Lichtern."],
-      nl: ["Kerstdorp", "Nice, Place Masséna", "Houten chalets, een reuzenrad en glühwein onder de lichtjes."],
-      zh: ["圣诞村", "尼斯，马塞纳广场", "木屋集市、摩天轮，还有灯光下的热红酒。"]
-    }
-  },
-  {
-    featured: 3, zone: "genova", cat: "mercatini", icon: "🎁", date: "2026-12-05", end: "2027-01-06", img: "foto/natale-genova.jpg",
-    url: "https://www.visitgenoa.it",
-    t: {
-      it: ["Natale al Porto Antico", "Genova, Porto Antico", "Mercatini, pista di pattinaggio e luci sul mare."],
-      fr: ["Noël au Porto Antico", "Gênes, Porto Antico", "Marchés, patinoire et lumières sur la mer."],
-      en: ["Christmas at Porto Antico", "Genoa, Porto Antico", "Markets, an ice rink and lights over the sea."],
-      de: ["Weihnachten am Porto Antico", "Genua, Porto Antico", "Märkte, Eisbahn und Lichter über dem Meer."],
-      nl: ["Kerst in de Porto Antico", "Genua, Porto Antico", "Markten, een ijsbaan en lichtjes boven de zee."],
-      zh: ["老港圣诞", "热那亚，老港", "圣诞集市、溜冰场和海上的灯光。"]
-    }
-  },
-  {
-    zone: "savona", cat: "sagre", icon: "🌰", date: "2026-11-08", img: "foto/castagna.jpg",
-    url: "https://www.visitriviera.info",
-    t: {
-      it: ["Festa della Castagna", "Val Bormida (SV)", "Caldarroste, farine e dolci d'autunno nei borghi dell'entroterra."],
-      fr: ["Fête de la Châtaigne", "Val Bormida (SV)", "Châtaignes grillées et douceurs d'automne dans l'arrière-pays."],
-      en: ["Chestnut Festival", "Val Bormida (SV)", "Roast chestnuts and autumn treats in the hill villages."],
-      de: ["Kastanienfest", "Val Bormida (SV)", "Geröstete Maronen und Herbstsüßes in den Bergdörfern."],
-      nl: ["Kastanjefeest", "Val Bormida (SV)", "Gepofte kastanjes en herfstlekkernijen in de bergdorpjes."],
-      zh: ["栗子节", "博尔米达山谷（萨沃纳）", "山村里的烤栗子和秋日甜点。"]
-    }
-  },
-  {
-    zone: "savona", cat: "sport", icon: "🚵", date: "2026-11-15", img: "foto/finale.jpg",
-    url: "https://www.visitriviera.info",
-    t: {
-      it: ["Finale Outdoor Day", "Finale Ligure", "Mountain bike, arrampicata e trekking con le guide locali."],
-      fr: ["Finale Outdoor Day", "Finale Ligure", "VTT, escalade et randonnée avec les guides locaux."],
-      en: ["Finale Outdoor Day", "Finale Ligure", "Mountain biking, climbing and hiking with local guides."],
-      de: ["Finale Outdoor Day", "Finale Ligure", "Mountainbiken, Klettern und Wandern mit lokalen Guides."],
-      nl: ["Finale Outdoor Day", "Finale Ligure", "Mountainbiken, klimmen en wandelen met lokale gidsen."],
-      zh: ["菲纳莱户外日", "菲纳莱利古雷", "跟着本地向导骑山地车、攀岩和徒步。"]
-    }
-  },
-  {
-    zone: "azur", cat: "feste", icon: "🎆", date: "2026-11-19", img: "foto/monaco.jpg",
-    url: "https://www.visitmonaco.com",
-    t: {
-      it: ["Festa Nazionale di Monaco", "Principato di Monaco", "Fuochi d'artificio, concerti e il Principato in festa."],
-      fr: ["Fête Nationale Monégasque", "Principauté de Monaco", "Feux d'artifice, concerts et toute la Principauté en fête."],
-      en: ["Monaco National Day", "Principality of Monaco", "Fireworks, concerts and the whole Principality celebrating."],
-      de: ["Nationalfeiertag Monaco", "Fürstentum Monaco", "Feuerwerk, Konzerte und ein Fürstentum in Feierlaune."],
-      nl: ["Nationale feestdag Monaco", "Prinsdom Monaco", "Vuurwerk, concerten en een prinsdom in feeststemming."],
-      zh: ["摩纳哥国庆日", "摩纳哥公国", "烟花、音乐会，整个公国一起庆祝。"]
-    }
-  },
-  {
-    zone: "genova", cat: "cultura", icon: "🏛️", date: "2026-11-21", img: "foto/rolli.jpg",
-    url: "https://www.visitgenoa.it",
-    t: {
-      it: ["Musei aperti di sera", "Genova, Via Garibaldi", "I palazzi dei Rolli illuminati, visite guidate fino a tarda sera."],
-      fr: ["Musées en nocturne", "Gênes, Via Garibaldi", "Les palais des Rolli illuminés, visites guidées en soirée."],
-      en: ["Museums by night", "Genoa, Via Garibaldi", "The Rolli palaces lit up, with guided tours late into the evening."],
-      de: ["Museen bei Nacht", "Genua, Via Garibaldi", "Die Rolli-Paläste beleuchtet, Führungen bis spät am Abend."],
-      nl: ["Musea bij avond", "Genua, Via Garibaldi", "De verlichte Rolli-paleizen, rondleidingen tot laat op de avond."],
-      zh: ["博物馆之夜", "热那亚，加里波第大街", "灯光下的罗利宫殿群，导览开放到深夜。"]
-    }
-  },
-  {
-    zone: "imperia", cat: "musica", icon: "🎷", date: "2026-11-28", img: "foto/sanremo.jpg",
-    url: "https://www.visitriviera.info",
-    t: {
-      it: ["Sanremo Jazz Night", "Sanremo", "Jazz dal vivo nel cuore della città dei fiori."],
-      fr: ["Sanremo Jazz Night", "Sanremo", "Du jazz live au cœur de la ville des fleurs."],
-      en: ["Sanremo Jazz Night", "Sanremo", "Live jazz in the heart of the City of Flowers."],
-      de: ["Sanremo Jazz Night", "Sanremo", "Live-Jazz im Herzen der Blumenstadt."],
-      nl: ["Sanremo Jazz Night", "Sanremo", "Live jazz in het hart van de bloemenstad."],
-      zh: ["圣雷莫爵士之夜", "圣雷莫", "在“花之城”中心聆听现场爵士乐。"]
-    }
-  },
-  {
-    zone: "savona", cat: "feste", icon: "✨", date: "2026-12-08", end: "2027-01-06", img: "foto/noli.jpg",
-    url: "https://www.visitriviera.info",
-    t: {
-      it: ["Presepi nei carruggi", "Noli e Finalborgo", "Presepi artigianali tra vicoli medievali e piazzette."],
-      fr: ["Crèches dans les ruelles", "Noli et Finalborgo", "Crèches artisanales entre ruelles médiévales et placettes."],
-      en: ["Nativity scenes in the alleys", "Noli & Finalborgo", "Handmade nativity scenes among medieval lanes and squares."],
-      de: ["Krippen in den Gassen", "Noli & Finalborgo", "Handgemachte Krippen zwischen mittelalterlichen Gassen."],
-      nl: ["Kerststallen in de steegjes", "Noli & Finalborgo", "Handgemaakte kerststallen tussen middeleeuwse steegjes."],
-      zh: ["小巷里的圣诞马槽", "诺利与菲纳尔博尔戈", "中世纪小巷与广场间的手工圣诞马槽。"]
-    }
-  },
-  {
-    zone: "azur", cat: "feste", icon: "🍋", date: "2027-02-13", end: "2027-03-03", img: "foto/limone.jpg",
-    url: "https://www.fete-du-citron.com",
-    t: {
-      it: ["Festa del Limone", "Mentone", "Carri giganti di agrumi: segnatelo già in calendario!"],
-      fr: ["Fête du Citron", "Menton", "Des chars géants d'agrumes : à noter dès maintenant !"],
-      en: ["Lemon Festival", "Menton", "Giant floats made of citrus fruit: save the date!"],
-      de: ["Zitronenfest", "Menton", "Riesige Festwagen aus Zitrusfrüchten: jetzt schon vormerken!"],
-      nl: ["Citroenfeest", "Menton", "Reusachtige praalwagens van citrusvruchten: zet het alvast in je agenda!"],
-      zh: ["柠檬节", "芒通", "用柑橘堆成的巨型花车，快记进日历！"]
-    }
-  }
+  { featured: 1, zone: "imperia", cat: "sagre", icon: "🫒", date: "2026-11-13", end: "2026-11-15", img: "foto/olioliva.jpg", url: "https://www.visitriviera.info", t: {
+    it: ["Olioliva", "Imperia, Oneglia", "La festa dell'olio nuovo: assaggi, frantoi aperti e street food sul porto."],
+    fr: ["Olioliva", "Imperia, Oneglia", "La fête de l'huile nouvelle : dégustations, moulins ouverts et street food sur le port."],
+    en: ["Olioliva", "Imperia, Oneglia", "The new olive oil festival: tastings, open mills and street food on the harbour."],
+    de: ["Olioliva", "Imperia, Oneglia", "Das Fest des neuen Olivenöls: Verkostungen, offene Ölmühlen und Streetfood am Hafen."],
+    nl: ["Olioliva", "Imperia, Oneglia", "Het feest van de nieuwe olijfolie: proeverijen, open oliemolens en streetfood aan de haven."],
+    zh: ["新橄榄油节", "因佩里亚，奥内利亚", "庆祝新榨橄榄油：品鉴、开放油坊，港口还有街头美食。"] } },
+  { featured: 2, zone: "azur", cat: "mercatini", icon: "🎄", date: "2026-11-28", end: "2027-01-04", img: "foto/natale-nizza.jpg", url: "https://www.explorenicecotedazur.com", t: {
+    it: ["Villaggio di Natale", "Nizza, Place Masséna", "Chalet in legno, ruota panoramica e vin brulé sotto le luci."],
+    fr: ["Village de Noël", "Nice, Place Masséna", "Chalets en bois, grande roue et vin chaud sous les lumières."],
+    en: ["Christmas Village", "Nice, Place Masséna", "Wooden chalets, a big wheel and mulled wine under the lights."],
+    de: ["Weihnachtsdorf", "Nizza, Place Masséna", "Holzhütten, Riesenrad und Glühwein unter funkelnden Lichtern."],
+    nl: ["Kerstdorp", "Nice, Place Masséna", "Houten chalets, een reuzenrad en glühwein onder de lichtjes."],
+    zh: ["圣诞村", "尼斯，马塞纳广场", "木屋集市、摩天轮，还有灯光下的热红酒。"] } },
+  { featured: 3, zone: "genova", cat: "mercatini", icon: "🎁", date: "2026-12-05", end: "2027-01-06", img: "foto/natale-genova.jpg", url: "https://www.visitgenoa.it", t: {
+    it: ["Natale al Porto Antico", "Genova, Porto Antico", "Mercatini, pista di pattinaggio e luci sul mare."],
+    fr: ["Noël au Porto Antico", "Gênes, Porto Antico", "Marchés, patinoire et lumières sur la mer."],
+    en: ["Christmas at Porto Antico", "Genoa, Porto Antico", "Markets, an ice rink and lights over the sea."],
+    de: ["Weihnachten am Porto Antico", "Genua, Porto Antico", "Märkte, Eisbahn und Lichter über dem Meer."],
+    nl: ["Kerst in de Porto Antico", "Genua, Porto Antico", "Markten, een ijsbaan en lichtjes boven de zee."],
+    zh: ["老港圣诞", "热那亚，老港", "圣诞集市、溜冰场和海上的灯光。"] } },
+  { zone: "savona", cat: "sagre", icon: "🌰", date: "2026-11-08", img: "foto/castagna.jpg", url: "https://www.visitriviera.info", t: {
+    it: ["Festa della Castagna", "Val Bormida (SV)", "Caldarroste, farine e dolci d'autunno nei borghi dell'entroterra."],
+    fr: ["Fête de la Châtaigne", "Val Bormida (SV)", "Châtaignes grillées et douceurs d'automne dans l'arrière-pays."],
+    en: ["Chestnut Festival", "Val Bormida (SV)", "Roast chestnuts and autumn treats in the hill villages."],
+    de: ["Kastanienfest", "Val Bormida (SV)", "Geröstete Maronen und Herbstsüßes in den Bergdörfern."],
+    nl: ["Kastanjefeest", "Val Bormida (SV)", "Gepofte kastanjes en herfstlekkernijen in de bergdorpjes."],
+    zh: ["栗子节", "博尔米达山谷（萨沃纳）", "山村里的烤栗子和秋日甜点。"] } },
+  { zone: "savona", cat: "sport", icon: "🚵", date: "2026-11-15", img: "foto/finale.jpg", url: "https://www.visitriviera.info", t: {
+    it: ["Finale Outdoor Day", "Finale Ligure", "Mountain bike, arrampicata e trekking con le guide locali."],
+    fr: ["Finale Outdoor Day", "Finale Ligure", "VTT, escalade et randonnée avec les guides locaux."],
+    en: ["Finale Outdoor Day", "Finale Ligure", "Mountain biking, climbing and hiking with local guides."],
+    de: ["Finale Outdoor Day", "Finale Ligure", "Mountainbiken, Klettern und Wandern mit lokalen Guides."],
+    nl: ["Finale Outdoor Day", "Finale Ligure", "Mountainbiken, klimmen en wandelen met lokale gidsen."],
+    zh: ["菲纳莱户外日", "菲纳莱利古雷", "跟着本地向导骑山地车、攀岩和徒步。"] } },
+  { zone: "azur", cat: "feste", icon: "🎆", date: "2026-11-19", img: "foto/monaco-notte.jpg", url: "https://www.visitmonaco.com", t: {
+    it: ["Festa Nazionale di Monaco", "Principato di Monaco", "Fuochi d'artificio, concerti e il Principato in festa."],
+    fr: ["Fête Nationale Monégasque", "Principauté de Monaco", "Feux d'artifice, concerts et toute la Principauté en fête."],
+    en: ["Monaco National Day", "Principality of Monaco", "Fireworks, concerts and the whole Principality celebrating."],
+    de: ["Nationalfeiertag Monaco", "Fürstentum Monaco", "Feuerwerk, Konzerte und ein Fürstentum in Feierlaune."],
+    nl: ["Nationale feestdag Monaco", "Prinsdom Monaco", "Vuurwerk, concerten en een prinsdom in feeststemming."],
+    zh: ["摩纳哥国庆日", "摩纳哥公国", "烟花、音乐会，整个公国一起庆祝。"] } },
+  { zone: "genova", cat: "cultura", icon: "🏛️", date: "2026-11-21", img: "foto/rolli.jpg", url: "https://www.visitgenoa.it", t: {
+    it: ["Musei aperti di sera", "Genova, Via Garibaldi", "I palazzi dei Rolli illuminati, visite guidate fino a tarda sera."],
+    fr: ["Musées en nocturne", "Gênes, Via Garibaldi", "Les palais des Rolli illuminés, visites guidées en soirée."],
+    en: ["Museums by night", "Genoa, Via Garibaldi", "The Rolli palaces lit up, with guided tours late into the evening."],
+    de: ["Museen bei Nacht", "Genua, Via Garibaldi", "Die Rolli-Paläste beleuchtet, Führungen bis spät am Abend."],
+    nl: ["Musea bij avond", "Genua, Via Garibaldi", "De verlichte Rolli-paleizen, rondleidingen tot laat op de avond."],
+    zh: ["博物馆之夜", "热那亚，加里波第大街", "灯光下的罗利宫殿群，导览开放到深夜。"] } },
+  { zone: "imperia", cat: "musica", icon: "🎷", date: "2026-11-28", img: "", url: "https://www.visitriviera.info", t: {
+    it: ["Sanremo Jazz Night", "Sanremo", "Jazz dal vivo nel cuore della città dei fiori."],
+    fr: ["Sanremo Jazz Night", "Sanremo", "Du jazz live au cœur de la ville des fleurs."],
+    en: ["Sanremo Jazz Night", "Sanremo", "Live jazz in the heart of the City of Flowers."],
+    de: ["Sanremo Jazz Night", "Sanremo", "Live-Jazz im Herzen der Blumenstadt."],
+    nl: ["Sanremo Jazz Night", "Sanremo", "Live jazz in het hart van de bloemenstad."],
+    zh: ["圣雷莫爵士之夜", "圣雷莫", "在“花之城”中心聆听现场爵士乐。"] } },
+  { zone: "savona", cat: "feste", icon: "✨", date: "2026-12-08", end: "2027-01-06", img: "", url: "https://www.visitriviera.info", t: {
+    it: ["Presepi nei carruggi", "Noli e Finalborgo", "Presepi artigianali tra vicoli medievali e piazzette."],
+    fr: ["Crèches dans les ruelles", "Noli et Finalborgo", "Crèches artisanales entre ruelles médiévales et placettes."],
+    en: ["Nativity scenes in the alleys", "Noli & Finalborgo", "Handmade nativity scenes among medieval lanes and squares."],
+    de: ["Krippen in den Gassen", "Noli & Finalborgo", "Handgemachte Krippen zwischen mittelalterlichen Gassen."],
+    nl: ["Kerststallen in de steegjes", "Noli & Finalborgo", "Handgemaakte kerststallen tussen middeleeuwse steegjes."],
+    zh: ["小巷里的圣诞马槽", "诺利与菲纳尔博尔戈", "中世纪小巷与广场间的手工圣诞马槽。"] } },
+  { zone: "azur", cat: "feste", icon: "🍋", date: "2027-02-13", end: "2027-03-03", img: "foto/menton.jpg", url: "https://www.fete-du-citron.com", t: {
+    it: ["Festa del Limone", "Mentone", "Carri giganti di agrumi: segnatelo già in calendario!"],
+    fr: ["Fête du Citron", "Menton", "Des chars géants d'agrumes : à noter dès maintenant !"],
+    en: ["Lemon Festival", "Menton", "Giant floats made of citrus fruit: save the date!"],
+    de: ["Zitronenfest", "Menton", "Riesige Festwagen aus Zitrusfrüchten: jetzt schon vormerken!"],
+    nl: ["Citroenfeest", "Menton", "Reusachtige praalwagens van citrusvruchten: zet het alvast in je agenda!"],
+    zh: ["柠檬节", "芒通", "用柑橘堆成的巨型花车，快记进日历！"] } }
 ];
 
+/* ---------- WHAT TO SEE: luoghi da vedere (il primo è il più grande) ---------- */
+const SEE = [
+  { zone: "genova", icon: "⛵", img: "foto/portofino.jpg", q: "Portofino", t: {
+    it: ["Portofino", "La piazzetta, il faro e il castello Brown: il borgo più fotografato d'Italia."],
+    fr: ["Portofino", "La piazzetta, le phare et le château Brown : le village le plus photographié d'Italie."],
+    en: ["Portofino", "The piazzetta, the lighthouse and Castello Brown: Italy's most photographed village."],
+    de: ["Portofino", "Piazzetta, Leuchtturm und Castello Brown: Italiens meistfotografiertes Dorf."],
+    nl: ["Portofino", "Het pleintje, de vuurtoren en Castello Brown: het meest gefotografeerde dorp van Italië."],
+    zh: ["波托菲诺", "小广场、灯塔和布朗城堡——意大利最上镜的小镇。"] } },
+  { zone: "genova", icon: "🏛️", img: "foto/genova.jpg", q: "Centro storico Genova", t: {
+    it: ["Genova, centro storico", "Carruggi, Palazzi dei Rolli UNESCO e l'Acquario."],
+    fr: ["Gênes, vieille ville", "Ruelles, palais des Rolli UNESCO et l'Aquarium."],
+    en: ["Genoa old town", "Narrow lanes, the UNESCO Rolli palaces and the Aquarium."],
+    de: ["Genua, Altstadt", "Gassen, die UNESCO-Rolli-Paläste und das Aquarium."],
+    nl: ["Genua, oude stad", "Steegjes, de UNESCO Rolli-paleizen en het aquarium."],
+    zh: ["热那亚老城", "狭窄小巷、联合国教科文组织罗利宫殿群和水族馆。"] } },
+  { zone: "azur", icon: "🌴", img: "foto/nizza.jpg", q: "Promenade des Anglais Nice", t: {
+    it: ["Promenade des Anglais", "Sette chilometri sul mare di Nizza, da fare a piedi o in bici."],
+    fr: ["Promenade des Anglais", "Sept kilomètres face à la mer à Nice, à pied ou à vélo."],
+    en: ["Promenade des Anglais", "Seven kilometres along Nice's seafront, on foot or by bike."],
+    de: ["Promenade des Anglais", "Sieben Kilometer am Meer in Nizza, zu Fuß oder mit dem Rad."],
+    nl: ["Promenade des Anglais", "Zeven kilometer langs de zee in Nice, te voet of op de fiets."],
+    zh: ["英国人漫步大道", "尼斯七公里海滨大道，步行或骑车皆宜。"] } },
+  { zone: "azur", icon: "🛥️", img: "foto/monaco.jpg", q: "Port Hercule Monaco", t: {
+    it: ["Monaco", "Il Rocher, il Palazzo del Principe e gli yacht di Port Hercule."],
+    fr: ["Monaco", "Le Rocher, le Palais princier et les yachts du Port Hercule."],
+    en: ["Monaco", "The Rock, the Prince's Palace and the yachts of Port Hercule."],
+    de: ["Monaco", "Der Felsen, der Fürstenpalast und die Jachten im Port Hercule."],
+    nl: ["Monaco", "De Rots, het Prinselijk Paleis en de jachten van Port Hercule."],
+    zh: ["摩纳哥", "摩纳哥岩、亲王宫和大力神港的游艇。"] } },
+  { zone: "azur", icon: "🍋", img: "foto/menton-vicoli.jpg", q: "Vieille ville Menton", t: {
+    it: ["Mentone", "Case color pastello, giardini e limoni al confine con l'Italia."],
+    fr: ["Menton", "Façades pastel, jardins et citronniers à la frontière italienne."],
+    en: ["Menton", "Pastel houses, gardens and lemon trees on the Italian border."],
+    de: ["Menton", "Pastellfarbene Häuser, Gärten und Zitronen an der italienischen Grenze."],
+    nl: ["Menton", "Pastelkleurige huizen, tuinen en citroenbomen aan de Italiaanse grens."],
+    zh: ["芒通", "粉彩房屋、花园和柠檬树，紧邻意大利边境。"] } },
+  { zone: "azur", icon: "🏰", img: "foto/eze.jpg", q: "Èze village", t: {
+    it: ["Èze", "Borgo medievale sospeso a 400 metri sul mare."],
+    fr: ["Èze", "Village médiéval perché à 400 mètres au-dessus de la mer."],
+    en: ["Èze", "A medieval village perched 400 metres above the sea."],
+    de: ["Èze", "Mittelalterliches Dorf, 400 Meter über dem Meer."],
+    nl: ["Èze", "Middeleeuws dorp op 400 meter boven de zee."],
+    zh: ["埃兹", "悬于海面四百米之上的中世纪小村。"] } },
+  { zone: "genova", icon: "🎨", img: "foto/camogli.jpg", q: "Camogli", t: {
+    it: ["Camogli", "Case colorate, barche dei pescatori e la focaccia sul lungomare."],
+    fr: ["Camogli", "Maisons colorées, barques de pêcheurs et focaccia sur le front de mer."],
+    en: ["Camogli", "Colourful houses, fishing boats and focaccia on the seafront."],
+    de: ["Camogli", "Bunte Häuser, Fischerboote und Focaccia an der Promenade."],
+    nl: ["Camogli", "Kleurrijke huizen, vissersboten en focaccia aan de boulevard."],
+    zh: ["卡莫利", "彩色房屋、渔船和海滨的佛卡夏。"] } }
+];
+
+/* ---------- WHAT TO DO: esperienze ---------- */
 const TODO = [
-  { icon: "🐋", img: "foto/whale.jpg", bg: "linear-gradient(160deg,#3fa7d6,#0b2a40)", url: "#", t: {
+  { icon: "🐋", img: "foto/whale.jpg", url: "#", t: {
     it: ["Whale watching", "Santuario Pelagos, da Genova e Imperia"], fr: ["Whale watching", "Sanctuaire Pelagos, depuis Gênes et Imperia"],
     en: ["Whale watching", "Pelagos Sanctuary, from Genoa and Imperia"], de: ["Walbeobachtung", "Pelagos-Schutzgebiet, ab Genua und Imperia"],
     nl: ["Walvissen spotten", "Pelagos-reservaat, vanuit Genua en Imperia"], zh: ["出海观鲸", "派拉格斯海洋保护区，从热那亚和因佩里亚出发"] } },
-  { icon: "🥾", img: "foto/altavia.jpg", bg: "linear-gradient(160deg,#9db06a,#3f4d1f)", url: "#", t: {
-    it: ["Alta Via dei Monti Liguri", "Sentieri tra mare e montagna"], fr: ["Alta Via dei Monti Liguri", "Sentiers entre mer et montagne"],
-    en: ["Alta Via dei Monti Liguri", "Trails between sea and mountains"], de: ["Alta Via dei Monti Liguri", "Wanderwege zwischen Meer und Bergen"],
-    nl: ["Alta Via dei Monti Liguri", "Wandelpaden tussen zee en bergen"], zh: ["利古里亚高山步道", "穿行于大海与群山之间"] } },
-  { icon: "🚵", img: "foto/mtb.jpg", bg: "linear-gradient(160deg,#ff9a76,#9e3c1c)", url: "#", t: {
+  { icon: "🚵", img: "foto/mtb.jpg", url: "#", t: {
     it: ["Bike a Finale", "Capitale europea della MTB"], fr: ["VTT à Finale", "Capitale européenne du VTT"],
     en: ["Biking in Finale", "Europe's mountain bike capital"], de: ["Biken in Finale", "Europas Mountainbike-Hauptstadt"],
     nl: ["Fietsen in Finale", "Europese hoofdstad van het mountainbiken"], zh: ["菲纳莱骑行", "欧洲山地车之都"] } },
-  { icon: "🏘️", img: "foto/borghi.jpg", bg: "linear-gradient(160deg,#e8b56a,#7a5420)", url: "#", t: {
-    it: ["I borghi più belli", "Apricale, Dolceacqua, Noli"], fr: ["Plus beaux villages", "Apricale, Dolceacqua, Noli"],
-    en: ["Prettiest villages", "Apricale, Dolceacqua, Noli"], de: ["Die schönsten Dörfer", "Apricale, Dolceacqua, Noli"],
-    nl: ["Mooiste dorpjes", "Apricale, Dolceacqua, Noli"], zh: ["最美小镇", "阿普里卡莱、多尔切阿夸、诺利"] } },
-  { icon: "🤿", img: "foto/diving.jpg", bg: "linear-gradient(160deg,#4fd1c5,#0b5f6b)", url: "#", t: {
-    it: ["Snorkeling e diving", "Portofino e Isola Gallinara"], fr: ["Snorkeling et plongée", "Portofino et île Gallinara"],
-    en: ["Snorkelling & diving", "Portofino and Gallinara Island"], de: ["Schnorcheln & Tauchen", "Portofino und Insel Gallinara"],
-    nl: ["Snorkelen & duiken", "Portofino en het eiland Gallinara"], zh: ["浮潜与潜水", "波托菲诺与加利纳拉岛"] } },
-  { icon: "🌅", img: "foto/eze.jpg", bg: "linear-gradient(160deg,#a58bff,#2e1f73)", url: "#", t: {
-    it: ["Èze e Villefranche", "Panorami da cartolina"], fr: ["Èze et Villefranche", "Panoramas de carte postale"],
-    en: ["Èze & Villefranche", "Postcard views"], de: ["Èze & Villefranche", "Aussichten wie auf Postkarten"],
-    nl: ["Èze & Villefranche", "Uitzichten als op een ansichtkaart"], zh: ["埃兹与滨海自由城", "明信片般的风景"] } },
-  { icon: "🍷", img: "foto/sapori.jpg", bg: "linear-gradient(160deg,#d0566b,#4e1020)", url: "#", t: {
-    it: ["Vini e sapori", "Rossese, Pigato, pesto e focaccia"], fr: ["Vins et saveurs", "Rossese, Pigato, pesto et focaccia"],
-    en: ["Wine & food", "Rossese, Pigato, pesto and focaccia"], de: ["Wein & Genuss", "Rossese, Pigato, Pesto und Focaccia"],
-    nl: ["Wijn & smaken", "Rossese, Pigato, pesto en focaccia"], zh: ["美酒美食", "罗塞塞、皮加托葡萄酒，青酱与佛卡夏"] } },
-  { icon: "🏖️", img: "foto/spiagge.jpg", bg: "linear-gradient(160deg,#ffc94a,#ef6a45)", url: "#", t: {
+  { icon: "🤿", img: "foto/diving.jpg", url: "#", t: {
+    it: ["Snorkeling e diving", "Area marina di Portofino e Isola Gallinara"], fr: ["Snorkeling et plongée", "Aire marine de Portofino et île Gallinara"],
+    en: ["Snorkelling & diving", "Portofino marine reserve and Gallinara Island"], de: ["Schnorcheln & Tauchen", "Meeresschutzgebiet Portofino und Insel Gallinara"],
+    nl: ["Snorkelen & duiken", "Zeereservaat Portofino en het eiland Gallinara"], zh: ["浮潜与潜水", "波托菲诺海洋保护区与加利纳拉岛"] } },
+  { icon: "🏖️", img: "foto/spiagge.jpg", url: "#", t: {
     it: ["Spiagge", "Dalla Baia del Silenzio a Paloma Beach"], fr: ["Plages", "De la Baia del Silenzio à Paloma Beach"],
     en: ["Beaches", "From Baia del Silenzio to Paloma Beach"], de: ["Strände", "Von der Baia del Silenzio bis Paloma Beach"],
-    nl: ["Stranden", "Van de Baia del Silenzio tot Paloma Beach"], zh: ["海滩", "从静谧湾到帕洛玛海滩"] } }
+    nl: ["Stranden", "Van de Baia del Silenzio tot Paloma Beach"], zh: ["海滩", "从静谧湾到帕洛玛海滩"] } },
+  { icon: "🌅", img: "foto/tramonto.jpg", url: "#", t: {
+    it: ["Aperitivo al tramonto", "Sulla Promenade o in un bar sul porto"], fr: ["Apéro au coucher du soleil", "Sur la Promenade ou sur le port"],
+    en: ["Sunset aperitivo", "On the Promenade or by the harbour"], de: ["Aperitivo bei Sonnenuntergang", "Auf der Promenade oder am Hafen"],
+    nl: ["Aperitivo bij zonsondergang", "Op de boulevard of aan de haven"], zh: ["日落开胃酒", "在海滨大道或港口小酒吧"] } },
+  { icon: "🏘️", img: "foto/borghi.jpg", url: "#", t: {
+    it: ["Borghi dell'entroterra", "Apricale, Dolceacqua, Sainte-Agnès"], fr: ["Villages de l'arrière-pays", "Apricale, Dolceacqua, Sainte-Agnès"],
+    en: ["Hill villages", "Apricale, Dolceacqua, Sainte-Agnès"], de: ["Bergdörfer", "Apricale, Dolceacqua, Sainte-Agnès"],
+    nl: ["Bergdorpjes", "Apricale, Dolceacqua, Sainte-Agnès"], zh: ["内陆山村", "阿普里卡莱、多尔切阿夸、圣阿涅斯"] } }
+];
+
+/* ---------- HIKING: sentieri (tempi e distanze indicativi) ----------
+   level: 1 facile, 2 media, 3 impegnativa */
+const HIKES = [
+  { zone: "genova", icon: "🥾", img: "foto/sanfruttuoso.jpg", time: "2 h", km: "5 km", level: 2, q: "Abbazia di San Fruttuoso", t: {
+    it: ["Portofino → San Fruttuoso", "Lecci, scorci sul mare e l'abbazia nascosta in una baia."],
+    fr: ["Portofino → San Fruttuoso", "Chênes verts, vues sur la mer et l'abbaye cachée dans une crique."],
+    en: ["Portofino → San Fruttuoso", "Holm oaks, sea views and an abbey hidden in a cove."],
+    de: ["Portofino → San Fruttuoso", "Steineichen, Meerblicke und eine Abtei in einer versteckten Bucht."],
+    nl: ["Portofino → San Fruttuoso", "Steeneiken, zeezichten en een abdij verscholen in een baai."],
+    zh: ["波托菲诺 → 圣弗鲁图奥索", "冬青栎林、海景，以及藏在小海湾里的修道院。"] } },
+  { zone: "savona", icon: "🥾", img: "foto/pellegrino.jpg", time: "2 h", km: "5 km", level: 2, q: "Sentiero del Pellegrino Varigotti", t: {
+    it: ["Sentiero del Pellegrino", "Da Varigotti a Noli sopra la Baia dei Saraceni."],
+    fr: ["Sentiero del Pellegrino", "De Varigotti à Noli au-dessus de la Baie des Sarrasins."],
+    en: ["Pilgrim's Path", "From Varigotti to Noli above the Bay of the Saracens."],
+    de: ["Pilgerweg", "Von Varigotti nach Noli über der Sarazenenbucht."],
+    nl: ["Pelgrimspad", "Van Varigotti naar Noli boven de Baai van de Saracenen."],
+    zh: ["朝圣者小径", "从瓦里戈蒂到诺利，俯瞰撒拉逊湾。"] } },
+  { zone: "imperia", icon: "🚲", img: "foto/ciclabile.jpg", time: "1–2 h 🚲", km: "24 km", level: 1, q: "Pista ciclabile Parco costiero Riviera dei Fiori", t: {
+    it: ["Ciclopedonale Riviera dei Fiori", "Da Ospedaletti a San Lorenzo al Mare sulla vecchia ferrovia."],
+    fr: ["Piste Riviera dei Fiori", "D'Ospedaletti à San Lorenzo al Mare sur l'ancienne voie ferrée."],
+    en: ["Riviera dei Fiori cycle path", "From Ospedaletti to San Lorenzo al Mare along the old railway."],
+    de: ["Radweg Riviera dei Fiori", "Von Ospedaletti nach San Lorenzo al Mare auf der alten Bahntrasse."],
+    nl: ["Fietspad Riviera dei Fiori", "Van Ospedaletti naar San Lorenzo al Mare over de oude spoorlijn."],
+    zh: ["花之海岸骑行步道", "沿旧铁路从奥斯佩达莱蒂到圣洛伦佐阿尔马雷。"] } },
+  { zone: "azur", icon: "🥾", img: "foto/capferrat.jpg", time: "3 h", km: "10 km", level: 1, q: "Sentier du littoral Saint-Jean-Cap-Ferrat", t: {
+    it: ["Sentiero del Cap Ferrat", "Il giro della penisola tra pini e acqua turchese."],
+    fr: ["Sentier du littoral du Cap Ferrat", "Le tour de la presqu'île entre pins et eau turquoise."],
+    en: ["Cap Ferrat coastal path", "Loop around the peninsula among pines and turquoise water."],
+    de: ["Küstenweg Cap Ferrat", "Rund um die Halbinsel zwischen Pinien und türkisem Wasser."],
+    nl: ["Kustpad Cap Ferrat", "Rondom het schiereiland tussen pijnbomen en turquoise water."],
+    zh: ["费拉角海岸步道", "环半岛而行，松林与碧绿海水相伴。"] } },
+  { zone: "azur", icon: "🥾", img: "foto/nietzsche.jpg", time: "1,5 h", km: "3 km", level: 3, q: "Chemin de Nietzsche Èze", t: {
+    it: ["Chemin de Nietzsche", "Salita ripida dal mare fino al borgo di Èze."],
+    fr: ["Chemin de Nietzsche", "Montée raide de la mer jusqu'au village d'Èze."],
+    en: ["Nietzsche Path", "A steep climb from the sea up to Èze village."],
+    de: ["Nietzsche-Weg", "Steiler Aufstieg vom Meer bis ins Dorf Èze."],
+    nl: ["Nietzschepad", "Steile klim van de zee naar het dorp Èze."],
+    zh: ["尼采小径", "从海边陡峭攀升至埃兹村。"] } },
+  { zone: "savona", icon: "⛰️", img: "foto/altavia.jpg", time: "3 h", km: "8 km", level: 2, q: "Parco del Beigua", t: {
+    it: ["Parco del Beigua", "Geoparco UNESCO: crinali con vista dal mare alle Alpi."],
+    fr: ["Parc du Beigua", "Géoparc UNESCO : crêtes avec vue de la mer aux Alpes."],
+    en: ["Beigua Park", "UNESCO Geopark: ridges with views from the sea to the Alps."],
+    de: ["Beigua-Park", "UNESCO-Geopark: Grate mit Blick vom Meer bis zu den Alpen."],
+    nl: ["Beigua-park", "UNESCO Geopark: bergkammen met uitzicht van zee tot de Alpen."],
+    zh: ["贝瓜公园", "联合国教科文组织地质公园：山脊上可远眺大海与阿尔卑斯山。"] } }
+];
+
+/* ---------- WHERE TO EAT: ristoranti ----------
+   tag: michelin | trad | street | sweet — price: da € a €€€€ */
+const RESTAURANTS = [
+  { name: "Mirazur", place: "Menton", zone: "azur", tag: "michelin", price: "€€€€", icon: "⭐", q: "Mirazur Menton", t: {
+    it: "Tre stelle Michelin: l'orto e il mare tra Italia e Francia.", fr: "Trois étoiles Michelin : le potager et la mer entre Italie et France.",
+    en: "Three Michelin stars: garden and sea between Italy and France.", de: "Drei Michelin-Sterne: Garten und Meer zwischen Italien und Frankreich.",
+    nl: "Drie Michelinsterren: moestuin en zee tussen Italië en Frankrijk.", zh: "米其林三星：横跨意法的田园与海洋风味。" } },
+  { name: "Le Louis XV – Alain Ducasse", place: "Monaco, Hôtel de Paris", zone: "azur", tag: "michelin", price: "€€€€", icon: "⭐", q: "Le Louis XV Alain Ducasse Monaco", t: {
+    it: "Alta cucina della Riviera nel salotto di Monte-Carlo.", fr: "La grande cuisine de la Riviera au cœur de Monte-Carlo.",
+    en: "Riviera fine dining in the heart of Monte-Carlo.", de: "Riviera-Spitzenküche im Herzen von Monte-Carlo.",
+    nl: "Rivièra-haute cuisine in het hart van Monte-Carlo.", zh: "蒙特卡洛核心地带的里维埃拉高级料理。" } },
+  { name: "Da Puny", place: "Portofino", zone: "genova", tag: "trad", price: "€€€", icon: "🐟", q: "Ristorante Puny Portofino", t: {
+    it: "Il classico della piazzetta: pesce e trenette al pesto.", fr: "Le classique de la piazzetta : poisson et trenette au pesto.",
+    en: "The piazzetta classic: fresh fish and trenette al pesto.", de: "Der Klassiker an der Piazzetta: Fisch und Trenette al Pesto.",
+    nl: "De klassieker aan het pleintje: vis en trenette al pesto.", zh: "小广场上的经典：鲜鱼和青酱细面。" } },
+  { name: "Il Genovese", place: "Genova", zone: "genova", tag: "trad", price: "€€", icon: "🌿", q: "Il Genovese ristorante Genova", t: {
+    it: "Pesto al mortaio e piatti della tradizione genovese.", fr: "Pesto au mortier et plats de la tradition génoise.",
+    en: "Mortar-ground pesto and traditional Genoese dishes.", de: "Pesto aus dem Mörser und traditionelle Genueser Küche.",
+    nl: "Pesto uit de vijzel en traditionele Genuese gerechten.", zh: "石臼研磨青酱与热那亚传统菜。" } },
+  { name: "Antica Sciamadda", place: "Genova, Via San Giorgio", zone: "genova", tag: "street", price: "€", icon: "🔥", q: "Antica Sciamadda Genova", t: {
+    it: "Farinata e torte salate dal forno a legna storico.", fr: "Farinata et tourtes salées du vieux four à bois.",
+    en: "Farinata and savoury pies from a historic wood oven.", de: "Farinata und herzhafte Torten aus dem alten Holzofen.",
+    nl: "Farinata en hartige taarten uit een historische houtoven.", zh: "百年柴火炉烤的鹰嘴豆薄饼与咸派。" } },
+  { name: "Manuelina", place: "Recco", zone: "genova", tag: "trad", price: "€€", icon: "🧀", q: "Manuelina Recco", t: {
+    it: "La focaccia di Recco col formaggio, dove è nata la tradizione.", fr: "La focaccia de Recco au fromage, là où la tradition est née.",
+    en: "Recco's cheese focaccia, where the tradition was born.", de: "Focaccia di Recco mit Käse, dort wo die Tradition entstand.",
+    nl: "De focaccia van Recco met kaas, waar de traditie begon.", zh: "雷科奶酪佛卡夏的发源地。" } },
+  { name: "Revello", place: "Camogli", zone: "genova", tag: "street", price: "€", icon: "🥖", q: "Panificio Revello Camogli", t: {
+    it: "Focaccia e camogliesi al rum da mangiare sul lungomare.", fr: "Focaccia et camogliesi au rhum à déguster face à la mer.",
+    en: "Focaccia and rum camogliesi to eat on the seafront.", de: "Focaccia und Rum-Camogliesi für die Strandpromenade.",
+    nl: "Focaccia en camogliesi met rum voor op de boulevard.", zh: "佛卡夏和朗姆酒卡莫利酥，适合在海边享用。" } },
+  { name: "La Merenda", place: "Nice, Vieux-Nice", zone: "azur", tag: "trad", price: "€€", icon: "🍅", q: "La Merenda Nice", t: {
+    it: "Cucina nizzarda autentica in una manciata di tavoli.", fr: "Authentique cuisine niçoise, quelques tables seulement.",
+    en: "Authentic Niçoise cooking at a handful of tables.", de: "Authentische Nizzaer Küche an wenigen Tischen.",
+    nl: "Authentieke Niçoise keuken aan een handvol tafels.", zh: "寥寥几桌的地道尼斯菜。" } },
+  { name: "Chez Pipo", place: "Nice, Port", zone: "azur", tag: "street", price: "€", icon: "🥞", q: "Chez Pipo Nice", t: {
+    it: "La socca croccante, dal 1923.", fr: "La socca croustillante, depuis 1923.",
+    en: "Crispy socca since 1923.", de: "Knusprige Socca seit 1923.",
+    nl: "Knapperige socca sinds 1923.", zh: "自1923年起的酥脆鹰嘴豆饼。" } },
+  { name: "Balzola", place: "Alassio", zone: "savona", tag: "sweet", price: "€€", icon: "🍫", q: "Pasticceria Balzola Alassio", t: {
+    it: "La pasticceria dove sono nati i Baci di Alassio.", fr: "La pâtisserie où sont nés les Baci di Alassio.",
+    en: "The pastry shop where Baci di Alassio were born.", de: "Die Konditorei, in der die Baci di Alassio erfunden wurden.",
+    nl: "De banketbakkerij waar de Baci di Alassio zijn ontstaan.", zh: "阿拉西奥之吻巧克力饼干的诞生地。" } }
+];
+
+/* Piatti tipici (nome e luogo) */
+const DISHES = [
+  ["🌿", "Pesto", "Genova"], ["🧀", "Focaccia di Recco", "Recco"], ["🔥", "Farinata · Socca", "Genova · Nice"],
+  ["🧅", "Pissaladière", "Nice"], ["🥗", "Salade niçoise", "Nice"], ["🐟", "Brandacujun", "Imperia"],
+  ["🦐", "Cappon magro", "Genova"], ["🥟", "Barbagiuai", "Dolceacqua"], ["🍫", "Baci di Alassio", "Alassio"], ["🫒", "Olio Taggiasco", "Imperia"]
+];
+
+/* Guide e siti dove escono recensioni e nuove aperture */
+const GUIDES = [
+  ["Guide Michelin", "guide.michelin.com", "https://guide.michelin.com"],
+  ["Gambero Rosso", "gamberorosso.it", "https://www.gamberorosso.it"],
+  ["Slow Food", "slowfood.it", "https://www.slowfood.it"],
+  ["Gault&Millau", "gaultmillau.com", "https://www.gaultmillau.com"]
 ];
 
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
     issue: "N° 1 · Novembre 2026",
-    navMap: "Mappa", navEvents: "Eventi", navTodo: "Cosa fare", navSites: "Vacanze",
-    heroTitle: "Cosa succede <em>in Riviera</em>",
-    heroLead: "Sagre, feste, concerti e idee per il weekend. Da Genova a Nizza, tutto in un colpo d'occhio.",
-    ctaEvents: "Scopri gli eventi", ctaMap: "Apri la mappa",
-    statEvents: "eventi in arrivo", statZones: "zone", statLangs: "lingue",
-    mapEyebrow: "Dove andare", mapTitle: "Scegli <em>la tua zona</em>", mapSub: "Tocca un punto sulla mappa per vedere gli eventi in zona.",
-    featEyebrow: "Da non perdere", featTitle: "In <em>primo piano</em>",
-    eventsEyebrow: "Agenda", eventsTitle: "Tutti gli <em>eventi</em>", eventsSub: "Filtra per zona e per tipo. Una riga per evento, il resto sul sito dell'organizzatore.",
-    todoEyebrow: "Esperienze", todoTitle: "Cosa fare <em>quando arrivi</em>", todoSub: "Mare, sentieri, borghi e sapori.",
-    sitesEyebrow: "Vacanze", sitesTitle: "Organizza il tuo <em>soggiorno</em>",
+    heroLead: "Cosa succede, dove andare, cosa vedere, cosa fare e dove mangiare tra Genova, Savona, Imperia e la Costa Azzurra.",
+    ctaEvents: "Scopri gli eventi", ctaEat: "Dove mangiare",
+    statEvents: "eventi in arrivo", statPlaces: "luoghi e indirizzi", statLangs: "lingue",
+    onEyebrow: "Agenda", onSub: "Sagre, feste, concerti e mercatini. Una riga per evento, il resto sul sito dell'organizzatore.",
+    goEyebrow: "Le zone", goSub: "Tocca un punto sulla mappa per vedere gli eventi della zona.",
+    seeEyebrow: "Da vedere", seeSub: "I luoghi che non puoi perderti, da Portofino a Èze.",
+    doEyebrow: "Esperienze", doSub: "Mare, bici, borghi e tramonti.",
+    hikeEyebrow: "Sentieri", hikeSub: "Passeggiate tra mare e monti. Tempi e distanze indicativi.",
+    eatEyebrow: "A tavola", eatSub: "Dagli stellati alle focaccerie storiche: dove si mangia bene, e cosa ordinare.",
+    oil: "Olio", guidesSub: "Recensioni e nuove aperture: le guide da seguire.",
+    stayEyebrow: "Vacanze", staySub: "Alloggi, attività e prenotazioni sui nostri portali.",
     siteIt: "Riviera di Ponente e di Levante: hotel, case vacanza, escursioni.",
     siteFr: "Da Mentone a Cannes: soggiorni, attività e idee di viaggio.",
     visit: "Visita il sito",
-    newsTitle: "Il giornalino <em>nella tua email</em>", newsSub: "Ogni mese i migliori eventi della Riviera. Niente spam, promesso.",
+    newsTitle: "il giornalino nella tua email", newsSub: "Ogni mese il meglio della Riviera. Niente spam, promesso.",
     subscribe: "Iscriviti", thanks: "Grazie! ✓",
-    footer: "Liguria & Côte d'Azur — il giornalino degli eventi, delle sagre e delle cose da fare.",
-    disclaimer: "Date e programmi possono cambiare: verifica sempre sul sito dell'organizzatore.",
-    credits: "Crediti foto",
+    footer: "Il giornalino di eventi, luoghi, sentieri e cucina tra Liguria e Costa Azzurra.",
+    disclaimer: "Date, orari e programmi possono cambiare: verifica sempre sul sito dell'organizzatore o del locale.",
+    credits: "Foto",
     empty: "Nessun evento per questa scelta. Prova un altro filtro!",
-    all: "Tutto", events1: "evento", eventsN: "eventi",
+    all: "Tutto", events1: "evento", eventsN: "eventi", maps: "Mappa",
     today: "Oggi", tomorrow: "Domani", inDays: (n) => `Tra ${n} giorni`, now: "In corso",
+    lvl: ["Facile", "Media", "Impegnativa"],
+    tags: { michelin: "Stellato", trad: "Tradizione", street: "Street food", sweet: "Pasticceria" },
     zones: { genova: "Genova", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Sagre", feste: "🎉 Feste", musica: "🎶 Musica", mercatini: "🎄 Mercatini", cultura: "🏛️ Cultura", sport: "🚵 Sport" },
     map: { italy: "ITALIA", france: "FRANCIA", sea: "Mar Ligure" },
@@ -633,27 +834,30 @@ const I18N = {
   },
   fr: {
     issue: "N° 1 · Novembre 2026",
-    navMap: "Carte", navEvents: "Événements", navTodo: "À faire", navSites: "Vacances",
-    heroTitle: "Ce qui se passe <em>sur la Riviera</em>",
-    heroLead: "Fêtes de village, festivals, concerts et idées pour le week-end. De Gênes à Nice, tout en un coup d'œil.",
-    ctaEvents: "Voir les événements", ctaMap: "Ouvrir la carte",
-    statEvents: "événements à venir", statZones: "zones", statLangs: "langues",
-    mapEyebrow: "Où aller", mapTitle: "Choisissez <em>votre zone</em>", mapSub: "Touchez un point sur la carte pour voir les événements du coin.",
-    featEyebrow: "À ne pas manquer", featTitle: "À <em>la une</em>",
-    eventsEyebrow: "Agenda", eventsTitle: "Tous les <em>événements</em>", eventsSub: "Filtrez par zone et par type. Une ligne par événement, le reste sur le site de l'organisateur.",
-    todoEyebrow: "Expériences", todoTitle: "Que faire <em>en arrivant</em>", todoSub: "Mer, sentiers, villages et saveurs.",
-    sitesEyebrow: "Vacances", sitesTitle: "Organisez votre <em>séjour</em>",
+    heroLead: "Ce qui se passe, où aller, que voir, que faire et où manger entre Gênes, Savone, Imperia et la Côte d'Azur.",
+    ctaEvents: "Voir les événements", ctaEat: "Où manger",
+    statEvents: "événements à venir", statPlaces: "lieux et adresses", statLangs: "langues",
+    onEyebrow: "Agenda", onSub: "Fêtes, festivals, concerts et marchés. Une ligne par événement, le reste sur le site de l'organisateur.",
+    goEyebrow: "Les zones", goSub: "Touchez un point sur la carte pour voir les événements du coin.",
+    seeEyebrow: "À voir", seeSub: "Les lieux incontournables, de Portofino à Èze.",
+    doEyebrow: "Expériences", doSub: "Mer, vélo, villages et couchers de soleil.",
+    hikeEyebrow: "Sentiers", hikeSub: "Balades entre mer et montagne. Durées et distances indicatives.",
+    eatEyebrow: "À table", eatSub: "Des étoilés aux fours historiques : où bien manger, et quoi commander.",
+    oil: "Huile", guidesSub: "Critiques et nouvelles adresses : les guides à suivre.",
+    stayEyebrow: "Vacances", staySub: "Hébergements, activités et réservations sur nos portails.",
     siteIt: "Riviera du Ponant et du Levant : hôtels, locations, excursions.",
     siteFr: "De Menton à Cannes : séjours, activités et idées de voyage.",
     visit: "Visiter le site",
-    newsTitle: "Le petit journal <em>dans votre boîte mail</em>", newsSub: "Chaque mois, les meilleurs événements de la Riviera. Sans spam, promis.",
+    newsTitle: "le journal dans votre boîte mail", newsSub: "Chaque mois, le meilleur de la Riviera. Sans spam, promis.",
     subscribe: "S'inscrire", thanks: "Merci ! ✓",
-    footer: "Ligurie & Côte d'Azur — le petit journal des événements, des fêtes et des choses à faire.",
-    disclaimer: "Dates et programmes susceptibles de changer : vérifiez toujours sur le site de l'organisateur.",
-    credits: "Crédits photo",
+    footer: "Le journal des événements, lieux, sentiers et saveurs entre Ligurie et Côte d'Azur.",
+    disclaimer: "Dates, horaires et programmes peuvent changer : vérifiez toujours auprès de l'organisateur ou du restaurant.",
+    credits: "Photos",
     empty: "Aucun événement pour ce choix. Essayez un autre filtre !",
-    all: "Tout", events1: "événement", eventsN: "événements",
+    all: "Tout", events1: "événement", eventsN: "événements", maps: "Carte",
     today: "Aujourd'hui", tomorrow: "Demain", inDays: (n) => `Dans ${n} jours`, now: "En cours",
+    lvl: ["Facile", "Moyenne", "Difficile"],
+    tags: { michelin: "Étoilé", trad: "Tradition", street: "Street food", sweet: "Pâtisserie" },
     zones: { genova: "Gênes", savona: "Savone", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Fêtes gourmandes", feste: "🎉 Fêtes", musica: "🎶 Musique", mercatini: "🎄 Marchés", cultura: "🏛️ Culture", sport: "🚵 Sport" },
     map: { italy: "ITALIE", france: "FRANCE", sea: "Mer Ligure" },
@@ -661,27 +865,30 @@ const I18N = {
   },
   en: {
     issue: "No. 1 · November 2026",
-    navMap: "Map", navEvents: "Events", navTodo: "Things to do", navSites: "Holidays",
-    heroTitle: "What's on <em>in the Riviera</em>",
-    heroLead: "Food festivals, celebrations, concerts and weekend ideas. From Genoa to Nice, all at a glance.",
-    ctaEvents: "Discover events", ctaMap: "Open the map",
-    statEvents: "upcoming events", statZones: "areas", statLangs: "languages",
-    mapEyebrow: "Where to go", mapTitle: "Pick <em>your area</em>", mapSub: "Tap a point on the map to see what's on nearby.",
-    featEyebrow: "Don't miss", featTitle: "<em>Featured</em>",
-    eventsEyebrow: "Calendar", eventsTitle: "All <em>events</em>", eventsSub: "Filter by area and type. One line per event, the rest on the organiser's website.",
-    todoEyebrow: "Experiences", todoTitle: "Things to do <em>when you arrive</em>", todoSub: "Sea, trails, villages and flavours.",
-    sitesEyebrow: "Holidays", sitesTitle: "Plan your <em>stay</em>",
+    heroLead: "What's on, where to go, what to see, what to do and where to eat between Genoa, Savona, Imperia and the Côte d'Azur.",
+    ctaEvents: "Discover events", ctaEat: "Where to eat",
+    statEvents: "upcoming events", statPlaces: "places & addresses", statLangs: "languages",
+    onEyebrow: "Calendar", onSub: "Food festivals, celebrations, concerts and markets. One line per event, the rest on the organiser's website.",
+    goEyebrow: "The areas", goSub: "Tap a point on the map to see what's on nearby.",
+    seeEyebrow: "Sights", seeSub: "The places you can't miss, from Portofino to Èze.",
+    doEyebrow: "Experiences", doSub: "Sea, bikes, villages and sunsets.",
+    hikeEyebrow: "Trails", hikeSub: "Walks between sea and mountains. Times and distances are approximate.",
+    eatEyebrow: "Food", eatSub: "From Michelin stars to historic focaccia bakeries: where to eat well, and what to order.",
+    oil: "Olive oil", guidesSub: "Reviews and new openings: the guides to follow.",
+    stayEyebrow: "Holidays", staySub: "Accommodation, activities and bookings on our websites.",
     siteIt: "Western and Eastern Riviera: hotels, holiday homes, excursions.",
     siteFr: "From Menton to Cannes: stays, activities and travel ideas.",
     visit: "Visit the website",
-    newsTitle: "The newsletter <em>in your inbox</em>", newsSub: "The Riviera's best events, every month. No spam, promise.",
+    newsTitle: "in your inbox", newsSub: "The best of the Riviera, every month. No spam, promise.",
     subscribe: "Subscribe", thanks: "Thank you! ✓",
-    footer: "Liguria & Côte d'Azur — the newsletter for events, festivals and things to do.",
-    disclaimer: "Dates and programmes may change: always check the organiser's website.",
-    credits: "Photo credits",
+    footer: "The guide to events, places, trails and food between Liguria and the Côte d'Azur.",
+    disclaimer: "Dates, times and programmes may change: always check with the organiser or the restaurant.",
+    credits: "Photos",
     empty: "No events for this selection. Try another filter!",
-    all: "All", events1: "event", eventsN: "events",
+    all: "All", events1: "event", eventsN: "events", maps: "Map",
     today: "Today", tomorrow: "Tomorrow", inDays: (n) => `In ${n} days`, now: "On now",
+    lvl: ["Easy", "Moderate", "Challenging"],
+    tags: { michelin: "Michelin-starred", trad: "Traditional", street: "Street food", sweet: "Pastry" },
     zones: { genova: "Genoa", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Food festivals", feste: "🎉 Celebrations", musica: "🎶 Music", mercatini: "🎄 Markets", cultura: "🏛️ Culture", sport: "🚵 Sport" },
     map: { italy: "ITALY", france: "FRANCE", sea: "Ligurian Sea" },
@@ -689,27 +896,30 @@ const I18N = {
   },
   de: {
     issue: "Nr. 1 · November 2026",
-    navMap: "Karte", navEvents: "Events", navTodo: "Erleben", navSites: "Urlaub",
-    heroTitle: "Was los ist <em>an der Riviera</em>",
-    heroLead: "Dorffeste, Feiern, Konzerte und Ideen fürs Wochenende. Von Genua bis Nizza, alles auf einen Blick.",
-    ctaEvents: "Events entdecken", ctaMap: "Karte öffnen",
-    statEvents: "kommende Events", statZones: "Regionen", statLangs: "Sprachen",
-    mapEyebrow: "Wohin", mapTitle: "Wähle <em>deine Region</em>", mapSub: "Tippe auf einen Punkt der Karte, um die Events in der Nähe zu sehen.",
-    featEyebrow: "Nicht verpassen", featTitle: "<em>Highlights</em>",
-    eventsEyebrow: "Kalender", eventsTitle: "Alle <em>Events</em>", eventsSub: "Nach Region und Art filtern. Eine Zeile pro Event, alles Weitere beim Veranstalter.",
-    todoEyebrow: "Erlebnisse", todoTitle: "Was tun <em>vor Ort</em>", todoSub: "Meer, Wanderwege, Dörfer und Genuss.",
-    sitesEyebrow: "Urlaub", sitesTitle: "Plane deinen <em>Aufenthalt</em>",
+    heroLead: "Was los ist, wohin, was sehen, was tun und wo essen zwischen Genua, Savona, Imperia und der Côte d'Azur.",
+    ctaEvents: "Events entdecken", ctaEat: "Wo essen",
+    statEvents: "kommende Events", statPlaces: "Orte & Adressen", statLangs: "Sprachen",
+    onEyebrow: "Kalender", onSub: "Dorffeste, Feiern, Konzerte und Märkte. Eine Zeile pro Event, alles Weitere beim Veranstalter.",
+    goEyebrow: "Die Regionen", goSub: "Tippe auf einen Punkt der Karte, um die Events in der Nähe zu sehen.",
+    seeEyebrow: "Sehenswert", seeSub: "Orte, die du nicht verpassen solltest, von Portofino bis Èze.",
+    doEyebrow: "Erlebnisse", doSub: "Meer, Radtouren, Dörfer und Sonnenuntergänge.",
+    hikeEyebrow: "Wanderwege", hikeSub: "Touren zwischen Meer und Bergen. Zeiten und Strecken sind ungefähre Angaben.",
+    eatEyebrow: "Genuss", eatSub: "Von Sterneküche bis zur historischen Focacceria: wo man gut isst und was man bestellt.",
+    oil: "Olivenöl", guidesSub: "Kritiken und Neueröffnungen: die Guides zum Folgen.",
+    stayEyebrow: "Urlaub", staySub: "Unterkünfte, Aktivitäten und Buchungen auf unseren Portalen.",
     siteIt: "Riviera di Ponente und di Levante: Hotels, Ferienwohnungen, Ausflüge.",
     siteFr: "Von Menton bis Cannes: Aufenthalte, Aktivitäten und Reiseideen.",
     visit: "Zur Website",
-    newsTitle: "Der Newsletter <em>in deinem Postfach</em>", newsSub: "Jeden Monat die besten Events der Riviera. Kein Spam, versprochen.",
+    newsTitle: "in deinem Postfach", newsSub: "Jeden Monat das Beste der Riviera. Kein Spam, versprochen.",
     subscribe: "Abonnieren", thanks: "Danke! ✓",
-    footer: "Ligurien & Côte d'Azur — der Newsletter für Events, Feste und Ausflugsideen.",
-    disclaimer: "Termine und Programme können sich ändern: bitte immer beim Veranstalter prüfen.",
-    credits: "Bildnachweis",
+    footer: "Der Guide für Events, Orte, Wanderwege und Küche zwischen Ligurien und Côte d'Azur.",
+    disclaimer: "Termine, Zeiten und Programme können sich ändern: bitte immer beim Veranstalter oder Restaurant prüfen.",
+    credits: "Fotos",
     empty: "Keine Events für diese Auswahl. Probiere einen anderen Filter!",
-    all: "Alle", events1: "Event", eventsN: "Events",
+    all: "Alle", events1: "Event", eventsN: "Events", maps: "Karte",
     today: "Heute", tomorrow: "Morgen", inDays: (n) => `In ${n} Tagen`, now: "Läuft gerade",
+    lvl: ["Leicht", "Mittel", "Anspruchsvoll"],
+    tags: { michelin: "Sterneküche", trad: "Traditionell", street: "Streetfood", sweet: "Konditorei" },
     zones: { genova: "Genua", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Dorffeste", feste: "🎉 Feste", musica: "🎶 Musik", mercatini: "🎄 Märkte", cultura: "🏛️ Kultur", sport: "🚵 Sport" },
     map: { italy: "ITALIEN", france: "FRANKREICH", sea: "Ligurisches Meer" },
@@ -717,27 +927,30 @@ const I18N = {
   },
   nl: {
     issue: "Nr. 1 · November 2026",
-    navMap: "Kaart", navEvents: "Evenementen", navTodo: "Wat te doen", navSites: "Vakantie",
-    heroTitle: "Wat er te doen is <em>aan de Rivièra</em>",
-    heroLead: "Dorpsfeesten, festivals, concerten en ideeën voor het weekend. Van Genua tot Nice, alles in één oogopslag.",
-    ctaEvents: "Ontdek evenementen", ctaMap: "Open de kaart",
-    statEvents: "komende evenementen", statZones: "gebieden", statLangs: "talen",
-    mapEyebrow: "Waarheen", mapTitle: "Kies <em>jouw gebied</em>", mapSub: "Tik op een punt op de kaart om te zien wat er in de buurt gebeurt.",
-    featEyebrow: "Niet missen", featTitle: "<em>Uitgelicht</em>",
-    eventsEyebrow: "Agenda", eventsTitle: "Alle <em>evenementen</em>", eventsSub: "Filter op gebied en type. Eén regel per evenement, de rest op de site van de organisator.",
-    todoEyebrow: "Belevenissen", todoTitle: "Wat te doen <em>als je er bent</em>", todoSub: "Zee, wandelpaden, dorpjes en smaken.",
-    sitesEyebrow: "Vakantie", sitesTitle: "Plan je <em>verblijf</em>",
+    heroLead: "Wat er te doen is, waar je heen gaat, wat je ziet en waar je eet tussen Genua, Savona, Imperia en de Côte d'Azur.",
+    ctaEvents: "Ontdek evenementen", ctaEat: "Waar eten",
+    statEvents: "komende evenementen", statPlaces: "plekken & adressen", statLangs: "talen",
+    onEyebrow: "Agenda", onSub: "Dorpsfeesten, festivals, concerten en markten. Eén regel per evenement, de rest op de site van de organisator.",
+    goEyebrow: "De gebieden", goSub: "Tik op een punt op de kaart om te zien wat er in de buurt gebeurt.",
+    seeEyebrow: "Bezienswaardig", seeSub: "Plekken die je niet mag missen, van Portofino tot Èze.",
+    doEyebrow: "Belevenissen", doSub: "Zee, fietsen, dorpjes en zonsondergangen.",
+    hikeEyebrow: "Wandelpaden", hikeSub: "Wandelingen tussen zee en bergen. Tijden en afstanden zijn bij benadering.",
+    eatEyebrow: "Eten", eatSub: "Van sterrenrestaurants tot historische focacceria's: waar je goed eet en wat je bestelt.",
+    oil: "Olijfolie", guidesSub: "Recensies en nieuwe openingen: de gidsen om te volgen.",
+    stayEyebrow: "Vakantie", staySub: "Accommodaties, activiteiten en boekingen op onze websites.",
     siteIt: "Riviera di Ponente en di Levante: hotels, vakantiehuizen, uitstapjes.",
     siteFr: "Van Menton tot Cannes: verblijven, activiteiten en reisideeën.",
     visit: "Bezoek de website",
-    newsTitle: "De nieuwsbrief <em>in je mailbox</em>", newsSub: "Elke maand de beste evenementen van de Rivièra. Geen spam, beloofd.",
+    newsTitle: "in je mailbox", newsSub: "Elke maand het beste van de Rivièra. Geen spam, beloofd.",
     subscribe: "Inschrijven", thanks: "Bedankt! ✓",
-    footer: "Ligurië & Côte d'Azur — de nieuwsbrief voor evenementen, feesten en uitstapjes.",
-    disclaimer: "Data en programma's kunnen wijzigen: controleer altijd de site van de organisator.",
-    credits: "Fotoverantwoording",
+    footer: "De gids voor evenementen, plekken, wandelpaden en eten tussen Ligurië en de Côte d'Azur.",
+    disclaimer: "Data, tijden en programma's kunnen wijzigen: controleer altijd bij de organisator of het restaurant.",
+    credits: "Foto's",
     empty: "Geen evenementen voor deze keuze. Probeer een ander filter!",
-    all: "Alles", events1: "evenement", eventsN: "evenementen",
+    all: "Alles", events1: "evenement", eventsN: "evenementen", maps: "Kaart",
     today: "Vandaag", tomorrow: "Morgen", inDays: (n) => `Over ${n} dagen`, now: "Nu bezig",
+    lvl: ["Makkelijk", "Gemiddeld", "Zwaar"],
+    tags: { michelin: "Sterrenrestaurant", trad: "Traditioneel", street: "Streetfood", sweet: "Banketbakker" },
     zones: { genova: "Genua", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Eetfeesten", feste: "🎉 Feesten", musica: "🎶 Muziek", mercatini: "🎄 Markten", cultura: "🏛️ Cultuur", sport: "🚵 Sport" },
     map: { italy: "ITALIË", france: "FRANKRIJK", sea: "Ligurische Zee" },
@@ -745,27 +958,30 @@ const I18N = {
   },
   zh: {
     issue: "第1期 · 2026年11月",
-    navMap: "地图", navEvents: "活动", navTodo: "玩什么", navSites: "度假",
-    heroTitle: "里维埃拉 <em>本月看点</em>",
-    heroLead: "美食节、节庆、音乐会和周末灵感。从热那亚到尼斯，一目了然。",
-    ctaEvents: "查看活动", ctaMap: "打开地图",
-    statEvents: "场即将举行", statZones: "个地区", statLangs: "种语言",
-    mapEyebrow: "去哪儿", mapTitle: "选择 <em>你的目的地</em>", mapSub: "点击地图上的地点，查看附近的活动。",
-    featEyebrow: "不容错过", featTitle: "<em>精选推荐</em>",
-    eventsEyebrow: "日程", eventsTitle: "全部 <em>活动</em>", eventsSub: "按地区和类型筛选。每个活动一句话，详情请看主办方网站。",
-    todoEyebrow: "体验", todoTitle: "到了以后 <em>玩什么</em>", todoSub: "大海、步道、小镇与美食。",
-    sitesEyebrow: "度假", sitesTitle: "规划你的 <em>旅程</em>",
+    heroLead: "热那亚、萨沃纳、因佩里亚与蔚蓝海岸：活动、去哪儿、看什么、玩什么、吃什么。",
+    ctaEvents: "查看活动", ctaEat: "美食推荐",
+    statEvents: "场即将举行", statPlaces: "个地点与餐厅", statLangs: "种语言",
+    onEyebrow: "活动日程", onSub: "美食节、节庆、音乐会和集市。每个活动一句话，详情请看主办方网站。",
+    goEyebrow: "地区", goSub: "点击地图上的地点，查看附近的活动。",
+    seeEyebrow: "必看景点", seeSub: "从波托菲诺到埃兹，不容错过的地方。",
+    doEyebrow: "体验", doSub: "大海、骑行、小镇与日落。",
+    hikeEyebrow: "徒步路线", hikeSub: "山海之间的步道。时间和距离仅供参考。",
+    eatEyebrow: "美食", eatSub: "从米其林星级到百年佛卡夏老店：哪里好吃，点什么。",
+    oil: "橄榄油", guidesSub: "最新点评与新店开业：值得关注的美食指南。",
+    stayEyebrow: "度假", staySub: "在我们的网站预订住宿和活动。",
     siteIt: "利古里亚东西海岸：酒店、度假屋、短途游。",
     siteFr: "从芒通到戛纳：住宿、活动与旅行灵感。",
     visit: "访问网站",
-    newsTitle: "订阅 <em>电子月刊</em>", newsSub: "每月精选里维埃拉最佳活动，绝无垃圾邮件。",
+    newsTitle: "订阅电子月刊", newsSub: "每月精选里维埃拉之最，绝无垃圾邮件。",
     subscribe: "订阅", thanks: "谢谢！✓",
-    footer: "利古里亚与蔚蓝海岸 — 活动、节庆与游玩指南月刊。",
-    disclaimer: "日期和安排可能变动，请以主办方网站为准。",
-    credits: "图片来源",
+    footer: "利古里亚与蔚蓝海岸的活动、景点、步道与美食指南。",
+    disclaimer: "日期、时间和安排可能变动，请以主办方或餐厅信息为准。",
+    credits: "图片",
     empty: "没有符合条件的活动，换个筛选试试！",
-    all: "全部", events1: "场活动", eventsN: "场活动",
+    all: "全部", events1: "场活动", eventsN: "场活动", maps: "地图",
     today: "今天", tomorrow: "明天", inDays: (n) => `${n}天后`, now: "进行中",
+    lvl: ["简单", "中等", "较难"],
+    tags: { michelin: "米其林星级", trad: "传统风味", street: "街头小吃", sweet: "甜点" },
     zones: { genova: "热那亚", savona: "萨沃纳", imperia: "因佩里亚", azur: "蔚蓝海岸" },
     cats: { sagre: "🍝 美食节", feste: "🎉 节庆", musica: "🎶 音乐", mercatini: "🎄 集市", cultura: "🏛️ 文化", sport: "🚵 运动" },
     map: { italy: "意大利", france: "法国", sea: "利古里亚海" },
@@ -781,7 +997,7 @@ const pickLang = (l) => (l = (l || "").slice(0, 2).toLowerCase()) in LANGS ? l :
 let lang = pickLang(navigator.language) || "it";
 try { lang = pickLang(localStorage.getItem("riviera-lang")) || lang; } catch (e) {}
 lang = pickLang(new URLSearchParams(location.search).get("lang")) || lang;
-let zone = "all", cat = "all";
+let zone = "all", cat = "all", tag = "all";
 
 const T = () => I18N[lang];
 const tx = (item) => item.t[lang] || item.t.en;
@@ -789,6 +1005,7 @@ const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const day = (iso) => new Date(iso + "T00:00:00");
 const today = new Date(); today.setHours(0, 0, 0, 0);
+const img = (src) => src ? `<img src="${esc(src)}" alt="" loading="lazy" onerror="this.remove()">` : "";
 
 /* Eventi non ancora finiti, in ordine di data */
 const UPCOMING = EVENTS.filter((e) => day(e.end || e.date) >= today).sort((a, b) => a.date.localeCompare(b.date));
@@ -807,13 +1024,51 @@ function countdown(e) {
   return n <= 30 ? T().inDays(n) : "";
 }
 
-const media = (e) => e.img ? `<img src="${esc(e.img)}" alt="" loading="lazy" onerror="this.remove()">` : "";
+function chips(el, items, current, onPick) {
+  el.innerHTML = [["all", T().all], ...Object.entries(items)]
+    .map(([k, v]) => `<button class="chip ${k === current ? "on" : ""}" data-k="${k}">${esc(v)}</button>`).join("");
+  el.onclick = (ev) => { const b = ev.target.closest(".chip"); if (b) onPick(b.dataset.k); };
+}
 
 function renderTicker() {
   const items = UPCOMING.map((e) => `<span><small>${esc(fmtDate(e))}</small>${esc(tx(e)[0])}</span>`).join("");
   $("#ticker").innerHTML = items + items;
   $("#statEvents").textContent = UPCOMING.length;
+  $("#statPlaces").textContent = SEE.length + HIKES.length + RESTAURANTS.length;
   $("#statLangs").textContent = Object.keys(LANGS).length;
+}
+
+function renderBento() {
+  const feat = UPCOMING.filter((e) => e.featured).sort((a, b) => a.featured - b.featured).slice(0, 3);
+  $("#bento").innerHTML = feat.map((e, i) => {
+    const [title, place, text] = tx(e);
+    return `<a class="tile ${i === 0 ? "big" : ""}" href="${esc(e.url)}" target="_blank" rel="noopener">
+      <div class="bg g-${e.cat}">${img(e.img)}</div><span class="emo">${e.icon}</span>
+      <span class="when">${esc(fmtDate(e))} · ${esc(place)}</span>
+      <h3>${esc(title)}</h3><p>${esc(text)}</p>
+    </a>`;
+  }).join("");
+}
+
+function renderEvents() {
+  const zoneLabels = Object.fromEntries(Object.entries(T().zones).map(([k, v]) => [k, "📍 " + v]));
+  chips($("#zoneChips"), zoneLabels, zone, (k) => { zone = k; renderPins(); renderEvents(); });
+  chips($("#catChips"), T().cats, cat, (k) => { cat = k; renderEvents(); });
+  const list = UPCOMING.filter((e) => (zone === "all" || e.zone === zone) && (cat === "all" || e.cat === cat));
+  $("#grid").innerHTML = list.length ? list.map((e, i) => {
+    const [title, place, text] = tx(e), soon = countdown(e);
+    return `<a class="card" href="${esc(e.url)}" target="_blank" rel="noopener" style="animation-delay:${i * 40}ms">
+      <div class="media g-${e.cat}"><span class="emo">${e.icon}</span>${img(e.img)}
+        <span class="badge">📍 ${esc(T().zones[e.zone])}</span>
+        ${soon ? `<span class="badge soon">${esc(soon)}</span>` : ""}
+      </div>
+      <div class="body">
+        <span class="date">${esc(fmtDate(e))}</span>
+        <h3>${esc(title)}</h3><p>${esc(text)}</p>
+        <div class="foot"><span>${esc(place)}</span><span class="go">→</span></div>
+      </div>
+    </a>`;
+  }).join("") : `<div class="empty">${T().empty}</div>`;
 }
 
 function renderPins() {
@@ -829,63 +1084,66 @@ function renderPins() {
     </g>`;
   }).join("");
   $("#pins").querySelectorAll(".pin").forEach((p) => {
-    const go = () => { zone = p.dataset.k; renderPins(); renderEvents(); $("#eventi").scrollIntoView({ behavior: "smooth" }); };
+    const go = () => { zone = p.dataset.k; renderPins(); renderEvents(); $("#grid").scrollIntoView({ behavior: "smooth", block: "start" }); };
     p.addEventListener("click", go);
     p.addEventListener("keydown", (ev) => { if (ev.key === "Enter") go(); });
   });
 }
 
-function renderBento() {
-  const feat = UPCOMING.filter((e) => e.featured).sort((a, b) => a.featured - b.featured).slice(0, 3);
-  $("#bento").innerHTML = feat.map((e, i) => {
-    const [title, place, text] = tx(e);
-    return `<a class="tile ${i === 0 ? "big" : ""}" href="${esc(e.url)}" target="_blank" rel="noopener">
-      <div class="bg g-${e.cat}">${media(e)}</div>
-      <span class="emo">${e.icon}</span>
-      <span class="when">${esc(fmtDate(e))} · ${esc(place)}</span>
-      <h3>${esc(title)}</h3>
-      <p>${esc(text)}</p>
+function renderSee() {
+  $("#seeGrid").innerHTML = SEE.map((s) => {
+    const [title, text] = tx(s);
+    return `<a class="tile" href="${maps(s.q)}" target="_blank" rel="noopener">
+      <div class="bg g-cultura">${img(s.img)}</div><span class="emo">${s.icon}</span>
+      <span class="chip-z">📍 ${esc(T().zones[s.zone])}</span>
+      <h3>${esc(title)}</h3><p>${esc(text)}</p>
     </a>`;
   }).join("");
-}
-
-function chips(el, items, current, onPick) {
-  el.innerHTML = [["all", T().all], ...Object.entries(items)]
-    .map(([k, v]) => `<button class="chip ${k === current ? "on" : ""}" data-k="${k}">${esc(v)}</button>`).join("");
-  el.onclick = (ev) => { const b = ev.target.closest(".chip"); if (b) onPick(b.dataset.k); };
-}
-
-function renderEvents() {
-  const zoneLabels = Object.fromEntries(Object.entries(T().zones).map(([k, v]) => [k, "📍 " + v]));
-  chips($("#zoneChips"), zoneLabels, zone, (k) => { zone = k; renderPins(); renderEvents(); });
-  chips($("#catChips"), T().cats, cat, (k) => { cat = k; renderEvents(); });
-  const list = UPCOMING.filter((e) => (zone === "all" || e.zone === zone) && (cat === "all" || e.cat === cat));
-  $("#grid").innerHTML = list.length ? list.map((e, i) => {
-    const [title, place, text] = tx(e), soon = countdown(e);
-    return `<a class="card" href="${esc(e.url)}" target="_blank" rel="noopener" style="animation-delay:${i * 40}ms">
-      <div class="media g-${e.cat}"><span class="emo">${e.icon}</span>${media(e)}
-        <span class="badge">📍 ${esc(T().zones[e.zone])}</span>
-        ${soon ? `<span class="badge soon">${esc(soon)}</span>` : ""}
-      </div>
-      <div class="body">
-        <span class="date">${esc(fmtDate(e))}</span>
-        <h3>${esc(title)}</h3>
-        <p>${esc(text)}</p>
-        <div class="foot"><span>${esc(place)}</span><span class="go">→</span></div>
-      </div>
-    </a>`;
-  }).join("") : `<div class="empty">${T().empty}</div>`;
 }
 
 function renderTodo() {
   $("#rail").innerHTML = TODO.map((t, i) => {
     const [title, sub] = tx(t);
-    return `<a class="exp" href="${esc(t.url)}" style="background:${t.bg}">
-      ${t.img ? `<img src="${esc(t.img)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
-      <span class="emo">${t.icon}</span><span class="num">0${i + 1}</span>
+    return `<a class="exp" href="${esc(t.url)}" style="background:linear-gradient(160deg,#3fa7d6,#0b2a40)">
+      ${img(t.img)}<span class="emo">${t.icon}</span><span class="n">0${i + 1}</span>
       <b>${esc(title)}</b><span class="sub">${esc(sub)}</span>
     </a>`;
   }).join("");
+}
+
+function renderHikes() {
+  $("#hikeGrid").innerHTML = HIKES.map((h, i) => {
+    const [title, text] = tx(h);
+    return `<a class="card" href="${maps(h.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 40}ms">
+      <div class="media g-hike"><span class="emo">${h.icon}</span>${img(h.img)}
+        <span class="badge">📍 ${esc(T().zones[h.zone])}</span>
+      </div>
+      <div class="body">
+        <h3>${esc(title)}</h3><p>${esc(text)}</p>
+        <div class="foot">
+          <span class="stats"><span>⏱ ${esc(h.time)}</span><span>📏 ${esc(h.km)}</span>
+            <span><span class="dots">${"●".repeat(h.level)}${"○".repeat(3 - h.level)}</span> ${esc(T().lvl[h.level - 1])}</span></span>
+          <span class="go">→</span>
+        </div>
+      </div>
+    </a>`;
+  }).join("");
+}
+
+function renderEat() {
+  $("#dishes").innerHTML = DISHES.map(([i, n, w]) => `<span class="dish">${i} ${esc(n)} <small>· ${esc(w)}</small></span>`).join("");
+  chips($("#tagChips"), T().tags, tag, (k) => { tag = k; renderEat(); });
+  $("#rests").innerHTML = RESTAURANTS.filter((r) => tag === "all" || r.tag === tag).map((r, i) => `
+    <a class="rest" href="${maps(r.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 30}ms">
+      <span class="ic">${r.icon}</span>
+      <div>
+        <h3>${esc(r.name)}</h3>
+        <p>${esc(tx(r))}</p>
+        <div class="meta"><span class="tagp t-${r.tag}">${esc(T().tags[r.tag])}</span><span>📍 ${esc(r.place)}</span><span class="price">${r.price}</span></div>
+      </div>
+      <span class="go">→</span>
+    </a>`).join("");
+  $("#guides").innerHTML = GUIDES.map(([n, d, u]) => `<a href="${u}" target="_blank" rel="noopener">${esc(n)}<small>${esc(d)} ↗</small></a>`).join("");
 }
 
 function renderLangMenu() {
@@ -897,8 +1155,7 @@ function renderLangMenu() {
 function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
-  document.querySelectorAll("[data-i18n-html]").forEach((el) => { el.innerHTML = T()[el.dataset.i18nHtml]; });
-  renderLangMenu(); renderTicker(); renderPins(); renderBento(); renderEvents(); renderTodo();
+  renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderTodo(); renderHikes(); renderEat();
 }
 
 $("#langList").addEventListener("click", (ev) => {
@@ -923,11 +1180,10 @@ $("#newsForm").addEventListener("submit", (ev) => {
 /* Animazione delle sezioni quando entrano nello schermo */
 const io = new IntersectionObserver((entries) => entries.forEach((en) => {
   if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
-}), { threshold: 0.08 });
+}), { threshold: 0.05 });
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
 render();
 </script>
-
 </body>
 </html>
