@@ -92,6 +92,20 @@
   .sport .go { width: 30px; height: 30px; font-size: .85rem; }
   .sport:hover .go { background: var(--coral); color: #fff; }
 
+  /* ---------- Genova in evidenza ---------- */
+  .spot { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); min-height: 380px; border-radius: 28px; margin-bottom: 18px; color: #fff; text-decoration: none; }
+  .spot[hidden] { display: none; }
+  .spot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .8s; }
+  .spot:hover img { transform: scale(1.04); }
+  .spot::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(8,20,30,.85), rgba(8,20,30,.35) 60%, rgba(8,20,30,0)); }
+  .spot-text { padding: 36px; max-width: 620px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  .spot-kicker { font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--lemon); }
+  .spot h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(3rem, 7vw, 5.4rem); line-height: .95; margin: 0; }
+  .spot p { margin: 0; font-size: 1.05rem; opacity: .92; }
+  .spot-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .spot-tags span { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.25); padding: 5px 11px; border-radius: 999px; font-size: .8rem; font-weight: 500; }
+  .spot .btn { align-self: flex-start; background: #fff; color: var(--ink); margin-top: 6px; }
+
   /* ---------- City guides ---------- */
   .city { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 18px; margin-top: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 14px; box-shadow: var(--shadow); animation: pop .35s ease both; }
   .city-cover { position: relative; isolation: isolate; overflow: hidden; border-radius: 20px; min-height: 300px; color: #fff; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(160deg, #3fa7d6, #0b2a40); }
@@ -349,6 +363,8 @@
     .see .tile p { display: none; }
     .rail { grid-auto-columns: 72%; }
     .city { grid-template-columns: minmax(0, 1fr); }
+    .spot-text { padding: 24px; }
+    .spot::after { background: linear-gradient(to top, rgba(8,20,30,.88), rgba(8,20,30,.25)); }
     .city-cover { min-height: 200px; }
     .collage { position: static; grid-template-rows: 160px 160px; }
     .guides .links { grid-template-columns: 1fr 1fr; }
@@ -440,6 +456,16 @@
         <p data-i18n="exploreSub"></p>
       </div>
     </div>
+    <a class="spot" id="spotGenova" href="#cityChips">
+      <img src="foto/natale-genova.jpg" alt="" loading="lazy">
+      <div class="spot-text">
+        <span class="spot-kicker" data-i18n="spotKicker"></span>
+        <h3 id="spotName">Genova</h3>
+        <p data-i18n="spotText"></p>
+        <div class="spot-tags" id="spotTags"></div>
+        <span class="btn"><span data-i18n="spotCta"></span> <span class="arr">→</span></span>
+      </div>
+    </a>
     <div class="see" id="seeGrid"></div>
     <div class="sub-head">
       <h3>City <em>guides</em></h3>
@@ -759,9 +785,12 @@ const CITIES = [
     t: { it: "Il porto, i carruggi e i palazzi UNESCO: la capitale della Liguria.", fr: "Le port, les ruelles et les palais UNESCO : la capitale de la Ligurie.",
       en: "The port, the narrow lanes and UNESCO palaces: Liguria's capital.", de: "Hafen, Gassen und UNESCO-Paläste: die Hauptstadt Liguriens.",
       nl: "De haven, de steegjes en UNESCO-paleizen: de hoofdstad van Ligurië.", zh: "港口、小巷与世界遗产宫殿：利古里亚首府。" },
-    see: ["Acquario di Genova", "Via Garibaldi e Palazzi dei Rolli", "Cattedrale di San Lorenzo", "Spianata Castelletto", "Boccadasse", "Lanterna di Genova"],
-    museums: ["Musei di Strada Nuova", "Palazzo Ducale", "Galata Museo del Mare", "Palazzo Reale"],
-    eat: ["Trattoria Da Maria", "Trattoria Rosmarino", "Antica Friggitoria Carega", "Gelateria Amedeo (Boccadasse)", "Il Genovese", "Antica Sciamadda", "Antica Osteria di Vico Palla", "Pietro Romanengo fu Stefano", "Mercato Orientale"] },
+    see: ["Acquario di Genova", "Porto Antico e Bigo", "Biosfera", "Via Garibaldi e Palazzi dei Rolli", "Piazza De Ferrari", "Cattedrale di San Lorenzo",
+      "Porta Soprana e Casa di Colombo", "Via XX Settembre", "Spianata Castelletto", "Castello d'Albertis", "Boccadasse", "Nervi", "Lanterna di Genova", "Cimitero Monumentale di Staglieno"],
+    museums: ["Musei di Strada Nuova", "Palazzo Ducale", "Galata Museo del Mare", "Palazzo Reale", "Galleria Nazionale di Palazzo Spinola",
+      "Museo delle Culture del Mondo (Castello d'Albertis)", "Museo d'Arte Orientale Chiossone", "Museo del Tesoro di San Lorenzo", "Museo di Sant'Agostino", "Musei di Nervi", "Museo Luzzati (Porta Siberia)"],
+    do: ["Giro del porto in battello", "Whale watching da Genova", "Funicolare Zecca-Righi", "Forti di Genova (Parco delle Mura)", "Ascensore Castelletto Ponente", "Passeggiata Anita Garibaldi (Nervi)", "Parchi di Nervi"],
+    eat: ["Sa Pesta", "Trattoria Da Maria", "Trattoria Rosmarino", "Antica Friggitoria Carega", "Gelateria Amedeo (Boccadasse)", "Il Genovese", "Antica Sciamadda", "Antica Osteria di Vico Palla", "Pietro Romanengo fu Stefano", "Klainguti", "Pasticceria Mangini", "Caffè degli Specchi", "Mercato Orientale"] },
   { id: "portofino", zone: "genova", img: "foto/portofino.jpg", where: "Liguria",
     name: { en: "Portofino & Camogli", zh: "波托菲诺与卡莫利" },
     t: { it: "Il borgo più famoso d'Italia e il paese dei pescatori, tra parco e mare.", fr: "Le village le plus célèbre d'Italie et le port des pêcheurs, entre parc et mer.",
@@ -998,6 +1027,13 @@ const HIKES = [
     de: ["Nietzsche-Weg", "Steiler Aufstieg vom Meer bis ins Dorf Èze."],
     nl: ["Nietzschepad", "Steile klim van de zee naar het dorp Èze."],
     zh: ["尼采小径", "从海边陡峭攀升至埃兹村。"] } },
+  { zone: "genova", icon: "🏰", img: "", time: "3 h", km: "8 km", level: 2, q: "Forte Sperone Parco delle Mura Genova", t: {
+    it: ["Forti di Genova", "Dal Righi ai forti sulle mura: tutta la città e il mare dall'alto."],
+    fr: ["Forts de Gênes", "Du Righi aux forts sur les remparts : toute la ville et la mer d'en haut."],
+    en: ["Genoa's forts", "From the Righi to the forts on the walls: the whole city and sea from above."],
+    de: ["Festungen von Genua", "Vom Righi zu den Festungen auf den Mauern: Stadt und Meer von oben."],
+    nl: ["Forten van Genua", "Van de Righi naar de forten op de muren: de hele stad en zee van bovenaf."],
+    zh: ["热那亚要塞", "从里吉山到城墙上的要塞，俯瞰全城与大海。"] } },
   { zone: "savona", icon: "⛰️", img: "foto/altavia.jpg", time: "3 h", km: "8 km", level: 2, q: "Parco del Beigua", t: {
     it: ["Parco del Beigua", "Geoparco UNESCO: crinali con vista dal mare alle Alpi."],
     fr: ["Parc du Beigua", "Géoparc UNESCO : crêtes avec vue de la mer aux Alpes."],
@@ -1095,9 +1131,11 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    aquarium: "Acquario",
+    spotKicker: "La capitale della Liguria", spotText: "Porto, carruggi, palazzi UNESCO, musei, focaccia e mare: la città da non perdere.", spotCta: "Apri la guida di Genova",
     prices: { p1: "€ Economico", p2: "€€ Medio", p3: "€€€+ Alto livello" },
     sportSub: n => `${n} attività tra mare, montagna e cielo. Tocca per prenotare.`,
-    cityHint: "Scegli una città: cosa vedere, i musei e dove mangiare. Tocca un nome per aprire la mappa.", cityLabels: { see: "Da vedere", museums: "Musei", eat: "Dove mangiare" },
+    cityHint: "Scegli una città: cosa vedere, i musei e dove mangiare. Tocca un nome per aprire la mappa.", cityLabels: { see: "Da vedere", museums: "Musei", do: "Da fare", eat: "Dove mangiare" },
     bookSub: "Sport, avventura e natura: prenota sui siti ufficiali.",
     exploreEyebrow: "Dove andare", exploreSub: "I luoghi da non perdere e le zone della Riviera.", close: "Chiudi", newsletter: "Ricevi il giornalino ✉", menu: "Menu",
     chooseSub: "Guarda solo la Liguria, solo la Costa Azzurra, o tutte e due.", regions: { lig: "Liguria", azur: "Costa Azzurra", all: "Tutte e due" },
@@ -1132,9 +1170,11 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    aquarium: "Aquarium",
+    spotKicker: "La capitale de la Ligurie", spotText: "Port, ruelles, palais UNESCO, musées, focaccia et mer : la ville à ne pas manquer.", spotCta: "Ouvrir le guide de Gênes",
     prices: { p1: "€ Petit prix", p2: "€€ Moyen", p3: "€€€+ Haut de gamme" },
     sportSub: n => `${n} activités entre mer, montagne et ciel. Touchez pour réserver.`,
-    cityHint: "Choisissez une ville : que voir, les musées et où manger. Touchez un nom pour ouvrir la carte.", cityLabels: { see: "À voir", museums: "Musées", eat: "Où manger" },
+    cityHint: "Choisissez une ville : que voir, les musées et où manger. Touchez un nom pour ouvrir la carte.", cityLabels: { see: "À voir", museums: "Musées", do: "À faire", eat: "Où manger" },
     bookSub: "Sport, aventure et nature : réservez sur les sites officiels.",
     exploreEyebrow: "Où aller", exploreSub: "Les lieux incontournables et les zones de la Riviera.", close: "Fermer", newsletter: "Recevoir le journal ✉", menu: "Menu",
     chooseSub: "Ne voir que la Ligurie, que la Côte d'Azur, ou les deux.", regions: { lig: "Ligurie", azur: "Côte d'Azur", all: "Les deux" },
@@ -1169,9 +1209,11 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    aquarium: "Aquarium",
+    spotKicker: "Liguria's capital", spotText: "Port, narrow lanes, UNESCO palaces, museums, focaccia and sea: the city not to miss.", spotCta: "Open the Genoa guide",
     prices: { p1: "€ Budget", p2: "€€ Mid-range", p3: "€€€+ Fine dining" },
     sportSub: n => `${n} activities between sea, mountains and sky. Tap to book.`,
-    cityHint: "Pick a town: what to see, museums and where to eat. Tap a name to open the map.", cityLabels: { see: "What to see", museums: "Museums", eat: "Where to eat" },
+    cityHint: "Pick a town: what to see, museums and where to eat. Tap a name to open the map.", cityLabels: { see: "What to see", museums: "Museums", do: "Things to do", eat: "Where to eat" },
     bookSub: "Sport, adventure and nature: book on the official websites.",
     exploreEyebrow: "Where to go", exploreSub: "The must-see places and the areas of the Riviera.", close: "Close", newsletter: "Get the newsletter ✉", menu: "Menu",
     chooseSub: "See only Liguria, only the French Riviera, or both.", regions: { lig: "Liguria", azur: "French Riviera", all: "Both" },
@@ -1206,9 +1248,11 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    aquarium: "Aquarium",
+    spotKicker: "Die Hauptstadt Liguriens", spotText: "Hafen, Gassen, UNESCO-Paläste, Museen, Focaccia und Meer: die Stadt, die man sehen muss.", spotCta: "Genua-Guide öffnen",
     prices: { p1: "€ Günstig", p2: "€€ Mittel", p3: "€€€+ Gehoben" },
     sportSub: n => `${n} Aktivitäten zwischen Meer, Bergen und Himmel. Antippen zum Buchen.`,
-    cityHint: "Wähle einen Ort: Sehenswertes, Museen und gutes Essen. Tippe auf einen Namen für die Karte.", cityLabels: { see: "Sehenswert", museums: "Museen", eat: "Essen" },
+    cityHint: "Wähle einen Ort: Sehenswertes, Museen und gutes Essen. Tippe auf einen Namen für die Karte.", cityLabels: { see: "Sehenswert", museums: "Museen", do: "Erleben", eat: "Essen" },
     bookSub: "Sport, Abenteuer und Natur: auf den offiziellen Seiten buchen.",
     exploreEyebrow: "Wohin", exploreSub: "Die schönsten Orte und die Regionen der Riviera.", close: "Schließen", newsletter: "Newsletter erhalten ✉", menu: "Menü",
     chooseSub: "Nur Ligurien, nur die Côte d'Azur oder beides ansehen.", regions: { lig: "Ligurien", azur: "Côte d'Azur", all: "Beides" },
@@ -1243,9 +1287,11 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    aquarium: "Aquarium",
+    spotKicker: "De hoofdstad van Ligurië", spotText: "Haven, steegjes, UNESCO-paleizen, musea, focaccia en zee: de stad die je moet zien.", spotCta: "Open de gids van Genua",
     prices: { p1: "€ Voordelig", p2: "€€ Gemiddeld", p3: "€€€+ Topklasse" },
     sportSub: n => `${n} activiteiten tussen zee, bergen en lucht. Tik om te boeken.`,
-    cityHint: "Kies een plaats: wat te zien, musea en waar te eten. Tik op een naam voor de kaart.", cityLabels: { see: "Bezienswaardig", museums: "Musea", eat: "Eten" },
+    cityHint: "Kies een plaats: wat te zien, musea en waar te eten. Tik op een naam voor de kaart.", cityLabels: { see: "Bezienswaardig", museums: "Musea", do: "Te doen", eat: "Eten" },
     bookSub: "Sport, avontuur en natuur: boek op de officiële websites.",
     exploreEyebrow: "Waarheen", exploreSub: "De mooiste plekken en de gebieden van de Rivièra.", close: "Sluiten", newsletter: "Ontvang de nieuwsbrief ✉", menu: "Menu",
     chooseSub: "Bekijk alleen Ligurië, alleen de Côte d'Azur, of allebei.", regions: { lig: "Ligurië", azur: "Côte d'Azur", all: "Allebei" },
@@ -1280,9 +1326,11 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    aquarium: "水族馆",
+    spotKicker: "利古里亚首府", spotText: "港口、小巷、世界遗产宫殿、博物馆、佛卡夏与大海：不容错过的城市。", spotCta: "打开热那亚指南",
     prices: { p1: "€ 平价", p2: "€€ 中档", p3: "€€€+ 高端" },
     sportSub: n => `${n}项海上、山间与空中活动，点击即可预订。`,
-    cityHint: "选择城市：景点、博物馆和美食。点击名称打开地图。", cityLabels: { see: "景点", museums: "博物馆", eat: "美食" },
+    cityHint: "选择城市：景点、博物馆和美食。点击名称打开地图。", cityLabels: { see: "景点", museums: "博物馆", do: "体验", eat: "美食" },
     bookSub: "运动、探险与自然：在官方网站预订。",
     exploreEyebrow: "去哪儿", exploreSub: "必看景点与里维埃拉各地区。", close: "关闭", newsletter: "订阅月刊 ✉", menu: "菜单",
     chooseSub: "只看利古里亚、只看蔚蓝海岸，或两者都看。", regions: { lig: "利古里亚", azur: "蔚蓝海岸", all: "两者都看" },
@@ -1379,7 +1427,7 @@ function chips(el, items, current, onPick) {
 function renderTicker() {
   $("#statEvents").textContent = shown().length;
   $("#statPlaces").textContent = [...SEE, ...HIKES, ...RESTAURANTS, ...SPORTS].filter(ofRegion).length
-    + CITIES.filter(ofRegion).reduce((n, c) => n + c.see.length + c.museums.length + c.eat.length, 0);
+    + CITIES.filter(ofRegion).reduce((n, c) => n + c.see.length + c.museums.length + (c.do || []).length + c.eat.length, 0);
   $("#statLangs").textContent = Object.keys(LANGS).length;
 }
 
@@ -1456,14 +1504,27 @@ const siteUrl = (site) => site.url[lang] || site.url.other;
 const todoUrl = (u) => typeof u === "string" ? u : u.url ? siteUrl(u) : siteUrl(region === "azur" ? u.azur : u.lig);
 
 /* City guides: una città alla volta (tutte insieme nel PDF) */
-let city = null;
+let city = "genova";
 const cityName = (c) => c.name[lang] || c.name.en;
+function renderSpot() {
+  const g = CITIES.find((c) => c.id === "genova");
+  $("#spotGenova").hidden = !ofRegion(g);
+  $("#spotName").textContent = cityName(g);
+  $("#spotTags").innerHTML = ["🐠 " + T().aquarium, "🏛️ Palazzi dei Rolli · UNESCO", "⚓ Porto Antico", "🌊 Boccadasse", "🌿 Nervi", "🥖 Focaccia"]
+    .map((x) => `<span>${esc(x)}</span>`).join("");
+}
+$("#spotGenova").addEventListener("click", (ev) => {
+  ev.preventDefault();
+  city = "genova"; renderCities();
+  $("#cityChips").scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
 function renderCities(all) {
   const list = CITIES.filter(ofRegion);
   if (!list.some((c) => c.id === city)) city = list[0].id;
   chips($("#cityChips"), Object.fromEntries(list.map((c) => [c.id, cityName(c)])), city, (k) => { city = k; renderCities(); });
   $("#cityChips").firstElementChild.remove();
-  const groups = (c) => ["see", "museums", "eat"].filter((g) => c[g].length).map((g) => `
+  const groups = (c) => ["see", "museums", "do", "eat"].filter((g) => c[g] && c[g].length).map((g) => `
     <div><h4>${esc(T().cityLabels[g])}</h4><ul>${c[g].map((p) =>
       `<li><a href="${maps(p.replace(/[()]/g, "") + " " + c.where)}" target="_blank" rel="noopener">${esc(p)}</a></li>`).join("")}</ul></div>`).join("");
   $("#cityPanels").innerHTML = list.filter((c) => all || c.id === city).map((c) => `
@@ -1567,7 +1628,7 @@ function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
   $("#siteItLink").href = $("#menuRent").href = lang === "it" ? SITE_IT.it : SITE_IT.other;
-  renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderCities(); renderTodo(); renderSports(); renderHikes(); renderEat();
+  renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderSpot(); renderCities(); renderTodo(); renderSports(); renderHikes(); renderEat();
 }
 
 $("#langList").addEventListener("click", (ev) => {
