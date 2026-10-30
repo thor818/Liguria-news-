@@ -16,7 +16,7 @@ Cinque rubriche, raggiungibili anche dal menu a schermo intero (pulsante ☰ in 
 | Rubrica | Cosa contiene | Dove si modifica in `index.html` |
 |---|---|---|
 | Explore | luoghi da vedere, City guides (città: da vedere, musei, dove mangiare) e mappa | `SEE`, `CITIES`, `PINS` |
-| What to do | esperienze, "Book an activity" e sentieri (Hiking) | `TODO`, `SITES`, `HIKES` |
+| What to do | esperienze, "Book an activity", Sport & adventure e sentieri (Hiking) | `TODO`, `SITES`, `SPORTS`, `HIKES` |
 | Where to eat | ristoranti, piatti tipici, guide gastronomiche | `RESTAURANTS`, `DISHES`, `GUIDES` |
 | Where to stay | link a Riviera Rent | sezione `#stay`, `SITE_IT` |
 | What's on | agenda: eventi, sagre, feste | `EVENTS` |

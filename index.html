@@ -82,6 +82,16 @@
   .sub-head p { margin: 0; color: var(--muted); }
   .sub-head:has(> p:only-child) { margin: 26px 0 12px; }
 
+  /* ---------- Sport & adventure ---------- */
+  .sports { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
+  .sport { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-decoration: none; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; transition: transform .2s, border-color .2s; animation: pop .35s ease both; }
+  .sport:hover { transform: translateY(-3px); border-color: var(--coral); }
+  .sport .ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; font-size: 1.5rem; background: linear-gradient(135deg, #e3eef7, #fde8e1); }
+  .sport b { display: block; font-size: .95rem; line-height: 1.2; }
+  .sport small { display: block; color: var(--muted); font-size: .78rem; margin-top: 2px; }
+  .sport .go { width: 30px; height: 30px; font-size: .85rem; }
+  .sport:hover .go { background: var(--coral); color: #fff; }
+
   /* ---------- City guides ---------- */
   .city { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 18px; margin-top: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 14px; box-shadow: var(--shadow); animation: pop .35s ease both; }
   .city-cover { position: relative; isolation: isolate; overflow: hidden; border-radius: 20px; min-height: 300px; color: #fff; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(160deg, #3fa7d6, #0b2a40); }
@@ -485,6 +495,11 @@
       <div class="links" id="bookLinks"></div>
     </div>
     <div class="sub-head">
+      <h3>Sport &amp; <em>adventure</em></h3>
+      <p id="sportSub"></p>
+    </div>
+    <div class="sports" id="sportGrid"></div>
+    <div class="sub-head">
       <h3>Hiking <em>trails</em></h3>
       <p data-i18n="hikeSub"></p>
     </div>
@@ -865,6 +880,44 @@ const SITES = {
     de: "Canyoning, E-Bike und Bootstouren buchen (Estérel)", nl: "Boek canyoning, e-bikes en boottochten (Estérel)", zh: "预订溪降、电动山地车与出海活动（埃斯特雷尔）" } }
 };
 
+/* ---------- SPORT & ADVENTURE: attività sportive ----------
+   region: lig | azur — site: dove si prenota (vedi SITES) — place: dove si fa */
+const SPORTS = [
+  { region: "azur", icon: "🧗", site: "experience", place: "Gorges du Loup · Vésubie", t: { it: "Canyoning", fr: "Canyoning", en: "Canyoning", de: "Canyoning", nl: "Canyoning", zh: "溪降" } },
+  { region: "azur", icon: "🌊", site: "experience", place: "Estérel", t: { it: "Escursione in acqua", fr: "Randonnée aquatique", en: "Coasteering", de: "Coasteering", nl: "Coasteering", zh: "海岸溯溪" } },
+  { region: "azur", icon: "🚵", site: "experience", place: "Estérel", t: { it: "E-bike", fr: "VTT électrique", en: "E-bike", de: "E-Bike", nl: "E-bike", zh: "电动山地车" } },
+  { region: "azur", icon: "🛶", site: "experience", place: "Estérel · Villefranche", t: { it: "Kayak di mare", fr: "Kayak de mer", en: "Sea kayaking", de: "Seekajak", nl: "Zeekajak", zh: "海上皮划艇" } },
+  { region: "azur", icon: "🏄", site: "experience", place: "Cannes · Antibes · Nice", t: { it: "Stand up paddle", fr: "Stand up paddle", en: "Stand up paddle", de: "Stand-up-Paddling", nl: "Suppen", zh: "桨板" } },
+  { region: "azur", icon: "🤿", site: "experience", place: "Îles de Lérins · Cap d'Antibes · Estérel", t: { it: "Immersioni", fr: "Plongée sous-marine", en: "Scuba diving", de: "Tauchen", nl: "Duiken", zh: "水肺潜水" } },
+  { region: "azur", icon: "🪂", site: "cotedazur", place: "Gourdon", t: { it: "Parapendio", fr: "Parapente", en: "Paragliding", de: "Gleitschirmfliegen", nl: "Paragliden", zh: "滑翔伞" } },
+  { region: "azur", icon: "🪢", site: "cotedazur", place: "Peille · La Colmiane", t: { it: "Via ferrata", fr: "Via ferrata", en: "Via ferrata", de: "Klettersteig", nl: "Via ferrata", zh: "飞拉达攀岩" } },
+  { region: "azur", icon: "🧗‍♀️", site: "cotedazur", place: "Baou de Saint-Jeannet", t: { it: "Arrampicata", fr: "Escalade", en: "Rock climbing", de: "Klettern", nl: "Klimmen", zh: "攀岩" } },
+  { region: "azur", icon: "🚤", site: "experience", place: "Cannes · Antibes · Juan-les-Pins", t: { it: "Moto d'acqua", fr: "Jet-ski", en: "Jet ski", de: "Jetski", nl: "Jetski", zh: "水上摩托" } },
+  { region: "azur", icon: "🎈", site: "experience", place: "Juan-les-Pins · Nice", t: { it: "Parasailing", fr: "Parachute ascensionnel", en: "Parasailing", de: "Parasailing", nl: "Parasailing", zh: "拖曳伞" } },
+  { region: "azur", icon: "⛵", site: "cotedazur", place: "Antibes · Cannes", t: { it: "Vela e catamarano", fr: "Voile et catamaran", en: "Sailing & catamaran", de: "Segeln & Katamaran", nl: "Zeilen & catamaran", zh: "帆船与双体船" } },
+  { region: "azur", icon: "🐬", site: "experience", place: "Antibes · Nice", t: { it: "Delfini e balene", fr: "Dauphins et baleines", en: "Dolphin & whale watching", de: "Delfine & Wale", nl: "Dolfijnen & walvissen", zh: "观海豚与鲸" } },
+  { region: "azur", icon: "🚣", site: "cotedazur", place: "Vésubie · Roya", t: { it: "Rafting", fr: "Rafting", en: "Rafting", de: "Rafting", nl: "Raften", zh: "漂流" } },
+  { region: "azur", icon: "🌲", site: "experience", place: "Côte d'Azur", t: { it: "Parchi avventura", fr: "Accrobranche", en: "Tree-top adventure parks", de: "Kletterparks", nl: "Klimparken", zh: "树顶探险乐园" } },
+  { region: "azur", icon: "⚽", site: "experience", place: "Estérel", t: { it: "Bubble football", fr: "Bubble foot", en: "Bubble football", de: "Bubble-Fußball", nl: "Bubble voetbal", zh: "泡泡足球" } },
+  { region: "azur", icon: "🏓", site: "cotedazur", place: "Côte d'Azur", t: { it: "Padel", fr: "Padel", en: "Padel", de: "Padel", nl: "Padel", zh: "板式网球" } },
+  { region: "azur", icon: "🎾", site: "cotedazur", place: "Monte-Carlo Country Club", t: { it: "Tennis", fr: "Tennis", en: "Tennis", de: "Tennis", nl: "Tennis", zh: "网球" } },
+  { region: "azur", icon: "⛳", site: "cotedazur", place: "Golf de Cannes-Mougins", t: { it: "Golf", fr: "Golf", en: "Golf", de: "Golf", nl: "Golf", zh: "高尔夫" } },
+  { region: "azur", icon: "🏃", site: "cotedazur", place: "Mont Boron · Baous", t: { it: "Trail running", fr: "Trail running", en: "Trail running", de: "Trailrunning", nl: "Trailrunning", zh: "越野跑" } },
+  { region: "azur", icon: "⛷️", site: "cotedazur", place: "Isola 2000 · Auron · Valberg ❄️", t: { it: "Sci", fr: "Ski", en: "Skiing", de: "Skifahren", nl: "Skiën", zh: "滑雪" } },
+  { region: "lig", icon: "🚵", site: "lamialiguria", place: "Finale Ligure", t: { it: "Mountain bike", fr: "VTT", en: "Mountain biking", de: "Mountainbiken", nl: "Mountainbiken", zh: "山地车" } },
+  { region: "lig", icon: "🧗‍♀️", site: "lamialiguria", place: "Finale Ligure", t: { it: "Arrampicata", fr: "Escalade", en: "Rock climbing", de: "Klettern", nl: "Klimmen", zh: "攀岩" } },
+  { region: "lig", icon: "🤿", site: "lamialiguria", place: "Portofino · Cristo degli Abissi", t: { it: "Immersioni", fr: "Plongée sous-marine", en: "Scuba diving", de: "Tauchen", nl: "Duiken", zh: "水肺潜水" } },
+  { region: "lig", icon: "🛶", site: "lamialiguria", place: "Isola di Bergeggi · Portofino", t: { it: "Kayak di mare", fr: "Kayak de mer", en: "Sea kayaking", de: "Seekajak", nl: "Zeekajak", zh: "海上皮划艇" } },
+  { region: "lig", icon: "🏄", site: "lamialiguria", place: "Varazze", t: { it: "Surf", fr: "Surf", en: "Surfing", de: "Surfen", nl: "Surfen", zh: "冲浪" } },
+  { region: "lig", icon: "🏄‍♀️", site: "lamialiguria", place: "Riviera di Ponente", t: { it: "Stand up paddle", fr: "Stand up paddle", en: "Stand up paddle", de: "Stand-up-Paddling", nl: "Suppen", zh: "桨板" } },
+  { region: "lig", icon: "⛵", site: "lamialiguria", place: "Genova · Alassio · Sanremo", t: { it: "Vela", fr: "Voile", en: "Sailing", de: "Segeln", nl: "Zeilen", zh: "帆船" } },
+  { region: "lig", icon: "🐋", site: "lamialiguria", place: "Genova · Imperia", t: { it: "Whale watching", fr: "Observation des baleines", en: "Whale watching", de: "Walbeobachtung", nl: "Walvissen spotten", zh: "观鲸" } },
+  { region: "lig", icon: "🚴", site: "lamialiguria", place: "Poggio di Sanremo · Cipressa", t: { it: "Bici da strada", fr: "Vélo de route", en: "Road cycling", de: "Rennrad", nl: "Wielrennen", zh: "公路骑行" } },
+  { region: "lig", icon: "🧗", site: "lamialiguria", place: "Rio Barbaira (Rocchetta Nervina)", t: { it: "Canyoning", fr: "Canyoning", en: "Canyoning", de: "Canyoning", nl: "Canyoning", zh: "溪降" } },
+  { region: "lig", icon: "🥾", site: "lamialiguria", place: "Alta Via · Portofino", t: { it: "Trekking", fr: "Randonnée", en: "Hiking", de: "Wandern", nl: "Wandelen", zh: "徒步" } },
+  { region: "lig", icon: "⛳", site: "lamialiguria", place: "Garlenda · Sanremo", t: { it: "Golf", fr: "Golf", en: "Golf", de: "Golf", nl: "Golf", zh: "高尔夫" } }
+];
+
 /* ---------- WHAT TO DO: esperienze ----------
    url: un indirizzo, oppure un sito di SITES; per le voci "both" { lig: ..., azur: ... } */
 const TODO = [
@@ -1027,6 +1080,7 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    sportSub: n => `${n} attività tra mare, montagna e cielo. Tocca per prenotare.`,
     cityHint: "Scegli una città: cosa vedere, i musei e dove mangiare. Tocca un nome per aprire la mappa.", cityLabels: { see: "Da vedere", museums: "Musei", eat: "Dove mangiare" },
     bookSub: "Sport, avventura e natura: prenota sui siti ufficiali.",
     exploreEyebrow: "Dove andare", exploreSub: "I luoghi da non perdere e le zone della Riviera.", close: "Chiudi", newsletter: "Ricevi il giornalino ✉", menu: "Menu",
@@ -1062,6 +1116,7 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    sportSub: n => `${n} activités entre mer, montagne et ciel. Touchez pour réserver.`,
     cityHint: "Choisissez une ville : que voir, les musées et où manger. Touchez un nom pour ouvrir la carte.", cityLabels: { see: "À voir", museums: "Musées", eat: "Où manger" },
     bookSub: "Sport, aventure et nature : réservez sur les sites officiels.",
     exploreEyebrow: "Où aller", exploreSub: "Les lieux incontournables et les zones de la Riviera.", close: "Fermer", newsletter: "Recevoir le journal ✉", menu: "Menu",
@@ -1097,6 +1152,7 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    sportSub: n => `${n} activities between sea, mountains and sky. Tap to book.`,
     cityHint: "Pick a town: what to see, museums and where to eat. Tap a name to open the map.", cityLabels: { see: "What to see", museums: "Museums", eat: "Where to eat" },
     bookSub: "Sport, adventure and nature: book on the official websites.",
     exploreEyebrow: "Where to go", exploreSub: "The must-see places and the areas of the Riviera.", close: "Close", newsletter: "Get the newsletter ✉", menu: "Menu",
@@ -1132,6 +1188,7 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    sportSub: n => `${n} Aktivitäten zwischen Meer, Bergen und Himmel. Antippen zum Buchen.`,
     cityHint: "Wähle einen Ort: Sehenswertes, Museen und gutes Essen. Tippe auf einen Namen für die Karte.", cityLabels: { see: "Sehenswert", museums: "Museen", eat: "Essen" },
     bookSub: "Sport, Abenteuer und Natur: auf den offiziellen Seiten buchen.",
     exploreEyebrow: "Wohin", exploreSub: "Die schönsten Orte und die Regionen der Riviera.", close: "Schließen", newsletter: "Newsletter erhalten ✉", menu: "Menü",
@@ -1167,6 +1224,7 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    sportSub: n => `${n} activiteiten tussen zee, bergen en lucht. Tik om te boeken.`,
     cityHint: "Kies een plaats: wat te zien, musea en waar te eten. Tik op een naam voor de kaart.", cityLabels: { see: "Bezienswaardig", museums: "Musea", eat: "Eten" },
     bookSub: "Sport, avontuur en natuur: boek op de officiële websites.",
     exploreEyebrow: "Waarheen", exploreSub: "De mooiste plekken en de gebieden van de Rivièra.", close: "Sluiten", newsletter: "Ontvang de nieuwsbrief ✉", menu: "Menu",
@@ -1202,6 +1260,7 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    sportSub: n => `${n}项海上、山间与空中活动，点击即可预订。`,
     cityHint: "选择城市：景点、博物馆和美食。点击名称打开地图。", cityLabels: { see: "景点", museums: "博物馆", eat: "美食" },
     bookSub: "运动、探险与自然：在官方网站预订。",
     exploreEyebrow: "去哪儿", exploreSub: "必看景点与里维埃拉各地区。", close: "关闭", newsletter: "订阅月刊 ✉", menu: "菜单",
@@ -1296,7 +1355,7 @@ function chips(el, items, current, onPick) {
 
 function renderTicker() {
   $("#statEvents").textContent = shown().length;
-  $("#statPlaces").textContent = [...SEE, ...HIKES, ...RESTAURANTS].filter(ofRegion).length
+  $("#statPlaces").textContent = [...SEE, ...HIKES, ...RESTAURANTS, ...SPORTS].filter(ofRegion).length
     + CITIES.filter(ofRegion).reduce((n, c) => n + c.see.length + c.museums.length + c.eat.length, 0);
   $("#statLangs").textContent = Object.keys(LANGS).length;
 }
@@ -1392,6 +1451,17 @@ function renderCities(all) {
     </article>`).join("");
 }
 
+function renderSports() {
+  const list = SPORTS.filter(ofRegion);
+  $("#sportSub").textContent = T().sportSub(list.length);
+  $("#sportGrid").innerHTML = list.map((sp, i) => `
+    <a class="sport" href="${esc(siteUrl(SITES[sp.site]))}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
+      <span class="ic">${sp.icon}</span>
+      <span><b>${esc(tx(sp))}</b><small>📍 ${esc(sp.place)}</small></span>
+      <span class="go">↗</span>
+    </a>`).join("");
+}
+
 function renderTodo() {
   $("#rail").innerHTML = TODO.filter(ofRegion).map((t, i) => {
     const [title, sub] = tx(t);
@@ -1473,7 +1543,7 @@ function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
   $("#siteItLink").href = $("#menuRent").href = lang === "it" ? SITE_IT.it : SITE_IT.other;
-  renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderCities(); renderTodo(); renderHikes(); renderEat();
+  renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderCities(); renderTodo(); renderSports(); renderHikes(); renderEat();
 }
 
 $("#langList").addEventListener("click", (ev) => {
