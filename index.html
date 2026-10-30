@@ -7,226 +7,340 @@
 <meta name="description" content="Sagre, feste, eventi e cose da fare tra Genova, Savona, Imperia e la Costa Azzurra.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sea: #0e5a8a;
-    --sea-deep: #0a3550;
-    --sky: #e8f3fa;
-    --sand: #fbf6ee;
-    --terra: #d9643a;
-    --lemon: #f4c430;
-    --olive: #6b7f3a;
-    --ink: #1c2530;
-    --muted: #5d6b78;
-    --card: #ffffff;
-    --line: #e6e1d8;
-    --radius: 18px;
-    --shadow: 0 6px 24px rgba(10, 53, 80, .08);
+    --bg: #f7f2ea;
+    --paper: #fffdf9;
+    --ink: #13202c;
+    --muted: #64707c;
+    --line: #e7dfd2;
+    --navy: #0b2a40;
+    --sea: #1263a0;
+    --coral: #ef6a45;
+    --lemon: #ffd23f;
+    --radius: 22px;
+    --shadow: 0 1px 2px rgba(19,32,44,.04), 0 10px 30px rgba(19,32,44,.07);
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: Inter, system-ui, sans-serif;
-    color: var(--ink);
-    background: var(--sand);
-    line-height: 1.5;
-  }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { margin: 0; font-family: Inter, system-ui, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   a { color: inherit; }
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  em { font-style: italic; color: var(--coral); }
 
-  /* Testata */
-  .topbar {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(251, 246, 238, .92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
+  /* ---------- Barra in alto ---------- */
+  .topbar { position: fixed; inset: 12px 0 auto; z-index: 20; pointer-events: none; }
+  .bar {
+    pointer-events: auto; max-width: 1160px; margin: 0 auto; height: 58px; padding: 0 8px 0 22px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    background: rgba(255, 253, 249, .8); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    border: 1px solid rgba(231, 223, 210, .9); border-radius: 999px; box-shadow: var(--shadow);
   }
-  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 12px; }
-  .logo { font-family: Fraunces, serif; font-weight: 800; font-size: 1.5rem; text-decoration: none; color: var(--sea-deep); }
-  .logo span { color: var(--terra); }
-  .nav { display: flex; gap: 20px; font-size: .92rem; font-weight: 500; }
-  .nav a { text-decoration: none; color: var(--muted); }
-  .nav a:hover { color: var(--sea); }
-  .lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
-  .lang button {
-    border: 0; background: transparent; padding: 6px 14px; font: 600 .85rem Inter, sans-serif; cursor: pointer; color: var(--muted);
-  }
-  .lang button.on { background: var(--sea); color: #fff; }
+  @media (max-width: 1200px) { .bar { margin: 0 12px; } }
+  .logo { font-family: "Instrument Serif", serif; font-size: 1.7rem; text-decoration: none; letter-spacing: -.01em; }
+  .logo i { color: var(--coral); }
+  .nav { display: flex; gap: 4px; }
+  .nav a { text-decoration: none; font-size: .9rem; font-weight: 500; color: var(--muted); padding: 8px 14px; border-radius: 999px; }
+  .nav a:hover { background: var(--bg); color: var(--ink); }
+  .lang { display: flex; background: var(--bg); border-radius: 999px; padding: 4px; }
+  .lang button { border: 0; background: none; padding: 7px 14px; border-radius: 999px; font: 600 .82rem Inter, sans-serif; cursor: pointer; color: var(--muted); }
+  .lang button.on { background: var(--navy); color: #fff; }
 
-  /* Copertina */
-  .hero {
-    position: relative; overflow: hidden;
-    background:
-      radial-gradient(circle at 88% 22%, #ffd34d 0 70px, rgba(255, 211, 77, .25) 71px 100px, transparent 101px),
-      linear-gradient(160deg, #1477b0 0%, var(--sea) 45%, var(--sea-deep) 100%);
-    color: #fff;
-    padding: 64px 0 120px;
-  }
-  .hero svg.waves { position: absolute; left: 0; bottom: 0; width: 100%; height: 90px; }
-  .issue { display: inline-block; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; background: rgba(255,255,255,.15); padding: 6px 12px; border-radius: 999px; }
-  .hero h1 { font-family: Fraunces, serif; font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 1.02; margin: 18px 0 14px; max-width: 14ch; }
-  .hero p.lead { font-size: 1.15rem; max-width: 46ch; opacity: .9; margin: 0 0 28px; }
-  .zones { display: flex; flex-wrap: wrap; gap: 10px; }
-  .zones span { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); padding: 8px 14px; border-radius: 999px; font-weight: 500; font-size: .92rem; }
-
-  /* Evento in primo piano */
-  .feature {
-    position: relative; z-index: 2; margin-top: -70px;
-    display: grid; grid-template-columns: 1.1fr 1fr; background: var(--card); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow);
-  }
-  .feature .art {
-    min-height: 280px; display: grid; place-items: center; font-size: 7rem;
-    background: linear-gradient(135deg, #8aa04a, var(--olive));
-  }
-  .feature .body { padding: 34px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
-  .kicker { color: var(--terra); font-weight: 600; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
-  .feature h2 { font-family: Fraunces, serif; font-size: 2rem; margin: 0; line-height: 1.1; }
-  .meta { color: var(--muted); font-size: .92rem; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
-    background: var(--terra); color: #fff; text-decoration: none; font-weight: 600;
-    padding: 12px 20px; border-radius: 999px; transition: transform .15s;
-  }
+  /* ---------- Copertina ---------- */
+  .hero { padding: 120px 0 0; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--sea); background: #e3eef7; padding: 7px 14px; border-radius: 999px; }
+  .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: .3; } }
+  .hero h1 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(3.2rem, 8.5vw, 7.2rem); line-height: .92; letter-spacing: -.025em; margin: 22px 0; }
+  .hero p { font-size: 1.15rem; color: var(--muted); max-width: 40ch; margin: 0 0 30px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: .95rem; padding: 14px 22px; border-radius: 999px; border: 0; cursor: pointer; transition: transform .2s; }
   .btn:hover { transform: translateY(-2px); }
-  .btn.ghost { background: transparent; color: var(--sea); border: 2px solid var(--sea); }
+  .btn.dark { background: var(--navy); color: #fff; }
+  .btn.light { background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+  .btn .arr { transition: transform .2s; }
+  .btn:hover .arr { transform: translateX(4px); }
 
-  section { padding: 64px 0 0; }
-  .sec-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
-  .sec-head h2 { font-family: Fraunces, serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin: 0; color: var(--sea-deep); }
-  .sec-head p { margin: 4px 0 0; color: var(--muted); }
+  .scene { border-radius: 32px; overflow: hidden; aspect-ratio: 1 / 1.02; box-shadow: var(--shadow); position: relative; }
+  .scene svg { width: 100%; height: 100%; display: block; }
+  .scene .sun { animation: rise 6s ease-in-out infinite alternate; }
+  @keyframes rise { to { transform: translateY(-14px); } }
+  .scene .boat { animation: sail 16s linear infinite; }
+  @keyframes sail { from { transform: translateX(-80px); } to { transform: translateX(560px); } }
+  .scene .stat { position: absolute; left: 18px; bottom: 18px; right: 18px; display: flex; gap: 10px; }
+  .scene .stat div { flex: 1; background: rgba(255,255,255,.88); backdrop-filter: blur(8px); border-radius: 16px; padding: 12px 14px; }
+  .scene .stat b { display: block; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1; }
+  .scene .stat span { font-size: .75rem; color: var(--muted); font-weight: 500; }
 
-  /* Filtri */
-  .filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip {
-    border: 1px solid var(--line); background: var(--card); color: var(--ink);
-    padding: 8px 14px; border-radius: 999px; font: 500 .9rem Inter, sans-serif; cursor: pointer; transition: all .15s;
-  }
-  .chip:hover { border-color: var(--sea); }
-  .chip.on { background: var(--sea-deep); border-color: var(--sea-deep); color: #fff; }
+  /* ---------- Ticker ---------- */
+  .ticker { margin: 56px -10px 0; background: var(--navy); color: #fff; overflow: hidden; white-space: nowrap; padding: 16px 0; transform: rotate(-1deg); }
+  .ticker .track { display: inline-flex; gap: 46px; animation: marquee 45s linear infinite; padding-left: 46px; }
+  .ticker span { font-family: "Instrument Serif", serif; font-size: 1.5rem; }
+  .ticker span small { font-family: Inter, sans-serif; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--lemon); margin-right: 10px; vertical-align: 3px; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
 
-  /* Schede eventi */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-  .card {
-    background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-    display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s;
-  }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(10, 53, 80, .14); }
-  .card .top { position: relative; height: 130px; display: grid; place-items: center; font-size: 3.6rem; }
-  .date {
-    position: absolute; top: 12px; left: 12px; background: #fff; border-radius: 12px; padding: 6px 10px; text-align: center; line-height: 1.1;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  }
-  .date b { display: block; font-family: Fraunces, serif; font-size: 1.35rem; color: var(--sea-deep); }
-  .date small { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--terra); font-weight: 600; }
-  .tag { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,.9); font-size: .72rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
-  .card .body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-  .card h3 { margin: 0; font-family: Fraunces, serif; font-size: 1.2rem; line-height: 1.2; }
-  .card .place { font-size: .85rem; color: var(--muted); }
-  .card p { margin: 2px 0 10px; font-size: .93rem; }
-  .card .more { margin-top: auto; font-weight: 600; font-size: .9rem; color: var(--sea); text-decoration: none; }
-  .card .more:hover { text-decoration: underline; }
-  .empty { grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted); }
+  section { padding-top: 96px; }
+  .head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
+  .head h2 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1; letter-spacing: -.02em; margin: 0; }
+  .head p { margin: 10px 0 0; color: var(--muted); max-width: 46ch; }
+  .eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 10px; display: block; }
 
-  .c-sagre { background: linear-gradient(135deg, #ffe08a, #f4b13f); }
-  .c-feste { background: linear-gradient(135deg, #ffb59b, #e8714a); }
-  .c-musica { background: linear-gradient(135deg, #c9b8ff, #7d63d9); }
-  .c-mercatini { background: linear-gradient(135deg, #ffd1d1, #e2737a); }
-  .c-cultura { background: linear-gradient(135deg, #bfe6f5, #4ea3cf); }
-  .c-sport { background: linear-gradient(135deg, #c3f0cf, #46b36b); }
+  /* ---------- Mappa ---------- */
+  .map { background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 14px; box-shadow: var(--shadow); }
+  .map svg { width: 100%; height: auto; display: block; }
+  .pin { cursor: pointer; outline: none; }
+  .pin .halo { fill: var(--coral); transform-box: fill-box; transform-origin: center; animation: halo 2.4s ease-out infinite; }
+  @keyframes halo { from { transform: scale(.6); opacity: .45; } to { transform: scale(1.8); opacity: 0; } }
+  .pin .dot { fill: var(--coral); stroke: #fff; stroke-width: 3; transition: fill .2s; }
+  .pin:hover .dot, .pin:focus .dot, .pin.on .dot { fill: var(--navy); }
+  .pin .lbl { font: 600 19px Inter, sans-serif; fill: var(--ink); }
+  .pin .n { font: 500 14px Inter, sans-serif; fill: var(--coral); }
+  .town { font: 500 13px Inter, sans-serif; fill: #8a949d; }
 
-  /* Cosa fare */
-  .todo { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-  .tile {
-    position: relative; border-radius: var(--radius); padding: 22px; min-height: 170px; color: #fff; text-decoration: none;
-    display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; overflow: hidden; transition: transform .2s;
-  }
-  .tile:hover { transform: scale(1.02); }
-  .tile .ico { position: absolute; top: 14px; right: 16px; font-size: 2.6rem; }
-  .tile b { font-family: Fraunces, serif; font-size: 1.25rem; }
-  .tile span { font-size: .88rem; opacity: .92; }
+  /* ---------- In primo piano (bento) ---------- */
+  .bento { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; }
+  .tile { position: relative; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; display: flex; flex-direction: column; justify-content: flex-end; padding: 26px; min-height: 230px; isolation: isolate; }
+  .tile.big { grid-row: span 2; min-height: 480px; }
+  .tile .bg { position: absolute; inset: 0; z-index: -2; transition: transform .6s; }
+  .tile .bg img { width: 100%; height: 100%; object-fit: cover; }
+  .tile::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(8,20,30,.7), rgba(8,20,30,0) 62%); }
+  .tile:hover .bg { transform: scale(1.05); }
+  .tile .emo { position: absolute; top: 22px; right: 24px; font-size: 4.2rem; filter: drop-shadow(0 8px 16px rgba(0,0,0,.18)); transition: transform .4s; }
+  .tile:hover .emo { transform: rotate(-8deg) scale(1.08); }
+  .tile.big .emo { font-size: 8rem; top: 40px; right: 44px; }
+  .tile .when { font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .92; }
+  .tile h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2.1rem; line-height: 1.05; margin: 6px 0 4px; }
+  .tile.big h3 { font-size: clamp(2.8rem, 5vw, 4.2rem); }
+  .tile p { margin: 0; opacity: .92; max-width: 42ch; }
 
-  /* Siti partner */
-  .sites { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .site {
-    border-radius: 24px; padding: 34px; color: #fff; display: flex; flex-direction: column; gap: 10px; text-decoration: none;
-  }
-  .site.it { background: linear-gradient(135deg, #0b8a5b, #0e5a8a); }
-  .site.fr { background: linear-gradient(135deg, #1d4fb8, #c9364a); }
-  .site h3 { font-family: Fraunces, serif; font-size: 1.7rem; margin: 0; }
-  .site p { margin: 0; opacity: .9; }
-  .site .btn { background: #fff; color: var(--ink); margin-top: 8px; }
+  /* ---------- Filtri ---------- */
+  .filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; border: 1px solid var(--line); background: var(--paper); padding: 9px 16px; border-radius: 999px; font: 500 .9rem Inter, sans-serif; cursor: pointer; color: var(--ink); transition: all .15s; }
+  .chip:hover { border-color: var(--ink); }
+  .chip.on { background: var(--ink); color: #fff; border-color: var(--ink); }
 
-  /* Iscrizione */
-  .news {
-    margin-top: 64px; background: var(--lemon); border-radius: 28px; padding: 44px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center;
-  }
-  .news h2 { font-family: Fraunces, serif; font-size: 2rem; margin: 0 0 6px; color: var(--sea-deep); }
+  /* ---------- Schede ---------- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 22px; }
+  .card { background: var(--paper); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); display: flex; flex-direction: column; text-decoration: none; transition: transform .25s, box-shadow .25s; animation: pop .4s ease both; }
+  @keyframes pop { from { opacity: 0; transform: translateY(12px); } }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(19,32,44,.12); }
+  .card .media { position: relative; aspect-ratio: 16 / 10; display: grid; place-items: center; font-size: 4rem; overflow: hidden; }
+  .card .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .card .media .emo { transition: transform .35s; filter: drop-shadow(0 6px 12px rgba(0,0,0,.15)); }
+  .card:hover .media .emo { transform: scale(1.15) rotate(-6deg); }
+  .badge { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); padding: 6px 11px; border-radius: 999px; font-size: .74rem; font-weight: 600; }
+  .badge.soon { left: auto; right: 12px; background: var(--lemon); }
+  .card .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .card .date { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); }
+  .card h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 1.7rem; line-height: 1.05; margin: 0; }
+  .card p { margin: 0; font-size: .93rem; color: var(--muted); }
+  .card .foot { margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: .85rem; color: var(--muted); }
+  .card .go { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; color: var(--ink); transition: background .2s, color .2s; }
+  .card:hover .go { background: var(--coral); color: #fff; }
+  .empty { grid-column: 1 / -1; text-align: center; padding: 50px 20px; color: var(--muted); background: var(--paper); border-radius: var(--radius); border: 1px dashed var(--line); }
+
+  .g-sagre { background: radial-gradient(circle at 30% 20%, #fff3c4, transparent 50%), linear-gradient(135deg, #ffd66b, #f39a3d); }
+  .g-feste { background: radial-gradient(circle at 70% 20%, #ffd9cb, transparent 50%), linear-gradient(135deg, #ff9a76, #e5533a); }
+  .g-musica { background: radial-gradient(circle at 30% 80%, #e7dcff, transparent 50%), linear-gradient(135deg, #a58bff, #5b3fc4); }
+  .g-mercatini { background: radial-gradient(circle at 70% 70%, #ffe1e4, transparent 50%), linear-gradient(135deg, #f7a3ab, #c8404f); }
+  .g-cultura { background: radial-gradient(circle at 30% 30%, #d5f0fb, transparent 50%), linear-gradient(135deg, #79c3e6, #1f6fa5); }
+  .g-sport { background: radial-gradient(circle at 70% 30%, #d9f7e2, transparent 50%), linear-gradient(135deg, #6fd394, #23874a); }
+
+  /* ---------- Cosa fare (carosello) ---------- */
+  .rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 23%); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 20px 20px; margin: 0 -20px; scrollbar-width: none; }
+  .rail::-webkit-scrollbar { display: none; }
+  .exp { scroll-snap-align: start; position: relative; aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .25s; }
+  .exp:hover { transform: translateY(-6px); }
+  .exp .emo { position: absolute; top: 20px; left: 20px; font-size: 3rem; }
+  .exp .num { position: absolute; top: 18px; right: 22px; font-family: "Instrument Serif", serif; font-size: 1.4rem; opacity: .6; }
+  .exp b { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1.05; }
+  .exp span:last-child { font-size: .88rem; opacity: .88; margin-top: 6px; }
+  .rail-nav { display: flex; gap: 8px; }
+  .rail-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); cursor: pointer; font-size: 1.1rem; color: var(--ink); }
+  .rail-nav button:hover { background: var(--ink); color: #fff; }
+
+  /* ---------- Siti ---------- */
+  .sites { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .site { position: relative; overflow: hidden; border-radius: 28px; padding: 40px; min-height: 300px; color: #fff; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; transition: transform .25s; }
+  .site:hover { transform: translateY(-4px); }
+  .site.it { background: linear-gradient(140deg, #0f7a5a, #0b2a40); }
+  .site.fr { background: linear-gradient(140deg, #2353c8, #0b2a40 75%); }
+  .site::before { content: ""; position: absolute; width: 340px; height: 340px; border-radius: 50%; right: -90px; top: -110px; background: rgba(255,255,255,.08); }
+  .site .flag { font-size: 2.4rem; }
+  .site h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 3.2rem; line-height: 1; margin: 6px 0 10px; }
+  .site p { margin: 0; opacity: .85; max-width: 36ch; }
+  .site .btn { align-self: flex-start; background: #fff; color: var(--ink); }
+
+  /* ---------- Newsletter ---------- */
+  .news { margin-top: 96px; position: relative; overflow: hidden; background: var(--lemon); border-radius: 32px; padding: 56px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; }
+  .news::after { content: "✉"; position: absolute; right: -10px; bottom: -70px; font-size: 16rem; opacity: .08; transform: rotate(-12deg); pointer-events: none; }
+  .news h2 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1; margin: 0 0 10px; }
   .news p { margin: 0; }
-  .news form { display: flex; gap: 8px; flex-wrap: wrap; }
-  .news input {
-    flex: 1; min-width: 200px; padding: 14px 18px; border-radius: 999px; border: 0; font: 1rem Inter, sans-serif;
+  .news form { position: relative; z-index: 1; display: flex; background: #fff; border-radius: 999px; padding: 6px; }
+  .news input { flex: 1; min-width: 0; border: 0; outline: 0; background: none; padding: 0 18px; font: 1rem Inter, sans-serif; }
+
+  footer { margin-top: 96px; background: var(--navy); color: #b8c7d3; padding: 56px 0 40px; font-size: .9rem; }
+  footer .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; }
+  footer .logo { color: #fff; font-size: 2.4rem; }
+  footer p { margin: 8px 0 0; max-width: 46ch; }
+
+  /* ---------- Animazioni in entrata ---------- */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
   }
-  .news .btn { border: 0; cursor: pointer; font-size: 1rem; background: var(--sea-deep); }
 
-  footer { margin-top: 64px; background: var(--sea-deep); color: #cfe0ec; padding: 36px 0; font-size: .9rem; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  footer .logo { color: #fff; }
-
-  @media (max-width: 820px) {
+  @media (max-width: 900px) {
     .nav { display: none; }
-    .feature, .sites, .news { grid-template-columns: 1fr; }
-    .feature .art { min-height: 180px; font-size: 5rem; }
-    .news { padding: 30px; }
-    .hero { background-size: 100%; background-position: 0 0; padding-top: 48px; }
-    .hero { background: radial-gradient(circle at 92% 8%, #ffd34d 0 40px, transparent 41px), linear-gradient(160deg, #1477b0 0%, var(--sea) 45%, var(--sea-deep) 100%); }
+    .hero { padding-top: 100px; }
+    .hero-grid, .sites, .news, footer .wrap { grid-template-columns: 1fr; }
+    .scene { aspect-ratio: 4 / 3.4; }
+    .bento { grid-template-columns: 1fr; grid-template-rows: none; }
+    .tile.big { grid-row: auto; min-height: 380px; }
+    .tile.big .emo { font-size: 5.5rem; top: 26px; right: 28px; }
+    .rail { grid-auto-columns: 72%; }
+    .news { padding: 34px 24px; }
+    .site { padding: 30px; min-height: 240px; }
+    section { padding-top: 72px; }
+    .scene .stat div { padding: 8px 10px; }
+    .scene .stat b { font-size: 1.5rem; }
+    .map { padding: 8px; overflow-x: auto; scrollbar-width: none; }
+    .map svg { min-width: 760px; }
   }
 </style>
 </head>
 <body>
 
 <header class="topbar">
-  <div class="wrap">
-    <a class="logo" href="#">La <span>Riviera</span></a>
+  <div class="bar">
+    <a class="logo" href="#">La <i>Riviera</i></a>
     <nav class="nav">
-      <a href="#eventi" data-i18n="navEvents">Eventi</a>
-      <a href="#cosa-fare" data-i18n="navTodo">Cosa fare</a>
-      <a href="#siti" data-i18n="navSites">I nostri siti</a>
+      <a href="#mappa" data-i18n="navMap"></a>
+      <a href="#eventi" data-i18n="navEvents"></a>
+      <a href="#cosa-fare" data-i18n="navTodo"></a>
+      <a href="#siti" data-i18n="navSites"></a>
     </nav>
     <div class="lang" role="group" aria-label="Lingua / Langue">
-      <button data-lang="it" class="on">IT</button>
+      <button data-lang="it">IT</button>
       <button data-lang="fr">FR</button>
     </div>
   </div>
 </header>
 
+<!-- ================= COPERTINA ================= -->
 <div class="hero">
-  <div class="wrap">
-    <span class="issue" data-i18n="issue">N° 1 · Novembre 2026</span>
-    <h1 data-i18n="heroTitle">Cosa succede in Riviera</h1>
-    <p class="lead" data-i18n="heroLead">Sagre, feste, concerti e idee per il weekend. Da Genova a Nizza, tutto in un colpo d'occhio.</p>
-    <div class="zones">
-      <span>📍 Genova</span><span>📍 Savona</span><span>📍 Imperia</span><span>📍 Côte d'Azur</span>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill" id="issue"></span>
+      <h1 data-i18n-html="heroTitle"></h1>
+      <p data-i18n="heroLead"></p>
+      <div class="cta">
+        <a class="btn dark" href="#eventi"><span data-i18n="ctaEvents"></span> <span class="arr">→</span></a>
+        <a class="btn light" href="#mappa" data-i18n="ctaMap"></a>
+      </div>
+    </div>
+
+    <div class="scene" aria-hidden="true">
+      <svg viewBox="0 0 500 510" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffb37a"/><stop offset=".55" stop-color="#ffd9a8"/><stop offset="1" stop-color="#fff0d6"/>
+          </linearGradient>
+          <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3fa7d6"/><stop offset="1" stop-color="#0b2a40"/>
+          </linearGradient>
+        </defs>
+        <rect width="500" height="510" fill="url(#sky)"/>
+        <circle class="sun" cx="330" cy="190" r="62" fill="#ffd23f"/>
+        <path d="M0 230 Q 90 150 190 210 T 380 190 T 500 175 V 300 H 0Z" fill="#9db06a"/>
+        <path d="M0 265 Q 120 205 230 250 T 500 235 V 310 H 0Z" fill="#7b8f3c"/>
+        <g transform="translate(40 228)">
+          <rect x="0" y="20" width="26" height="40" fill="#f3b07c"/><rect x="24" y="8" width="22" height="52" fill="#ef6a45"/>
+          <rect x="44" y="26" width="28" height="34" fill="#ffd9a8"/><rect x="70" y="0" width="16" height="60" fill="#e5533a"/>
+          <polygon points="70,0 78,-16 86,0" fill="#b9402c"/><rect x="84" y="18" width="30" height="42" fill="#f6c46b"/>
+          <rect x="112" y="30" width="24" height="30" fill="#f3b07c"/>
+          <g fill="#13202c" opacity=".35"><rect x="6" y="30" width="5" height="7"/><rect x="30" y="18" width="5" height="7"/><rect x="52" y="36" width="5" height="7"/><rect x="92" y="28" width="5" height="7"/><rect x="31" y="34" width="5" height="7"/><rect x="118" y="40" width="5" height="7"/></g>
+        </g>
+        <rect y="285" width="500" height="225" fill="url(#seaG)"/>
+        <g stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M40 320 h40 M140 345 h60 M300 330 h50 M380 370 h70 M60 400 h50 M220 420 h40"/>
+        </g>
+        <path d="M290 292 Q 330 302 370 292" stroke="#ffd23f" stroke-width="5" stroke-linecap="round" fill="none" opacity=".7"/>
+        <g class="boat"><g transform="translate(0 300)">
+          <path d="M0 22 h46 l-8 10 h-30z" fill="#fffdf9"/><path d="M22 20 V -14 L44 18z" fill="#fffdf9"/><path d="M20 20 V -6 L4 18z" fill="#ef6a45"/>
+        </g></g>
+      </svg>
+      <div class="stat">
+        <div><b id="statEvents">0</b><span data-i18n="statEvents"></span></div>
+        <div><b>4</b><span data-i18n="statZones"></span></div>
+        <div><b>2</b><span data-i18n="statLangs"></span></div>
+      </div>
     </div>
   </div>
-  <svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 50 C 240 0, 480 100, 720 50 S 1200 0, 1440 50 L1440 90 L0 90 Z" fill="#fbf6ee"/>
-  </svg>
+
+  <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
 </div>
 
 <main class="wrap">
 
-  <!-- In primo piano -->
-  <article class="feature" id="feature"></article>
-
-  <!-- Eventi -->
-  <section id="eventi">
-    <div class="sec-head">
+  <!-- ================= MAPPA ================= -->
+  <section id="mappa" class="reveal">
+    <div class="head">
       <div>
-        <h2 data-i18n="eventsTitle">In agenda</h2>
-        <p data-i18n="eventsSub">Scegli la zona e il tipo di evento.</p>
+        <span class="eyebrow" data-i18n="mapEyebrow"></span>
+        <h2 data-i18n-html="mapTitle"></h2>
+        <p data-i18n="mapSub"></p>
+      </div>
+    </div>
+    <div class="map">
+      <svg viewBox="0 0 1000 420" role="img" aria-label="Liguria — Côte d'Azur">
+        <defs>
+          <linearGradient id="mapSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6ebf6"/><stop offset="1" stop-color="#a9d2ea"/></linearGradient>
+        </defs>
+        <rect width="1000" height="420" rx="18" fill="url(#mapSea)"/>
+        <path d="M0 0 H1000 V58 C 970 48 945 36 922 36 C 880 36 820 44 770 58 C 740 66 728 70 718 74 C 680 96 640 130 610 160 C 590 180 560 205 514 232 C 480 248 440 255 400 259 C 350 266 300 272 273 280 C 255 286 245 292 236 294 C 210 300 190 304 168 306 C 130 318 90 342 50 362 C 30 370 15 374 0 376 Z" fill="#f4ede0" stroke="#e2d6c1" stroke-width="2"/>
+        <path d="M286 277 L 300 200 L 330 130 L 345 60 L 360 0" stroke="#c9b99c" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+        <text x="430" y="110" font-family="Instrument Serif, serif" font-size="46" fill="#ddd0b8" letter-spacing="10">ITALIA</text>
+        <text x="60" y="190" font-family="Instrument Serif, serif" font-size="46" fill="#ddd0b8" letter-spacing="10">FRANCE</text>
+        <text x="610" y="345" font-family="Instrument Serif, serif" font-style="italic" font-size="36" fill="#6fa9cc">Mar Ligure</text>
+        <g class="town">
+          <circle cx="50" cy="362" r="4" fill="#8a949d"/><text x="40" y="390">Cannes</text>
+          <circle cx="236" cy="294" r="4" fill="#8a949d"/><text x="212" y="322">Monaco</text>
+          <circle cx="273" cy="280" r="4" fill="#8a949d"/><text x="262" y="262">Menton</text>
+          <circle cx="400" cy="259" r="4" fill="#8a949d"/><text x="378" y="286">Sanremo</text>
+          <circle cx="577" cy="190" r="4" fill="#8a949d"/><text x="590" y="196">Alassio</text>
+          <circle cx="640" cy="130" r="4" fill="#8a949d"/><text x="654" y="136">Finale Ligure</text>
+        </g>
+        <g id="pins"></g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ================= IN PRIMO PIANO ================= -->
+  <section class="reveal">
+    <div class="head">
+      <div>
+        <span class="eyebrow" data-i18n="featEyebrow"></span>
+        <h2 data-i18n-html="featTitle"></h2>
+      </div>
+    </div>
+    <div class="bento" id="bento"></div>
+  </section>
+
+  <!-- ================= AGENDA ================= -->
+  <section id="eventi" class="reveal">
+    <div class="head">
+      <div>
+        <span class="eyebrow" data-i18n="eventsEyebrow"></span>
+        <h2 data-i18n-html="eventsTitle"></h2>
+        <p data-i18n="eventsSub"></p>
       </div>
     </div>
     <div class="filters">
@@ -236,56 +350,64 @@
     <div class="grid" id="grid"></div>
   </section>
 
-  <!-- Cosa fare -->
-  <section id="cosa-fare">
-    <div class="sec-head">
+  <!-- ================= COSA FARE ================= -->
+  <section id="cosa-fare" class="reveal">
+    <div class="head">
       <div>
-        <h2 data-i18n="todoTitle">Cosa fare quando arrivi</h2>
-        <p data-i18n="todoSub">Mare, sentieri, borghi e sapori: le esperienze da non perdere.</p>
+        <span class="eyebrow" data-i18n="todoEyebrow"></span>
+        <h2 data-i18n-html="todoTitle"></h2>
+        <p data-i18n="todoSub"></p>
+      </div>
+      <div class="rail-nav">
+        <button aria-label="←" data-dir="-1">←</button>
+        <button aria-label="→" data-dir="1">→</button>
       </div>
     </div>
-    <div class="todo" id="todo"></div>
+    <div class="rail" id="rail"></div>
   </section>
 
-  <!-- Siti partner: sostituire gli href con gli indirizzi reali dei vostri siti -->
-  <section id="siti">
-    <div class="sec-head">
+  <!-- ================= I NOSTRI SITI =================
+       Sostituire gli href con gli indirizzi reali dei vostri siti -->
+  <section id="siti" class="reveal">
+    <div class="head">
       <div>
-        <h2 data-i18n="sitesTitle">Organizza la tua vacanza</h2>
-        <p data-i18n="sitesSub">Alloggi, attività e prenotazioni sui nostri portali.</p>
+        <span class="eyebrow" data-i18n="sitesEyebrow"></span>
+        <h2 data-i18n-html="sitesTitle"></h2>
       </div>
     </div>
     <div class="sites">
       <a class="site it" href="https://www.ESEMPIO-SITO-ITALIANO.it" target="_blank" rel="noopener">
-        <h3>🇮🇹 Liguria</h3>
-        <p data-i18n="siteIt">Riviera di Ponente e di Levante: hotel, case vacanza, escursioni.</p>
-        <span class="btn" data-i18n="visit">Visita il sito →</span>
+        <div><div class="flag">🇮🇹</div><h3>Liguria</h3><p data-i18n="siteIt"></p></div>
+        <span class="btn"><span data-i18n="visit"></span> <span class="arr">→</span></span>
       </a>
       <a class="site fr" href="https://www.EXEMPLE-SITE-FRANCAIS.fr" target="_blank" rel="noopener">
-        <h3>🇫🇷 Côte d'Azur</h3>
-        <p data-i18n="siteFr">Da Mentone a Cannes: soggiorni, attività e idee di viaggio.</p>
-        <span class="btn" data-i18n="visit">Visita il sito →</span>
+        <div><div class="flag">🇫🇷</div><h3>Côte d'Azur</h3><p data-i18n="siteFr"></p></div>
+        <span class="btn"><span data-i18n="visit"></span> <span class="arr">→</span></span>
       </a>
     </div>
   </section>
 
-  <!-- Iscrizione: collegare l'action del form al vostro servizio newsletter (es. Mailchimp, Brevo) -->
-  <div class="news">
+  <!-- ================= NEWSLETTER =================
+       Collegare l'action del form al vostro servizio (Mailchimp, Brevo, ...) -->
+  <div class="news reveal">
     <div>
-      <h2 data-i18n="newsTitle">Il giornalino nella tua email</h2>
-      <p data-i18n="newsSub">Ogni mese i migliori eventi della Riviera. Niente spam, promesso.</p>
+      <h2 data-i18n-html="newsTitle"></h2>
+      <p data-i18n="newsSub"></p>
     </div>
-    <form action="#" onsubmit="event.preventDefault(); this.querySelector('button').textContent = T().thanks;">
+    <form action="#" id="newsForm">
       <input type="email" required placeholder="nome@email.com" aria-label="Email">
-      <button class="btn" type="submit" data-i18n="subscribe">Iscriviti</button>
+      <button class="btn dark" type="submit" data-i18n="subscribe"></button>
     </form>
   </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <div><span class="logo">La <span>Riviera</span></span><br><span data-i18n="footer">Liguria &amp; Côte d'Azur · il giornalino degli eventi</span></div>
-    <div data-i18n="disclaimer">Date e programmi possono cambiare: verifica sempre sul sito dell'organizzatore.</div>
+    <div>
+      <span class="logo">La <i>Riviera</i></span>
+      <p data-i18n="footer"></p>
+    </div>
+    <div><p data-i18n="disclaimer"></p></div>
   </div>
 </footer>
 
@@ -294,155 +416,211 @@
    CONTENUTI DEL GIORNALINO — modifica qui per ogni nuovo numero
    zone: genova | savona | imperia | azur
    cat:  sagre | feste | musica | mercatini | cultura | sport
-   date: AAAA-MM-GG (data di inizio)
+   date / end: AAAA-MM-GG (end facoltativo, per eventi di più giorni)
+   img: facoltativo, percorso o URL di una foto (es. "foto/olioliva.jpg");
+        se vuoto si usa l'illustrazione con l'emoji
+   featured: 1 = copertina grande, 2 e 3 = riquadri accanto
+   Gli eventi già finiti spariscono da soli.
    ============================================================ */
 const ISSUE = { it: "N° 1 · Novembre 2026", fr: "N° 1 · Novembre 2026" };
 
 const EVENTS = [
   {
-    featured: true, zone: "imperia", cat: "sagre", icon: "🫒", date: "2026-11-13",
-    it: { title: "Olioliva", place: "Imperia, Oneglia", when: "13–15 novembre", text: "La festa dell'olio nuovo: assaggi, frantoi aperti e street food sul porto." },
-    fr: { title: "Olioliva", place: "Imperia, Oneglia", when: "13–15 novembre", text: "La fête de l'huile nouvelle : dégustations, moulins ouverts et street food sur le port." },
+    featured: 1, zone: "imperia", cat: "sagre", icon: "🫒", date: "2026-11-13", end: "2026-11-15", img: "",
+    it: { title: "Olioliva", place: "Imperia, Oneglia", text: "La festa dell'olio nuovo: assaggi, frantoi aperti e street food sul porto." },
+    fr: { title: "Olioliva", place: "Imperia, Oneglia", text: "La fête de l'huile nouvelle : dégustations, moulins ouverts et street food sur le port." },
     url: "https://www.visitriviera.info"
   },
   {
-    zone: "savona", cat: "sagre", icon: "🌰", date: "2026-11-08",
-    it: { title: "Festa della Castagna", place: "Val Bormida (SV)", when: "8 novembre", text: "Caldarroste, farine e dolci d'autunno nei borghi dell'entroterra." },
-    fr: { title: "Fête de la Châtaigne", place: "Val Bormida (SV)", when: "8 novembre", text: "Châtaignes grillées et douceurs d'automne dans les villages de l'arrière-pays." },
-    url: "https://www.visitriviera.info"
-  },
-  {
-    zone: "azur", cat: "feste", icon: "🇲🇨", date: "2026-11-19",
-    it: { title: "Festa Nazionale di Monaco", place: "Principato di Monaco", when: "19 novembre", text: "Fuochi d'artificio, concerti e il Principato in festa." },
-    fr: { title: "Fête Nationale Monégasque", place: "Principauté de Monaco", when: "19 novembre", text: "Feux d'artifice, concerts et toute la Principauté en fête." },
-    url: "https://www.visitmonaco.com"
-  },
-  {
-    zone: "genova", cat: "cultura", icon: "🏛️", date: "2026-11-21",
-    it: { title: "Musei aperti di sera", place: "Genova, Via Garibaldi", when: "21 novembre", text: "I palazzi dei Rolli illuminati, visite guidate fino a tarda sera." },
-    fr: { title: "Musées en nocturne", place: "Gênes, Via Garibaldi", when: "21 novembre", text: "Les palais des Rolli illuminés, visites guidées jusqu'en soirée." },
-    url: "https://www.visitgenoa.it"
-  },
-  {
-    zone: "imperia", cat: "musica", icon: "🎶", date: "2026-11-28",
-    it: { title: "Sanremo Jazz Night", place: "Sanremo", when: "28 novembre", text: "Una serata di jazz dal vivo nel cuore della città dei fiori." },
-    fr: { title: "Sanremo Jazz Night", place: "Sanremo", when: "28 novembre", text: "Une soirée de jazz live au cœur de la ville des fleurs." },
-    url: "https://www.visitriviera.info"
-  },
-  {
-    zone: "azur", cat: "mercatini", icon: "🎄", date: "2026-11-28",
-    it: { title: "Villaggio di Natale", place: "Nizza, Place Masséna", when: "da fine novembre", text: "Chalet in legno, ruota panoramica e vin brulé sotto le luci." },
-    fr: { title: "Village de Noël", place: "Nice, Place Masséna", when: "dès fin novembre", text: "Chalets en bois, grande roue et vin chaud sous les lumières." },
+    featured: 2, zone: "azur", cat: "mercatini", icon: "🎄", date: "2026-11-28", end: "2027-01-04", img: "",
+    it: { title: "Villaggio di Natale", place: "Nizza, Place Masséna", text: "Chalet in legno, ruota panoramica e vin brulé sotto le luci." },
+    fr: { title: "Village de Noël", place: "Nice, Place Masséna", text: "Chalets en bois, grande roue et vin chaud sous les lumières." },
     url: "https://www.explorenicecotedazur.com"
   },
   {
-    zone: "genova", cat: "mercatini", icon: "🎁", date: "2026-12-05",
-    it: { title: "Natale al Porto Antico", place: "Genova, Porto Antico", when: "dal 5 dicembre", text: "Mercatini, pista di pattinaggio e luci sul mare." },
-    fr: { title: "Noël au Porto Antico", place: "Gênes, Porto Antico", when: "dès le 5 décembre", text: "Marchés, patinoire et lumières sur la mer." },
+    featured: 3, zone: "genova", cat: "mercatini", icon: "🎁", date: "2026-12-05", end: "2027-01-06", img: "",
+    it: { title: "Natale al Porto Antico", place: "Genova, Porto Antico", text: "Mercatini, pista di pattinaggio e luci sul mare." },
+    fr: { title: "Noël au Porto Antico", place: "Gênes, Porto Antico", text: "Marchés, patinoire et lumières sur la mer." },
     url: "https://www.visitgenoa.it"
   },
   {
-    zone: "savona", cat: "feste", icon: "✨", date: "2026-12-08",
-    it: { title: "Presepi nei carruggi", place: "Noli e Finalborgo", when: "dall'8 dicembre", text: "Presepi artigianali tra vicoli medievali e piazzette." },
-    fr: { title: "Crèches dans les ruelles", place: "Noli et Finalborgo", when: "dès le 8 décembre", text: "Crèches artisanales entre ruelles médiévales et placettes." },
+    zone: "savona", cat: "sagre", icon: "🌰", date: "2026-11-08", img: "",
+    it: { title: "Festa della Castagna", place: "Val Bormida (SV)", text: "Caldarroste, farine e dolci d'autunno nei borghi dell'entroterra." },
+    fr: { title: "Fête de la Châtaigne", place: "Val Bormida (SV)", text: "Châtaignes grillées et douceurs d'automne dans l'arrière-pays." },
     url: "https://www.visitriviera.info"
   },
   {
-    zone: "savona", cat: "sport", icon: "🚵", date: "2026-11-15",
-    it: { title: "Finale Outdoor Day", place: "Finale Ligure", when: "15 novembre", text: "Mountain bike, arrampicata e trekking con le guide locali." },
-    fr: { title: "Finale Outdoor Day", place: "Finale Ligure", when: "15 novembre", text: "VTT, escalade et randonnée avec les guides locaux." },
+    zone: "savona", cat: "sport", icon: "🚵", date: "2026-11-15", img: "",
+    it: { title: "Finale Outdoor Day", place: "Finale Ligure", text: "Mountain bike, arrampicata e trekking con le guide locali." },
+    fr: { title: "Finale Outdoor Day", place: "Finale Ligure", text: "VTT, escalade et randonnée avec les guides locaux." },
     url: "https://www.visitriviera.info"
   },
   {
-    zone: "azur", cat: "feste", icon: "🍋", date: "2027-02-13",
-    it: { title: "Festa del Limone", place: "Mentone", when: "febbraio 2027", text: "Carri giganti di agrumi: segnatelo già in calendario!" },
-    fr: { title: "Fête du Citron", place: "Menton", when: "février 2027", text: "Des chars géants d'agrumes : à noter dès maintenant !" },
+    zone: "azur", cat: "feste", icon: "🎆", date: "2026-11-19", img: "",
+    it: { title: "Festa Nazionale di Monaco", place: "Principato di Monaco", text: "Fuochi d'artificio, concerti e il Principato in festa." },
+    fr: { title: "Fête Nationale Monégasque", place: "Principauté de Monaco", text: "Feux d'artifice, concerts et toute la Principauté en fête." },
+    url: "https://www.visitmonaco.com"
+  },
+  {
+    zone: "genova", cat: "cultura", icon: "🏛️", date: "2026-11-21", img: "",
+    it: { title: "Musei aperti di sera", place: "Genova, Via Garibaldi", text: "I palazzi dei Rolli illuminati, visite guidate fino a tarda sera." },
+    fr: { title: "Musées en nocturne", place: "Gênes, Via Garibaldi", text: "Les palais des Rolli illuminés, visites guidées en soirée." },
+    url: "https://www.visitgenoa.it"
+  },
+  {
+    zone: "imperia", cat: "musica", icon: "🎷", date: "2026-11-28", img: "",
+    it: { title: "Sanremo Jazz Night", place: "Sanremo", text: "Jazz dal vivo nel cuore della città dei fiori." },
+    fr: { title: "Sanremo Jazz Night", place: "Sanremo", text: "Du jazz live au cœur de la ville des fleurs." },
+    url: "https://www.visitriviera.info"
+  },
+  {
+    zone: "savona", cat: "feste", icon: "✨", date: "2026-12-08", end: "2027-01-06", img: "",
+    it: { title: "Presepi nei carruggi", place: "Noli e Finalborgo", text: "Presepi artigianali tra vicoli medievali e piazzette." },
+    fr: { title: "Crèches dans les ruelles", place: "Noli et Finalborgo", text: "Crèches artisanales entre ruelles médiévales et placettes." },
+    url: "https://www.visitriviera.info"
+  },
+  {
+    zone: "azur", cat: "feste", icon: "🍋", date: "2027-02-13", end: "2027-03-03", img: "",
+    it: { title: "Festa del Limone", place: "Mentone", text: "Carri giganti di agrumi: segnatelo già in calendario!" },
+    fr: { title: "Fête du Citron", place: "Menton", text: "Des chars géants d'agrumes : à noter dès maintenant !" },
     url: "https://www.fete-du-citron.com"
   }
 ];
 
 const TODO = [
-  { icon: "🐋", bg: "linear-gradient(135deg,#1477b0,#0a3550)", it: ["Whale watching", "Santuario Pelagos, da Genova e Imperia"], fr: ["Whale watching", "Sanctuaire Pelagos, depuis Gênes et Imperia"], url: "#" },
-  { icon: "🥾", bg: "linear-gradient(135deg,#6b7f3a,#3f4d1f)", it: ["Alta Via dei Monti Liguri", "Sentieri tra mare e montagna"], fr: ["Alta Via dei Monti Liguri", "Sentiers entre mer et montagne"], url: "#" },
-  { icon: "🚴", bg: "linear-gradient(135deg,#d9643a,#9e3c1c)", it: ["Bike a Finale", "Capitale europea della MTB"], fr: ["VTT à Finale", "Capitale européenne du VTT"], url: "#" },
-  { icon: "🏘️", bg: "linear-gradient(135deg,#c08a3e,#7a5420)", it: ["Borghi più belli", "Apricale, Dolceacqua, Noli"], fr: ["Plus beaux villages", "Apricale, Dolceacqua, Noli"], url: "#" },
-  { icon: "🤿", bg: "linear-gradient(135deg,#1aa3a3,#0b5f6b)", it: ["Snorkeling e diving", "Portofino e Isola Gallinara"], fr: ["Snorkeling et plongée", "Portofino et île Gallinara"], url: "#" },
-  { icon: "🌅", bg: "linear-gradient(135deg,#7d63d9,#3c2a8a)", it: ["Èze e Villefranche", "Panorami da cartolina in Costa Azzurra"], fr: ["Èze et Villefranche", "Panoramas de carte postale"], url: "#" },
-  { icon: "🍷", bg: "linear-gradient(135deg,#a3324a,#5e1626)", it: ["Vini e sapori", "Rossese, Pigato, pesto e focaccia"], fr: ["Vins et saveurs", "Rossese, Pigato, pesto et focaccia"], url: "#" },
-  { icon: "🏖️", bg: "linear-gradient(135deg,#f4b13f,#d9643a)", it: ["Spiagge", "Dalla Baia del Silenzio a Paloma Beach"], fr: ["Plages", "De la Baia del Silenzio à Paloma Beach"], url: "#" }
+  { icon: "🐋", bg: "linear-gradient(160deg,#3fa7d6,#0b2a40)", it: ["Whale watching", "Santuario Pelagos, da Genova e Imperia"], fr: ["Whale watching", "Sanctuaire Pelagos, depuis Gênes et Imperia"], url: "#" },
+  { icon: "🥾", bg: "linear-gradient(160deg,#9db06a,#3f4d1f)", it: ["Alta Via dei Monti Liguri", "Sentieri tra mare e montagna"], fr: ["Alta Via dei Monti Liguri", "Sentiers entre mer et montagne"], url: "#" },
+  { icon: "🚵", bg: "linear-gradient(160deg,#ff9a76,#9e3c1c)", it: ["Bike a Finale", "Capitale europea della MTB"], fr: ["VTT à Finale", "Capitale européenne du VTT"], url: "#" },
+  { icon: "🏘️", bg: "linear-gradient(160deg,#e8b56a,#7a5420)", it: ["I borghi più belli", "Apricale, Dolceacqua, Noli"], fr: ["Plus beaux villages", "Apricale, Dolceacqua, Noli"], url: "#" },
+  { icon: "🤿", bg: "linear-gradient(160deg,#4fd1c5,#0b5f6b)", it: ["Snorkeling e diving", "Portofino e Isola Gallinara"], fr: ["Snorkeling et plongée", "Portofino et île Gallinara"], url: "#" },
+  { icon: "🌅", bg: "linear-gradient(160deg,#a58bff,#2e1f73)", it: ["Èze e Villefranche", "Panorami da cartolina"], fr: ["Èze et Villefranche", "Panoramas de carte postale"], url: "#" },
+  { icon: "🍷", bg: "linear-gradient(160deg,#d0566b,#4e1020)", it: ["Vini e sapori", "Rossese, Pigato, pesto e focaccia"], fr: ["Vins et saveurs", "Rossese, Pigato, pesto et focaccia"], url: "#" },
+  { icon: "🏖️", bg: "linear-gradient(160deg,#ffc94a,#ef6a45)", it: ["Spiagge", "Dalla Baia del Silenzio a Paloma Beach"], fr: ["Plages", "De la Baia del Silenzio à Paloma Beach"], url: "#" }
 ];
 
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
-    navEvents: "Eventi", navTodo: "Cosa fare", navSites: "I nostri siti",
-    heroTitle: "Cosa succede in Riviera",
+    navMap: "Mappa", navEvents: "Eventi", navTodo: "Cosa fare", navSites: "Vacanze",
+    heroTitle: "Cosa succede <em>in Riviera</em>",
     heroLead: "Sagre, feste, concerti e idee per il weekend. Da Genova a Nizza, tutto in un colpo d'occhio.",
-    featured: "In primo piano", discover: "Scopri di più →",
-    eventsTitle: "In agenda", eventsSub: "Scegli la zona e il tipo di evento.",
-    todoTitle: "Cosa fare quando arrivi", todoSub: "Mare, sentieri, borghi e sapori: le esperienze da non perdere.",
-    sitesTitle: "Organizza la tua vacanza", sitesSub: "Alloggi, attività e prenotazioni sui nostri portali.",
+    ctaEvents: "Scopri gli eventi", ctaMap: "Apri la mappa",
+    statEvents: "eventi in arrivo", statZones: "zone", statLangs: "lingue",
+    mapEyebrow: "Dove andare", mapTitle: "Scegli <em>la tua zona</em>", mapSub: "Tocca un punto sulla mappa per vedere gli eventi in zona.",
+    featEyebrow: "Da non perdere", featTitle: "In <em>primo piano</em>",
+    eventsEyebrow: "Agenda", eventsTitle: "Tutti gli <em>eventi</em>", eventsSub: "Filtra per zona e per tipo. Una riga per evento, il resto sul sito dell'organizzatore.",
+    todoEyebrow: "Esperienze", todoTitle: "Cosa fare <em>quando arrivi</em>", todoSub: "Mare, sentieri, borghi e sapori.",
+    sitesEyebrow: "Vacanze", sitesTitle: "Organizza il tuo <em>soggiorno</em>",
     siteIt: "Riviera di Ponente e di Levante: hotel, case vacanza, escursioni.",
     siteFr: "Da Mentone a Cannes: soggiorni, attività e idee di viaggio.",
-    visit: "Visita il sito →",
-    newsTitle: "Il giornalino nella tua email", newsSub: "Ogni mese i migliori eventi della Riviera. Niente spam, promesso.",
+    visit: "Visita il sito",
+    newsTitle: "Il giornalino <em>nella tua email</em>", newsSub: "Ogni mese i migliori eventi della Riviera. Niente spam, promesso.",
     subscribe: "Iscriviti", thanks: "Grazie! ✓",
-    footer: "Liguria & Côte d'Azur · il giornalino degli eventi",
+    footer: "Liguria & Côte d'Azur — il giornalino degli eventi, delle sagre e delle cose da fare.",
     disclaimer: "Date e programmi possono cambiare: verifica sempre sul sito dell'organizzatore.",
     empty: "Nessun evento per questa scelta. Prova un altro filtro!",
-    all: "Tutto",
+    all: "Tutto", events1: "evento", eventsN: "eventi",
+    today: "Oggi", tomorrow: "Domani", inDays: (n) => `Tra ${n} giorni`, now: "In corso",
     zones: { genova: "Genova", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Sagre", feste: "🎉 Feste", musica: "🎶 Musica", mercatini: "🎄 Mercatini", cultura: "🏛️ Cultura", sport: "🚵 Sport" },
-    months: ["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"]
+    locale: "it-IT"
   },
   fr: {
-    navEvents: "Événements", navTodo: "À faire", navSites: "Nos sites",
-    heroTitle: "Ce qui se passe sur la Riviera",
+    navMap: "Carte", navEvents: "Événements", navTodo: "À faire", navSites: "Vacances",
+    heroTitle: "Ce qui se passe <em>sur la Riviera</em>",
     heroLead: "Fêtes de village, festivals, concerts et idées pour le week-end. De Gênes à Nice, tout en un coup d'œil.",
-    featured: "À la une", discover: "En savoir plus →",
-    eventsTitle: "À l'agenda", eventsSub: "Choisissez la zone et le type d'événement.",
-    todoTitle: "Que faire en arrivant", todoSub: "Mer, sentiers, villages et saveurs : les expériences à ne pas manquer.",
-    sitesTitle: "Organisez vos vacances", sitesSub: "Hébergements, activités et réservations sur nos portails.",
+    ctaEvents: "Voir les événements", ctaMap: "Ouvrir la carte",
+    statEvents: "événements à venir", statZones: "zones", statLangs: "langues",
+    mapEyebrow: "Où aller", mapTitle: "Choisissez <em>votre zone</em>", mapSub: "Touchez un point sur la carte pour voir les événements du coin.",
+    featEyebrow: "À ne pas manquer", featTitle: "À <em>la une</em>",
+    eventsEyebrow: "Agenda", eventsTitle: "Tous les <em>événements</em>", eventsSub: "Filtrez par zone et par type. Une ligne par événement, le reste sur le site de l'organisateur.",
+    todoEyebrow: "Expériences", todoTitle: "Que faire <em>en arrivant</em>", todoSub: "Mer, sentiers, villages et saveurs.",
+    sitesEyebrow: "Vacances", sitesTitle: "Organisez votre <em>séjour</em>",
     siteIt: "Riviera du Ponant et du Levant : hôtels, locations, excursions.",
     siteFr: "De Menton à Cannes : séjours, activités et idées de voyage.",
-    visit: "Visiter le site →",
-    newsTitle: "Le petit journal dans votre boîte mail", newsSub: "Chaque mois, les meilleurs événements de la Riviera. Sans spam, promis.",
+    visit: "Visiter le site",
+    newsTitle: "Le petit journal <em>dans votre boîte mail</em>", newsSub: "Chaque mois, les meilleurs événements de la Riviera. Sans spam, promis.",
     subscribe: "S'inscrire", thanks: "Merci ! ✓",
-    footer: "Ligurie & Côte d'Azur · le petit journal des événements",
+    footer: "Ligurie & Côte d'Azur — le petit journal des événements, des fêtes et des choses à faire.",
     disclaimer: "Dates et programmes susceptibles de changer : vérifiez toujours sur le site de l'organisateur.",
     empty: "Aucun événement pour ce choix. Essayez un autre filtre !",
-    all: "Tout",
+    all: "Tout", events1: "événement", eventsN: "événements",
+    today: "Aujourd'hui", tomorrow: "Demain", inDays: (n) => `Dans ${n} jours`, now: "En cours",
     zones: { genova: "Gênes", savona: "Savone", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Fêtes gourmandes", feste: "🎉 Fêtes", musica: "🎶 Musique", mercatini: "🎄 Marchés", cultura: "🏛️ Culture", sport: "🚵 Sport" },
-    months: ["Janv","Févr","Mars","Avr","Mai","Juin","Juil","Août","Sept","Oct","Nov","Déc"]
+    locale: "fr-FR"
   }
 };
+
+/* Punti sulla mappa: [x, y, spostamento etichetta x, y] */
+const PINS = { genova: [922, 36, -40, 46], savona: [718, 74, 20, -4], imperia: [514, 232, -30, 50], azur: [168, 306, -56, 52] };
 
 /* ======================= LOGICA ======================= */
 let lang = (navigator.language || "it").startsWith("fr") ? "fr" : "it";
 try { lang = localStorage.getItem("riviera-lang") || lang; } catch (e) {}
+const qp = new URLSearchParams(location.search).get("lang");
+if (qp === "it" || qp === "fr") lang = qp;
 let zone = "all", cat = "all";
+
 const T = () => I18N[lang];
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const day = (iso) => new Date(iso + "T00:00:00");
+const today = new Date(); today.setHours(0, 0, 0, 0);
 
-function dateBadge(iso) {
-  const d = new Date(iso + "T12:00:00");
-  return `<div class="date"><b>${d.getDate()}</b><small>${T().months[d.getMonth()]}</small></div>`;
+/* Eventi non ancora finiti, in ordine di data */
+const UPCOMING = EVENTS.filter((e) => day(e.end || e.date) >= today).sort((a, b) => a.date.localeCompare(b.date));
+
+function fmtDate(e) {
+  const f = (iso, opt) => day(iso).toLocaleDateString(T().locale, opt);
+  if (!e.end) return f(e.date, { day: "numeric", month: "long" });
+  const a = day(e.date), b = day(e.end);
+  if (a.getMonth() === b.getMonth()) return `${a.getDate()}–${f(e.end, { day: "numeric", month: "long" })}`;
+  return `${f(e.date, { day: "numeric", month: "short" })} – ${f(e.end, { day: "numeric", month: "short" })}`;
 }
 
-function renderFeature() {
-  const e = EVENTS.find((x) => x.featured) || EVENTS[0];
-  const c = e[lang];
-  $("#feature").innerHTML = `
-    <div class="art">${e.icon}</div>
-    <div class="body">
-      <span class="kicker">★ ${T().featured}</span>
-      <h2>${esc(c.title)}</h2>
-      <div class="meta">📍 ${esc(c.place)} · 📅 ${esc(c.when)}</div>
-      <p>${esc(c.text)}</p>
-      <a class="btn" href="${e.url}" target="_blank" rel="noopener">${T().discover}</a>
-    </div>`;
+function countdown(e) {
+  const n = Math.round((day(e.date) - today) / 864e5);
+  if (n < 0) return T().now;
+  if (n === 0) return T().today;
+  if (n === 1) return T().tomorrow;
+  return n <= 30 ? T().inDays(n) : "";
+}
+
+const media = (e) => e.img ? `<img src="${esc(e.img)}" alt="" loading="lazy">` : "";
+
+function renderTicker() {
+  const items = UPCOMING.map((e) => `<span><small>${esc(fmtDate(e))}</small>${esc(e[lang].title)}</span>`).join("");
+  $("#ticker").innerHTML = items + items;
+  $("#statEvents").textContent = UPCOMING.length;
+}
+
+function renderPins() {
+  $("#pins").innerHTML = Object.entries(PINS).map(([k, [x, y, dx, dy]]) => {
+    const n = UPCOMING.filter((e) => e.zone === k).length;
+    return `<g class="pin ${zone === k ? "on" : ""}" data-k="${k}" tabindex="0" role="button">
+      <circle class="halo" cx="${x}" cy="${y}" r="22"/><circle class="dot" cx="${x}" cy="${y}" r="11"/>
+      <text class="lbl" x="${x + dx}" y="${y + dy}">${esc(T().zones[k])}</text>
+      <text class="n" x="${x + dx}" y="${y + dy + 18}">${n} ${n === 1 ? T().events1 : T().eventsN} →</text>
+    </g>`;
+  }).join("");
+  $("#pins").querySelectorAll(".pin").forEach((p) => {
+    const go = () => { zone = p.dataset.k; renderPins(); renderEvents(); $("#eventi").scrollIntoView({ behavior: "smooth" }); };
+    p.addEventListener("click", go);
+    p.addEventListener("keydown", (ev) => { if (ev.key === "Enter") go(); });
+  });
+}
+
+function renderBento() {
+  const feat = UPCOMING.filter((e) => e.featured).sort((a, b) => a.featured - b.featured).slice(0, 3);
+  $("#bento").innerHTML = feat.map((e, i) => `
+    <a class="tile ${i === 0 ? "big" : ""}" href="${esc(e.url)}" target="_blank" rel="noopener">
+      <div class="bg g-${e.cat}">${media(e)}</div>
+      ${e.img ? "" : `<span class="emo">${e.icon}</span>`}
+      <span class="when">${esc(fmtDate(e))} · ${esc(e[lang].place)}</span>
+      <h3>${esc(e[lang].title)}</h3>
+      <p>${esc(e[lang].text)}</p>
+    </a>`).join("");
 }
 
 function chips(el, items, current, onPick) {
@@ -452,40 +630,42 @@ function chips(el, items, current, onPick) {
 }
 
 function renderEvents() {
-  chips($("#zoneChips"), Object.fromEntries(Object.entries(T().zones).map(([k, v]) => [k, "📍 " + v])), zone, (k) => { zone = k; renderEvents(); });
+  const zoneLabels = Object.fromEntries(Object.entries(T().zones).map(([k, v]) => [k, "📍 " + v]));
+  chips($("#zoneChips"), zoneLabels, zone, (k) => { zone = k; renderPins(); renderEvents(); });
   chips($("#catChips"), T().cats, cat, (k) => { cat = k; renderEvents(); });
-  const list = EVENTS
-    .filter((e) => (zone === "all" || e.zone === zone) && (cat === "all" || e.cat === cat))
-    .sort((a, b) => a.date.localeCompare(b.date));
-  $("#grid").innerHTML = list.length ? list.map((e) => {
-    const c = e[lang];
-    return `<article class="card">
-      <div class="top c-${e.cat}">${dateBadge(e.date)}<span class="tag">${esc(T().zones[e.zone])}</span>${e.icon}</div>
-      <div class="body">
-        <h3>${esc(c.title)}</h3>
-        <div class="place">📍 ${esc(c.place)} · ${esc(c.when)}</div>
-        <p>${esc(c.text)}</p>
-        <a class="more" href="${e.url}" target="_blank" rel="noopener">${T().discover}</a>
+  const list = UPCOMING.filter((e) => (zone === "all" || e.zone === zone) && (cat === "all" || e.cat === cat));
+  $("#grid").innerHTML = list.length ? list.map((e, i) => {
+    const c = e[lang], soon = countdown(e);
+    return `<a class="card" href="${esc(e.url)}" target="_blank" rel="noopener" style="animation-delay:${i * 40}ms">
+      <div class="media g-${e.cat}">${media(e)}${e.img ? "" : `<span class="emo">${e.icon}</span>`}
+        <span class="badge">📍 ${esc(T().zones[e.zone])}</span>
+        ${soon ? `<span class="badge soon">${esc(soon)}</span>` : ""}
       </div>
-    </article>`;
+      <div class="body">
+        <span class="date">${esc(fmtDate(e))}</span>
+        <h3>${esc(c.title)}</h3>
+        <p>${esc(c.text)}</p>
+        <div class="foot"><span>${esc(c.place)}</span><span class="go">→</span></div>
+      </div>
+    </a>`;
   }).join("") : `<div class="empty">${T().empty}</div>`;
 }
 
 function renderTodo() {
-  $("#todo").innerHTML = TODO.map((t) => `
-    <a class="tile" href="${t.url}" style="background:${t.bg}">
-      <span class="ico">${t.icon}</span><b>${esc(t[lang][0])}</b><span>${esc(t[lang][1])}</span>
+  $("#rail").innerHTML = TODO.map((t, i) => `
+    <a class="exp" href="${esc(t.url)}" style="background:${t.bg}">
+      <span class="emo">${t.icon}</span><span class="num">0${i + 1}</span>
+      <b>${esc(t[lang][0])}</b><span>${esc(t[lang][1])}</span>
     </a>`).join("");
 }
 
 function render() {
   document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const v = el.dataset.i18n === "issue" ? ISSUE[lang] : T()[el.dataset.i18n];
-    if (v) el.textContent = v;
-  });
+  $("#issue").textContent = ISSUE[lang];
+  document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
+  document.querySelectorAll("[data-i18n-html]").forEach((el) => { el.innerHTML = T()[el.dataset.i18nHtml]; });
   document.querySelectorAll(".lang button").forEach((b) => b.classList.toggle("on", b.dataset.lang === lang));
-  renderFeature(); renderEvents(); renderTodo();
+  renderTicker(); renderPins(); renderBento(); renderEvents(); renderTodo();
 }
 
 document.querySelectorAll(".lang button").forEach((b) => b.addEventListener("click", () => {
@@ -494,9 +674,21 @@ document.querySelectorAll(".lang button").forEach((b) => b.addEventListener("cli
   render();
 }));
 
-/* Link diretto alla lingua: index.html?lang=fr (utile per il sito francese) */
-const qp = new URLSearchParams(location.search).get("lang");
-if (qp === "it" || qp === "fr") lang = qp;
+document.querySelectorAll(".rail-nav button").forEach((b) => b.addEventListener("click", () => {
+  $("#rail").scrollBy({ left: b.dataset.dir * 320, behavior: "smooth" });
+}));
+
+$("#newsForm").addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  ev.target.querySelector("button").textContent = T().thanks;
+});
+
+/* Animazione delle sezioni quando entrano nello schermo */
+const io = new IntersectionObserver((entries) => entries.forEach((en) => {
+  if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+}), { threshold: 0.08 });
+document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
 render();
 </script>
 </body>

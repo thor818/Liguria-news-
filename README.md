@@ -14,8 +14,11 @@ Apri `index.html` e cerca **CONTENUTI DEL GIORNALINO**:
   - `date`: data di inizio `AAAA-MM-GG` (serve per l'ordine e il badge)
   - `icon`: un'emoji
   - `it` / `fr`: titolo, luogo, quando, una frase breve
+  - `end`: data di fine (facoltativa, per eventi di più giorni)
+  - `img`: foto facoltativa (es. `foto/olioliva.jpg`); se vuota si usa l'illustrazione
   - `url`: link alla pagina dell'evento o dell'organizzatore
-  - `featured: true` su un solo evento per metterlo in copertina
+  - `featured: 1` = evento grande in primo piano, `2` e `3` = riquadri accanto
+  - Gli eventi già finiti spariscono da soli.
 - `TODO` — le schede "Cosa fare" (sostituire `url: "#"` con le pagine dei vostri siti).
 
 ## Da completare
