@@ -782,9 +782,9 @@ const SEE = [
 const CITIES = [
   { id: "genova", zone: "genova", img: "foto/genova.jpg", where: "Genova",
     name: { it: "Genova", fr: "Gênes", en: "Genoa", de: "Genua", nl: "Genua", zh: "热那亚" },
-    t: { it: "Il porto, i carruggi e i palazzi UNESCO: la capitale della Liguria.", fr: "Le port, les ruelles et les palais UNESCO : la capitale de la Ligurie.",
-      en: "The port, the narrow lanes and UNESCO palaces: Liguria's capital.", de: "Hafen, Gassen und UNESCO-Paläste: die Hauptstadt Liguriens.",
-      nl: "De haven, de steegjes en UNESCO-paleizen: de hoofdstad van Ligurië.", zh: "港口、小巷与世界遗产宫殿：利古里亚首府。" },
+    t: { it: "Uno dei centri storici più grandi d'Europa, l'Acquario e i palazzi UNESCO: la capitale della Liguria.", fr: "L'un des plus grands centres historiques d'Europe, l'Aquarium et les palais UNESCO : la capitale de la Ligurie.",
+      en: "One of Europe's largest old towns, the Aquarium and UNESCO palaces: Liguria's capital.", de: "Eine der größten Altstädte Europas, das Aquarium und UNESCO-Paläste: die Hauptstadt Liguriens.",
+      nl: "Een van de grootste oude steden van Europa, het aquarium en UNESCO-paleizen: de hoofdstad van Ligurië.", zh: "欧洲最大老城之一，还有水族馆与世界遗产宫殿：利古里亚首府。" },
     see: ["Acquario di Genova", "Porto Antico e Bigo", "Biosfera", "Via Garibaldi e Palazzi dei Rolli", "Piazza De Ferrari", "Cattedrale di San Lorenzo",
       "Porta Soprana e Casa di Colombo", "Via XX Settembre", "Spianata Castelletto", "Castello d'Albertis", "Boccadasse", "Nervi", "Lanterna di Genova", "Cimitero Monumentale di Staglieno"],
     museums: ["Musei di Strada Nuova", "Palazzo Ducale", "Galata Museo del Mare", "Palazzo Reale", "Galleria Nazionale di Palazzo Spinola",
@@ -1131,8 +1131,9 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    facts: ["Centro storico tra i più grandi d'Europa", "Acquario tra i più grandi d'Europa", "Palazzi dei Rolli · UNESCO 2006"],
     aquarium: "Acquario",
-    spotKicker: "La capitale della Liguria", spotText: "Porto, carruggi, palazzi UNESCO, musei, focaccia e mare: la città da non perdere.", spotCta: "Apri la guida di Genova",
+    spotKicker: "La capitale della Liguria", spotText: "Uno dei centri storici medievali più grandi d'Europa, l'Acquario, i palazzi UNESCO, tanti musei, la focaccia e il mare.", spotCta: "Apri la guida di Genova",
     prices: { p1: "€ Economico", p2: "€€ Medio", p3: "€€€+ Alto livello" },
     sportSub: n => `${n} attività tra mare, montagna e cielo. Tocca per prenotare.`,
     cityHint: "Scegli una città: cosa vedere, i musei e dove mangiare. Tocca un nome per aprire la mappa.", cityLabels: { see: "Da vedere", museums: "Musei", do: "Da fare", eat: "Dove mangiare" },
@@ -1170,8 +1171,9 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    facts: ["Centre historique parmi les plus grands d'Europe", "Aquarium parmi les plus grands d'Europe", "Palais des Rolli · UNESCO 2006"],
     aquarium: "Aquarium",
-    spotKicker: "La capitale de la Ligurie", spotText: "Port, ruelles, palais UNESCO, musées, focaccia et mer : la ville à ne pas manquer.", spotCta: "Ouvrir le guide de Gênes",
+    spotKicker: "La capitale de la Ligurie", spotText: "L'un des plus grands centres historiques médiévaux d'Europe, l'Aquarium, les palais UNESCO, de nombreux musées, la focaccia et la mer.", spotCta: "Ouvrir le guide de Gênes",
     prices: { p1: "€ Petit prix", p2: "€€ Moyen", p3: "€€€+ Haut de gamme" },
     sportSub: n => `${n} activités entre mer, montagne et ciel. Touchez pour réserver.`,
     cityHint: "Choisissez une ville : que voir, les musées et où manger. Touchez un nom pour ouvrir la carte.", cityLabels: { see: "À voir", museums: "Musées", do: "À faire", eat: "Où manger" },
@@ -1209,8 +1211,9 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    facts: ["One of Europe's largest old towns", "One of Europe's largest aquariums", "Rolli Palaces · UNESCO 2006"],
     aquarium: "Aquarium",
-    spotKicker: "Liguria's capital", spotText: "Port, narrow lanes, UNESCO palaces, museums, focaccia and sea: the city not to miss.", spotCta: "Open the Genoa guide",
+    spotKicker: "Liguria's capital", spotText: "One of Europe's largest medieval old towns, the Aquarium, UNESCO palaces, many museums, focaccia and the sea.", spotCta: "Open the Genoa guide",
     prices: { p1: "€ Budget", p2: "€€ Mid-range", p3: "€€€+ Fine dining" },
     sportSub: n => `${n} activities between sea, mountains and sky. Tap to book.`,
     cityHint: "Pick a town: what to see, museums and where to eat. Tap a name to open the map.", cityLabels: { see: "What to see", museums: "Museums", do: "Things to do", eat: "Where to eat" },
@@ -1248,8 +1251,9 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    facts: ["Eine der größten Altstädte Europas", "Eines der größten Aquarien Europas", "Rolli-Paläste · UNESCO 2006"],
     aquarium: "Aquarium",
-    spotKicker: "Die Hauptstadt Liguriens", spotText: "Hafen, Gassen, UNESCO-Paläste, Museen, Focaccia und Meer: die Stadt, die man sehen muss.", spotCta: "Genua-Guide öffnen",
+    spotKicker: "Die Hauptstadt Liguriens", spotText: "Eine der größten mittelalterlichen Altstädte Europas, das Aquarium, UNESCO-Paläste, viele Museen, Focaccia und Meer.", spotCta: "Genua-Guide öffnen",
     prices: { p1: "€ Günstig", p2: "€€ Mittel", p3: "€€€+ Gehoben" },
     sportSub: n => `${n} Aktivitäten zwischen Meer, Bergen und Himmel. Antippen zum Buchen.`,
     cityHint: "Wähle einen Ort: Sehenswertes, Museen und gutes Essen. Tippe auf einen Namen für die Karte.", cityLabels: { see: "Sehenswert", museums: "Museen", do: "Erleben", eat: "Essen" },
@@ -1287,8 +1291,9 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    facts: ["Een van de grootste oude steden van Europa", "Een van de grootste aquaria van Europa", "Rolli-paleizen · UNESCO 2006"],
     aquarium: "Aquarium",
-    spotKicker: "De hoofdstad van Ligurië", spotText: "Haven, steegjes, UNESCO-paleizen, musea, focaccia en zee: de stad die je moet zien.", spotCta: "Open de gids van Genua",
+    spotKicker: "De hoofdstad van Ligurië", spotText: "Een van de grootste middeleeuwse oude steden van Europa, het aquarium, UNESCO-paleizen, veel musea, focaccia en de zee.", spotCta: "Open de gids van Genua",
     prices: { p1: "€ Voordelig", p2: "€€ Gemiddeld", p3: "€€€+ Topklasse" },
     sportSub: n => `${n} activiteiten tussen zee, bergen en lucht. Tik om te boeken.`,
     cityHint: "Kies een plaats: wat te zien, musea en waar te eten. Tik op een naam voor de kaart.", cityLabels: { see: "Bezienswaardig", museums: "Musea", do: "Te doen", eat: "Eten" },
@@ -1326,8 +1331,9 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    facts: ["欧洲最大老城之一", "欧洲最大水族馆之一", "罗利宫殿群 · 2006年世界遗产"],
     aquarium: "水族馆",
-    spotKicker: "利古里亚首府", spotText: "港口、小巷、世界遗产宫殿、博物馆、佛卡夏与大海：不容错过的城市。", spotCta: "打开热那亚指南",
+    spotKicker: "利古里亚首府", spotText: "欧洲最大的中世纪老城之一，还有水族馆、世界遗产宫殿、众多博物馆、佛卡夏与大海。", spotCta: "打开热那亚指南",
     prices: { p1: "€ 平价", p2: "€€ 中档", p3: "€€€+ 高端" },
     sportSub: n => `${n}项海上、山间与空中活动，点击即可预订。`,
     cityHint: "选择城市：景点、博物馆和美食。点击名称打开地图。", cityLabels: { see: "景点", museums: "博物馆", do: "体验", eat: "美食" },
@@ -1510,7 +1516,8 @@ function renderSpot() {
   const g = CITIES.find((c) => c.id === "genova");
   $("#spotGenova").hidden = !ofRegion(g);
   $("#spotName").textContent = cityName(g);
-  $("#spotTags").innerHTML = ["🐠 " + T().aquarium, "🏛️ Palazzi dei Rolli · UNESCO", "⚓ Porto Antico", "🌊 Boccadasse", "🌿 Nervi", "🥖 Focaccia"]
+  const [old, aq, rolli] = T().facts;
+  $("#spotTags").innerHTML = ["🏘️ " + old, "🐠 " + aq, "🏛️ " + rolli, `🖼️ ${g.museums.length} ${T().cityLabels.museums}`, "⚓ Porto Antico", "🌊 Boccadasse", "🌿 Nervi", "🥖 Focaccia"]
     .map((x) => `<span>${esc(x)}</span>`).join("");
 }
 $("#spotGenova").addEventListener("click", (ev) => {
