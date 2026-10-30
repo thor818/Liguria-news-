@@ -433,6 +433,28 @@
   .ticker-young i { font-style: normal; color: var(--sea); }
   @keyframes slide { to { transform: translateX(-50%); } }
   @media (max-width: 900px) { .hero-inner { padding-bottom: 54px; } .hero .stat div { min-width: 0; flex: 1; } }
+  /* titoli grandi in arancione */
+  :root { --orange-ink: #f05f00; }
+  .head h2, .sub-head h3, .choose-head h2, .card h3, .rest h3, .logo, .num { color: var(--orange-ink); }
+  .head h2 em, .sub-head h3 em, .choose-head h2 em, .news h2 em { background: none; padding: 0; color: var(--sea); }
+  .logo i { color: var(--sea); }
+  .night .head h2 { color: var(--lemon); }
+  .night .head h2 em { color: #fff; }
+  .night .num { color: var(--lemon); }
+  /* gruppi: costa e provincia */
+  .grp + .grp, .chipgrp + .chipgrp { margin-top: 30px; }
+  .grp-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 6px 0 16px; padding-bottom: 8px; border-bottom: 3px solid var(--lemon);
+    font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.3rem, 2.6vw, 1.8rem); line-height: 1; color: var(--orange-ink); }
+  .grp-h b { font-weight: 400; color: var(--sea); }
+  .night .grp-h { color: var(--lemon); border-color: rgba(255,255,255,.25); }
+  .night .grp-h b { color: #fff; }
+  .chipgrp .grp-h { font-size: 1.15rem; margin-bottom: 10px; }
+  #cityChips .chips { flex-wrap: wrap; overflow: visible; }
+  .dishes-wrap { grid-column: span 2; }
+  .dishes-wrap .grp-h { font-size: 1.05rem; margin: 4px 0 8px; }
+  .dishes-wrap .grp + .grp { margin-top: 12px; }
+  .dishes-wrap .dishes { grid-column: auto; margin-top: 0; }
+  @media (max-width: 900px) { .dishes-wrap { grid-column: auto; } }
   @media (max-width: 560px) {
     .bar { padding-left: 14px; gap: 6px; } .logo { font-size: 1.35rem; }
     .lang summary { padding: 10px 11px; } .reg button { padding: 7px 8px; }
@@ -567,18 +589,18 @@
         <span class="btn"><span data-i18n="spotCta"></span> <span class="arr">→</span></span>
       </div>
     </a>
-    <div class="see" id="seeGrid"></div>
+    <div id="seeGrid"></div>
     <div class="sub-head">
       <h3>City <em>guides</em></h3>
       <p data-i18n="cityHint"></p>
     </div>
-    <div class="chips" id="cityChips"></div>
+    <div id="cityChips"></div>
     <div id="cityPanels"></div>
     <div class="sub-head">
       <h3>Artists' <em>Riviera</em></h3>
       <p data-i18n="artSub"></p>
     </div>
-    <div class="sports" id="artGrid"></div>
+    <div id="artGrid"></div>
     <div class="sub-head"><p data-i18n="goSub"></p></div>
     <div class="map">
       <svg viewBox="0 0 1000 420" role="img" aria-label="Liguria — Côte d'Azur">
@@ -618,7 +640,7 @@
         <button aria-label="→" data-dir="1">→</button>
       </div>
     </div>
-    <div class="rail" id="rail"></div>
+    <div id="rail"></div>
     <div class="guides book">
       <div>
         <h3>Book an <em>activity</em></h3>
@@ -630,17 +652,17 @@
       <h3>Sport &amp; <em>adventure</em></h3>
       <p id="sportSub"></p>
     </div>
-    <div class="sports" id="sportGrid"></div>
+    <div id="sportGrid"></div>
     <div class="sub-head">
       <h3>Family <em>fun</em></h3>
       <p data-i18n="familySub"></p>
     </div>
-    <div class="sports" id="familyGrid"></div>
+    <div id="familyGrid"></div>
     <div class="sub-head">
       <h3>Hiking <em>trails</em></h3>
       <p data-i18n="hikeSub"></p>
     </div>
-    <div class="grid" id="hikeGrid"></div>
+    <div id="hikeGrid"></div>
   </section>
 
   <!-- ================= NIGHTLIFE ================= -->
@@ -653,7 +675,7 @@
       </div>
     </div>
     <div class="chips" id="nightChips" style="margin-bottom:18px"></div>
-    <div class="nights" id="nightGrid"></div>
+    <div id="nightGrid"></div>
     <p class="night-note" data-i18n="nightNote"></p>
   </section>
 
@@ -671,12 +693,12 @@
         <figure><img src="foto/focaccia.jpg" alt="" loading="lazy"><figcaption>Focaccia</figcaption></figure>
         <figure><img src="foto/pesto.jpg" alt="" loading="lazy"><figcaption>Pesto</figcaption></figure>
         <figure><img src="foto/olio.jpg" alt="" loading="lazy"><figcaption data-i18n="oil"></figcaption></figure>
-        <div class="dishes" id="dishes"></div>
+        <div class="dishes-wrap" id="dishes"></div>
       </div>
       <div>
         <div class="chips" id="tagChips" style="margin-bottom:8px"></div>
         <div class="chips" id="priceChips" style="margin-bottom:14px"></div>
-        <div class="rests" id="rests"></div>
+        <div id="rests"></div>
       </div>
     </div>
     <div class="guides">
@@ -721,7 +743,7 @@
       <div class="chips" id="zoneChips"></div>
       <div class="chips" id="catChips"></div>
     </div>
-    <div class="grid" id="grid"></div>
+    <div id="grid"></div>
   </section>
 
   <!-- ================= NEWSLETTER =================
@@ -2798,10 +2820,10 @@ const ARTISTS = [
   { region: "azur", icon: "✒️", place: "Musée Cocteau (Menton) · Chapelle Saint-Pierre (Villefranche)", q: "Musée Jean Cocteau Menton", t: { it: "Jean Cocteau", fr: "Jean Cocteau", en: "Jean Cocteau", de: "Jean Cocteau", nl: "Jean Cocteau", zh: "Jean Cocteau" } },
   { region: "azur", icon: "📐", place: "Cap Moderne (Roquebrune-Cap-Martin)", q: "Cap Moderne Roquebrune-Cap-Martin", t: { it: "Le Corbusier · Eileen Gray", fr: "Le Corbusier · Eileen Gray", en: "Le Corbusier · Eileen Gray", de: "Le Corbusier · Eileen Gray", nl: "Le Corbusier · Eileen Gray", zh: "Le Corbusier · Eileen Gray" } },
   { region: "azur", icon: "💙", place: "MAMAC (Nice)", q: "MAMAC Nice", t: { it: "Yves Klein · Niki de Saint Phalle", fr: "Yves Klein · Niki de Saint Phalle", en: "Yves Klein · Niki de Saint Phalle", de: "Yves Klein · Niki de Saint Phalle", nl: "Yves Klein · Niki de Saint Phalle", zh: "Yves Klein · Niki de Saint Phalle" } },
-  { region: "lig", icon: "🌅", place: "Bordighera · Ponte Vecchio di Dolceacqua", q: "Bordighera Monet", t: { it: "Claude Monet", fr: "Claude Monet", en: "Claude Monet", de: "Claude Monet", nl: "Claude Monet", zh: "Claude Monet" } },
-  { region: "lig", icon: "🏺", place: "Casa Museo Jorn · Lungomare degli Artisti (Albisola)", q: "Casa Museo Jorn Albisola", t: { it: "Lucio Fontana · Asger Jorn", fr: "Lucio Fontana · Asger Jorn", en: "Lucio Fontana · Asger Jorn", de: "Lucio Fontana · Asger Jorn", nl: "Lucio Fontana · Asger Jorn", zh: "Lucio Fontana · Asger Jorn" } },
-  { region: "lig", icon: "🖼️", place: "Musei di Strada Nuova · Palazzo Spinola (Genova)", q: "Musei di Strada Nuova Genova", t: { it: "Rubens · Van Dyck", fr: "Rubens · Van Dyck", en: "Rubens · Van Dyck", de: "Rubens · Van Dyck", nl: "Rubens · Van Dyck", zh: "Rubens · Van Dyck" } },
-  { region: "lig", icon: "🏗️", place: "Porto Antico, Bigo e Biosfera (Genova)", q: "Porto Antico Genova", t: { it: "Renzo Piano", fr: "Renzo Piano", en: "Renzo Piano", de: "Renzo Piano", nl: "Renzo Piano", zh: "Renzo Piano" } }
+  { region: "lig", zone: "imperia", icon: "🌅", place: "Bordighera · Ponte Vecchio di Dolceacqua", q: "Bordighera Monet", t: { it: "Claude Monet", fr: "Claude Monet", en: "Claude Monet", de: "Claude Monet", nl: "Claude Monet", zh: "Claude Monet" } },
+  { region: "lig", zone: "savona", icon: "🏺", place: "Casa Museo Jorn · Lungomare degli Artisti (Albisola)", q: "Casa Museo Jorn Albisola", t: { it: "Lucio Fontana · Asger Jorn", fr: "Lucio Fontana · Asger Jorn", en: "Lucio Fontana · Asger Jorn", de: "Lucio Fontana · Asger Jorn", nl: "Lucio Fontana · Asger Jorn", zh: "Lucio Fontana · Asger Jorn" } },
+  { region: "lig", zone: "genova", icon: "🖼️", place: "Musei di Strada Nuova · Palazzo Spinola (Genova)", q: "Musei di Strada Nuova Genova", t: { it: "Rubens · Van Dyck", fr: "Rubens · Van Dyck", en: "Rubens · Van Dyck", de: "Rubens · Van Dyck", nl: "Rubens · Van Dyck", zh: "Rubens · Van Dyck" } },
+  { region: "lig", zone: "genova", icon: "🏗️", place: "Porto Antico, Bigo e Biosfera (Genova)", q: "Porto Antico Genova", t: { it: "Renzo Piano", fr: "Renzo Piano", en: "Renzo Piano", de: "Renzo Piano", nl: "Renzo Piano", zh: "Renzo Piano" } }
 ];
 
 /* ---------- Siti ufficiali e prenotazione attività (link nella lingua del lettore) ---------- */
@@ -2841,16 +2863,16 @@ const SPORTS = [
   { region: "azur", icon: "⛳", site: "cotedazur", place: "Golf de Cannes-Mougins", t: { it: "Golf", fr: "Golf", en: "Golf", de: "Golf", nl: "Golf", zh: "高尔夫" } },
   { region: "azur", icon: "🏃", site: "cotedazur", place: "Mont Boron · Baous", t: { it: "Trail running", fr: "Trail running", en: "Trail running", de: "Trailrunning", nl: "Trailrunning", zh: "越野跑" } },
   { region: "azur", icon: "⛷️", site: "cotedazur", place: "Isola 2000 · Auron · Valberg ❄️", t: { it: "Sci", fr: "Ski", en: "Skiing", de: "Skifahren", nl: "Skiën", zh: "滑雪" } },
-  { region: "lig", icon: "🚵", site: "lamialiguria", place: "Finale Ligure", t: { it: "Mountain bike", fr: "VTT", en: "Mountain biking", de: "Mountainbiken", nl: "Mountainbiken", zh: "山地车" } },
-  { region: "lig", icon: "🧗‍♀️", site: "lamialiguria", place: "Finale Ligure", t: { it: "Arrampicata", fr: "Escalade", en: "Rock climbing", de: "Klettern", nl: "Klimmen", zh: "攀岩" } },
-  { region: "lig", icon: "🤿", site: "lamialiguria", place: "Portofino · Cristo degli Abissi", t: { it: "Immersioni", fr: "Plongée sous-marine", en: "Scuba diving", de: "Tauchen", nl: "Duiken", zh: "水肺潜水" } },
+  { region: "lig", zone: "savona", icon: "🚵", site: "lamialiguria", place: "Finale Ligure", t: { it: "Mountain bike", fr: "VTT", en: "Mountain biking", de: "Mountainbiken", nl: "Mountainbiken", zh: "山地车" } },
+  { region: "lig", zone: "savona", icon: "🧗‍♀️", site: "lamialiguria", place: "Finale Ligure", t: { it: "Arrampicata", fr: "Escalade", en: "Rock climbing", de: "Klettern", nl: "Klimmen", zh: "攀岩" } },
+  { region: "lig", zone: "genova", icon: "🤿", site: "lamialiguria", place: "Portofino · Cristo degli Abissi", t: { it: "Immersioni", fr: "Plongée sous-marine", en: "Scuba diving", de: "Tauchen", nl: "Duiken", zh: "水肺潜水" } },
   { region: "lig", icon: "🛶", site: "lamialiguria", place: "Isola di Bergeggi · Portofino", t: { it: "Kayak di mare", fr: "Kayak de mer", en: "Sea kayaking", de: "Seekajak", nl: "Zeekajak", zh: "海上皮划艇" } },
-  { region: "lig", icon: "🏄", site: "lamialiguria", place: "Varazze", t: { it: "Surf", fr: "Surf", en: "Surfing", de: "Surfen", nl: "Surfen", zh: "冲浪" } },
+  { region: "lig", zone: "savona", icon: "🏄", site: "lamialiguria", place: "Varazze", t: { it: "Surf", fr: "Surf", en: "Surfing", de: "Surfen", nl: "Surfen", zh: "冲浪" } },
   { region: "lig", icon: "🏄‍♀️", site: "lamialiguria", place: "Riviera di Ponente", t: { it: "Stand up paddle", fr: "Stand up paddle", en: "Stand up paddle", de: "Stand-up-Paddling", nl: "Suppen", zh: "桨板" } },
   { region: "lig", icon: "⛵", site: "lamialiguria", place: "Genova · Alassio · Sanremo", t: { it: "Vela", fr: "Voile", en: "Sailing", de: "Segeln", nl: "Zeilen", zh: "帆船" } },
   { region: "lig", icon: "🐋", site: "lamialiguria", place: "Genova · Imperia", t: { it: "Whale watching", fr: "Observation des baleines", en: "Whale watching", de: "Walbeobachtung", nl: "Walvissen spotten", zh: "观鲸" } },
-  { region: "lig", icon: "🚴", site: "lamialiguria", place: "Poggio di Sanremo · Cipressa", t: { it: "Bici da strada", fr: "Vélo de route", en: "Road cycling", de: "Rennrad", nl: "Wielrennen", zh: "公路骑行" } },
-  { region: "lig", icon: "🧗", site: "lamialiguria", place: "Rio Barbaira (Rocchetta Nervina)", t: { it: "Canyoning", fr: "Canyoning", en: "Canyoning", de: "Canyoning", nl: "Canyoning", zh: "溪降" } },
+  { region: "lig", zone: "imperia", icon: "🚴", site: "lamialiguria", place: "Poggio di Sanremo · Cipressa", t: { it: "Bici da strada", fr: "Vélo de route", en: "Road cycling", de: "Rennrad", nl: "Wielrennen", zh: "公路骑行" } },
+  { region: "lig", zone: "imperia", icon: "🧗", site: "lamialiguria", place: "Rio Barbaira (Rocchetta Nervina)", t: { it: "Canyoning", fr: "Canyoning", en: "Canyoning", de: "Canyoning", nl: "Canyoning", zh: "溪降" } },
   { region: "lig", icon: "🥾", site: "lamialiguria", place: "Alta Via · Portofino", t: { it: "Trekking", fr: "Randonnée", en: "Hiking", de: "Wandern", nl: "Wandelen", zh: "徒步" } },
   { region: "lig", icon: "⛳", site: "lamialiguria", place: "Garlenda · Sanremo", t: { it: "Golf", fr: "Golf", en: "Golf", de: "Golf", nl: "Golf", zh: "高尔夫" } }
 ,
@@ -2873,9 +2895,9 @@ const FAMILY = [
   { region: "azur", icon: "🧗", site: "cotedazur", place: "Grasse", q: "Parcours Aventure Grasse Riviera Nature", t: { it: "Parcours Aventure Grasse", fr: "Parcours Aventure Grasse", en: "Parcours Aventure Grasse", de: "Parcours Aventure Grasse", nl: "Parcours Aventure Grasse", zh: "Parcours Aventure Grasse" } },
   { region: "azur", icon: "🚵", site: "cotedazur", place: "Saint-Cézaire-sur-Siagne", url: "https://www.paca-adventure.com", t: { it: "Paca Aventure", fr: "Paca Aventure", en: "Paca Aventure", de: "Paca Aventure", nl: "Paca Aventure", zh: "Paca Aventure" } },
   { region: "azur", icon: "🏙️", site: "cotedazur", place: "Grasse", q: "Palomano 129 route de la Paoute Grasse", t: { it: "Palomano", fr: "Palomano", en: "Palomano", de: "Palomano", nl: "Palomano", zh: "Palomano" } },
-  { region: "lig", icon: "🐠", site: "cotedazur", place: "Genova, Porto Antico", q: "Acquario di Genova", t: { it: "Acquario di Genova", fr: "Aquarium de Gênes", en: "Genoa Aquarium", de: "Aquarium von Genua", nl: "Aquarium van Genua", zh: "热那亚水族馆" } },
-  { region: "lig", icon: "🧪", site: "cotedazur", place: "Genova, Porto Antico", q: "Città dei Bambini e dei Ragazzi Genova", t: { it: "La Città dei Bambini e dei Ragazzi", fr: "La Città dei Bambini e dei Ragazzi", en: "La Città dei Bambini e dei Ragazzi", de: "La Città dei Bambini e dei Ragazzi", nl: "La Città dei Bambini e dei Ragazzi", zh: "La Città dei Bambini e dei Ragazzi" } },
-  { region: "lig", icon: "🌐", site: "cotedazur", place: "Genova, Porto Antico", q: "Biosfera Genova", t: { it: "Biosfera", fr: "Biosfera", en: "Biosfera", de: "Biosfera", nl: "Biosfera", zh: "Biosfera" } }
+  { region: "lig", zone: "genova", icon: "🐠", site: "cotedazur", place: "Genova, Porto Antico", q: "Acquario di Genova", t: { it: "Acquario di Genova", fr: "Aquarium de Gênes", en: "Genoa Aquarium", de: "Aquarium von Genua", nl: "Aquarium van Genua", zh: "热那亚水族馆" } },
+  { region: "lig", zone: "genova", icon: "🧪", site: "cotedazur", place: "Genova, Porto Antico", q: "Città dei Bambini e dei Ragazzi Genova", t: { it: "La Città dei Bambini e dei Ragazzi", fr: "La Città dei Bambini e dei Ragazzi", en: "La Città dei Bambini e dei Ragazzi", de: "La Città dei Bambini e dei Ragazzi", nl: "La Città dei Bambini e dei Ragazzi", zh: "La Città dei Bambini e dei Ragazzi" } },
+  { region: "lig", zone: "genova", icon: "🌐", site: "cotedazur", place: "Genova, Porto Antico", q: "Biosfera Genova", t: { it: "Biosfera", fr: "Biosfera", en: "Biosfera", de: "Biosfera", nl: "Biosfera", zh: "Biosfera" } }
 ];
 
 /* ---------- WHAT TO DO: esperienze ----------
@@ -3042,14 +3064,14 @@ const RESTAURANTS = [
 
 /* Piatti tipici: icona, nome, luogo, costa (lig | azur | both) */
 const DISHES = [
-  ["🌿", "Pesto", "Genova", "lig"], ["🧀", "Focaccia di Recco", "Recco", "lig"], ["🔥", "Farinata · Socca", "Genova · Nice", "both"],
-  ["🐟", "Brandacujun", "Imperia", "lig"], ["🦐", "Cappon magro", "Genova", "lig"], ["🥟", "Barbagiuai", "Dolceacqua", "lig"],
-  ["🍫", "Baci di Alassio", "Alassio", "lig"], ["🫒", "Olio Taggiasco", "Imperia", "lig"],
+  ["🌿", "Pesto", "Genova", "genova"], ["🧀", "Focaccia di Recco", "Recco", "genova"], ["🔥", "Farinata · Socca", "Genova · Nice", "both"],
+  ["🐟", "Brandacujun", "Imperia", "imperia"], ["🦐", "Cappon magro", "Genova", "genova"], ["🥟", "Barbagiuai", "Dolceacqua", "imperia"],
+  ["🍫", "Baci di Alassio", "Alassio", "savona"], ["🫒", "Olio Taggiasco", "Imperia", "imperia"],
   ["🧅", "Pissaladière", "Nice", "azur"], ["🥗", "Salade niçoise", "Nice", "azur"], ["🥪", "Pan bagnat", "Nice", "azur"],
   ["🥬", "Tourte de blettes", "Nice", "azur"], ["🥟", "Barbajuan", "Monaco", "azur"],
-  ["🍊", "Chinotto", "Savona", "lig"], ["🍪", "Amaretti di Sassello", "Sassello", "lig"], ["🟣", "Carciofo violetto", "Albenga", "lig"],
-  ["🍷", "Ormeasco", "Pieve di Teco", "lig"], ["🍷", "Rossese", "Dolceacqua", "lig"], ["🫘", "Fagioli di Pigna", "Pigna", "lig"],
-  ["🍕", "Sardenaira", "Sanremo", "lig"], ["🍄", "Funghi porcini", "Calizzano", "lig"], ["🥂", "Mataossu", "Finale Ligure", "lig"],
+  ["🍊", "Chinotto", "Savona", "savona"], ["🍪", "Amaretti di Sassello", "Sassello", "savona"], ["🟣", "Carciofo violetto", "Albenga", "savona"],
+  ["🍷", "Ormeasco", "Pieve di Teco", "imperia"], ["🍷", "Rossese", "Dolceacqua", "imperia"], ["🫘", "Fagioli di Pigna", "Pigna", "imperia"],
+  ["🍕", "Sardenaira", "Sanremo", "imperia"], ["🍄", "Funghi porcini", "Calizzano", "savona"], ["🥂", "Mataossu", "Finale Ligure", "savona"],
   ["🍋", "Citron de Menton", "Menton", "azur"], ["🌸", "Violettes", "Tourrettes-sur-Loup", "azur"], ["🥖", "Fougassette", "Grasse", "azur"],
   ["🍷", "Vin de Bellet", "Nice", "azur"]
 ];
@@ -3066,6 +3088,7 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    prov: (z) => "Provincia di " + z, allLiguria: "Tutta la Liguria",
     nightEyebrow: "Di notte", nightSub: "Dove uscire la sera: aperitivi, club, musica dal vivo e casinò.", nightNote: "Orari e stagioni cambiano: controlla sempre i canali del locale prima di andare.", nightTypes: {"club": "🪩 Discoteche", "bar": "🍸 Bar & cocktail", "live": "🎷 Musica dal vivo", "casino": "🎰 Casinò", "area": "🍹 Zone della movida"},
     artSub: "Qui hanno vissuto e lavorato Matisse, Picasso, Chagall, Renoir, Monet: i loro musei e le fondazioni.",
     familySub: "Parchi avventura e divertimento per bambini e famiglie.",
@@ -3109,6 +3132,7 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    prov: (z) => (/^[AEIOUÉ]/.test(z) ? "Province d'" : "Province de ") + z, allLiguria: "Toute la Ligurie",
     nightEyebrow: "La nuit", nightSub: "Où sortir le soir : apéros, clubs, concerts et casinos.", nightNote: "Horaires et saisons changent : vérifiez toujours auprès de l'établissement.", nightTypes: {"club": "🪩 Clubs", "bar": "🍸 Bars & cocktails", "live": "🎷 Musique live", "casino": "🎰 Casinos", "area": "🍹 Quartiers animés"},
     artSub: "Matisse, Picasso, Chagall, Renoir, Monet ont vécu et travaillé ici : leurs musées et fondations.",
     familySub: "Parcs aventure et de loisirs pour enfants et familles.",
@@ -3152,6 +3176,7 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    prov: (z) => "Province of " + z, allLiguria: "All of Liguria",
     nightEyebrow: "After dark", nightSub: "Where to go out: aperitivo, clubs, live music and casinos.", nightNote: "Opening hours and seasons change: always check the venue's channels before going.", nightTypes: {"club": "🪩 Clubs", "bar": "🍸 Bars & cocktails", "live": "🎷 Live music", "casino": "🎰 Casinos", "area": "🍹 Nightlife areas"},
     artSub: "Matisse, Picasso, Chagall, Renoir and Monet lived and worked here: their museums and foundations.",
     familySub: "Adventure and leisure parks for kids and families.",
@@ -3195,6 +3220,7 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    prov: (z) => "Provinz " + z, allLiguria: "Ganz Ligurien",
     nightEyebrow: "Nachtleben", nightSub: "Ausgehen am Abend: Aperitivo, Clubs, Livemusik und Casinos.", nightNote: "Öffnungszeiten und Saisons ändern sich: vorher beim Lokal nachsehen.", nightTypes: {"club": "🪩 Clubs", "bar": "🍸 Bars & Cocktails", "live": "🎷 Livemusik", "casino": "🎰 Casinos", "area": "🍹 Ausgehviertel"},
     artSub: "Matisse, Picasso, Chagall, Renoir und Monet lebten und arbeiteten hier: ihre Museen und Stiftungen.",
     familySub: "Abenteuer- und Freizeitparks für Kinder und Familien.",
@@ -3238,6 +3264,7 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    prov: (z) => "Provincie " + z, allLiguria: "Heel Ligurië",
     nightEyebrow: "Uitgaan", nightSub: "Waar je 's avonds uitgaat: aperitivo, clubs, livemuziek en casino's.", nightNote: "Openingstijden en seizoenen veranderen: check altijd vooraf bij de zaak.", nightTypes: {"club": "🪩 Clubs", "bar": "🍸 Bars & cocktails", "live": "🎷 Livemuziek", "casino": "🎰 Casino's", "area": "🍹 Uitgaanswijken"},
     artSub: "Matisse, Picasso, Chagall, Renoir en Monet woonden en werkten hier: hun musea en stichtingen.",
     familySub: "Avonturen- en pretparken voor kinderen en gezinnen.",
@@ -3281,6 +3308,7 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    prov: (z) => z + "省", allLiguria: "利古里亚全境",
     nightEyebrow: "夜生活", nightSub: "晚上去哪儿：开胃酒、夜店、现场音乐与赌场。", nightNote: "营业时间和季节会变动，出发前请先查看场所的官方信息。", nightTypes: {"club": "🪩 夜店", "bar": "🍸 酒吧与鸡尾酒", "live": "🎷 现场音乐", "casino": "🎰 赌场", "area": "🍹 热闹街区"},
     artSub: "马蒂斯、毕加索、夏加尔、雷诺阿、莫奈曾在此生活创作：他们的博物馆与基金会。",
     familySub: "适合儿童与家庭的探险乐园和游乐园。",
@@ -3405,12 +3433,35 @@ function renderBento() {
   }).join("");
 }
 
+/* Raggruppa sempre per costa e, in Liguria, per provincia:
+   Provincia di Genova, Savona, Imperia, poi "tutta la Liguria", poi Costa Azzurra */
+const PROV = ["genova", "savona", "imperia"];
+const keyOf = (it) => it.zone || (it.region === "azur" ? "azur" : it.region === "lig" ? "lig" : "both");
+function groupBlocks(items, kf = keyOf) {
+  return ["genova", "savona", "imperia", "lig", "azur"].map((k) => [k, items.filter((it) => {
+    const z = kf(it);
+    if (!inRegion(z === "azur" ? "azur" : z === "both" ? "both" : "lig")) return false;
+    return z === k || (z === "both" && (k === "lig" || k === "azur") && inRegion(k));
+  })]).filter(([, its]) => its.length);
+}
+function groupHead(k) {
+  const coast = k === "azur" ? "🇫🇷 " + T().regions.azur : "🇮🇹 " + T().regions.lig;
+  const sub = PROV.includes(k) ? T().prov(T().zones[k]) : k === "lig" ? T().allLiguria : "";
+  return `<h4 class="grp-h"><span>${esc(coast)}</span>${sub ? `<b>${esc(sub)}</b>` : ""}</h4>`;
+}
+function grouped(el, items, cls, itemHtml, kf) {
+  const blocks = groupBlocks(items, kf);
+  el.innerHTML = blocks.length ? blocks.map(([k, its]) =>
+    `<div class="grp">${groupHead(k)}<div class="${cls}">${its.map((it, i) => itemHtml(it, i, k, its)).join("")}</div></div>`).join("")
+    : `<div class="empty">${T().empty}</div>`;
+}
+
 function renderEvents() {
   const zoneLabels = Object.fromEntries(Object.entries(T().zones).filter(([k]) => inRegion(regionOf(k))).map(([k, v]) => [k, "📍 " + v]));
   chips($("#zoneChips"), zoneLabels, zone, (k) => { zone = k; renderPins(); renderEvents(); });
   chips($("#catChips"), T().cats, cat, (k) => { cat = k; renderEvents(); });
   const list = shown().filter((e) => (zone === "all" || e.zone === zone) && (cat === "all" || e.cat === cat));
-  $("#grid").innerHTML = list.length ? list.map((e, i) => {
+  grouped($("#grid"), list, "grid", (e, i) => {
     const [title, place, text] = tx(e), soon = countdown(e);
     return `<a class="card" href="${esc(e.url)}" target="_blank" rel="noopener" style="animation-delay:${i * 40}ms">
       <div class="media g-${e.cat}"><span class="emo">${e.icon}</span>${img(e.img)}
@@ -3423,7 +3474,7 @@ function renderEvents() {
         <div class="foot"><span>${esc(place)}</span><span class="go">→</span></div>
       </div>
     </a>`;
-  }).join("") : `<div class="empty">${T().empty}</div>`;
+  });
 }
 
 function renderPins() {
@@ -3447,20 +3498,20 @@ function renderPins() {
 
 function renderSee() {
   /* il primo luogo è grande; gli ultimi si allargano per riempire le righe da 4 */
-  const list = SEE.filter(ofRegion), wide = (4 - (list.length + 3) % 4) % 4;
-  $("#seeGrid").innerHTML = list.map((s, i) => {
+  grouped($("#seeGrid"), SEE.filter(ofRegion), "see", (s, i, k, list) => {
+    const wide = (4 - (list.length + 3) % 4) % 4;
     const [title, text] = tx(s);
     return `<a class="tile ${i > 0 && i >= list.length - wide ? "w2" : ""}" href="${maps(s.q)}" target="_blank" rel="noopener">
       <div class="bg g-cultura">${img(s.img)}</div><span class="emo">${s.icon}</span>
       <span class="chip-z">📍 ${esc(T().zones[s.zone])}</span>
       <h3>${esc(title)}</h3><p>${esc(text)}</p>
     </a>`;
-  }).join("");
+  });
 }
 
 /* indirizzo di un sito nella lingua del lettore */
 const siteUrl = (site) => site.url[lang] || site.url.other;
-const todoUrl = (u) => typeof u === "string" ? u : u.url ? siteUrl(u) : siteUrl(region === "azur" ? u.azur : u.lig);
+const todoUrl = (u, k) => typeof u === "string" ? u : u.url ? siteUrl(u) : siteUrl(k === "azur" ? u.azur : u.lig);
 
 /* City guides: una città alla volta (tutte insieme nel PDF) */
 let city = "genova";
@@ -3482,28 +3533,29 @@ $("#spotGenova").addEventListener("click", (ev) => {
 let nightType = "all";
 function renderNight() {
   chips($("#nightChips"), T().nightTypes, nightType, (k) => { nightType = k; renderNight(); });
-  $("#nightGrid").innerHTML = NIGHT.filter((n) => ofRegion(n) && (nightType === "all" || n.type === nightType)).map((n, i) => `
+  grouped($("#nightGrid"), NIGHT.filter((n) => ofRegion(n) && (nightType === "all" || n.type === nightType)), "nights", (n, i) => `
     <a class="nightcard" href="${maps(n.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
       <span class="ic">${n.icon}</span>
       <span><b>${esc(n.name)}</b><p>${esc(tx(n))}</p><small>📍 ${esc(n.place)} · ${esc(T().nightTypes[n.type].replace(/^\S+ /, ""))}</small></span>
       <span class="go">↗</span>
-    </a>`).join("");
+    </a>`);
 }
 
 function renderArtists() {
-  $("#artGrid").innerHTML = ARTISTS.filter(ofRegion).map((a, i) => `
+  grouped($("#artGrid"), ARTISTS.filter(ofRegion), "sports", (a, i) => `
     <a class="sport" href="${maps(a.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
       <span class="ic">${a.icon}</span>
       <span><b>${esc(tx(a))}</b><small>📍 ${esc(a.place)}</small></span>
       <span class="go">↗</span>
-    </a>`).join("");
+    </a>`);
 }
 
 function renderCities(all) {
   const list = CITIES.filter(ofRegion);
   if (!list.some((c) => c.id === city)) city = list[0].id;
-  chips($("#cityChips"), Object.fromEntries(list.map((c) => [c.id, cityName(c)])), city, (k) => { city = k; renderCities(); });
-  $("#cityChips").firstElementChild.remove();
+  $("#cityChips").innerHTML = groupBlocks(list).map(([k, its]) => `<div class="chipgrp">${groupHead(k)}<div class="chips">${
+    its.map((c) => `<button class="chip ${c.id === city ? "on" : ""}" data-k="${c.id}">${esc(cityName(c))}</button>`).join("")}</div></div>`).join("");
+  $("#cityChips").onclick = (ev) => { const b = ev.target.closest(".chip"); if (b) { city = b.dataset.k; renderCities(); } };
   const groups = (c) => ["see", "museums", "do", "eat", "taste"].filter((g) => c[g] && c[g].length).map((g) => `
     <div><h4>${esc(T().cityLabels[g])}</h4>${g === "taste"
       ? `<div class="tastes">${c.taste.map((p) => `<span>${esc(p)}</span>`).join("")}</div>`
@@ -3518,36 +3570,36 @@ function renderCities(all) {
 
 const sportUrl = (sp) => sp.url || (sp.q ? maps(sp.q) : siteUrl(SITES[sp.site]));
 function renderSports() {
-  $("#familyGrid").innerHTML = FAMILY.filter(ofRegion).map((sp, i) => `
+  grouped($("#familyGrid"), FAMILY.filter(ofRegion), "sports", (sp, i) => `
     <a class="sport" href="${esc(sportUrl(sp))}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
       <span class="ic">${sp.icon}</span>
       <span><b>${esc(tx(sp))}</b><small>📍 ${esc(sp.place)}</small></span>
       <span class="go">↗</span>
-    </a>`).join("");
+    </a>`);
   const list = SPORTS.filter(ofRegion);
   $("#sportSub").textContent = T().sportSub(list.length);
-  $("#sportGrid").innerHTML = list.map((sp, i) => `
+  grouped($("#sportGrid"), list, "sports", (sp, i) => `
     <a class="sport" href="${esc(sportUrl(sp))}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
       <span class="ic">${sp.icon}</span>
       <span><b>${esc(tx(sp))}</b><small>📍 ${esc(sp.place)}</small></span>
       <span class="go">↗</span>
-    </a>`).join("");
+    </a>`);
 }
 
 function renderTodo() {
-  $("#rail").innerHTML = TODO.filter(ofRegion).map((t, i) => {
+  grouped($("#rail"), TODO.filter(ofRegion), "rail", (t, i, k) => {
     const [title, sub] = tx(t);
-    return `<a class="exp" href="${esc(todoUrl(t.url))}" target="_blank" rel="noopener" style="background:linear-gradient(160deg,#3fa7d6,#0b2a40)">
+    return `<a class="exp" href="${esc(todoUrl(t.url, k))}" target="_blank" rel="noopener" style="background:linear-gradient(160deg,#3fa7d6,#0b2a40)">
       ${img(t.img)}<span class="emo">${t.icon}</span><span class="n">0${i + 1}</span>
       <b>${esc(title)}</b><span class="sub">${esc(sub)}</span>
     </a>`;
-  }).join("");
+  }, (t) => t.region === "both" ? "both" : t.region);
   $("#bookLinks").innerHTML = Object.values(SITES).filter(ofRegion)
     .map((st) => `<a href="${esc(siteUrl(st))}" target="_blank" rel="noopener">${esc(st.name)}<small>${esc(tx(st))} ↗</small></a>`).join("");
 }
 
 function renderHikes() {
-  $("#hikeGrid").innerHTML = HIKES.filter(ofRegion).map((h, i) => {
+  grouped($("#hikeGrid"), HIKES.filter(ofRegion), "grid", (h, i) => {
     const [title, text] = tx(h);
     return `<a class="card" href="${maps(h.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 40}ms">
       <div class="media g-hike"><span class="emo">${h.icon}</span>${img(h.img)}
@@ -3562,14 +3614,15 @@ function renderHikes() {
         </div>
       </div>
     </a>`;
-  }).join("");
+  });
 }
 
 function renderEat() {
-  $("#dishes").innerHTML = DISHES.filter((d) => inRegion(d[3])).map(([i, n, w]) => `<span class="dish">${i} ${esc(n)} <small>· ${esc(w)}</small></span>`).join("");
+  const dk = (d) => d[3] === "both" ? "both" : d[3] === "azur" ? "azur" : d[3];
+  grouped($("#dishes"), DISHES, "dishes", ([i, n, w]) => `<span class="dish">${i} ${esc(n)} <small>· ${esc(w)}</small></span>`, dk);
   chips($("#tagChips"), T().tags, tag, (k) => { tag = k; renderEat(); });
   chips($("#priceChips"), T().prices, price, (k) => { price = k; renderEat(); });
-  $("#rests").innerHTML = RESTAURANTS.filter((r) => ofRegion(r) && (tag === "all" || r.tag === tag) && (price === "all" || priceLevel(r.price) === price)).map((r, i) => `
+  grouped($("#rests"), RESTAURANTS.filter((r) => ofRegion(r) && (tag === "all" || r.tag === tag) && (price === "all" || priceLevel(r.price) === price)), "rests", (r, i) => `
     <a class="rest" href="${maps(r.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 30}ms">
       <span class="ic">${r.icon}</span>
       <div>
@@ -3578,7 +3631,7 @@ function renderEat() {
         <div class="meta"><span class="tagp t-${r.tag}">${esc(T().tags[r.tag])}</span><span>📍 ${esc(r.place)}</span><span class="price">${r.price}</span></div>
       </div>
       <span class="go">→</span>
-    </a>`).join("");
+    </a>`);
   $("#guides").innerHTML = GUIDES.map(([n, d, u]) => `<a href="${u}" target="_blank" rel="noopener">${esc(n)}<small>${esc(d)} ↗</small></a>`).join("");
 }
 
@@ -3649,7 +3702,7 @@ $("#choose").addEventListener("click", (ev) => {
 });
 
 document.querySelectorAll(".rail-nav button").forEach((b) => b.addEventListener("click", () => {
-  $("#rail").scrollBy({ left: b.dataset.dir * 320, behavior: "smooth" });
+  document.querySelectorAll("#rail .rail").forEach((r) => r.scrollBy({ left: b.dataset.dir * 320, behavior: "smooth" }));
 }));
 
 $("#newsForm").addEventListener("submit", (ev) => {

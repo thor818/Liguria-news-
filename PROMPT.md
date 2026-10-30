@@ -15,6 +15,7 @@ A monthly newsletter about what happens and what to do in the provinces of **Gen
 - Must work perfectly on phones (no horizontal scrolling) and on desktop.
 
 ## Two coasts, separate or together
+Lists are never mixed: even with "Both" selected, every section (events, places, city guides, experiences, sports, family, artists, hiking, nightlife, restaurants, dishes) is split into blocks with a header — 🇮🇹 Liguria · Province of Genoa, Province of Savona, Province of Imperia (then "All of Liguria") and 🇫🇷 Côte d'Azur. Big titles are orange, not black.
 At the top of the page and right under the cover, the reader chooses **Liguria**, **Côte d'Azur** or **Both**, with two big photo buttons and a third "Both" button, plus a small switch always visible in the top bar. All sections (events, map, places, experiences, hiking, restaurants, dishes) then show only the chosen coast, so the information is never mixed up. Direct links open one coast (e.g. `?region=liguria`, `?region=azur`), and can be combined with the language.
 
 ## Languages
