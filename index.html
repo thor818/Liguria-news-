@@ -82,6 +82,23 @@
   .sub-head p { margin: 0; color: var(--muted); }
   .sub-head:has(> p:only-child) { margin: 26px 0 12px; }
 
+  /* ---------- City guides ---------- */
+  .city { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 18px; margin-top: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 14px; box-shadow: var(--shadow); animation: pop .35s ease both; }
+  .city-cover { position: relative; isolation: isolate; overflow: hidden; border-radius: 20px; min-height: 300px; color: #fff; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(160deg, #3fa7d6, #0b2a40); }
+  .city-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .city-cover::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(8,20,30,.8), rgba(8,20,30,0) 60%); }
+  .city-cover .emo { position: absolute; top: 18px; right: 20px; font-size: 3.4rem; }
+  .city-cover:has(img) .emo { display: none; }
+  .city-cover h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; margin: 0 0 8px; }
+  .city-cover p { margin: 0; opacity: .92; font-size: .95rem; }
+  .city-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; padding: 10px 6px; align-content: start; }
+  .city-lists h4 { margin: 0 0 10px; font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); }
+  .city-lists ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .city-lists a { display: flex; justify-content: space-between; gap: 10px; align-items: center; text-decoration: none; padding: 9px 12px; border-radius: 12px; background: var(--bg); font-size: .9rem; font-weight: 500; transition: background .2s, color .2s; }
+  .city-lists a:hover { background: var(--navy); color: #fff; }
+  .city-lists a::after { content: "↗"; color: var(--muted); font-size: .8rem; }
+  #cityPanels .city + .city { margin-top: 18px; }
+
   /* ---------- Copertina ---------- */
   .hero { padding: 116px 0 0; }
   .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; }
@@ -321,6 +338,8 @@
     .see .tile h3 { font-size: 1.5rem; }
     .see .tile p { display: none; }
     .rail { grid-auto-columns: 72%; }
+    .city { grid-template-columns: minmax(0, 1fr); }
+    .city-cover { min-height: 200px; }
     .collage { position: static; grid-template-rows: 160px 160px; }
     .guides .links { grid-template-columns: 1fr 1fr; }
     .news { padding: 34px 24px; }
@@ -412,6 +431,12 @@
       </div>
     </div>
     <div class="see" id="seeGrid"></div>
+    <div class="sub-head">
+      <h3>City <em>guides</em></h3>
+      <p data-i18n="cityHint"></p>
+    </div>
+    <div class="chips" id="cityChips"></div>
+    <div id="cityPanels"></div>
     <div class="sub-head"><p data-i18n="goSub"></p></div>
     <div class="map">
       <svg viewBox="0 0 1000 420" role="img" aria-label="Liguria — Côte d'Azur">
@@ -708,6 +733,125 @@ const SEE = [
     zh: ["卡莫利", "彩色房屋、渔船和海滨的佛卡夏。"] } }
 ];
 
+/* ---------- CITY GUIDES: una scheda per ogni città o zona ----------
+   name: nome della città nelle varie lingue (se manca si usa "en")
+   see / museums / eat: nomi propri, ognuno apre Google Maps; "where" aiuta la ricerca
+   Per aggiungere un posto basta scriverne il nome nella lista giusta. */
+const CITIES = [
+  { id: "genova", zone: "genova", img: "foto/genova.jpg", where: "Genova",
+    name: { it: "Genova", fr: "Gênes", en: "Genoa", de: "Genua", nl: "Genua", zh: "热那亚" },
+    t: { it: "Il porto, i carruggi e i palazzi UNESCO: la capitale della Liguria.", fr: "Le port, les ruelles et les palais UNESCO : la capitale de la Ligurie.",
+      en: "The port, the narrow lanes and UNESCO palaces: Liguria's capital.", de: "Hafen, Gassen und UNESCO-Paläste: die Hauptstadt Liguriens.",
+      nl: "De haven, de steegjes en UNESCO-paleizen: de hoofdstad van Ligurië.", zh: "港口、小巷与世界遗产宫殿：利古里亚首府。" },
+    see: ["Acquario di Genova", "Via Garibaldi e Palazzi dei Rolli", "Cattedrale di San Lorenzo", "Spianata Castelletto", "Boccadasse", "Lanterna di Genova"],
+    museums: ["Musei di Strada Nuova", "Palazzo Ducale", "Galata Museo del Mare", "Palazzo Reale"],
+    eat: ["Il Genovese", "Antica Sciamadda", "Antica Osteria di Vico Palla", "Pietro Romanengo fu Stefano", "Mercato Orientale"] },
+  { id: "portofino", zone: "genova", img: "foto/portofino.jpg", where: "Liguria",
+    name: { en: "Portofino & Camogli", zh: "波托菲诺与卡莫利" },
+    t: { it: "Il borgo più famoso d'Italia e il paese dei pescatori, tra parco e mare.", fr: "Le village le plus célèbre d'Italie et le port des pêcheurs, entre parc et mer.",
+      en: "Italy's most famous village and the fishermen's town, between park and sea.", de: "Italiens berühmtestes Dorf und das Fischerstädtchen, zwischen Park und Meer.",
+      nl: "Het beroemdste dorp van Italië en het vissersstadje, tussen park en zee.", zh: "意大利最著名的小镇与渔村，坐落在公园与大海之间。" },
+    see: ["Piazzetta di Portofino", "Castello Brown", "Faro di Portofino", "Abbazia di San Fruttuoso", "Castello della Dragonara (Camogli)"],
+    museums: [],
+    eat: ["Da Puny (Portofino)", "Revello (Camogli)", "Manuelina (Recco)"] },
+  { id: "savona", zone: "savona", img: "foto/savona.jpg", where: "Savona",
+    name: { fr: "Savone", en: "Savona", zh: "萨沃纳" },
+    t: { it: "La fortezza sul mare, le torri medievali e la farinata più famosa.", fr: "La forteresse sur la mer, les tours médiévales et la farinata la plus célèbre.",
+      en: "The seaside fortress, medieval towers and the most famous farinata.", de: "Die Festung am Meer, mittelalterliche Türme und die berühmteste Farinata.",
+      nl: "Het fort aan zee, middeleeuwse torens en de beroemdste farinata.", zh: "海边要塞、中世纪塔楼和最有名的鹰嘴豆饼。" },
+    see: ["Fortezza del Priamar", "Torre del Brandale", "Torre Leon Pancaldo", "Cappella Sistina", "Darsena"],
+    museums: ["Pinacoteca Civica", "Museo della Ceramica", "Museo Archeologico del Priamar"],
+    eat: ["Vino e Farinata"] },
+  { id: "finale", zone: "savona", img: "foto/finale.jpg", where: "Finale Ligure",
+    name: { en: "Finale Ligure", zh: "菲纳莱利古雷" },
+    t: { it: "Borgo medievale, falesie e sentieri: la capitale dell'outdoor.", fr: "Bourg médiéval, falaises et sentiers : la capitale de l'outdoor.",
+      en: "A medieval town, cliffs and trails: the outdoor capital.", de: "Mittelalterlicher Ort, Felsen und Trails: die Outdoor-Hauptstadt.",
+      nl: "Middeleeuws stadje, rotsen en paden: de outdoorhoofdstad.", zh: "中世纪小镇、岩壁与步道：户外运动之都。" },
+    see: ["Finalborgo", "Castel Gavone", "Varigotti", "Grotte di Toirano"],
+    museums: ["Museo Archeologico del Finale"],
+    eat: [] },
+  { id: "albenga", zone: "savona", img: "", icon: "🏖️", where: "Liguria",
+    name: { en: "Albenga & Alassio", zh: "阿尔本加与阿拉西奥" },
+    t: { it: "Le torri medievali di Albenga e le spiagge di sabbia di Alassio.", fr: "Les tours médiévales d'Albenga et les plages de sable d'Alassio.",
+      en: "Albenga's medieval towers and Alassio's sandy beaches.", de: "Die mittelalterlichen Türme von Albenga und die Sandstrände von Alassio.",
+      nl: "De middeleeuwse torens van Albenga en de zandstranden van Alassio.", zh: "阿尔本加的中世纪塔楼与阿拉西奥的沙滩。" },
+    see: ["Albenga, centro storico", "Battistero (Albenga)", "Muretto (Alassio)", "Budello (Alassio)", "Isola Gallinara"],
+    museums: ["Museo Navale Romano (Albenga)"],
+    eat: ["Pasticceria Balzola (Alassio)"] },
+  { id: "imperia", zone: "imperia", img: "foto/olioliva.jpg", where: "Imperia",
+    name: { en: "Imperia", zh: "因佩里亚" },
+    t: { it: "Due porti, il Parasio sul mare e la città dell'olio taggiasco.", fr: "Deux ports, le Parasio sur la mer et la ville de l'huile taggiasca.",
+      en: "Two harbours, the Parasio above the sea and the home of Taggiasca oil.", de: "Zwei Häfen, das Parasio über dem Meer und die Stadt des Taggiasca-Öls.",
+      nl: "Twee havens, het Parasio boven zee en de stad van de taggiasca-olie.", zh: "两座港口、临海的帕拉西奥老城，塔贾斯卡橄榄油之乡。" },
+    see: ["Parasio (Porto Maurizio)", "Basilica di San Maurizio", "Porto di Oneglia"],
+    museums: ["Museo dell'Olivo Carlo Carli", "Museo Navale"],
+    eat: ["Calata Cuneo (Oneglia)"] },
+  { id: "sanremo", zone: "imperia", img: "foto/ciclabile.jpg", where: "Sanremo",
+    name: { en: "Sanremo", zh: "圣雷莫" },
+    t: { it: "La città dei fiori: Casinò, la Pigna e la pista ciclabile sul mare.", fr: "La ville des fleurs : Casino, la Pigna et la piste cyclable sur la mer.",
+      en: "The City of Flowers: the Casino, La Pigna and the seaside cycle path.", de: "Die Blumenstadt: Casino, La Pigna und der Radweg am Meer.",
+      nl: "De bloemenstad: het casino, La Pigna en het fietspad langs zee.", zh: "花之城：赌场、松果老城和海边骑行道。" },
+    see: ["La Pigna", "Casinò di Sanremo", "Chiesa Russa", "Corso Imperatrice", "Bussana Vecchia"],
+    museums: ["Villa Nobel", "Palazzo Borea d'Olmo"],
+    eat: ["Mercato Annonario"] },
+  { id: "ventimiglia", zone: "imperia", img: "", icon: "🌺", where: "Liguria",
+    name: { fr: "Vintimille & Dolceacqua", en: "Ventimiglia & Dolceacqua", zh: "文蒂米利亚与多尔切阿夸" },
+    t: { it: "I giardini Hanbury, il mercato del venerdì e il ponte dipinto da Monet.", fr: "Les jardins Hanbury, le marché du vendredi et le pont peint par Monet.",
+      en: "The Hanbury gardens, the Friday market and the bridge painted by Monet.", de: "Die Hanbury-Gärten, der Freitagsmarkt und die von Monet gemalte Brücke.",
+      nl: "De Hanbury-tuinen, de vrijdagmarkt en de brug die Monet schilderde.", zh: "汉伯里植物园、周五集市和莫奈画过的古桥。" },
+    see: ["Giardini Botanici Hanbury", "Ventimiglia Alta", "Mercato del venerdì (Ventimiglia)", "Ponte Vecchio (Dolceacqua)", "Castello dei Doria (Dolceacqua)"],
+    museums: ["Museo Preistorico dei Balzi Rossi"],
+    eat: [] },
+  { id: "menton", zone: "azur", img: "foto/menton.jpg", where: "Menton",
+    name: { it: "Mentone", en: "Menton", zh: "芒通" },
+    t: { it: "Limoni, giardini e la città vecchia color pastello sul mare.", fr: "Citrons, jardins et la vieille ville pastel au bord de la mer.",
+      en: "Lemons, gardens and a pastel old town by the sea.", de: "Zitronen, Gärten und eine pastellfarbene Altstadt am Meer.",
+      nl: "Citroenen, tuinen en een pastelkleurige oude stad aan zee.", zh: "柠檬、花园和海边粉彩色的老城。" },
+    see: ["Basilique Saint-Michel-Archange", "Vieille ville", "Jardin Serre de la Madone", "Jardin botanique Val Rahmeh"],
+    museums: ["Musée Jean Cocteau"],
+    eat: ["Mirazur", "L'Orangerie", "Marché des Halles"] },
+  { id: "monaco", zone: "azur", img: "foto/monaco.jpg", where: "Monaco",
+    name: { en: "Monaco", zh: "摩纳哥" },
+    t: { it: "Il Rocher, il Casinò e il porto: il Principato in un giorno.", fr: "Le Rocher, le Casino et le port : la Principauté en une journée.",
+      en: "The Rock, the Casino and the harbour: the Principality in a day.", de: "Felsen, Casino und Hafen: das Fürstentum an einem Tag.",
+      nl: "De Rots, het casino en de haven: het prinsdom in één dag.", zh: "摩纳哥岩、赌场和港口：一天游遍公国。" },
+    see: ["Palais Princier", "Casino de Monte-Carlo", "Jardin Exotique", "Port Hercule"],
+    museums: ["Musée Océanographique", "Nouveau Musée National (Villa Sauber)"],
+    eat: ["Le Louis XV – Alain Ducasse", "Marché de la Condamine"] },
+  { id: "eze", zone: "azur", img: "foto/capferrat.jpg", where: "Côte d'Azur",
+    name: { en: "Èze, Cap Ferrat & Villefranche", zh: "埃兹、费拉角与滨海自由城" },
+    t: { it: "Il borgo sospeso, le ville sul mare e la rada più bella della costa.", fr: "Le village perché, les villas sur la mer et la plus belle rade de la côte.",
+      en: "The perched village, seaside villas and the coast's most beautiful bay.", de: "Das Felsendorf, Villen am Meer und die schönste Bucht der Küste.",
+      nl: "Het bergdorp, villa's aan zee en de mooiste baai van de kust.", zh: "悬崖小村、海边别墅和海岸最美的海湾。" },
+    see: ["Èze village", "Jardin Exotique d'Èze", "Villa Ephrussi de Rothschild", "Citadelle (Villefranche-sur-Mer)", "Plage Paloma (Cap Ferrat)"],
+    museums: ["Villa Kérylos (Beaulieu)"],
+    eat: [] },
+  { id: "nice", zone: "azur", img: "foto/nizza.jpg", where: "Nice",
+    name: { it: "Nizza", en: "Nice", zh: "尼斯" },
+    t: { it: "La Promenade, la città vecchia, i mercati e i musei di Matisse e Chagall.", fr: "La Promenade, le Vieux-Nice, les marchés et les musées Matisse et Chagall.",
+      en: "The Promenade, the old town, markets and the Matisse and Chagall museums.", de: "Die Promenade, die Altstadt, Märkte und die Museen von Matisse und Chagall.",
+      nl: "De Promenade, de oude stad, markten en de musea van Matisse en Chagall.", zh: "海滨大道、老城、集市，以及马蒂斯与夏加尔博物馆。" },
+    see: ["Promenade des Anglais", "Vieux-Nice", "Colline du Château", "Cours Saleya", "Place Masséna"],
+    museums: ["Musée Matisse", "Musée national Marc Chagall", "MAMAC", "Fondation Maeght (Saint-Paul-de-Vence)"],
+    eat: ["La Merenda", "Chez Pipo", "L'Alchimie"] },
+  { id: "antibes", zone: "azur", img: "foto/antibes.jpg", where: "Antibes",
+    name: { en: "Antibes", zh: "昂蒂布" },
+    t: { it: "Bastioni sul mare, il porto degli yacht e il museo di Picasso.", fr: "Remparts sur la mer, le port des yachts et le musée Picasso.",
+      en: "Ramparts over the sea, the yacht harbour and the Picasso museum.", de: "Wehrmauern am Meer, der Jachthafen und das Picasso-Museum.",
+      nl: "Vestingmuren aan zee, de jachthaven en het Picassomuseum.", zh: "临海城墙、游艇港和毕加索博物馆。" },
+    see: ["Vieil Antibes", "Fort Carré", "Port Vauban", "Cap d'Antibes"],
+    museums: ["Musée Picasso"],
+    eat: ["Marché Provençal"] },
+  { id: "cannes", zone: "azur", img: "foto/cannes.jpg", where: "Cannes",
+    name: { en: "Cannes", zh: "戛纳" },
+    t: { it: "La Croisette, il Festival e le isole di Lérins a un passo dal porto.", fr: "La Croisette, le Festival et les îles de Lérins à deux pas du port.",
+      en: "La Croisette, the Festival and the Lérins Islands just off the harbour.", de: "Die Croisette, das Festival und die Lérins-Inseln gleich vor dem Hafen.",
+      nl: "De Croisette, het festival en de Lérins-eilanden vlak bij de haven.", zh: "十字大道、电影节宫，以及港口外的莱兰群岛。" },
+    see: ["La Croisette", "Palais des Festivals", "Le Suquet", "Îles de Lérins"],
+    museums: ["Musée des Explorations du Monde", "Musée de la Mer (Fort Royal)"],
+    eat: ["Marché Forville"] }
+];
+
 /* ---------- Siti ufficiali e prenotazione attività (link nella lingua del lettore) ---------- */
 const SITES = {
   lamialiguria: { name: "La mia Liguria", region: "lig", url: { it: "https://lamialiguria.it/", other: "https://lamialiguria.it/en/" }, t: {
@@ -883,6 +1027,7 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    cityHint: "Scegli una città: cosa vedere, i musei e dove mangiare. Tocca un nome per aprire la mappa.", cityLabels: { see: "Da vedere", museums: "Musei", eat: "Dove mangiare" },
     bookSub: "Sport, avventura e natura: prenota sui siti ufficiali.",
     exploreEyebrow: "Dove andare", exploreSub: "I luoghi da non perdere e le zone della Riviera.", close: "Chiudi", newsletter: "Ricevi il giornalino ✉", menu: "Menu",
     chooseSub: "Guarda solo la Liguria, solo la Costa Azzurra, o tutte e due.", regions: { lig: "Liguria", azur: "Costa Azzurra", all: "Tutte e due" },
@@ -917,6 +1062,7 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    cityHint: "Choisissez une ville : que voir, les musées et où manger. Touchez un nom pour ouvrir la carte.", cityLabels: { see: "À voir", museums: "Musées", eat: "Où manger" },
     bookSub: "Sport, aventure et nature : réservez sur les sites officiels.",
     exploreEyebrow: "Où aller", exploreSub: "Les lieux incontournables et les zones de la Riviera.", close: "Fermer", newsletter: "Recevoir le journal ✉", menu: "Menu",
     chooseSub: "Ne voir que la Ligurie, que la Côte d'Azur, ou les deux.", regions: { lig: "Ligurie", azur: "Côte d'Azur", all: "Les deux" },
@@ -951,6 +1097,7 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    cityHint: "Pick a town: what to see, museums and where to eat. Tap a name to open the map.", cityLabels: { see: "What to see", museums: "Museums", eat: "Where to eat" },
     bookSub: "Sport, adventure and nature: book on the official websites.",
     exploreEyebrow: "Where to go", exploreSub: "The must-see places and the areas of the Riviera.", close: "Close", newsletter: "Get the newsletter ✉", menu: "Menu",
     chooseSub: "See only Liguria, only the French Riviera, or both.", regions: { lig: "Liguria", azur: "French Riviera", all: "Both" },
@@ -985,6 +1132,7 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    cityHint: "Wähle einen Ort: Sehenswertes, Museen und gutes Essen. Tippe auf einen Namen für die Karte.", cityLabels: { see: "Sehenswert", museums: "Museen", eat: "Essen" },
     bookSub: "Sport, Abenteuer und Natur: auf den offiziellen Seiten buchen.",
     exploreEyebrow: "Wohin", exploreSub: "Die schönsten Orte und die Regionen der Riviera.", close: "Schließen", newsletter: "Newsletter erhalten ✉", menu: "Menü",
     chooseSub: "Nur Ligurien, nur die Côte d'Azur oder beides ansehen.", regions: { lig: "Ligurien", azur: "Côte d'Azur", all: "Beides" },
@@ -1019,6 +1167,7 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    cityHint: "Kies een plaats: wat te zien, musea en waar te eten. Tik op een naam voor de kaart.", cityLabels: { see: "Bezienswaardig", museums: "Musea", eat: "Eten" },
     bookSub: "Sport, avontuur en natuur: boek op de officiële websites.",
     exploreEyebrow: "Waarheen", exploreSub: "De mooiste plekken en de gebieden van de Rivièra.", close: "Sluiten", newsletter: "Ontvang de nieuwsbrief ✉", menu: "Menu",
     chooseSub: "Bekijk alleen Ligurië, alleen de Côte d'Azur, of allebei.", regions: { lig: "Ligurië", azur: "Côte d'Azur", all: "Allebei" },
@@ -1053,6 +1202,7 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    cityHint: "选择城市：景点、博物馆和美食。点击名称打开地图。", cityLabels: { see: "景点", museums: "博物馆", eat: "美食" },
     bookSub: "运动、探险与自然：在官方网站预订。",
     exploreEyebrow: "去哪儿", exploreSub: "必看景点与里维埃拉各地区。", close: "关闭", newsletter: "订阅月刊 ✉", menu: "菜单",
     chooseSub: "只看利古里亚、只看蔚蓝海岸，或两者都看。", regions: { lig: "利古里亚", azur: "蔚蓝海岸", all: "两者都看" },
@@ -1146,7 +1296,8 @@ function chips(el, items, current, onPick) {
 
 function renderTicker() {
   $("#statEvents").textContent = shown().length;
-  $("#statPlaces").textContent = [...SEE, ...HIKES, ...RESTAURANTS].filter(ofRegion).length;
+  $("#statPlaces").textContent = [...SEE, ...HIKES, ...RESTAURANTS].filter(ofRegion).length
+    + CITIES.filter(ofRegion).reduce((n, c) => n + c.see.length + c.museums.length + c.eat.length, 0);
   $("#statLangs").textContent = Object.keys(LANGS).length;
 }
 
@@ -1221,6 +1372,25 @@ function renderSee() {
 /* indirizzo di un sito nella lingua del lettore */
 const siteUrl = (site) => site.url[lang] || site.url.other;
 const todoUrl = (u) => typeof u === "string" ? u : u.url ? siteUrl(u) : siteUrl(region === "azur" ? u.azur : u.lig);
+
+/* City guides: una città alla volta (tutte insieme nel PDF) */
+let city = null;
+const cityName = (c) => c.name[lang] || c.name.en;
+function renderCities(all) {
+  const list = CITIES.filter(ofRegion);
+  if (!list.some((c) => c.id === city)) city = list[0].id;
+  chips($("#cityChips"), Object.fromEntries(list.map((c) => [c.id, cityName(c)])), city, (k) => { city = k; renderCities(); });
+  $("#cityChips").firstElementChild.remove();
+  const groups = (c) => ["see", "museums", "eat"].filter((g) => c[g].length).map((g) => `
+    <div><h4>${esc(T().cityLabels[g])}</h4><ul>${c[g].map((p) =>
+      `<li><a href="${maps(p.replace(/[()]/g, "") + " " + c.where)}" target="_blank" rel="noopener">${esc(p)}</a></li>`).join("")}</ul></div>`).join("");
+  $("#cityPanels").innerHTML = list.filter((c) => all || c.id === city).map((c) => `
+    <article class="city">
+      <div class="city-cover">${img(c.img)}<span class="emo">${c.icon || "📍"}</span>
+        <h3>${esc(cityName(c))}</h3><p>${esc(tx(c))}</p></div>
+      <div class="city-lists">${groups(c)}</div>
+    </article>`).join("");
+}
 
 function renderTodo() {
   $("#rail").innerHTML = TODO.filter(ofRegion).map((t, i) => {
@@ -1303,7 +1473,7 @@ function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
   $("#siteItLink").href = $("#menuRent").href = lang === "it" ? SITE_IT.it : SITE_IT.other;
-  renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderTodo(); renderHikes(); renderEat();
+  renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderCities(); renderTodo(); renderHikes(); renderEat();
 }
 
 $("#langList").addEventListener("click", (ev) => {

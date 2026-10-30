@@ -15,7 +15,7 @@ Cinque rubriche, raggiungibili anche dal menu a schermo intero (pulsante ☰ in 
 
 | Rubrica | Cosa contiene | Dove si modifica in `index.html` |
 |---|---|---|
-| Explore | luoghi da vedere e mappa delle zone | `SEE`, `PINS` |
+| Explore | luoghi da vedere, City guides (città: da vedere, musei, dove mangiare) e mappa | `SEE`, `CITIES`, `PINS` |
 | What to do | esperienze, "Book an activity" e sentieri (Hiking) | `TODO`, `SITES`, `HIKES` |
 | Where to eat | ristoranti, piatti tipici, guide gastronomiche | `RESTAURANTS`, `DISHES`, `GUIDES` |
 | Where to stay | link a Riviera Rent | sezione `#stay`, `SITE_IT` |
@@ -32,6 +32,7 @@ Tutti i contenuti sono in cima allo `<script>` di `index.html`, sotto **CONTENUT
 - Luoghi, sentieri e ristoranti: `q` è la ricerca che apre Google Maps.
 - Ristoranti: `tag` = `michelin` | `modern` | `trad` | `street` | `sweet`, `price` da `€` a `€€€€`.
 - Siti ufficiali e di prenotazione (lamialiguria.it, cotedazurfrance.fr, experiencecotedazur.com): oggetto `SITES`, con l'indirizzo per ogni lingua (`other` = versione inglese).
+- City guides (`CITIES`): per aggiungere un posto basta scriverne il nome nella lista `see`, `museums` o `eat` della città; il link a Google Maps si crea da solo.
 - Testi dell'interfaccia: oggetto `I18N`, una sezione per lingua.
 
 ## Da completare

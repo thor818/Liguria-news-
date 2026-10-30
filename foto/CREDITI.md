@@ -37,3 +37,6 @@ Tutte le foto vengono da [Pexels](https://www.pexels.com) e sono usate secondo l
 - `foto/monaco-alto.jpg` — https://www.pexels.com/photo/31292749/
 - `foto/canyoning.jpg` — https://www.pexels.com/photo/5668668/
 - `foto/trail.jpg` — https://www.pexels.com/photo/30932860/
+- `foto/savona.jpg` — https://www.pexels.com/photo/19685209/
+- `foto/cannes.jpg` — https://www.pexels.com/photo/38606077/
+- `foto/antibes.jpg` — https://www.pexels.com/photo/15009981/
