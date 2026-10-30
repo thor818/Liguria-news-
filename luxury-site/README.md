@@ -1,10 +1,10 @@
 # Riviera Rent Luxury — sito separato
 
-Sito Luxury indipendente da Riviera Rent France, con dentro la rivista **The Season**.
+Sito Luxury indipendente da Riviera Rent France, con dentro la rivista **Live the Riviera**.
 
 - `index.html` — sito in inglese: collezione (Villa Gabriella, La Dragonnière, Kristal Palace, Elidia Palace), concierge, proprietari, rivista, contatti.
 - `fr/index.html` — versione francese.
-- `magazine/index.html` — la rivista The Season (EN / FR / IT, `?lang=`).
+- `magazine/index.html` — la rivista Live the Riviera (EN / FR / IT, `?lang=`).
 - `assets/` — stile, logo e script (contatti e prenotazione in `assets/js/config.js`, residenze in `assets/js/properties.js`).
 
 Le foto delle residenze (`assets/img/homes/…`) sono quelle del sito Riviera Rent France e vengono copiate al momento della pubblicazione.

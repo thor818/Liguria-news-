@@ -1,4 +1,4 @@
-# The Season — Riviera Rent Luxury
+# Live the Riviera — by Riviera Rent Luxury
 
 Rivista di lusso sulla stagione della Costa Azzurra e di Monaco, in inglese, francese e italiano (`?lang=en|fr|it`).
 

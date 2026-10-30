@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Season</title>
+<title>Live the Riviera</title>
 <meta name="description" content="The magazine of the Riviera's most exclusive season: Grand Prix de Monaco, Festival de Cannes, the Monte-Carlo galas, yachting and every Michelin-starred table.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,8 +51,8 @@
   .cover::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,10,12,.55), rgba(10,10,12,.05) 30%, rgba(10,10,12,.1) 55%, rgba(10,10,12,.82)); }
   .cover .wrap { display: grid; grid-template-rows: auto 1fr auto; padding-block: 34px 44px; width: 100%; }
   .cover-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: rgba(247,242,232,.85); }
-  .cover h1 { align-self: center; font-size: clamp(5rem, 17vw, 15rem); line-height: .82; font-style: italic; letter-spacing: -.02em; text-align: center; }
-  .cover h1 small { display: block; font-style: normal; font-family: var(--body); font-weight: 400; font-size: clamp(.7rem, 1.3vw, .9rem); letter-spacing: .6em; margin-top: 22px; color: #f1dfb6; text-shadow: 0 1px 12px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.8); }
+  .cover h1 { align-self: center; font-size: clamp(3.6rem, 11vw, 10rem); line-height: .82; font-style: italic; letter-spacing: -.02em; text-align: center; }
+  .cover h1 small { display: block; font-style: normal; font-family: var(--body); font-weight: 400; font-size: clamp(.8rem, 1.5vw, 1.05rem); letter-spacing: .32em; text-transform: uppercase; margin-top: 22px; color: #f1dfb6; text-shadow: 0 1px 12px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.8); }
   .lines { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; border-top: 1px solid rgba(247,242,232,.35); padding-top: 20px; }
   .lines a { text-decoration: none; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
   .lines b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(1.15rem, 2vw, 1.55rem); line-height: 1.15; }
@@ -208,7 +208,7 @@
     .brand { text-align: left; }
     .brand b { font-size: 1.02rem; letter-spacing: .2em; }
     .lines { grid-template-columns: minmax(0, 1fr); gap: 14px; }
-    .cover h1 { font-size: clamp(4.2rem, 24vw, 7rem); }
+    .cover h1 { font-size: clamp(3.2rem, 15vw, 5rem); }
   }
 </style>
 </head>
@@ -229,7 +229,7 @@
   <img src="foto/monaco-notte.jpg" alt="">
   <div class="wrap">
     <div class="cover-top"><span class="label" data-t="coverKicker"></span><span class="label" data-t="issue"></span></div>
-    <h1>The Season<small>CÔTE D'AZUR · MONACO</small></h1>
+    <h1>Live the Riviera<small>by Riviera Rent Luxury</small></h1>
     <nav class="lines">
       <a href="#gp"><b data-t="l1"></b><span data-t="l1s"></span></a>
       <a href="#cannes"><b data-t="l2"></b><span data-t="l2s"></span></a>
@@ -254,7 +254,7 @@
     <li><a href="#yachting"><span class="n">04</span><span class="t" data-t="tocYachts"></span><span class="p label">Septembre</span></a></li>
     <li><a href="#season"><span class="n">05</span><span class="t" data-t="tocSeason"></span><span class="p label">2026 — 2027</span></a></li>
     <li><a href="#tables"><span class="n">06</span><span class="t" data-t="tocTables"></span><span class="p label">Guide Michelin 2026</span></a></li>
-    <li><a href="#stay"><span class="n">07</span><span class="t" data-t="tocStay"></span><span class="p label">Monaco · Cap-Martin</span></a></li>
+    <li><a href="#concierge"><span class="n">07</span><span class="t" data-t="concLabel"></span><span class="p label">Riviera Rent Luxury</span></a></li>
   </ol>
 </section>
 
@@ -415,29 +415,11 @@
   </aside>
 </div>
 
-<!-- ============ 07 LA COLLEZIONE RIVIERA RENT LUXURY ============ -->
-<section class="stay reveal" id="stay">
-  <img src="foto/gabriella-view.jpg" alt="" loading="lazy">
-  <div class="wrap">
-    <span class="label" style="color:var(--gold-soft)">07 · Riviera Rent Luxury</span>
-    <h2 data-t="stayTitle"></h2>
-    <p data-t="stayText"></p>
-    <a class="btn light" href="#collection" data-t="stayBtn"></a>
-  </div>
-</section>
-
-<section class="wrap collection reveal" id="collection">
-  <div class="sec-head">
-    <div><span class="label gold" data-t="collLabel"></span><h2 data-t="collTitle"></h2></div>
-    <p data-t="collSub"></p>
-  </div>
-  <div class="homes" id="homes"></div>
-</section>
-
+<!-- ============ 07 CONCIERGE ============ -->
 <section class="concierge reveal" id="concierge">
   <div class="wrap">
     <div class="sec-head">
-      <div><span class="label" style="color:var(--gold-soft)" data-t="concLabel"></span><h2 data-t="concTitle"></h2></div>
+      <div><span class="label" style="color:var(--gold-soft)">07 · <span data-t="concLabel"></span></span><h2 data-t="concTitle"></h2></div>
       <p data-t="concSub"></p>
     </div>
     <ol class="services" id="services"></ol>
@@ -476,7 +458,7 @@
 
 <script>
 /* ============================================================
-   CONTENUTI — The Season (Riviera Rent Luxury)
+   CONTENUTI — Live the Riviera (by Riviera Rent Luxury)
    Lingue: en, fr, it. Date verificate a ottobre 2026: quelle con
    status "tba" vanno confermate quando gli organizzatori le annunciano.
    ============================================================ */
@@ -520,26 +502,6 @@ const TABLES = [
   [1, "Auberge de la Roche", "Valdeblore", "azur"], [1, "La Flibuste", "Villeneuve-Loubet", "azur"]
 ];
 
-/* La collezione Riviera Rent Luxury (dal sito Luxury) */
-const HOMES = [
-  { img: "foto/gabriella.jpg", name: ["Villa", "Gabriella"], place: "Roquebrune-Cap-Martin",
-    t: { en: ["A garden apartment with its own private pool, palm and olive trees, and Monaco on the horizon.", ["4 guests", "Private pool", "Garden", "Parking"]],
-         fr: ["Un appartement avec jardin et piscine privée, palmiers et oliviers, Monaco à l'horizon.", ["4 personnes", "Piscine privée", "Jardin", "Parking"]],
-         it: ["Un appartamento con giardino e piscina privata, palme e ulivi, Monaco all'orizzonte.", ["4 ospiti", "Piscina privata", "Giardino", "Parcheggio"]] } },
-  { img: "foto/dragonniere.jpg", name: ["La", "Dragonnière"], place: "Roquebrune-Cap-Martin",
-    t: { en: ["Floor-to-ceiling windows over the sea, two bedrooms and two bathrooms, a balcony above the pool and garden.", ["4 guests", "Sea view", "Pool", "2 bathrooms"]],
-         fr: ["Grandes baies vitrées sur la mer, deux chambres, deux salles de bains, balcon sur la piscine et le jardin.", ["4 personnes", "Vue mer", "Piscine", "2 salles de bains"]],
-         it: ["Vetrate sul mare, due camere e due bagni, balcone sulla piscina e sul giardino.", ["4 ospiti", "Vista mare", "Piscina", "2 bagni"]] } },
-  { img: "foto/kristal.jpg", name: ["Kristal", "Palace"], place: "Beausoleil · Monaco",
-    t: { en: ["1.2 km from the Grimaldi Forum: a terrace over the bay, a private hot tub and an indoor pool, all year round.", ["4 guests", "Indoor pool", "Hot tub", "Sea view"]],
-         fr: ["À 1,2 km du Grimaldi Forum : terrasse sur la baie, jacuzzi privé et piscine intérieure, toute l'année.", ["4 personnes", "Piscine intérieure", "Jacuzzi", "Vue mer"]],
-         it: ["A 1,2 km dal Grimaldi Forum: terrazza sulla baia, idromassaggio privato e piscina coperta, tutto l'anno.", ["4 ospiti", "Piscina coperta", "Idromassaggio", "Vista mare"]] } },
-  { img: "foto/elidia.jpg", name: ["Elidia", "Palace"], place: "Beausoleil · Monaco",
-    t: { en: ["Morning light on Monte-Carlo from the balcony, two bedrooms and two bathrooms, 400 m from the Pont de Fer beach.", ["2 bedrooms", "Sea-view balcony", "Terrace", "Parking"]],
-         fr: ["La lumière du matin sur Monte-Carlo depuis le balcon, deux chambres et deux salles de bains, à 400 m de la plage.", ["2 chambres", "Balcon vue mer", "Terrasse", "Parking"]],
-         it: ["La luce del mattino su Monte-Carlo dal balcone, due camere e due bagni, a 400 m dalla spiaggia del Pont de Fer.", ["2 camere", "Balcone vista mare", "Terrazza", "Parcheggio"]] } }
-];
-
 /* Concierge su misura (dal sito Luxury) */
 const SERVICES = {
   en: [["Private chauffeur", "Car or minivan with driver, transfers from Nice airport."], ["Helicopter transfer", "Nice airport to Monaco in seven minutes."], ["Yacht & boat days", "From a skippered boat to a crewed yacht, from Monaco or Menton."], ["Private chef", "Dinner in your residence with produce from the Menton and Monaco markets."], ["Grand Prix & events", "Tickets, terraces and timing for the Grand Prix, the Masters and the Yacht Show."], ["Tables & beach clubs", "The starred tables and beach clubs we would choose ourselves."], ["Daily housekeeping", "Fresh linen and towels at the times you prefer."], ["Italian Riviera day", "Sanremo, Dolceacqua or Portofino with a driver."], ["In-home wellness", "Massage, yoga or a personal trainer at your residence."]],
@@ -568,7 +530,7 @@ const I18N = {
     gpP1: "Since 1929 the Grand Prix has turned the streets of the Principality into the most glamorous circuit in the world. In 2027 the weekend runs from Thursday 3 to Sunday 6 June, and for the first time it includes a Sprint race alongside the Grand Prix.",
     gpP2: "The real spectacle is off the track too: terraces above the Casino square, yachts moored in Port Hercule, evenings that run long after the chequered flag. The best positions are booked months in advance.",
     gpDates: "3 – 6 June 2027", gpFirst: "Sprint race, the first ever in Monaco", gpWatch: "Grandstands, hotel terraces, yachts in Port Hercule",
-    adLabel: "Advertisement", adTitle: "Your brand, here.", adText: "A page in The Season places your name beside the Riviera's most exclusive events, in front of an international, high-end readership.", adBtn: "Advertise with us",
+    adLabel: "Advertisement", adTitle: "Your brand, here.", adText: "A page in Live the Riviera places your name beside the Riviera's most exclusive events, in front of an international, high-end readership.", adBtn: "Advertise with us",
     ad2Title: "Partner of the Season", ad2Text: "Hotels, maisons, jewellers, yachting, wine estates: reserve your page in the next issue.",
     cannesKick: "Cinema", cannesDek: "The 80th edition of the world's most famous film festival.",
     cannesP1: "From 11 to 22 May 2027, the red carpet of the Palais des Festivals once again becomes the centre of the cinema world. For its 80th edition, the Festival keeps its home on La Croisette, with premieres, the climb up the steps and the Palme d'Or.",
@@ -589,9 +551,9 @@ const I18N = {
     louisxv: "Monaco · Hôtel de Paris. Riviera haute cuisine in the most celebrated dining room of Monte-Carlo.",
     all: "All", s3: "3 stars", s2: "2 stars", s1: "1 star", mc: "Monaco", azur: "Côte d'Azur",
     tablesSource: "Source: Guide MICHELIN France & Monaco 2026 (ceremony of 16 March 2026). Booking is essential.",
-    kitTitle: "Advertise in <em>The Season</em>", kitSub: "A magazine for an international clientele that lives the Riviera at its highest level.",
+    kitTitle: "Advertise in <em>Live the Riviera</em>", kitSub: "A magazine for an international clientele that lives the Riviera at its highest level.",
     kitCta: "Reserve your page in the next issue.", kitBtn: "Contact us",
-    footer: "The Season — the magazine of Riviera Rent Luxury. Côte d'Azur & Monaco.",
+    footer: "Live the Riviera — the magazine of Riviera Rent Luxury. Côte d'Azur & Monaco.",
     disclaimer: "Dates were checked in October 2026; those marked 'Date TBA' will be confirmed by the organisers. Always check before booking.",
     credits: "Photos: Pexels. Restaurant list: Guide MICHELIN France & Monaco 2026."
   },
@@ -608,7 +570,7 @@ const I18N = {
     gpP1: "Depuis 1929, le Grand Prix transforme les rues de la Principauté en circuit le plus glamour du monde. En 2027, le week-end se tient du jeudi 3 au dimanche 6 juin et comprend, pour la première fois, une course Sprint en plus du Grand Prix.",
     gpP2: "Le spectacle est aussi hors de la piste : terrasses au-dessus de la place du Casino, yachts amarrés dans le Port Hercule, soirées qui se prolongent bien après le drapeau à damier. Les meilleures places se réservent des mois à l'avance.",
     gpDates: "3 – 6 juin 2027", gpFirst: "Course Sprint, une première à Monaco", gpWatch: "Tribunes, terrasses d'hôtel, yachts au Port Hercule",
-    adLabel: "Publicité", adTitle: "Votre marque, ici.", adText: "Une page dans The Season associe votre nom aux événements les plus exclusifs de la Riviera, devant un lectorat international haut de gamme.", adBtn: "Annoncer avec nous",
+    adLabel: "Publicité", adTitle: "Votre marque, ici.", adText: "Une page dans Live the Riviera associe votre nom aux événements les plus exclusifs de la Riviera, devant un lectorat international haut de gamme.", adBtn: "Annoncer avec nous",
     ad2Title: "Partenaire de la Saison", ad2Text: "Hôtels, maisons, joailliers, yachting, domaines viticoles : réservez votre page dans le prochain numéro.",
     cannesKick: "Cinéma", cannesDek: "La 80e édition du plus célèbre festival de cinéma au monde.",
     cannesP1: "Du 11 au 22 mai 2027, le tapis rouge du Palais des Festivals redevient le centre du monde du cinéma. Pour sa 80e édition, le Festival reste sur la Croisette, avec ses premières, la montée des marches et la Palme d'Or.",
@@ -629,9 +591,9 @@ const I18N = {
     louisxv: "Monaco · Hôtel de Paris. La grande cuisine de la Riviera dans la salle la plus célèbre de Monte-Carlo.",
     all: "Toutes", s3: "3 étoiles", s2: "2 étoiles", s1: "1 étoile", mc: "Monaco", azur: "Côte d'Azur",
     tablesSource: "Source : Guide MICHELIN France & Monaco 2026 (cérémonie du 16 mars 2026). Réservation indispensable.",
-    kitTitle: "Annoncer dans <em>The Season</em>", kitSub: "Un magazine pour une clientèle internationale qui vit la Riviera à son plus haut niveau.",
+    kitTitle: "Annoncer dans <em>Live the Riviera</em>", kitSub: "Un magazine pour une clientèle internationale qui vit la Riviera à son plus haut niveau.",
     kitCta: "Réservez votre page dans le prochain numéro.", kitBtn: "Nous contacter",
-    footer: "The Season — le magazine de Riviera Rent Luxury. Côte d'Azur & Monaco.",
+    footer: "Live the Riviera — le magazine de Riviera Rent Luxury. Côte d'Azur & Monaco.",
     disclaimer: "Dates vérifiées en octobre 2026 ; celles indiquées « Date à venir » seront confirmées par les organisateurs. Vérifiez toujours avant de réserver.",
     credits: "Photos : Pexels. Liste des restaurants : Guide MICHELIN France & Monaco 2026."
   },
@@ -648,7 +610,7 @@ const I18N = {
     gpP1: "Dal 1929 il Gran Premio trasforma le strade del Principato nel circuito più glamour del mondo. Nel 2027 il weekend va da giovedì 3 a domenica 6 giugno e, per la prima volta, comprende una gara Sprint oltre al Gran Premio.",
     gpP2: "Lo spettacolo è anche fuori dalla pista: terrazze sopra la piazza del Casinò, yacht ormeggiati a Port Hercule, serate che continuano ben dopo la bandiera a scacchi. I posti migliori si prenotano mesi prima.",
     gpDates: "3 – 6 giugno 2027", gpFirst: "Gara Sprint, la prima a Monaco", gpWatch: "Tribune, terrazze d'hotel, yacht a Port Hercule",
-    adLabel: "Pubblicità", adTitle: "Il tuo marchio, qui.", adText: "Una pagina in The Season mette il tuo nome accanto agli eventi più esclusivi della Riviera, davanti a un pubblico internazionale di alto livello.", adBtn: "Pubblicità con noi",
+    adLabel: "Pubblicità", adTitle: "Il tuo marchio, qui.", adText: "Una pagina in Live the Riviera mette il tuo nome accanto agli eventi più esclusivi della Riviera, davanti a un pubblico internazionale di alto livello.", adBtn: "Pubblicità con noi",
     ad2Title: "Partner della Stagione", ad2Text: "Hotel, maison, gioiellieri, yachting, cantine: prenota la tua pagina nel prossimo numero.",
     cannesKick: "Cinema", cannesDek: "L'80ª edizione del festival del cinema più famoso del mondo.",
     cannesP1: "Dall'11 al 22 maggio 2027 il tappeto rosso del Palais des Festivals torna al centro del mondo del cinema. Per l'80ª edizione il Festival resta sulla Croisette, con le anteprime, la salita dei gradini e la Palma d'Oro.",
@@ -669,16 +631,15 @@ const I18N = {
     louisxv: "Monaco · Hôtel de Paris. L'alta cucina della Riviera nella sala più celebre di Monte-Carlo.",
     all: "Tutti", s3: "3 stelle", s2: "2 stelle", s1: "1 stella", mc: "Monaco", azur: "Costa Azzurra",
     tablesSource: "Fonte: Guida MICHELIN France & Monaco 2026 (cerimonia del 16 marzo 2026). Prenotazione indispensabile.",
-    kitTitle: "Pubblicità su <em>The Season</em>", kitSub: "Una rivista per una clientela internazionale che vive la Riviera al suo livello più alto.",
+    kitTitle: "Pubblicità su <em>Live the Riviera</em>", kitSub: "Una rivista per una clientela internazionale che vive la Riviera al suo livello più alto.",
     kitCta: "Prenota la tua pagina nel prossimo numero.", kitBtn: "Contattaci",
-    footer: "The Season — la rivista di Riviera Rent Luxury. Costa Azzurra & Monaco.",
+    footer: "Live the Riviera — la rivista di Riviera Rent Luxury. Costa Azzurra & Monaco.",
     disclaimer: "Date verificate a ottobre 2026; quelle indicate «Data da annunciare» saranno confermate dagli organizzatori. Verifica sempre prima di prenotare.",
     credits: "Foto: Pexels. Elenco ristoranti: Guida MICHELIN France & Monaco 2026."
   }
 };
 
 /* ======================= LOGICA ======================= */
-/* sito Riviera Rent Luxury: inglese nella cartella principale, francese in fr/ */
 const home = () => lang === "fr" ? "../fr/index.html" : "../index.html";
 const LANGS = ["en", "fr", "it"];
 const pick = (l) => (l = (l || "").slice(0, 2).toLowerCase(), LANGS.includes(l) ? l : null);
@@ -707,12 +668,6 @@ function render() {
     <li><span class="d">${esc(x.d[lang])}</span><span class="e">${esc(x.e)}</span><span class="w">${esc(x.w)}</span>
     <span class="s ${x.s}">${esc(T()[x.s])}</span></li>`).join("");
   $("#formats").innerHTML = FORMATS[lang].map(([h, p], i) => `<div><span class="n">0${i + 1}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
-  $("#homes").innerHTML = HOMES.map((h, i) => { const [txt, facts] = h.t[lang]; return `
-    <article class="home"><div class="home-img"><img src="${h.img}" alt="${esc(h.name.join(" "))}" loading="lazy"></div>
-      <div><span class="num">${["I", "II", "III", "IV"][i]}.</span><h3>${esc(h.name[0])} <em>${esc(h.name[1])}</em></h3>
-      <p class="place">${esc(h.place)}</p><p>${esc(txt)}</p>
-      <ul class="facts-list">${facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
-      <a class="btn" href="${home()}#contact">${esc(T().ask)}</a></div></article>`; }).join("");
   document.querySelectorAll(".homeLink").forEach((a) => { a.href = home(); });
   $("#kitLink").href = home() + "#contact";
   $("#services").innerHTML = SERVICES[lang].map(([b, p], i) => `<li><span class="n">${["I","II","III","IV","V","VI","VII","VIII","IX"][i]}</span><b>${esc(b)}</b><p>${esc(p)}</p></li>`).join("");
