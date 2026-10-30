@@ -254,6 +254,8 @@
   .guides .links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .guides .links a { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; padding: 14px; text-decoration: none; font-weight: 600; font-size: .9rem; transition: background .2s; }
   .guides .links a:hover { background: var(--coral); }
+  .guides.book { margin-top: 8px; background: linear-gradient(120deg, var(--sea), var(--navy)); }
+  .guides.book .links { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
   .guides .links small { display: block; font-weight: 400; color: #b8c7d3; font-size: .75rem; margin-top: 2px; }
 
   /* ---------- Siti ---------- */
@@ -449,6 +451,13 @@
       </div>
     </div>
     <div class="rail" id="rail"></div>
+    <div class="guides book">
+      <div>
+        <h3>Book an <em>activity</em></h3>
+        <p data-i18n="bookSub"></p>
+      </div>
+      <div class="links" id="bookLinks"></div>
+    </div>
     <div class="sub-head">
       <h3>Hiking <em>trails</em></h3>
       <p data-i18n="hikeSub"></p>
@@ -698,33 +707,55 @@ const SEE = [
     zh: ["卡莫利", "彩色房屋、渔船和海滨的佛卡夏。"] } }
 ];
 
-/* ---------- WHAT TO DO: esperienze ---------- */
+/* ---------- Siti ufficiali e prenotazione attività (link nella lingua del lettore) ---------- */
+const SITES = {
+  lamialiguria: { name: "La mia Liguria", region: "lig", url: { it: "https://lamialiguria.it/", other: "https://lamialiguria.it/en/" }, t: {
+    it: "Sito ufficiale della Liguria", fr: "Site officiel de la Ligurie", en: "Official Liguria website",
+    de: "Offizielle Seite Liguriens", nl: "Officiële site van Ligurië", zh: "利古里亚官方网站" } },
+  cotedazur: { name: "Côte d'Azur France", region: "azur", url: { fr: "https://cotedazurfrance.fr/", other: "https://cotedazurfrance.com/" }, t: {
+    it: "Sito ufficiale della Costa Azzurra", fr: "Site officiel de la Côte d'Azur", en: "Official Côte d'Azur website",
+    de: "Offizielle Seite der Côte d'Azur", nl: "Officiële site van de Côte d'Azur", zh: "蔚蓝海岸官方网站" } },
+  experience: { name: "Experience Côte d'Azur", region: "azur", url: { fr: "https://www.experiencecotedazur.com/", other: "https://en.experiencecotedazur.com/" }, t: {
+    it: "Prenota canyoning, e-bike e uscite in mare (Estérel)", fr: "Réservez canyoning, VTT électrique et sorties en mer (Estérel)", en: "Book canyoning, e-bikes and sea trips (Estérel)",
+    de: "Canyoning, E-Bike und Bootstouren buchen (Estérel)", nl: "Boek canyoning, e-bikes en boottochten (Estérel)", zh: "预订溪降、电动山地车与出海活动（埃斯特雷尔）" } }
+};
+
+/* ---------- WHAT TO DO: esperienze ----------
+   url: un indirizzo, oppure un sito di SITES; per le voci "both" { lig: ..., azur: ... } */
 const TODO = [
-  { region: "lig", icon: "🐋", img: "foto/whale.jpg", url: "#", t: {
+  { region: "lig", icon: "🐋", url: SITES.lamialiguria, img: "foto/whale.jpg", t: {
     it: ["Whale watching", "Santuario Pelagos, da Genova e Imperia"], fr: ["Whale watching", "Sanctuaire Pelagos, depuis Gênes et Imperia"],
     en: ["Whale watching", "Pelagos Sanctuary, from Genoa and Imperia"], de: ["Walbeobachtung", "Pelagos-Schutzgebiet, ab Genua und Imperia"],
     nl: ["Walvissen spotten", "Pelagos-reservaat, vanuit Genua en Imperia"], zh: ["出海观鲸", "派拉格斯海洋保护区，从热那亚和因佩里亚出发"] } },
-  { region: "lig", icon: "🚵", img: "foto/mtb.jpg", url: "#", t: {
+  { region: "lig", icon: "🚵", url: SITES.lamialiguria, img: "foto/mtb.jpg", t: {
     it: ["Bike a Finale", "Capitale europea della MTB"], fr: ["VTT à Finale", "Capitale européenne du VTT"],
     en: ["Biking in Finale", "Europe's mountain bike capital"], de: ["Biken in Finale", "Europas Mountainbike-Hauptstadt"],
     nl: ["Fietsen in Finale", "Europese hoofdstad van het mountainbiken"], zh: ["菲纳莱骑行", "欧洲山地车之都"] } },
-  { region: "lig", icon: "🤿", img: "foto/diving.jpg", url: "#", t: {
+  { region: "lig", icon: "🤿", url: SITES.lamialiguria, img: "foto/diving.jpg", t: {
     it: ["Snorkeling e diving", "Area marina di Portofino e Isola Gallinara"], fr: ["Snorkeling et plongée", "Aire marine de Portofino et île Gallinara"],
     en: ["Snorkelling & diving", "Portofino marine reserve and Gallinara Island"], de: ["Schnorcheln & Tauchen", "Meeresschutzgebiet Portofino und Insel Gallinara"],
     nl: ["Snorkelen & duiken", "Zeereservaat Portofino en het eiland Gallinara"], zh: ["浮潜与潜水", "波托菲诺海洋保护区与加利纳拉岛"] } },
-  { region: "both", icon: "🏖️", img: "foto/spiagge.jpg", url: "#", t: {
+  { region: "both", icon: "🏖️", img: "foto/spiagge.jpg", url: { lig: SITES.lamialiguria, azur: SITES.cotedazur }, t: {
     it: ["Spiagge", "Dalla Baia del Silenzio a Paloma Beach"], fr: ["Plages", "De la Baia del Silenzio à Paloma Beach"],
     en: ["Beaches", "From Baia del Silenzio to Paloma Beach"], de: ["Strände", "Von der Baia del Silenzio bis Paloma Beach"],
     nl: ["Stranden", "Van de Baia del Silenzio tot Paloma Beach"], zh: ["海滩", "从静谧湾到帕洛玛海滩"] } },
-  { region: "azur", icon: "🌅", img: "foto/tramonto.jpg", url: "#", t: {
+  { region: "azur", icon: "🌅", img: "foto/tramonto.jpg", url: SITES.cotedazur, t: {
     it: ["Aperitivo al tramonto", "Sulla Promenade o in un bar sul porto"], fr: ["Apéro au coucher du soleil", "Sur la Promenade ou sur le port"],
     en: ["Sunset aperitivo", "On the Promenade or by the harbour"], de: ["Aperitivo bei Sonnenuntergang", "Auf der Promenade oder am Hafen"],
     nl: ["Aperitivo bij zonsondergang", "Op de boulevard of aan de haven"], zh: ["日落开胃酒", "在海滨大道或港口小酒吧"] } },
-  { region: "azur", icon: "🌴", img: "foto/monaco-alto.jpg", url: "#", t: {
+  { region: "azur", icon: "🌴", img: "foto/monaco-alto.jpg", url: SITES.cotedazur, t: {
     it: ["Monaco dall'alto", "Il Jardin Exotique e la vista sul Rocher"], fr: ["Monaco vu d'en haut", "Le Jardin Exotique et la vue sur le Rocher"],
     en: ["Monaco from above", "The Jardin Exotique and views of the Rock"], de: ["Monaco von oben", "Der Jardin Exotique und der Blick auf den Felsen"],
     nl: ["Monaco van bovenaf", "De Jardin Exotique en het uitzicht op de Rots"], zh: ["俯瞰摩纳哥", "异域花园与摩纳哥岩美景"] } },
-  { region: "both", icon: "🏘️", img: "foto/borghi.jpg", url: "#", t: {
+  { region: "azur", icon: "🧗", img: "foto/canyoning.jpg", url: SITES.experience, t: {
+    it: ["Canyoning", "Gole e cascate nell'entroterra, con guida"], fr: ["Canyoning", "Gorges et cascades de l'arrière-pays, avec guide"],
+    en: ["Canyoning", "Gorges and waterfalls inland, with a guide"], de: ["Canyoning", "Schluchten und Wasserfälle im Hinterland, mit Guide"],
+    nl: ["Canyoning", "Kloven en watervallen in het binnenland, met gids"], zh: ["溪降", "内陆峡谷与瀑布，有向导带领"] } },
+  { region: "azur", icon: "🏃", img: "foto/trail.jpg", url: SITES.cotedazur, t: {
+    it: ["Trail running", "Sentieri sopra la costa, dal mare ai monti"], fr: ["Trail running", "Sentiers au-dessus de la côte, de la mer à la montagne"],
+    en: ["Trail running", "Trails above the coast, from sea to mountains"], de: ["Trailrunning", "Pfade über der Küste, vom Meer in die Berge"],
+    nl: ["Trailrunning", "Paden boven de kust, van zee tot bergen"], zh: ["越野跑", "海岸上方的山径，从海边到山间"] } },
+  { region: "both", icon: "🏘️", img: "foto/borghi.jpg", url: { lig: SITES.lamialiguria, azur: SITES.cotedazur }, t: {
     it: ["Borghi dell'entroterra", "Apricale, Dolceacqua, Sainte-Agnès"], fr: ["Villages de l'arrière-pays", "Apricale, Dolceacqua, Sainte-Agnès"],
     en: ["Hill villages", "Apricale, Dolceacqua, Sainte-Agnès"], de: ["Bergdörfer", "Apricale, Dolceacqua, Sainte-Agnès"],
     nl: ["Bergdorpjes", "Apricale, Dolceacqua, Sainte-Agnès"], zh: ["内陆山村", "阿普里卡莱、多尔切阿夸、圣阿涅斯"] } }
@@ -842,6 +873,7 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    bookSub: "Sport, avventura e natura: prenota sui siti ufficiali.",
     exploreEyebrow: "Dove andare", exploreSub: "I luoghi da non perdere e le zone della Riviera.", close: "Chiudi", newsletter: "Ricevi il giornalino ✉", menu: "Menu",
     chooseSub: "Guarda solo la Liguria, solo la Costa Azzurra, o tutte e due.", regions: { lig: "Liguria", azur: "Costa Azzurra", all: "Tutte e due" },
     regionSub: { lig: "Genova · Savona · Imperia", azur: "Mentone · Monaco · Nizza · Cannes" }, selected: "Selezionata", pick: "Scegli",
@@ -875,6 +907,7 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    bookSub: "Sport, aventure et nature : réservez sur les sites officiels.",
     exploreEyebrow: "Où aller", exploreSub: "Les lieux incontournables et les zones de la Riviera.", close: "Fermer", newsletter: "Recevoir le journal ✉", menu: "Menu",
     chooseSub: "Ne voir que la Ligurie, que la Côte d'Azur, ou les deux.", regions: { lig: "Ligurie", azur: "Côte d'Azur", all: "Les deux" },
     regionSub: { lig: "Gênes · Savone · Imperia", azur: "Menton · Monaco · Nice · Cannes" }, selected: "Sélectionnée", pick: "Choisir",
@@ -908,6 +941,7 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    bookSub: "Sport, adventure and nature: book on the official websites.",
     exploreEyebrow: "Where to go", exploreSub: "The must-see places and the areas of the Riviera.", close: "Close", newsletter: "Get the newsletter ✉", menu: "Menu",
     chooseSub: "See only Liguria, only the French Riviera, or both.", regions: { lig: "Liguria", azur: "French Riviera", all: "Both" },
     regionSub: { lig: "Genoa · Savona · Imperia", azur: "Menton · Monaco · Nice · Cannes" }, selected: "Selected", pick: "Choose",
@@ -941,6 +975,7 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    bookSub: "Sport, Abenteuer und Natur: auf den offiziellen Seiten buchen.",
     exploreEyebrow: "Wohin", exploreSub: "Die schönsten Orte und die Regionen der Riviera.", close: "Schließen", newsletter: "Newsletter erhalten ✉", menu: "Menü",
     chooseSub: "Nur Ligurien, nur die Côte d'Azur oder beides ansehen.", regions: { lig: "Ligurien", azur: "Côte d'Azur", all: "Beides" },
     regionSub: { lig: "Genua · Savona · Imperia", azur: "Menton · Monaco · Nizza · Cannes" }, selected: "Ausgewählt", pick: "Wählen",
@@ -974,6 +1009,7 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    bookSub: "Sport, avontuur en natuur: boek op de officiële websites.",
     exploreEyebrow: "Waarheen", exploreSub: "De mooiste plekken en de gebieden van de Rivièra.", close: "Sluiten", newsletter: "Ontvang de nieuwsbrief ✉", menu: "Menu",
     chooseSub: "Bekijk alleen Ligurië, alleen de Côte d'Azur, of allebei.", regions: { lig: "Ligurië", azur: "Côte d'Azur", all: "Allebei" },
     regionSub: { lig: "Genua · Savona · Imperia", azur: "Menton · Monaco · Nice · Cannes" }, selected: "Gekozen", pick: "Kiezen",
@@ -1007,6 +1043,7 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    bookSub: "运动、探险与自然：在官方网站预订。",
     exploreEyebrow: "去哪儿", exploreSub: "必看景点与里维埃拉各地区。", close: "关闭", newsletter: "订阅月刊 ✉", menu: "菜单",
     chooseSub: "只看利古里亚、只看蔚蓝海岸，或两者都看。", regions: { lig: "利古里亚", azur: "蔚蓝海岸", all: "两者都看" },
     regionSub: { lig: "热那亚 · 萨沃纳 · 因佩里亚", azur: "芒通 · 摩纳哥 · 尼斯 · 戛纳" }, selected: "已选择", pick: "选择",
@@ -1171,14 +1208,20 @@ function renderSee() {
   }).join("");
 }
 
+/* indirizzo di un sito nella lingua del lettore */
+const siteUrl = (site) => site.url[lang] || site.url.other;
+const todoUrl = (u) => typeof u === "string" ? u : u.url ? siteUrl(u) : siteUrl(region === "azur" ? u.azur : u.lig);
+
 function renderTodo() {
   $("#rail").innerHTML = TODO.filter(ofRegion).map((t, i) => {
     const [title, sub] = tx(t);
-    return `<a class="exp" href="${esc(t.url)}" style="background:linear-gradient(160deg,#3fa7d6,#0b2a40)">
+    return `<a class="exp" href="${esc(todoUrl(t.url))}" target="_blank" rel="noopener" style="background:linear-gradient(160deg,#3fa7d6,#0b2a40)">
       ${img(t.img)}<span class="emo">${t.icon}</span><span class="n">0${i + 1}</span>
       <b>${esc(title)}</b><span class="sub">${esc(sub)}</span>
     </a>`;
   }).join("");
+  $("#bookLinks").innerHTML = Object.values(SITES).filter(ofRegion)
+    .map((st) => `<a href="${esc(siteUrl(st))}" target="_blank" rel="noopener">${esc(st.name)}<small>${esc(tx(st))} ↗</small></a>`).join("");
 }
 
 function renderHikes() {

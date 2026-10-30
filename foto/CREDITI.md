@@ -35,3 +35,5 @@ Tutte le foto vengono da [Pexels](https://www.pexels.com) e sono usate secondo l
 - `foto/whale.jpg` — https://www.pexels.com/photo/892548/
 - `foto/genova-mare.jpg` — https://www.pexels.com/photo/30143084/
 - `foto/monaco-alto.jpg` — https://www.pexels.com/photo/31292749/
+- `foto/canyoning.jpg` — https://www.pexels.com/photo/5668668/
+- `foto/trail.jpg` — https://www.pexels.com/photo/30932860/

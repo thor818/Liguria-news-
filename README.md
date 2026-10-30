@@ -16,7 +16,7 @@ Cinque rubriche, raggiungibili anche dal menu a schermo intero (pulsante ☰ in 
 | Rubrica | Cosa contiene | Dove si modifica in `index.html` |
 |---|---|---|
 | Explore | luoghi da vedere e mappa delle zone | `SEE`, `PINS` |
-| What to do | esperienze e sentieri (Hiking) | `TODO`, `HIKES` |
+| What to do | esperienze, "Book an activity" e sentieri (Hiking) | `TODO`, `SITES`, `HIKES` |
 | Where to eat | ristoranti, piatti tipici, guide gastronomiche | `RESTAURANTS`, `DISHES`, `GUIDES` |
 | Where to stay | link a Riviera Rent | sezione `#stay`, `SITE_IT` |
 | What's on | agenda: eventi, sagre, feste | `EVENTS` |
@@ -31,6 +31,7 @@ Tutti i contenuti sono in cima allo `<script>` di `index.html`, sotto **CONTENUT
 - Eventi: `date` / `end` in formato `AAAA-MM-GG`; `featured: 1/2/3` per il primo piano. Gli eventi finiti spariscono da soli.
 - Luoghi, sentieri e ristoranti: `q` è la ricerca che apre Google Maps.
 - Ristoranti: `tag` = `michelin` | `trad` | `street` | `sweet`, `price` da `€` a `€€€€`.
+- Siti ufficiali e di prenotazione (lamialiguria.it, cotedazurfrance.fr, experiencecotedazur.com): oggetto `SITES`, con l'indirizzo per ogni lingua (`other` = versione inglese).
 - Testi dell'interfaccia: oggetto `I18N`, una sezione per lingua.
 
 ## Da completare
