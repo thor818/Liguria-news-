@@ -15,7 +15,7 @@ Cinque rubriche, raggiungibili anche dal menu a schermo intero (pulsante ☰ in 
 
 | Rubrica | Cosa contiene | Dove si modifica in `index.html` |
 |---|---|---|
-| Explore | luoghi da vedere, City guides (città: da vedere, musei, dove mangiare) e mappa | `SEE`, `CITIES`, `PINS` |
+| Explore | luoghi da vedere, Genova in evidenza, 40 City guides (da vedere, musei, da fare, dove mangiare, sapori), Artists' Riviera e mappa | `SEE`, `CITIES`, `ARTISTS`, `PINS` |
 | What to do | esperienze, "Book an activity", Sport & adventure, Family fun e sentieri (Hiking) | `TODO`, `SITES`, `SPORTS`, `FAMILY`, `HIKES` |
 | Where to eat | ristoranti, piatti tipici, guide gastronomiche | `RESTAURANTS`, `DISHES`, `GUIDES` |
 | Where to stay | link a Riviera Rent | sezione `#stay`, `SITE_IT` |
@@ -32,7 +32,7 @@ Tutti i contenuti sono in cima allo `<script>` di `index.html`, sotto **CONTENUT
 - Luoghi, sentieri e ristoranti: `q` è la ricerca che apre Google Maps.
 - Ristoranti: `tag` = `michelin` | `modern` | `trad` | `street` | `sweet`, `price` da `€` a `€€€€` (il filtro per prezzo usa € = economico, €€ = medio, €€€ e oltre = alto livello).
 - Siti ufficiali e di prenotazione (lamialiguria.it, cotedazurfrance.fr, experiencecotedazur.com): oggetto `SITES`, con l'indirizzo per ogni lingua (`other` = versione inglese).
-- City guides (`CITIES`): per aggiungere un posto basta scriverne il nome nella lista `see`, `museums` o `eat` della città (oppure `do` per le cose da fare); il link a Google Maps si crea da solo. Genova è messa in evidenza in Explore e la sua guida si apre per prima.
+- City guides (`CITIES`): per aggiungere un posto basta scriverne il nome nella lista `see`, `museums` o `eat` della città (oppure `do` per le cose da fare, `taste` per sapori e prodotti tipici); il link a Google Maps si crea da solo. Genova è messa in evidenza in Explore e la sua guida si apre per prima.
 - Testi dell'interfaccia: oggetto `I18N`, una sezione per lingua.
 
 ## Da completare

@@ -40,3 +40,5 @@ Tutte le foto vengono da [Pexels](https://www.pexels.com) e sono usate secondo l
 - `foto/savona.jpg` — https://www.pexels.com/photo/19685209/
 - `foto/cannes.jpg` — https://www.pexels.com/photo/38606077/
 - `foto/antibes.jpg` — https://www.pexels.com/photo/15009981/
+- `foto/grasse.jpg` — https://www.pexels.com/photo/32496034/
+- `foto/villefranche.jpg` — https://www.pexels.com/photo/105950/
