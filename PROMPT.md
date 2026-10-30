@@ -6,6 +6,7 @@ Create a beautiful, modern, magazine-style web newsletter called **"Live Riviera
 A monthly newsletter about what happens and what to do in the provinces of **Genoa, Savona and Imperia** (Liguria, Italy) and on the **Côte d'Azur** (French Riviera: Menton, Monaco, Nice, Èze, Villefranche, Cap Ferrat, Cannes). It must link to our website **Riviera Rent** (https://rivierarent.it), so visitors know about food festivals (sagre), celebrations, events, holidays and activities, and can go straight to the organisers' websites and to Riviera Rent to book a holiday home.
 
 ## Style
+- **Young, sporty and modern**: the target is a young, active clientele. Full-screen photo cover with huge condensed uppercase titles (Anton), Manrope for text, bright colours (electric blue, lime, coral) on white, lime highlighter under key words, a tilted lime strip scrolling "SURF · HIKE · BIKE · DIVE · CLIMB · SAIL · EAT · PARTY · REPEAT".
 - Modern, elegant, visual, like a travel magazine. People must want to look at it.
 - **Very little text**: one short line per item, details on the linked website.
 - Large real photos (free-licence photos, e.g. Pexels, with credits), an elegant serif for headings and a clean sans-serif for text.
