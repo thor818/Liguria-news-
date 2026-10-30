@@ -44,9 +44,15 @@
   .nav { display: flex; gap: 4px; }
   .nav a { text-decoration: none; font-size: .9rem; font-weight: 500; color: var(--muted); padding: 8px 14px; border-radius: 999px; }
   .nav a:hover { background: var(--bg); color: var(--ink); }
-  .lang { display: flex; background: var(--bg); border-radius: 999px; padding: 4px; }
-  .lang button { border: 0; background: none; padding: 7px 14px; border-radius: 999px; font: 600 .82rem Inter, sans-serif; cursor: pointer; color: var(--muted); }
-  .lang button.on { background: var(--navy); color: #fff; }
+  .lang { position: relative; }
+  .lang summary { list-style: none; cursor: pointer; background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 999px; font: 600 .85rem Inter, sans-serif; user-select: none; }
+  .lang summary::-webkit-details-marker { display: none; }
+  .lang-list { position: absolute; right: 0; top: calc(100% + 10px); background: var(--paper); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 20px 40px rgba(19,32,44,.16); padding: 6px; min-width: 190px; display: grid; }
+  .lang-list button { border: 0; background: none; text-align: left; padding: 10px 14px; border-radius: 12px; font: 500 .92rem Inter, sans-serif; cursor: pointer; color: var(--ink); }
+  .lang-list button b { display: inline-block; width: 30px; color: var(--muted); font-size: .78rem; }
+  .lang-list button:hover { background: var(--bg); }
+  .lang-list button.on { background: var(--navy); color: #fff; }
+  .lang-list button.on b { color: var(--lemon); }
 
   /* ---------- Copertina ---------- */
   .hero { padding: 120px 0 0; }
@@ -70,6 +76,7 @@
   @keyframes rise { to { transform: translateY(-14px); } }
   .scene .boat { animation: sail 16s linear infinite; }
   @keyframes sail { from { transform: translateX(-80px); } to { transform: translateX(560px); } }
+  .scene .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .scene .stat { position: absolute; left: 18px; bottom: 18px; right: 18px; display: flex; gap: 10px; }
   .scene .stat div { flex: 1; background: rgba(255,255,255,.88); backdrop-filter: blur(8px); border-radius: 16px; padding: 12px 14px; }
   .scene .stat b { display: block; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1; }
@@ -110,6 +117,7 @@
   .tile:hover .bg { transform: scale(1.05); }
   .tile .emo { position: absolute; top: 22px; right: 24px; font-size: 4.2rem; filter: drop-shadow(0 8px 16px rgba(0,0,0,.18)); transition: transform .4s; }
   .tile:hover .emo { transform: rotate(-8deg) scale(1.08); }
+  .tile .bg:has(img) ~ .emo, .card .media:has(img) .emo { display: none; }
   .tile.big .emo { font-size: 8rem; top: 40px; right: 44px; }
   .tile .when { font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .92; }
   .tile h3 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2.1rem; line-height: 1.05; margin: 6px 0 4px; }
@@ -154,12 +162,16 @@
   /* ---------- Cosa fare (carosello) ---------- */
   .rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 23%); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 20px 20px; margin: 0 -20px; scrollbar-width: none; }
   .rail::-webkit-scrollbar { display: none; }
-  .exp { scroll-snap-align: start; position: relative; aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .25s; }
+  .exp { isolation: isolate; scroll-snap-align: start; position: relative; aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .25s; }
   .exp:hover { transform: translateY(-6px); }
+  .exp img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s; }
+  .exp:hover img { transform: scale(1.06); }
+  .exp:has(img)::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(8,20,30,.8), rgba(8,20,30,0) 60%); }
+  .exp:has(img) .emo { display: none; }
   .exp .emo { position: absolute; top: 20px; left: 20px; font-size: 3rem; }
   .exp .num { position: absolute; top: 18px; right: 22px; font-family: "Instrument Serif", serif; font-size: 1.4rem; opacity: .6; }
   .exp b { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1.05; }
-  .exp span:last-child { font-size: .88rem; opacity: .88; margin-top: 6px; }
+  .exp .sub { font-size: .88rem; opacity: .88; margin-top: 6px; }
   .rail-nav { display: flex; gap: 8px; }
   .rail-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); cursor: pointer; font-size: 1.1rem; color: var(--ink); }
   .rail-nav button:hover { background: var(--ink); color: #fff; }
@@ -187,6 +199,10 @@
   footer { margin-top: 96px; background: var(--navy); color: #b8c7d3; padding: 56px 0 40px; font-size: .9rem; }
   footer .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; }
   footer .logo { color: #fff; font-size: 2.4rem; }
+  .credits { margin-top: 14px; }
+  .credits summary { cursor: pointer; color: #fff; }
+  .credits ul { padding-left: 18px; font-size: .78rem; line-height: 1.6; }
+  .credits a { color: #b8c7d3; }
   footer p { margin: 8px 0 0; max-width: 46ch; }
 
   /* ---------- Animazioni in entrata ---------- */
@@ -204,7 +220,8 @@
     .scene { aspect-ratio: 4 / 3.4; }
     .bento { grid-template-columns: 1fr; grid-template-rows: none; }
     .tile.big { grid-row: auto; min-height: 380px; }
-    .tile.big .emo { font-size: 5.5rem; top: 26px; right: 28px; }
+    .tile .bg:has(img) ~ .emo, .card .media:has(img) .emo { display: none; }
+  .tile.big .emo { font-size: 5.5rem; top: 26px; right: 28px; }
     .rail { grid-auto-columns: 72%; }
     .news { padding: 34px 24px; }
     .site { padding: 30px; min-height: 240px; }
@@ -227,10 +244,10 @@
       <a href="#cosa-fare" data-i18n="navTodo"></a>
       <a href="#siti" data-i18n="navSites"></a>
     </nav>
-    <div class="lang" role="group" aria-label="Lingua / Langue">
-      <button data-lang="it">IT</button>
-      <button data-lang="fr">FR</button>
-    </div>
+    <details class="lang" id="langMenu">
+      <summary aria-label="Language">🌐 <span id="langCur">IT</span> ▾</summary>
+      <div class="lang-list" id="langList"></div>
+    </details>
   </div>
 </header>
 
@@ -277,10 +294,11 @@
           <path d="M0 22 h46 l-8 10 h-30z" fill="#fffdf9"/><path d="M22 20 V -14 L44 18z" fill="#fffdf9"/><path d="M20 20 V -6 L4 18z" fill="#ef6a45"/>
         </g></g>
       </svg>
+      <img class="photo" src="foto/hero.jpg" alt="" onerror="this.remove()">
       <div class="stat">
         <div><b id="statEvents">0</b><span data-i18n="statEvents"></span></div>
         <div><b>4</b><span data-i18n="statZones"></span></div>
-        <div><b>2</b><span data-i18n="statLangs"></span></div>
+        <div><b id="statLangs">6</b><span data-i18n="statLangs"></span></div>
       </div>
     </div>
   </div>
@@ -307,9 +325,9 @@
         <rect width="1000" height="420" rx="18" fill="url(#mapSea)"/>
         <path d="M0 0 H1000 V58 C 970 48 945 36 922 36 C 880 36 820 44 770 58 C 740 66 728 70 718 74 C 680 96 640 130 610 160 C 590 180 560 205 514 232 C 480 248 440 255 400 259 C 350 266 300 272 273 280 C 255 286 245 292 236 294 C 210 300 190 304 168 306 C 130 318 90 342 50 362 C 30 370 15 374 0 376 Z" fill="#f4ede0" stroke="#e2d6c1" stroke-width="2"/>
         <path d="M286 277 L 300 200 L 330 130 L 345 60 L 360 0" stroke="#c9b99c" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
-        <text x="430" y="110" font-family="Instrument Serif, serif" font-size="46" fill="#ddd0b8" letter-spacing="10">ITALIA</text>
-        <text x="60" y="190" font-family="Instrument Serif, serif" font-size="46" fill="#ddd0b8" letter-spacing="10">FRANCE</text>
-        <text x="610" y="345" font-family="Instrument Serif, serif" font-style="italic" font-size="36" fill="#6fa9cc">Mar Ligure</text>
+        <text x="430" y="110" font-family="Instrument Serif, serif" font-size="46" fill="#ddd0b8" letter-spacing="10" id="mapItaly">ITALIA</text>
+        <text x="60" y="190" font-family="Instrument Serif, serif" font-size="46" fill="#ddd0b8" letter-spacing="10" id="mapFrance">FRANCE</text>
+        <text x="610" y="345" font-family="Instrument Serif, serif" font-style="italic" font-size="36" fill="#6fa9cc" id="mapSea">Mar Ligure</text>
         <g class="town">
           <circle cx="50" cy="362" r="4" fill="#8a949d"/><text x="40" y="390">Cannes</text>
           <circle cx="236" cy="294" r="4" fill="#8a949d"/><text x="212" y="322">Monaco</text>
@@ -407,7 +425,8 @@
       <span class="logo">La <i>Riviera</i></span>
       <p data-i18n="footer"></p>
     </div>
-    <div><p data-i18n="disclaimer"></p></div>
+    <div><p data-i18n="disclaimer"></p>
+      <details class="credits"><summary data-i18n="credits"></summary><ul id="creditList"><!-- CREDITS --></ul></details></div>
   </div>
 </footer>
 
@@ -417,90 +436,175 @@
    zone: genova | savona | imperia | azur
    cat:  sagre | feste | musica | mercatini | cultura | sport
    date / end: AAAA-MM-GG (end facoltativo, per eventi di più giorni)
-   img: facoltativo, percorso o URL di una foto (es. "foto/olioliva.jpg");
-        se vuoto si usa l'illustrazione con l'emoji
+   img: foto nella cartella foto/ (se vuoto si usa l'illustrazione con l'emoji)
    featured: 1 = copertina grande, 2 e 3 = riquadri accanto
+   Testi: it, fr, en, de, nl, zh — se una lingua manca si usa l'inglese.
    Gli eventi già finiti spariscono da soli.
    ============================================================ */
-const ISSUE = { it: "N° 1 · Novembre 2026", fr: "N° 1 · Novembre 2026" };
+const LANGS = { it: "Italiano", fr: "Français", en: "English", de: "Deutsch", nl: "Nederlands", zh: "中文" };
 
 const EVENTS = [
   {
-    featured: 1, zone: "imperia", cat: "sagre", icon: "🫒", date: "2026-11-13", end: "2026-11-15", img: "",
-    it: { title: "Olioliva", place: "Imperia, Oneglia", text: "La festa dell'olio nuovo: assaggi, frantoi aperti e street food sul porto." },
-    fr: { title: "Olioliva", place: "Imperia, Oneglia", text: "La fête de l'huile nouvelle : dégustations, moulins ouverts et street food sur le port." },
-    url: "https://www.visitriviera.info"
+    featured: 1, zone: "imperia", cat: "sagre", icon: "🫒", date: "2026-11-13", end: "2026-11-15", img: "foto/olioliva.jpg",
+    url: "https://www.visitriviera.info",
+    t: {
+      it: ["Olioliva", "Imperia, Oneglia", "La festa dell'olio nuovo: assaggi, frantoi aperti e street food sul porto."],
+      fr: ["Olioliva", "Imperia, Oneglia", "La fête de l'huile nouvelle : dégustations, moulins ouverts et street food sur le port."],
+      en: ["Olioliva", "Imperia, Oneglia", "The new olive oil festival: tastings, open mills and street food on the harbour."],
+      de: ["Olioliva", "Imperia, Oneglia", "Das Fest des neuen Olivenöls: Verkostungen, offene Ölmühlen und Streetfood am Hafen."],
+      nl: ["Olioliva", "Imperia, Oneglia", "Het feest van de nieuwe olijfolie: proeverijen, open oliemolens en streetfood aan de haven."],
+      zh: ["新橄榄油节", "因佩里亚，奥内利亚", "庆祝新榨橄榄油：品鉴、开放油坊，港口还有街头美食。"]
+    }
   },
   {
-    featured: 2, zone: "azur", cat: "mercatini", icon: "🎄", date: "2026-11-28", end: "2027-01-04", img: "",
-    it: { title: "Villaggio di Natale", place: "Nizza, Place Masséna", text: "Chalet in legno, ruota panoramica e vin brulé sotto le luci." },
-    fr: { title: "Village de Noël", place: "Nice, Place Masséna", text: "Chalets en bois, grande roue et vin chaud sous les lumières." },
-    url: "https://www.explorenicecotedazur.com"
+    featured: 2, zone: "azur", cat: "mercatini", icon: "🎄", date: "2026-11-28", end: "2027-01-04", img: "foto/natale-nizza.jpg",
+    url: "https://www.explorenicecotedazur.com",
+    t: {
+      it: ["Villaggio di Natale", "Nizza, Place Masséna", "Chalet in legno, ruota panoramica e vin brulé sotto le luci."],
+      fr: ["Village de Noël", "Nice, Place Masséna", "Chalets en bois, grande roue et vin chaud sous les lumières."],
+      en: ["Christmas Village", "Nice, Place Masséna", "Wooden chalets, a big wheel and mulled wine under the lights."],
+      de: ["Weihnachtsdorf", "Nizza, Place Masséna", "Holzhütten, Riesenrad und Glühwein unter funkelnden Lichtern."],
+      nl: ["Kerstdorp", "Nice, Place Masséna", "Houten chalets, een reuzenrad en glühwein onder de lichtjes."],
+      zh: ["圣诞村", "尼斯，马塞纳广场", "木屋集市、摩天轮，还有灯光下的热红酒。"]
+    }
   },
   {
-    featured: 3, zone: "genova", cat: "mercatini", icon: "🎁", date: "2026-12-05", end: "2027-01-06", img: "",
-    it: { title: "Natale al Porto Antico", place: "Genova, Porto Antico", text: "Mercatini, pista di pattinaggio e luci sul mare." },
-    fr: { title: "Noël au Porto Antico", place: "Gênes, Porto Antico", text: "Marchés, patinoire et lumières sur la mer." },
-    url: "https://www.visitgenoa.it"
+    featured: 3, zone: "genova", cat: "mercatini", icon: "🎁", date: "2026-12-05", end: "2027-01-06", img: "foto/natale-genova.jpg",
+    url: "https://www.visitgenoa.it",
+    t: {
+      it: ["Natale al Porto Antico", "Genova, Porto Antico", "Mercatini, pista di pattinaggio e luci sul mare."],
+      fr: ["Noël au Porto Antico", "Gênes, Porto Antico", "Marchés, patinoire et lumières sur la mer."],
+      en: ["Christmas at Porto Antico", "Genoa, Porto Antico", "Markets, an ice rink and lights over the sea."],
+      de: ["Weihnachten am Porto Antico", "Genua, Porto Antico", "Märkte, Eisbahn und Lichter über dem Meer."],
+      nl: ["Kerst in de Porto Antico", "Genua, Porto Antico", "Markten, een ijsbaan en lichtjes boven de zee."],
+      zh: ["老港圣诞", "热那亚，老港", "圣诞集市、溜冰场和海上的灯光。"]
+    }
   },
   {
-    zone: "savona", cat: "sagre", icon: "🌰", date: "2026-11-08", img: "",
-    it: { title: "Festa della Castagna", place: "Val Bormida (SV)", text: "Caldarroste, farine e dolci d'autunno nei borghi dell'entroterra." },
-    fr: { title: "Fête de la Châtaigne", place: "Val Bormida (SV)", text: "Châtaignes grillées et douceurs d'automne dans l'arrière-pays." },
-    url: "https://www.visitriviera.info"
+    zone: "savona", cat: "sagre", icon: "🌰", date: "2026-11-08", img: "foto/castagna.jpg",
+    url: "https://www.visitriviera.info",
+    t: {
+      it: ["Festa della Castagna", "Val Bormida (SV)", "Caldarroste, farine e dolci d'autunno nei borghi dell'entroterra."],
+      fr: ["Fête de la Châtaigne", "Val Bormida (SV)", "Châtaignes grillées et douceurs d'automne dans l'arrière-pays."],
+      en: ["Chestnut Festival", "Val Bormida (SV)", "Roast chestnuts and autumn treats in the hill villages."],
+      de: ["Kastanienfest", "Val Bormida (SV)", "Geröstete Maronen und Herbstsüßes in den Bergdörfern."],
+      nl: ["Kastanjefeest", "Val Bormida (SV)", "Gepofte kastanjes en herfstlekkernijen in de bergdorpjes."],
+      zh: ["栗子节", "博尔米达山谷（萨沃纳）", "山村里的烤栗子和秋日甜点。"]
+    }
   },
   {
-    zone: "savona", cat: "sport", icon: "🚵", date: "2026-11-15", img: "",
-    it: { title: "Finale Outdoor Day", place: "Finale Ligure", text: "Mountain bike, arrampicata e trekking con le guide locali." },
-    fr: { title: "Finale Outdoor Day", place: "Finale Ligure", text: "VTT, escalade et randonnée avec les guides locaux." },
-    url: "https://www.visitriviera.info"
+    zone: "savona", cat: "sport", icon: "🚵", date: "2026-11-15", img: "foto/finale.jpg",
+    url: "https://www.visitriviera.info",
+    t: {
+      it: ["Finale Outdoor Day", "Finale Ligure", "Mountain bike, arrampicata e trekking con le guide locali."],
+      fr: ["Finale Outdoor Day", "Finale Ligure", "VTT, escalade et randonnée avec les guides locaux."],
+      en: ["Finale Outdoor Day", "Finale Ligure", "Mountain biking, climbing and hiking with local guides."],
+      de: ["Finale Outdoor Day", "Finale Ligure", "Mountainbiken, Klettern und Wandern mit lokalen Guides."],
+      nl: ["Finale Outdoor Day", "Finale Ligure", "Mountainbiken, klimmen en wandelen met lokale gidsen."],
+      zh: ["菲纳莱户外日", "菲纳莱利古雷", "跟着本地向导骑山地车、攀岩和徒步。"]
+    }
   },
   {
-    zone: "azur", cat: "feste", icon: "🎆", date: "2026-11-19", img: "",
-    it: { title: "Festa Nazionale di Monaco", place: "Principato di Monaco", text: "Fuochi d'artificio, concerti e il Principato in festa." },
-    fr: { title: "Fête Nationale Monégasque", place: "Principauté de Monaco", text: "Feux d'artifice, concerts et toute la Principauté en fête." },
-    url: "https://www.visitmonaco.com"
+    zone: "azur", cat: "feste", icon: "🎆", date: "2026-11-19", img: "foto/monaco.jpg",
+    url: "https://www.visitmonaco.com",
+    t: {
+      it: ["Festa Nazionale di Monaco", "Principato di Monaco", "Fuochi d'artificio, concerti e il Principato in festa."],
+      fr: ["Fête Nationale Monégasque", "Principauté de Monaco", "Feux d'artifice, concerts et toute la Principauté en fête."],
+      en: ["Monaco National Day", "Principality of Monaco", "Fireworks, concerts and the whole Principality celebrating."],
+      de: ["Nationalfeiertag Monaco", "Fürstentum Monaco", "Feuerwerk, Konzerte und ein Fürstentum in Feierlaune."],
+      nl: ["Nationale feestdag Monaco", "Prinsdom Monaco", "Vuurwerk, concerten en een prinsdom in feeststemming."],
+      zh: ["摩纳哥国庆日", "摩纳哥公国", "烟花、音乐会，整个公国一起庆祝。"]
+    }
   },
   {
-    zone: "genova", cat: "cultura", icon: "🏛️", date: "2026-11-21", img: "",
-    it: { title: "Musei aperti di sera", place: "Genova, Via Garibaldi", text: "I palazzi dei Rolli illuminati, visite guidate fino a tarda sera." },
-    fr: { title: "Musées en nocturne", place: "Gênes, Via Garibaldi", text: "Les palais des Rolli illuminés, visites guidées en soirée." },
-    url: "https://www.visitgenoa.it"
+    zone: "genova", cat: "cultura", icon: "🏛️", date: "2026-11-21", img: "foto/rolli.jpg",
+    url: "https://www.visitgenoa.it",
+    t: {
+      it: ["Musei aperti di sera", "Genova, Via Garibaldi", "I palazzi dei Rolli illuminati, visite guidate fino a tarda sera."],
+      fr: ["Musées en nocturne", "Gênes, Via Garibaldi", "Les palais des Rolli illuminés, visites guidées en soirée."],
+      en: ["Museums by night", "Genoa, Via Garibaldi", "The Rolli palaces lit up, with guided tours late into the evening."],
+      de: ["Museen bei Nacht", "Genua, Via Garibaldi", "Die Rolli-Paläste beleuchtet, Führungen bis spät am Abend."],
+      nl: ["Musea bij avond", "Genua, Via Garibaldi", "De verlichte Rolli-paleizen, rondleidingen tot laat op de avond."],
+      zh: ["博物馆之夜", "热那亚，加里波第大街", "灯光下的罗利宫殿群，导览开放到深夜。"]
+    }
   },
   {
-    zone: "imperia", cat: "musica", icon: "🎷", date: "2026-11-28", img: "",
-    it: { title: "Sanremo Jazz Night", place: "Sanremo", text: "Jazz dal vivo nel cuore della città dei fiori." },
-    fr: { title: "Sanremo Jazz Night", place: "Sanremo", text: "Du jazz live au cœur de la ville des fleurs." },
-    url: "https://www.visitriviera.info"
+    zone: "imperia", cat: "musica", icon: "🎷", date: "2026-11-28", img: "foto/sanremo.jpg",
+    url: "https://www.visitriviera.info",
+    t: {
+      it: ["Sanremo Jazz Night", "Sanremo", "Jazz dal vivo nel cuore della città dei fiori."],
+      fr: ["Sanremo Jazz Night", "Sanremo", "Du jazz live au cœur de la ville des fleurs."],
+      en: ["Sanremo Jazz Night", "Sanremo", "Live jazz in the heart of the City of Flowers."],
+      de: ["Sanremo Jazz Night", "Sanremo", "Live-Jazz im Herzen der Blumenstadt."],
+      nl: ["Sanremo Jazz Night", "Sanremo", "Live jazz in het hart van de bloemenstad."],
+      zh: ["圣雷莫爵士之夜", "圣雷莫", "在“花之城”中心聆听现场爵士乐。"]
+    }
   },
   {
-    zone: "savona", cat: "feste", icon: "✨", date: "2026-12-08", end: "2027-01-06", img: "",
-    it: { title: "Presepi nei carruggi", place: "Noli e Finalborgo", text: "Presepi artigianali tra vicoli medievali e piazzette." },
-    fr: { title: "Crèches dans les ruelles", place: "Noli et Finalborgo", text: "Crèches artisanales entre ruelles médiévales et placettes." },
-    url: "https://www.visitriviera.info"
+    zone: "savona", cat: "feste", icon: "✨", date: "2026-12-08", end: "2027-01-06", img: "foto/noli.jpg",
+    url: "https://www.visitriviera.info",
+    t: {
+      it: ["Presepi nei carruggi", "Noli e Finalborgo", "Presepi artigianali tra vicoli medievali e piazzette."],
+      fr: ["Crèches dans les ruelles", "Noli et Finalborgo", "Crèches artisanales entre ruelles médiévales et placettes."],
+      en: ["Nativity scenes in the alleys", "Noli & Finalborgo", "Handmade nativity scenes among medieval lanes and squares."],
+      de: ["Krippen in den Gassen", "Noli & Finalborgo", "Handgemachte Krippen zwischen mittelalterlichen Gassen."],
+      nl: ["Kerststallen in de steegjes", "Noli & Finalborgo", "Handgemaakte kerststallen tussen middeleeuwse steegjes."],
+      zh: ["小巷里的圣诞马槽", "诺利与菲纳尔博尔戈", "中世纪小巷与广场间的手工圣诞马槽。"]
+    }
   },
   {
-    zone: "azur", cat: "feste", icon: "🍋", date: "2027-02-13", end: "2027-03-03", img: "",
-    it: { title: "Festa del Limone", place: "Mentone", text: "Carri giganti di agrumi: segnatelo già in calendario!" },
-    fr: { title: "Fête du Citron", place: "Menton", text: "Des chars géants d'agrumes : à noter dès maintenant !" },
-    url: "https://www.fete-du-citron.com"
+    zone: "azur", cat: "feste", icon: "🍋", date: "2027-02-13", end: "2027-03-03", img: "foto/limone.jpg",
+    url: "https://www.fete-du-citron.com",
+    t: {
+      it: ["Festa del Limone", "Mentone", "Carri giganti di agrumi: segnatelo già in calendario!"],
+      fr: ["Fête du Citron", "Menton", "Des chars géants d'agrumes : à noter dès maintenant !"],
+      en: ["Lemon Festival", "Menton", "Giant floats made of citrus fruit: save the date!"],
+      de: ["Zitronenfest", "Menton", "Riesige Festwagen aus Zitrusfrüchten: jetzt schon vormerken!"],
+      nl: ["Citroenfeest", "Menton", "Reusachtige praalwagens van citrusvruchten: zet het alvast in je agenda!"],
+      zh: ["柠檬节", "芒通", "用柑橘堆成的巨型花车，快记进日历！"]
+    }
   }
 ];
 
 const TODO = [
-  { icon: "🐋", bg: "linear-gradient(160deg,#3fa7d6,#0b2a40)", it: ["Whale watching", "Santuario Pelagos, da Genova e Imperia"], fr: ["Whale watching", "Sanctuaire Pelagos, depuis Gênes et Imperia"], url: "#" },
-  { icon: "🥾", bg: "linear-gradient(160deg,#9db06a,#3f4d1f)", it: ["Alta Via dei Monti Liguri", "Sentieri tra mare e montagna"], fr: ["Alta Via dei Monti Liguri", "Sentiers entre mer et montagne"], url: "#" },
-  { icon: "🚵", bg: "linear-gradient(160deg,#ff9a76,#9e3c1c)", it: ["Bike a Finale", "Capitale europea della MTB"], fr: ["VTT à Finale", "Capitale européenne du VTT"], url: "#" },
-  { icon: "🏘️", bg: "linear-gradient(160deg,#e8b56a,#7a5420)", it: ["I borghi più belli", "Apricale, Dolceacqua, Noli"], fr: ["Plus beaux villages", "Apricale, Dolceacqua, Noli"], url: "#" },
-  { icon: "🤿", bg: "linear-gradient(160deg,#4fd1c5,#0b5f6b)", it: ["Snorkeling e diving", "Portofino e Isola Gallinara"], fr: ["Snorkeling et plongée", "Portofino et île Gallinara"], url: "#" },
-  { icon: "🌅", bg: "linear-gradient(160deg,#a58bff,#2e1f73)", it: ["Èze e Villefranche", "Panorami da cartolina"], fr: ["Èze et Villefranche", "Panoramas de carte postale"], url: "#" },
-  { icon: "🍷", bg: "linear-gradient(160deg,#d0566b,#4e1020)", it: ["Vini e sapori", "Rossese, Pigato, pesto e focaccia"], fr: ["Vins et saveurs", "Rossese, Pigato, pesto et focaccia"], url: "#" },
-  { icon: "🏖️", bg: "linear-gradient(160deg,#ffc94a,#ef6a45)", it: ["Spiagge", "Dalla Baia del Silenzio a Paloma Beach"], fr: ["Plages", "De la Baia del Silenzio à Paloma Beach"], url: "#" }
+  { icon: "🐋", img: "foto/whale.jpg", bg: "linear-gradient(160deg,#3fa7d6,#0b2a40)", url: "#", t: {
+    it: ["Whale watching", "Santuario Pelagos, da Genova e Imperia"], fr: ["Whale watching", "Sanctuaire Pelagos, depuis Gênes et Imperia"],
+    en: ["Whale watching", "Pelagos Sanctuary, from Genoa and Imperia"], de: ["Walbeobachtung", "Pelagos-Schutzgebiet, ab Genua und Imperia"],
+    nl: ["Walvissen spotten", "Pelagos-reservaat, vanuit Genua en Imperia"], zh: ["出海观鲸", "派拉格斯海洋保护区，从热那亚和因佩里亚出发"] } },
+  { icon: "🥾", img: "foto/altavia.jpg", bg: "linear-gradient(160deg,#9db06a,#3f4d1f)", url: "#", t: {
+    it: ["Alta Via dei Monti Liguri", "Sentieri tra mare e montagna"], fr: ["Alta Via dei Monti Liguri", "Sentiers entre mer et montagne"],
+    en: ["Alta Via dei Monti Liguri", "Trails between sea and mountains"], de: ["Alta Via dei Monti Liguri", "Wanderwege zwischen Meer und Bergen"],
+    nl: ["Alta Via dei Monti Liguri", "Wandelpaden tussen zee en bergen"], zh: ["利古里亚高山步道", "穿行于大海与群山之间"] } },
+  { icon: "🚵", img: "foto/mtb.jpg", bg: "linear-gradient(160deg,#ff9a76,#9e3c1c)", url: "#", t: {
+    it: ["Bike a Finale", "Capitale europea della MTB"], fr: ["VTT à Finale", "Capitale européenne du VTT"],
+    en: ["Biking in Finale", "Europe's mountain bike capital"], de: ["Biken in Finale", "Europas Mountainbike-Hauptstadt"],
+    nl: ["Fietsen in Finale", "Europese hoofdstad van het mountainbiken"], zh: ["菲纳莱骑行", "欧洲山地车之都"] } },
+  { icon: "🏘️", img: "foto/borghi.jpg", bg: "linear-gradient(160deg,#e8b56a,#7a5420)", url: "#", t: {
+    it: ["I borghi più belli", "Apricale, Dolceacqua, Noli"], fr: ["Plus beaux villages", "Apricale, Dolceacqua, Noli"],
+    en: ["Prettiest villages", "Apricale, Dolceacqua, Noli"], de: ["Die schönsten Dörfer", "Apricale, Dolceacqua, Noli"],
+    nl: ["Mooiste dorpjes", "Apricale, Dolceacqua, Noli"], zh: ["最美小镇", "阿普里卡莱、多尔切阿夸、诺利"] } },
+  { icon: "🤿", img: "foto/diving.jpg", bg: "linear-gradient(160deg,#4fd1c5,#0b5f6b)", url: "#", t: {
+    it: ["Snorkeling e diving", "Portofino e Isola Gallinara"], fr: ["Snorkeling et plongée", "Portofino et île Gallinara"],
+    en: ["Snorkelling & diving", "Portofino and Gallinara Island"], de: ["Schnorcheln & Tauchen", "Portofino und Insel Gallinara"],
+    nl: ["Snorkelen & duiken", "Portofino en het eiland Gallinara"], zh: ["浮潜与潜水", "波托菲诺与加利纳拉岛"] } },
+  { icon: "🌅", img: "foto/eze.jpg", bg: "linear-gradient(160deg,#a58bff,#2e1f73)", url: "#", t: {
+    it: ["Èze e Villefranche", "Panorami da cartolina"], fr: ["Èze et Villefranche", "Panoramas de carte postale"],
+    en: ["Èze & Villefranche", "Postcard views"], de: ["Èze & Villefranche", "Aussichten wie auf Postkarten"],
+    nl: ["Èze & Villefranche", "Uitzichten als op een ansichtkaart"], zh: ["埃兹与滨海自由城", "明信片般的风景"] } },
+  { icon: "🍷", img: "foto/sapori.jpg", bg: "linear-gradient(160deg,#d0566b,#4e1020)", url: "#", t: {
+    it: ["Vini e sapori", "Rossese, Pigato, pesto e focaccia"], fr: ["Vins et saveurs", "Rossese, Pigato, pesto et focaccia"],
+    en: ["Wine & food", "Rossese, Pigato, pesto and focaccia"], de: ["Wein & Genuss", "Rossese, Pigato, Pesto und Focaccia"],
+    nl: ["Wijn & smaken", "Rossese, Pigato, pesto en focaccia"], zh: ["美酒美食", "罗塞塞、皮加托葡萄酒，青酱与佛卡夏"] } },
+  { icon: "🏖️", img: "foto/spiagge.jpg", bg: "linear-gradient(160deg,#ffc94a,#ef6a45)", url: "#", t: {
+    it: ["Spiagge", "Dalla Baia del Silenzio a Paloma Beach"], fr: ["Plages", "De la Baia del Silenzio à Paloma Beach"],
+    en: ["Beaches", "From Baia del Silenzio to Paloma Beach"], de: ["Strände", "Von der Baia del Silenzio bis Paloma Beach"],
+    nl: ["Stranden", "Van de Baia del Silenzio tot Paloma Beach"], zh: ["海滩", "从静谧湾到帕洛玛海滩"] } }
 ];
 
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    issue: "N° 1 · Novembre 2026",
     navMap: "Mappa", navEvents: "Eventi", navTodo: "Cosa fare", navSites: "Vacanze",
     heroTitle: "Cosa succede <em>in Riviera</em>",
     heroLead: "Sagre, feste, concerti e idee per il weekend. Da Genova a Nizza, tutto in un colpo d'occhio.",
@@ -518,14 +622,17 @@ const I18N = {
     subscribe: "Iscriviti", thanks: "Grazie! ✓",
     footer: "Liguria & Côte d'Azur — il giornalino degli eventi, delle sagre e delle cose da fare.",
     disclaimer: "Date e programmi possono cambiare: verifica sempre sul sito dell'organizzatore.",
+    credits: "Crediti foto",
     empty: "Nessun evento per questa scelta. Prova un altro filtro!",
     all: "Tutto", events1: "evento", eventsN: "eventi",
     today: "Oggi", tomorrow: "Domani", inDays: (n) => `Tra ${n} giorni`, now: "In corso",
     zones: { genova: "Genova", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Sagre", feste: "🎉 Feste", musica: "🎶 Musica", mercatini: "🎄 Mercatini", cultura: "🏛️ Cultura", sport: "🚵 Sport" },
+    map: { italy: "ITALIA", france: "FRANCIA", sea: "Mar Ligure" },
     locale: "it-IT"
   },
   fr: {
+    issue: "N° 1 · Novembre 2026",
     navMap: "Carte", navEvents: "Événements", navTodo: "À faire", navSites: "Vacances",
     heroTitle: "Ce qui se passe <em>sur la Riviera</em>",
     heroLead: "Fêtes de village, festivals, concerts et idées pour le week-end. De Gênes à Nice, tout en un coup d'œil.",
@@ -543,12 +650,126 @@ const I18N = {
     subscribe: "S'inscrire", thanks: "Merci ! ✓",
     footer: "Ligurie & Côte d'Azur — le petit journal des événements, des fêtes et des choses à faire.",
     disclaimer: "Dates et programmes susceptibles de changer : vérifiez toujours sur le site de l'organisateur.",
+    credits: "Crédits photo",
     empty: "Aucun événement pour ce choix. Essayez un autre filtre !",
     all: "Tout", events1: "événement", eventsN: "événements",
     today: "Aujourd'hui", tomorrow: "Demain", inDays: (n) => `Dans ${n} jours`, now: "En cours",
     zones: { genova: "Gênes", savona: "Savone", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Fêtes gourmandes", feste: "🎉 Fêtes", musica: "🎶 Musique", mercatini: "🎄 Marchés", cultura: "🏛️ Culture", sport: "🚵 Sport" },
+    map: { italy: "ITALIE", france: "FRANCE", sea: "Mer Ligure" },
     locale: "fr-FR"
+  },
+  en: {
+    issue: "No. 1 · November 2026",
+    navMap: "Map", navEvents: "Events", navTodo: "Things to do", navSites: "Holidays",
+    heroTitle: "What's on <em>in the Riviera</em>",
+    heroLead: "Food festivals, celebrations, concerts and weekend ideas. From Genoa to Nice, all at a glance.",
+    ctaEvents: "Discover events", ctaMap: "Open the map",
+    statEvents: "upcoming events", statZones: "areas", statLangs: "languages",
+    mapEyebrow: "Where to go", mapTitle: "Pick <em>your area</em>", mapSub: "Tap a point on the map to see what's on nearby.",
+    featEyebrow: "Don't miss", featTitle: "<em>Featured</em>",
+    eventsEyebrow: "Calendar", eventsTitle: "All <em>events</em>", eventsSub: "Filter by area and type. One line per event, the rest on the organiser's website.",
+    todoEyebrow: "Experiences", todoTitle: "Things to do <em>when you arrive</em>", todoSub: "Sea, trails, villages and flavours.",
+    sitesEyebrow: "Holidays", sitesTitle: "Plan your <em>stay</em>",
+    siteIt: "Western and Eastern Riviera: hotels, holiday homes, excursions.",
+    siteFr: "From Menton to Cannes: stays, activities and travel ideas.",
+    visit: "Visit the website",
+    newsTitle: "The newsletter <em>in your inbox</em>", newsSub: "The Riviera's best events, every month. No spam, promise.",
+    subscribe: "Subscribe", thanks: "Thank you! ✓",
+    footer: "Liguria & Côte d'Azur — the newsletter for events, festivals and things to do.",
+    disclaimer: "Dates and programmes may change: always check the organiser's website.",
+    credits: "Photo credits",
+    empty: "No events for this selection. Try another filter!",
+    all: "All", events1: "event", eventsN: "events",
+    today: "Today", tomorrow: "Tomorrow", inDays: (n) => `In ${n} days`, now: "On now",
+    zones: { genova: "Genoa", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
+    cats: { sagre: "🍝 Food festivals", feste: "🎉 Celebrations", musica: "🎶 Music", mercatini: "🎄 Markets", cultura: "🏛️ Culture", sport: "🚵 Sport" },
+    map: { italy: "ITALY", france: "FRANCE", sea: "Ligurian Sea" },
+    locale: "en-GB"
+  },
+  de: {
+    issue: "Nr. 1 · November 2026",
+    navMap: "Karte", navEvents: "Events", navTodo: "Erleben", navSites: "Urlaub",
+    heroTitle: "Was los ist <em>an der Riviera</em>",
+    heroLead: "Dorffeste, Feiern, Konzerte und Ideen fürs Wochenende. Von Genua bis Nizza, alles auf einen Blick.",
+    ctaEvents: "Events entdecken", ctaMap: "Karte öffnen",
+    statEvents: "kommende Events", statZones: "Regionen", statLangs: "Sprachen",
+    mapEyebrow: "Wohin", mapTitle: "Wähle <em>deine Region</em>", mapSub: "Tippe auf einen Punkt der Karte, um die Events in der Nähe zu sehen.",
+    featEyebrow: "Nicht verpassen", featTitle: "<em>Highlights</em>",
+    eventsEyebrow: "Kalender", eventsTitle: "Alle <em>Events</em>", eventsSub: "Nach Region und Art filtern. Eine Zeile pro Event, alles Weitere beim Veranstalter.",
+    todoEyebrow: "Erlebnisse", todoTitle: "Was tun <em>vor Ort</em>", todoSub: "Meer, Wanderwege, Dörfer und Genuss.",
+    sitesEyebrow: "Urlaub", sitesTitle: "Plane deinen <em>Aufenthalt</em>",
+    siteIt: "Riviera di Ponente und di Levante: Hotels, Ferienwohnungen, Ausflüge.",
+    siteFr: "Von Menton bis Cannes: Aufenthalte, Aktivitäten und Reiseideen.",
+    visit: "Zur Website",
+    newsTitle: "Der Newsletter <em>in deinem Postfach</em>", newsSub: "Jeden Monat die besten Events der Riviera. Kein Spam, versprochen.",
+    subscribe: "Abonnieren", thanks: "Danke! ✓",
+    footer: "Ligurien & Côte d'Azur — der Newsletter für Events, Feste und Ausflugsideen.",
+    disclaimer: "Termine und Programme können sich ändern: bitte immer beim Veranstalter prüfen.",
+    credits: "Bildnachweis",
+    empty: "Keine Events für diese Auswahl. Probiere einen anderen Filter!",
+    all: "Alle", events1: "Event", eventsN: "Events",
+    today: "Heute", tomorrow: "Morgen", inDays: (n) => `In ${n} Tagen`, now: "Läuft gerade",
+    zones: { genova: "Genua", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
+    cats: { sagre: "🍝 Dorffeste", feste: "🎉 Feste", musica: "🎶 Musik", mercatini: "🎄 Märkte", cultura: "🏛️ Kultur", sport: "🚵 Sport" },
+    map: { italy: "ITALIEN", france: "FRANKREICH", sea: "Ligurisches Meer" },
+    locale: "de-DE"
+  },
+  nl: {
+    issue: "Nr. 1 · November 2026",
+    navMap: "Kaart", navEvents: "Evenementen", navTodo: "Wat te doen", navSites: "Vakantie",
+    heroTitle: "Wat er te doen is <em>aan de Rivièra</em>",
+    heroLead: "Dorpsfeesten, festivals, concerten en ideeën voor het weekend. Van Genua tot Nice, alles in één oogopslag.",
+    ctaEvents: "Ontdek evenementen", ctaMap: "Open de kaart",
+    statEvents: "komende evenementen", statZones: "gebieden", statLangs: "talen",
+    mapEyebrow: "Waarheen", mapTitle: "Kies <em>jouw gebied</em>", mapSub: "Tik op een punt op de kaart om te zien wat er in de buurt gebeurt.",
+    featEyebrow: "Niet missen", featTitle: "<em>Uitgelicht</em>",
+    eventsEyebrow: "Agenda", eventsTitle: "Alle <em>evenementen</em>", eventsSub: "Filter op gebied en type. Eén regel per evenement, de rest op de site van de organisator.",
+    todoEyebrow: "Belevenissen", todoTitle: "Wat te doen <em>als je er bent</em>", todoSub: "Zee, wandelpaden, dorpjes en smaken.",
+    sitesEyebrow: "Vakantie", sitesTitle: "Plan je <em>verblijf</em>",
+    siteIt: "Riviera di Ponente en di Levante: hotels, vakantiehuizen, uitstapjes.",
+    siteFr: "Van Menton tot Cannes: verblijven, activiteiten en reisideeën.",
+    visit: "Bezoek de website",
+    newsTitle: "De nieuwsbrief <em>in je mailbox</em>", newsSub: "Elke maand de beste evenementen van de Rivièra. Geen spam, beloofd.",
+    subscribe: "Inschrijven", thanks: "Bedankt! ✓",
+    footer: "Ligurië & Côte d'Azur — de nieuwsbrief voor evenementen, feesten en uitstapjes.",
+    disclaimer: "Data en programma's kunnen wijzigen: controleer altijd de site van de organisator.",
+    credits: "Fotoverantwoording",
+    empty: "Geen evenementen voor deze keuze. Probeer een ander filter!",
+    all: "Alles", events1: "evenement", eventsN: "evenementen",
+    today: "Vandaag", tomorrow: "Morgen", inDays: (n) => `Over ${n} dagen`, now: "Nu bezig",
+    zones: { genova: "Genua", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
+    cats: { sagre: "🍝 Eetfeesten", feste: "🎉 Feesten", musica: "🎶 Muziek", mercatini: "🎄 Markten", cultura: "🏛️ Cultuur", sport: "🚵 Sport" },
+    map: { italy: "ITALIË", france: "FRANKRIJK", sea: "Ligurische Zee" },
+    locale: "nl-NL"
+  },
+  zh: {
+    issue: "第1期 · 2026年11月",
+    navMap: "地图", navEvents: "活动", navTodo: "玩什么", navSites: "度假",
+    heroTitle: "里维埃拉 <em>本月看点</em>",
+    heroLead: "美食节、节庆、音乐会和周末灵感。从热那亚到尼斯，一目了然。",
+    ctaEvents: "查看活动", ctaMap: "打开地图",
+    statEvents: "场即将举行", statZones: "个地区", statLangs: "种语言",
+    mapEyebrow: "去哪儿", mapTitle: "选择 <em>你的目的地</em>", mapSub: "点击地图上的地点，查看附近的活动。",
+    featEyebrow: "不容错过", featTitle: "<em>精选推荐</em>",
+    eventsEyebrow: "日程", eventsTitle: "全部 <em>活动</em>", eventsSub: "按地区和类型筛选。每个活动一句话，详情请看主办方网站。",
+    todoEyebrow: "体验", todoTitle: "到了以后 <em>玩什么</em>", todoSub: "大海、步道、小镇与美食。",
+    sitesEyebrow: "度假", sitesTitle: "规划你的 <em>旅程</em>",
+    siteIt: "利古里亚东西海岸：酒店、度假屋、短途游。",
+    siteFr: "从芒通到戛纳：住宿、活动与旅行灵感。",
+    visit: "访问网站",
+    newsTitle: "订阅 <em>电子月刊</em>", newsSub: "每月精选里维埃拉最佳活动，绝无垃圾邮件。",
+    subscribe: "订阅", thanks: "谢谢！✓",
+    footer: "利古里亚与蔚蓝海岸 — 活动、节庆与游玩指南月刊。",
+    disclaimer: "日期和安排可能变动，请以主办方网站为准。",
+    credits: "图片来源",
+    empty: "没有符合条件的活动，换个筛选试试！",
+    all: "全部", events1: "场活动", eventsN: "场活动",
+    today: "今天", tomorrow: "明天", inDays: (n) => `${n}天后`, now: "进行中",
+    zones: { genova: "热那亚", savona: "萨沃纳", imperia: "因佩里亚", azur: "蔚蓝海岸" },
+    cats: { sagre: "🍝 美食节", feste: "🎉 节庆", musica: "🎶 音乐", mercatini: "🎄 集市", cultura: "🏛️ 文化", sport: "🚵 运动" },
+    map: { italy: "意大利", france: "法国", sea: "利古里亚海" },
+    locale: "zh-CN"
   }
 };
 
@@ -556,13 +777,14 @@ const I18N = {
 const PINS = { genova: [922, 36, -40, 46], savona: [718, 74, 20, -4], imperia: [514, 232, -30, 50], azur: [168, 306, -56, 52] };
 
 /* ======================= LOGICA ======================= */
-let lang = (navigator.language || "it").startsWith("fr") ? "fr" : "it";
-try { lang = localStorage.getItem("riviera-lang") || lang; } catch (e) {}
-const qp = new URLSearchParams(location.search).get("lang");
-if (qp === "it" || qp === "fr") lang = qp;
+const pickLang = (l) => (l = (l || "").slice(0, 2).toLowerCase()) in LANGS ? l : null;
+let lang = pickLang(navigator.language) || "it";
+try { lang = pickLang(localStorage.getItem("riviera-lang")) || lang; } catch (e) {}
+lang = pickLang(new URLSearchParams(location.search).get("lang")) || lang;
 let zone = "all", cat = "all";
 
 const T = () => I18N[lang];
+const tx = (item) => item.t[lang] || item.t.en;
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const day = (iso) => new Date(iso + "T00:00:00");
@@ -574,8 +796,6 @@ const UPCOMING = EVENTS.filter((e) => day(e.end || e.date) >= today).sort((a, b)
 function fmtDate(e) {
   const f = (iso, opt) => day(iso).toLocaleDateString(T().locale, opt);
   if (!e.end) return f(e.date, { day: "numeric", month: "long" });
-  const a = day(e.date), b = day(e.end);
-  if (a.getMonth() === b.getMonth()) return `${a.getDate()}–${f(e.end, { day: "numeric", month: "long" })}`;
   return `${f(e.date, { day: "numeric", month: "short" })} – ${f(e.end, { day: "numeric", month: "short" })}`;
 }
 
@@ -587,15 +807,19 @@ function countdown(e) {
   return n <= 30 ? T().inDays(n) : "";
 }
 
-const media = (e) => e.img ? `<img src="${esc(e.img)}" alt="" loading="lazy">` : "";
+const media = (e) => e.img ? `<img src="${esc(e.img)}" alt="" loading="lazy" onerror="this.remove()">` : "";
 
 function renderTicker() {
-  const items = UPCOMING.map((e) => `<span><small>${esc(fmtDate(e))}</small>${esc(e[lang].title)}</span>`).join("");
+  const items = UPCOMING.map((e) => `<span><small>${esc(fmtDate(e))}</small>${esc(tx(e)[0])}</span>`).join("");
   $("#ticker").innerHTML = items + items;
   $("#statEvents").textContent = UPCOMING.length;
+  $("#statLangs").textContent = Object.keys(LANGS).length;
 }
 
 function renderPins() {
+  $("#mapItaly").textContent = T().map.italy;
+  $("#mapFrance").textContent = T().map.france;
+  $("#mapSea").textContent = T().map.sea;
   $("#pins").innerHTML = Object.entries(PINS).map(([k, [x, y, dx, dy]]) => {
     const n = UPCOMING.filter((e) => e.zone === k).length;
     return `<g class="pin ${zone === k ? "on" : ""}" data-k="${k}" tabindex="0" role="button">
@@ -613,14 +837,16 @@ function renderPins() {
 
 function renderBento() {
   const feat = UPCOMING.filter((e) => e.featured).sort((a, b) => a.featured - b.featured).slice(0, 3);
-  $("#bento").innerHTML = feat.map((e, i) => `
-    <a class="tile ${i === 0 ? "big" : ""}" href="${esc(e.url)}" target="_blank" rel="noopener">
+  $("#bento").innerHTML = feat.map((e, i) => {
+    const [title, place, text] = tx(e);
+    return `<a class="tile ${i === 0 ? "big" : ""}" href="${esc(e.url)}" target="_blank" rel="noopener">
       <div class="bg g-${e.cat}">${media(e)}</div>
-      ${e.img ? "" : `<span class="emo">${e.icon}</span>`}
-      <span class="when">${esc(fmtDate(e))} · ${esc(e[lang].place)}</span>
-      <h3>${esc(e[lang].title)}</h3>
-      <p>${esc(e[lang].text)}</p>
-    </a>`).join("");
+      <span class="emo">${e.icon}</span>
+      <span class="when">${esc(fmtDate(e))} · ${esc(place)}</span>
+      <h3>${esc(title)}</h3>
+      <p>${esc(text)}</p>
+    </a>`;
+  }).join("");
 }
 
 function chips(el, items, current, onPick) {
@@ -635,44 +861,55 @@ function renderEvents() {
   chips($("#catChips"), T().cats, cat, (k) => { cat = k; renderEvents(); });
   const list = UPCOMING.filter((e) => (zone === "all" || e.zone === zone) && (cat === "all" || e.cat === cat));
   $("#grid").innerHTML = list.length ? list.map((e, i) => {
-    const c = e[lang], soon = countdown(e);
+    const [title, place, text] = tx(e), soon = countdown(e);
     return `<a class="card" href="${esc(e.url)}" target="_blank" rel="noopener" style="animation-delay:${i * 40}ms">
-      <div class="media g-${e.cat}">${media(e)}${e.img ? "" : `<span class="emo">${e.icon}</span>`}
+      <div class="media g-${e.cat}"><span class="emo">${e.icon}</span>${media(e)}
         <span class="badge">📍 ${esc(T().zones[e.zone])}</span>
         ${soon ? `<span class="badge soon">${esc(soon)}</span>` : ""}
       </div>
       <div class="body">
         <span class="date">${esc(fmtDate(e))}</span>
-        <h3>${esc(c.title)}</h3>
-        <p>${esc(c.text)}</p>
-        <div class="foot"><span>${esc(c.place)}</span><span class="go">→</span></div>
+        <h3>${esc(title)}</h3>
+        <p>${esc(text)}</p>
+        <div class="foot"><span>${esc(place)}</span><span class="go">→</span></div>
       </div>
     </a>`;
   }).join("") : `<div class="empty">${T().empty}</div>`;
 }
 
 function renderTodo() {
-  $("#rail").innerHTML = TODO.map((t, i) => `
-    <a class="exp" href="${esc(t.url)}" style="background:${t.bg}">
+  $("#rail").innerHTML = TODO.map((t, i) => {
+    const [title, sub] = tx(t);
+    return `<a class="exp" href="${esc(t.url)}" style="background:${t.bg}">
+      ${t.img ? `<img src="${esc(t.img)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
       <span class="emo">${t.icon}</span><span class="num">0${i + 1}</span>
-      <b>${esc(t[lang][0])}</b><span>${esc(t[lang][1])}</span>
-    </a>`).join("");
+      <b>${esc(title)}</b><span class="sub">${esc(sub)}</span>
+    </a>`;
+  }).join("");
+}
+
+function renderLangMenu() {
+  $("#langCur").textContent = lang.toUpperCase();
+  $("#langList").innerHTML = Object.entries(LANGS)
+    .map(([k, v]) => `<button data-lang="${k}" class="${k === lang ? "on" : ""}"><b>${k.toUpperCase()}</b> ${v}</button>`).join("");
 }
 
 function render() {
   document.documentElement.lang = lang;
-  $("#issue").textContent = ISSUE[lang];
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
   document.querySelectorAll("[data-i18n-html]").forEach((el) => { el.innerHTML = T()[el.dataset.i18nHtml]; });
-  document.querySelectorAll(".lang button").forEach((b) => b.classList.toggle("on", b.dataset.lang === lang));
-  renderTicker(); renderPins(); renderBento(); renderEvents(); renderTodo();
+  renderLangMenu(); renderTicker(); renderPins(); renderBento(); renderEvents(); renderTodo();
 }
 
-document.querySelectorAll(".lang button").forEach((b) => b.addEventListener("click", () => {
+$("#langList").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button");
+  if (!b) return;
   lang = b.dataset.lang;
   try { localStorage.setItem("riviera-lang", lang); } catch (e) {}
+  $("#langMenu").open = false;
   render();
-}));
+});
+document.addEventListener("click", (ev) => { if (!ev.target.closest("#langMenu")) $("#langMenu").open = false; });
 
 document.querySelectorAll(".rail-nav button").forEach((b) => b.addEventListener("click", () => {
   $("#rail").scrollBy({ left: b.dataset.dir * 320, behavior: "smooth" });
@@ -691,5 +928,6 @@ document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
 render();
 </script>
+
 </body>
 </html>
