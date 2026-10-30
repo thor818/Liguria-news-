@@ -11,12 +11,13 @@ Le esperienze (`TODO`) e i piatti (`DISHES`) hanno il campo costa: `lig`, `azur`
 
 ## Le rubriche
 
-Cinque rubriche, raggiungibili anche dal menu a schermo intero (pulsante ☰ in alto):
+Sei rubriche, raggiungibili anche dal menu a schermo intero (pulsante ☰ in alto):
 
 | Rubrica | Cosa contiene | Dove si modifica in `index.html` |
 |---|---|---|
-| Explore | luoghi da vedere, Genova in evidenza, 40 City guides (da vedere, musei, da fare, dove mangiare, sapori), Artists' Riviera e mappa | `SEE`, `CITIES`, `ARTISTS`, `PINS` |
+| Explore | luoghi da vedere, Genova in evidenza, 44 City guides (da vedere, musei, da fare, dove mangiare, sapori), Artists' Riviera e mappa | `SEE`, `CITIES`, `ARTISTS`, `PINS` |
 | What to do | esperienze, "Book an activity", Sport & adventure, Family fun e sentieri (Hiking) | `TODO`, `SITES`, `SPORTS`, `FAMILY`, `HIKES` |
+| Riviera by night | locali, club, musica dal vivo, casinò | `NIGHT` |
 | Where to eat | ristoranti, piatti tipici, guide gastronomiche | `RESTAURANTS`, `DISHES`, `GUIDES` |
 | Where to stay | link a Riviera Rent | sezione `#stay`, `SITE_IT` |
 | What's on | agenda: eventi, sagre, feste | `EVENTS` |

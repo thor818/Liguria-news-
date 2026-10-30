@@ -383,6 +383,29 @@
   .tile .when, .spot-kicker { color: var(--lemon); letter-spacing: .14em; }
   .pick.on { outline-color: var(--lemon); }
 
+  /* nightlife: sezione scura a tutta larghezza */
+  .night { position: relative; isolation: isolate; color: #fff; padding-bottom: 72px; margin-top: 72px; }
+  .night::before { content: ""; position: absolute; inset: 0 calc(50% - 50vw); z-index: -1;
+    background: radial-gradient(circle at 15% 10%, rgba(29,76,255,.35), transparent 40%), radial-gradient(circle at 85% 80%, rgba(255,122,26,.3), transparent 45%), #0b0c10; }
+  .night .head h2 { color: #fff; }
+  .night .head h2 em { color: #fff; }
+  .night .head p { color: rgba(255,255,255,.75); }
+  .night .num { color: #fff; }
+  .night .eyebrow { color: var(--lemon); }
+  .night .chip { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.18); }
+  .night .chip.on { background: var(--lemon); color: var(--ink); border-color: var(--lemon); }
+  .nights { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 12px; }
+  .nightcard { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-decoration: none; color: #fff;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 14px; transition: transform .2s, border-color .2s, background .2s; animation: pop .35s ease both; }
+  .nightcard:hover { transform: translateY(-3px); border-color: var(--lemon); background: rgba(255,255,255,.09); }
+  .nightcard .ic { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; font-size: 1.5rem; background: rgba(255,122,26,.16); }
+  .nightcard b { display: block; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.25rem; line-height: 1; letter-spacing: .01em; }
+  .nightcard p { margin: 4px 0 0; font-size: .85rem; color: rgba(255,255,255,.75); }
+  .nightcard small { display: inline-block; margin-top: 6px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--lemon); }
+  .nightcard .go { background: rgba(255,255,255,.12); color: #fff; }
+  .nightcard:hover .go { background: var(--lemon); color: var(--ink); }
+  .night-note { margin-top: 16px; font-size: .8rem; color: rgba(255,255,255,.55); }
+
   /* copertina a tutta pagina */
   .hero { padding: 0; }
   .hero-full { position: relative; isolation: isolate; min-height: clamp(560px, 86vh, 860px); display: flex; align-items: flex-end; color: #fff; background: var(--ink); overflow: hidden; }
@@ -475,6 +498,7 @@
   <nav class="menu-main">
     <a href="#explore">Explore<i>›</i></a>
     <a href="#do">What to do<i>›</i></a>
+    <a href="#night">Nightlife<i>›</i></a>
     <a href="#eat">Where to eat<i>›</i></a>
     <a href="#stay">Where to stay<i>›</i></a>
     <a href="#on">What's on<i>›</i></a>
@@ -619,11 +643,25 @@
     <div class="grid" id="hikeGrid"></div>
   </section>
 
+  <!-- ================= NIGHTLIFE ================= -->
+  <section id="night" class="reveal night">
+    <div class="head">
+      <div>
+        <span class="eyebrow"><span class="num">03</span><span data-i18n="nightEyebrow"></span></span>
+        <h2>Riviera <em>by night</em></h2>
+        <p data-i18n="nightSub"></p>
+      </div>
+    </div>
+    <div class="chips" id="nightChips" style="margin-bottom:18px"></div>
+    <div class="nights" id="nightGrid"></div>
+    <p class="night-note" data-i18n="nightNote"></p>
+  </section>
+
   <!-- ================= WHERE TO EAT ================= -->
   <section id="eat" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow"><span class="num">03</span><span data-i18n="eatEyebrow"></span></span>
+        <span class="eyebrow"><span class="num">04</span><span data-i18n="eatEyebrow"></span></span>
         <h2>Where to <em>eat</em></h2>
         <p data-i18n="eatSub"></p>
       </div>
@@ -655,7 +693,7 @@
   <section id="stay" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow"><span class="num">04</span><span data-i18n="stayEyebrow"></span></span>
+        <span class="eyebrow"><span class="num">05</span><span data-i18n="stayEyebrow"></span></span>
         <h2>Where to <em>stay</em></h2>
         <p data-i18n="staySub"></p>
       </div>
@@ -673,7 +711,7 @@
   <section id="on" class="reveal">
     <div class="head">
       <div>
-        <span class="eyebrow"><span class="num">05</span><span data-i18n="onEyebrow"></span></span>
+        <span class="eyebrow"><span class="num">06</span><span data-i18n="onEyebrow"></span></span>
         <h2>What's <em>on</em></h2>
         <p data-i18n="onSub"></p>
       </div>
@@ -1527,14 +1565,17 @@ const CITIES = [
    "Albenga, centro storico",
    "Battistero (Albenga)",
    "Cattedrale di San Michele (Albenga)",
-   "Torri medievali di Albenga"
+   "Torri medievali di Albenga",
+   "Piazza dei Leoni (Albenga)"
   ],
   "museums": [
    "Museo Navale Romano (Albenga)"
   ],
   "eat": [],
   "do": [
-   "Via Julia Augusta Albenga–Alassio (strada romana)"
+   "Via Julia Augusta Albenga–Alassio (strada romana)",
+   "Visita alle aziende agricole della piana",
+   "Pista ciclabile Albenga–Alassio"
   ],
   "taste": [
    "Carciofo violetto di Albenga",
@@ -1582,6 +1623,49 @@ const CITIES = [
    "Baci di Alassio",
    "Pesce del giorno",
    "Gelato"
+  ]
+ },
+ {
+  "id": "andora",
+  "zone": "savona",
+  "img": "",
+  "icon": "🏰",
+  "where": "Andora",
+  "name": {
+   "en": "Andora & Colla Micheri",
+   "zh": "安多拉与科拉米凯里"
+  },
+  "t": {
+   "it": "Il castello dei Clavesana riaperto come museo nel 2026, il borgo di Colla Micheri e una cucina stellata tra le vigne.",
+   "fr": "Le château des Clavesana rouvert en musée en 2026, le hameau de Colla Micheri et une table étoilée dans les vignes.",
+   "en": "The Clavesana castle reopened as a museum in 2026, the hamlet of Colla Micheri and Michelin-starred dining among the vines.",
+   "de": "Die 2026 als Museum wiedereröffnete Burg der Clavesana, der Weiler Colla Micheri und Sterneküche zwischen den Reben.",
+   "nl": "Het kasteel van de Clavesana, in 2026 heropend als museum, het gehucht Colla Micheri en sterrenkeuken tussen de wijnstokken.",
+   "zh": "2026年作为博物馆重新开放的克拉维萨纳城堡、科拉米凯里小村，以及葡萄园中的米其林餐厅。"
+  },
+  "see": [
+   "Castello dei Clavesana – Paraxo",
+   "Borgo Castello di Andora",
+   "Colla Micheri, borgo di Thor Heyerdahl",
+   "Ponte medievale di Andora",
+   "Spiaggia e porto di Andora"
+  ],
+  "museums": [
+   "Mostra «Figure di donna» al Castello dei Clavesana"
+  ],
+  "do": [
+   "Sentiero Colla Micheri – Laigueglia",
+   "Pista ciclabile di Andora"
+  ],
+  "eat": [
+   "Vignamare (1 stella Michelin, Colla Micheri)",
+   "Osteria Colla Micheri",
+   "Trattoria Dau Vescu"
+  ],
+  "taste": [
+   "Pigato e Vermentino",
+   "Olio extravergine",
+   "Basilico e ortaggi della valle"
   ]
  },
  {
@@ -1638,11 +1722,14 @@ const CITIES = [
   "see": [
    "Parasio (Porto Maurizio)",
    "Basilica di San Maurizio",
-   "Porto di Oneglia"
+   "Porto di Oneglia",
+   "Villa Grock",
+   "Pista ciclabile Imperia – San Lorenzo"
   ],
   "museums": [
    "Museo dell'Olivo Carlo Carli",
-   "Museo Navale"
+   "Museo Navale",
+   "Villa Grock – Museo del Clown"
   ],
   "eat": [
    "Calata Cuneo (Oneglia)"
@@ -1653,7 +1740,52 @@ const CITIES = [
    "Pasta (città di storici pastifici)",
    "Brandacujun"
   ],
-  "do": []
+  "do": [
+   "Vele d'Epoca di Imperia (settembre)",
+   "Olioliva (novembre)"
+  ]
+ },
+ {
+  "id": "entroim",
+  "zone": "imperia",
+  "img": "",
+  "icon": "🚪",
+  "where": "Liguria",
+  "name": {
+   "it": "Entroterra: Valloria, Dolcedo & Lingueglietta",
+   "fr": "Arrière-pays : Valloria, Dolcedo & Lingueglietta",
+   "en": "Hinterland: Valloria, Dolcedo & Lingueglietta",
+   "zh": "内陆：瓦洛里亚、多尔切多与林圭列塔"
+  },
+  "t": {
+   "it": "Il paese delle porte dipinte, i ponti medievali di Dolcedo e la chiesa-fortezza di Lingueglietta, tra frantoi e ulivi.",
+   "fr": "Le village aux portes peintes, les ponts médiévaux de Dolcedo et l'église-forteresse de Lingueglietta, entre moulins et oliviers.",
+   "en": "The village of painted doors, Dolcedo's medieval bridges and Lingueglietta's fortified church, among olive mills and groves.",
+   "de": "Das Dorf der bemalten Türen, Dolcedos mittelalterliche Brücken und Lingueglietas Wehrkirche, zwischen Ölmühlen und Oliven.",
+   "nl": "Het dorp van de beschilderde deuren, de middeleeuwse bruggen van Dolcedo en de vestingkerk van Lingueglietta, tussen olijfmolens.",
+   "zh": "彩绘门之村、多尔切多的中世纪古桥和林圭列塔的堡垒教堂，掩映在油坊与橄榄林间。"
+  },
+  "see": [
+   "Valloria, il paese delle porte dipinte",
+   "Dolcedo, ponti medievali",
+   "Lingueglietta, chiesa-fortezza di San Pietro",
+   "Borgomaro",
+   "Valle del Prino"
+  ],
+  "museums": [
+   "Museo delle cose dimenticate (Valloria)"
+  ],
+  "do": [
+   "Visita a un frantoio",
+   "Trekking tra gli uliveti della Valle del Prino"
+  ],
+  "eat": [],
+  "taste": [
+   "Olio extravergine Riviera Ligure DOP",
+   "Olive taggiasche",
+   "Pane e focaccia",
+   "Erbe aromatiche"
+  ]
  },
  {
   "id": "arroscia",
@@ -1719,7 +1851,8 @@ const CITIES = [
    "Museo Etnografico e della Stregoneria (Triora)"
   ],
   "do": [
-   "Escursioni in Valle Argentina"
+   "Escursioni in Valle Argentina",
+   "Fuochi di San Benedetto (febbraio)"
   ],
   "eat": [],
   "taste": [
@@ -1751,7 +1884,10 @@ const CITIES = [
    "Casinò di Sanremo",
    "Chiesa Russa",
    "Corso Imperatrice",
-   "Bussana Vecchia"
+   "Bussana Vecchia",
+   "Forte di Santa Tecla",
+   "Porto Vecchio di Sanremo",
+   "Teatro Ariston"
   ],
   "museums": [
    "Villa Nobel",
@@ -1765,7 +1901,11 @@ const CITIES = [
    "Fiori e mimose",
    "Olive taggiasche"
   ],
-  "do": []
+  "do": [
+   "Festival della Canzone Italiana (febbraio)",
+   "Milano–Sanremo (marzo)",
+   "Sanremo in Fiore (corso fiorito)"
+  ]
  },
  {
   "id": "bordighera",
@@ -1789,13 +1929,16 @@ const CITIES = [
    "Lungomare Argentina (Bordighera)",
    "Bordighera Alta",
    "Giardino Esotico Pallanca",
-   "Seborga, borgo"
+   "Seborga, borgo",
+   "Chiesa di Sant'Ampelio",
+   "Spiaggia della Rotonda"
   ],
   "museums": [
    "Museo Bicknell (Bordighera)"
   ],
   "do": [
-   "Sulle tracce di Monet a Bordighera"
+   "Sulle tracce di Monet a Bordighera",
+   "Serate al Kursaal"
   ],
   "eat": [],
   "taste": [
@@ -1832,7 +1975,8 @@ const CITIES = [
   "museums": [],
   "do": [
    "Degustazione di Rossese nelle cantine",
-   "Sentiero tra i borghi della Val Nervia"
+   "Sentiero tra i borghi della Val Nervia",
+   "Festa della Michetta (agosto)"
   ],
   "eat": [],
   "taste": [
@@ -1864,10 +2008,15 @@ const CITIES = [
   "see": [
    "Giardini Botanici Hanbury",
    "Ventimiglia Alta",
-   "Mercato del venerdì (Ventimiglia)"
+   "Mercato del venerdì (Ventimiglia)",
+   "Grotte dei Balzi Rossi",
+   "Area archeologica di Albintimilium",
+   "Cattedrale dell'Assunta (Ventimiglia Alta)",
+   "Forte dell'Annunziata"
   ],
   "museums": [
-   "Museo Preistorico dei Balzi Rossi"
+   "Museo Preistorico dei Balzi Rossi",
+   "Museo Archeologico Girolamo Rossi (Forte dell'Annunziata)"
   ],
   "eat": [],
   "taste": [
@@ -1875,7 +2024,10 @@ const CITIES = [
    "Agrumi",
    "Olio"
   ],
-  "do": []
+  "do": [
+   "Battaglia di Fiori (giugno)",
+   "Mercato del venerdì"
+  ]
  },
  {
   "id": "menton",
@@ -1916,6 +2068,45 @@ const CITIES = [
    "Fête du Citron (février)"
   ],
   "do": []
+ },
+ {
+  "id": "roya",
+  "zone": "azur",
+  "img": "",
+  "icon": "🏔️",
+  "where": "Côte d'Azur",
+  "name": {
+   "en": "Roya valley & Vallée des Merveilles",
+   "zh": "罗亚河谷与奇迹谷"
+  },
+  "t": {
+   "it": "Borghi sospesi come Saorge e le incisioni rupestri preistoriche della Vallée des Merveilles.",
+   "fr": "Villages suspendus comme Saorge et les gravures rupestres préhistoriques de la Vallée des Merveilles.",
+   "en": "Hanging villages like Saorge and the prehistoric rock engravings of the Vallée des Merveilles.",
+   "de": "Schwebende Dörfer wie Saorge und die prähistorischen Felsgravuren der Vallée des Merveilles.",
+   "nl": "Hangende dorpen als Saorge en de prehistorische rotsgravures van de Vallée des Merveilles.",
+   "zh": "萨奥尔热等悬崖村落，以及奇迹谷的史前岩画。"
+  },
+  "see": [
+   "Saorge, village perché",
+   "Tende",
+   "Vallée des Merveilles (Parc du Mercantour)",
+   "Sospel, pont vieux"
+  ],
+  "museums": [
+   "Musée des Merveilles (Tende)"
+  ],
+  "do": [
+   "Rafting sur la Roya",
+   "Randonnée guidée aux gravures rupestres",
+   "Train des Merveilles Nice–Tende"
+  ],
+  "eat": [],
+  "taste": [
+   "Fromages d'alpage",
+   "Truite",
+   "Miel de montagne"
+  ]
  },
  {
   "id": "roquebrune",
@@ -1984,7 +2175,9 @@ const CITIES = [
   ],
   "do": [
    "Opéra de Monte-Carlo",
-   "Les Ballets de Monte-Carlo"
+   "Les Ballets de Monte-Carlo",
+   "Jimmy'z Monte-Carlo",
+   "Casino de Monte-Carlo"
   ],
   "eat": [
    "Chez Roger (Marché de la Condamine)",
@@ -2148,7 +2341,9 @@ const CITIES = [
   "do": [
    "Promenade côtière en bateau (Trans Côte d'Azur)",
    "La Semeuse",
-   "Carnaval de Nice (février)"
+   "Carnaval de Nice (février)",
+   "Soirées au Port Lympia",
+   "Opéra de Nice"
   ],
   "eat": [
    "Lou Pilha Leva",
@@ -2348,7 +2543,8 @@ const CITIES = [
   "do": [
    "Anthéa – Théâtre d'Antibes",
    "Le Minotaure (Vallauris)",
-   "Jazz à Juan (juillet)"
+   "Jazz à Juan (juillet)",
+   "Le Village (club, Juan-les-Pins)"
   ],
   "eat": [
    "Marché Provençal"
@@ -2505,7 +2701,9 @@ const CITIES = [
    "Office de Tourisme et Boutique officielle de Cannes",
    "Îles de Lérins en bateau",
    "Festival de Cannes (mai)",
-   "Shopping rue d'Antibes et rue Meynadier"
+   "Shopping rue d'Antibes et rue Meynadier",
+   "Soirées au Bâoli (été)",
+   "Casino Barrière Le Croisette"
   ],
   "eat": [
    "Aux Bons Enfants",
@@ -2516,7 +2714,77 @@ const CITIES = [
    "Marché Forville",
    "Socca"
   ]
+ },
+ {
+  "id": "esterel",
+  "zone": "azur",
+  "img": "",
+  "icon": "⛰️",
+  "where": "Côte d'Azur",
+  "name": {
+   "en": "Mandelieu, Théoule & Estérel",
+   "zh": "芒德里厄、泰乌勒与埃斯特雷尔"
+  },
+  "t": {
+   "it": "Rocce rosse a picco sul mare blu: il massiccio dell'Estérel, calette e sentieri a ovest di Cannes.",
+   "fr": "Roches rouges plongeant dans la mer bleue : le massif de l'Estérel, criques et sentiers à l'ouest de Cannes.",
+   "en": "Red rocks plunging into the blue sea: the Estérel massif, coves and trails west of Cannes.",
+   "de": "Rote Felsen über blauem Meer: das Estérel-Massiv, Buchten und Wanderwege westlich von Cannes.",
+   "nl": "Rode rotsen boven de blauwe zee: het Estérelmassief, baaitjes en paden ten westen van Cannes.",
+   "zh": "红色岩石直落蓝海：戛纳以西的埃斯特雷尔山脉、小海湾与步道。"
+  },
+  "see": [
+   "Massif de l'Estérel",
+   "Corniche d'Or",
+   "Pointe de l'Aiguille (Théoule)",
+   "Château de la Napoule (Mandelieu)"
+  ],
+  "museums": [
+   "Château de la Napoule"
+  ],
+  "do": [
+   "Randonnée dans l'Estérel",
+   "Kayak et snorkeling dans les calanques",
+   "Golf à Mandelieu"
+  ],
+  "eat": [],
+  "taste": [
+   "Poissons et bouillabaisse",
+   "Mimosa (Mandelieu, février)"
+  ]
  }
+];
+
+/* ---------- NIGHTLIFE: dove uscire la sera ----------
+   type: club | bar | live | casino | area — orari e stagioni cambiano: verificare sempre */
+const NIGHT = [
+  { zone: "genova", type: "area", icon: "🍹", name: "Centro storico & Piazza delle Erbe", place: "Genova", q: "Piazza delle Erbe Genova", t: { it: "Il cuore della movida: aperitivi e bar nei carruggi.", fr: "Le cœur de la vie nocturne : apéros et bars dans les ruelles.", en: "The heart of the nightlife: aperitivo and bars in the old lanes." } },
+  { zone: "genova", type: "live", icon: "🎷", name: "Louisiana Jazz Club", place: "Genova", q: "Louisiana Jazz Club Genova", t: { it: "Jazz dal vivo, uno dei club storici della città.", fr: "Jazz live, l'un des clubs historiques de la ville.", en: "Live jazz in one of the city's historic clubs." } },
+  { zone: "genova", type: "live", icon: "🎤", name: "Porto Antico – concerti estivi", place: "Genova", q: "Porto Antico Arena Genova", t: { it: "D'estate concerti e spettacoli sul mare.", fr: "L'été, concerts et spectacles face à la mer.", en: "Summer concerts and shows by the sea." } },
+  { zone: "genova", type: "bar", icon: "🌅", name: "Boccadasse al tramonto", place: "Genova", q: "Boccadasse", t: { it: "Aperitivo sugli scogli nel borgo dei pescatori.", fr: "Apéro sur les rochers du village de pêcheurs.", en: "Aperitivo on the rocks of the fishing village." } },
+  { zone: "genova", type: "club", icon: "🪩", name: "Covo di Nord Est", place: "Santa Margherita Ligure", q: "Covo di Nord Est Santa Margherita", t: { it: "Il club storico della Riviera di Levante, sul mare verso Portofino.", fr: "Le club historique de la Riviera du Levant, face à la mer.", en: "The Eastern Riviera's historic club, by the sea towards Portofino." } },
+  { zone: "savona", type: "club", icon: "🪩", name: "Le Vele", place: "Alassio", q: "Le Vele Alassio discoteca", t: { it: "Discoteca con serate di musica elettronica.", fr: "Discothèque avec soirées électro.", en: "Club with electronic music nights." } },
+  { zone: "savona", type: "area", icon: "🍸", name: "Budello & Muretto", place: "Alassio", q: "Budello Alassio", t: { it: "Bar e locali aperti fino a tardi d'estate.", fr: "Bars ouverts tard en été.", en: "Bars open late in summer." } },
+  { zone: "savona", type: "club", icon: "🪩", name: "BFLY Club", place: "Marina di Loano", q: "BFLY Club Loano", t: { it: "Club sul porto turistico di Loano.", fr: "Club sur la marina de Loano.", en: "Club on Loano's marina." } },
+  { zone: "savona", type: "area", icon: "🍹", name: "Lungomare & Finalborgo", place: "Finale Ligure", q: "Finalborgo", t: { it: "Aperitivi sul lungomare e serate nel borgo medievale.", fr: "Apéros en bord de mer et soirées dans le bourg médiéval.", en: "Seafront aperitivo and evenings in the medieval town." } },
+  { zone: "imperia", type: "casino", icon: "🎰", name: "Casinò di Sanremo", place: "Sanremo", q: "Casinò di Sanremo", t: { it: "Gioco, spettacoli ed eventi nel palazzo liberty.", fr: "Jeux, spectacles et événements dans le palais Art nouveau.", en: "Gaming, shows and events in the Art Nouveau palace." } },
+  { zone: "imperia", type: "club", icon: "🪩", name: "Bay Club", place: "Sanremo", q: "Bay Club Sanremo", t: { it: "Club sul lungomare di Sanremo.", fr: "Club sur le front de mer de Sanremo.", en: "Club on Sanremo's seafront." } },
+  { zone: "imperia", type: "club", icon: "🪩", name: "Kursaal", place: "Bordighera", q: "Kursaal Bordighera", t: { it: "Discoteca sul Lungomare Argentina.", fr: "Discothèque sur le Lungomare Argentina.", en: "Club on the Lungomare Argentina." } },
+  { zone: "imperia", type: "area", icon: "🍷", name: "Calata Cuneo", place: "Imperia, Oneglia", q: "Calata Cuneo Imperia", t: { it: "Sotto i portici sul porto: cene e aperitivi.", fr: "Sous les arcades du port : dîners et apéros.", en: "Under the harbour arcades: dinners and aperitivo." } },
+  { zone: "azur", type: "area", icon: "🍹", name: "Vieux-Nice & Cours Saleya", place: "Nice", q: "Cours Saleya Nice", t: { it: "Oltre quaranta bar tra Cours Saleya e Place Garibaldi.", fr: "Plus de quarante bars entre le Cours Saleya et la place Garibaldi.", en: "Over forty bars between Cours Saleya and Place Garibaldi." } },
+  { zone: "azur", type: "bar", icon: "🥃", name: "Les Distilleries Idéales", place: "Nice, Vieux-Nice", q: "Les Distilleries Idéales Nice", t: { it: "Bar storico del Vieux-Nice, perfetto per l'aperitivo.", fr: "Bar historique du Vieux-Nice, idéal pour l'apéro.", en: "A historic Vieux-Nice bar, perfect for aperitivo." } },
+  { zone: "azur", type: "live", icon: "🎸", name: "Ma Nolan's", place: "Nice, Vieux-Nice & Port", q: "Ma Nolan's Nice", t: { it: "Irish pub con musica dal vivo tutte le sere.", fr: "Pub irlandais avec concerts tous les soirs.", en: "Irish pub with live music every night." } },
+  { zone: "azur", type: "live", icon: "🎷", name: "Le Shapko", place: "Nice, Vieux-Nice", q: "Le Shapko Nice", t: { it: "Jazz, soul e jam session fino a tardi.", fr: "Jazz, soul et jam sessions jusqu'à tard.", en: "Jazz, soul and jam sessions until late." } },
+  { zone: "azur", type: "area", icon: "⚓", name: "Port Lympia", place: "Nice", q: "Port Lympia Nice", t: { it: "Bar e cocktail sul porto, la zona dei club.", fr: "Bars et cocktails sur le port, le quartier des clubs.", en: "Bars and cocktails on the harbour, the clubbing area." } },
+  { zone: "azur", type: "club", icon: "🪩", name: "Jimmy'z Monte-Carlo", place: "Monaco", q: "Jimmy'z Monte-Carlo", t: { it: "Il club più famoso del Principato: DJ internazionali e serate disco.", fr: "Le club le plus célèbre de la Principauté : DJ internationaux et soirées disco.", en: "The Principality's most famous club: international DJs and disco nights." } },
+  { zone: "azur", type: "club", icon: "🪩", name: "Twiga Monte-Carlo", place: "Monaco", q: "Twiga Monte-Carlo", t: { it: "Ristorante e club sul mare, Avenue Princesse Grace.", fr: "Restaurant et club face à la mer.", en: "Restaurant and club by the sea." } },
+  { zone: "azur", type: "casino", icon: "🎰", name: "Casino de Monte-Carlo", place: "Monaco", q: "Casino de Monte-Carlo", t: { it: "Il casinò più celebre del mondo, da vedere anche solo da fuori.", fr: "Le casino le plus célèbre du monde, à voir même de l'extérieur.", en: "The world's most famous casino, worth seeing even from outside." } },
+  { zone: "azur", type: "club", icon: "🪩", name: "Bâoli", place: "Cannes, Port Pierre Canto", q: "Baoli Cannes", t: { it: "Ristorante, bar e club sulla Croisette (stagione estiva).", fr: "Restaurant, bar et club sur la Croisette (saison d'été).", en: "Restaurant, bar and club on La Croisette (summer season)." } },
+  { zone: "azur", type: "casino", icon: "🎰", name: "Casino Barrière Le Croisette", place: "Cannes", q: "Casino Barrière Le Croisette Cannes", t: { it: "Casinò e serate accanto al Palais des Festivals.", fr: "Casino et soirées à côté du Palais des Festivals.", en: "Casino and nights out next to the Palais des Festivals." } },
+  { zone: "azur", type: "club", icon: "🪩", name: "Le Village", place: "Juan-les-Pins", q: "Le Village Juan-les-Pins", t: { it: "Uno dei club più popolari della Riviera, con DJ famosi.", fr: "L'un des clubs les plus populaires de la Riviera, avec des DJ célèbres.", en: "One of the Riviera's most popular clubs, with big-name DJs." } },
+  { zone: "azur", type: "bar", icon: "🍸", name: "Pam Pam", place: "Juan-les-Pins", q: "Pam Pam Juan-les-Pins", t: { it: "Cocktail bar storico con DJ nel fine settimana.", fr: "Bar à cocktails historique avec DJ le week-end.", en: "Historic cocktail bar with DJs at weekends." } },
+  { zone: "azur", type: "live", icon: "🎺", name: "Le New Orleans", place: "Juan-les-Pins", q: "Le New Orleans Juan-les-Pins", t: { it: "Vino, cocktail e musica dal vivo nel cuore di Juan.", fr: "Vins, cocktails et musique live au cœur de Juan.", en: "Wine, cocktails and live music in the heart of Juan." } },
+  { zone: "azur", type: "area", icon: "🍹", name: "Vieil Antibes", place: "Antibes", q: "Vieil Antibes", t: { it: "Bar e pub nei vicoli dietro il porto Vauban.", fr: "Bars et pubs dans les ruelles derrière le port Vauban.", en: "Bars and pubs in the lanes behind Port Vauban." } }
 ];
 
 /* ---------- ARTISTS' RIVIERA: artisti, musei e fondazioni ---------- */
@@ -2798,6 +3066,7 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    nightEyebrow: "Di notte", nightSub: "Dove uscire la sera: aperitivi, club, musica dal vivo e casinò.", nightNote: "Orari e stagioni cambiano: controlla sempre i canali del locale prima di andare.", nightTypes: {"club": "🪩 Discoteche", "bar": "🍸 Bar & cocktail", "live": "🎷 Musica dal vivo", "casino": "🎰 Casinò", "area": "🍹 Zone della movida"},
     artSub: "Qui hanno vissuto e lavorato Matisse, Picasso, Chagall, Renoir, Monet: i loro musei e le fondazioni.",
     familySub: "Parchi avventura e divertimento per bambini e famiglie.",
     facts: ["Centro storico tra i più grandi d'Europa", "Acquario tra i più grandi d'Europa", "Palazzi dei Rolli · UNESCO 2006"],
@@ -2840,6 +3109,7 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    nightEyebrow: "La nuit", nightSub: "Où sortir le soir : apéros, clubs, concerts et casinos.", nightNote: "Horaires et saisons changent : vérifiez toujours auprès de l'établissement.", nightTypes: {"club": "🪩 Clubs", "bar": "🍸 Bars & cocktails", "live": "🎷 Musique live", "casino": "🎰 Casinos", "area": "🍹 Quartiers animés"},
     artSub: "Matisse, Picasso, Chagall, Renoir, Monet ont vécu et travaillé ici : leurs musées et fondations.",
     familySub: "Parcs aventure et de loisirs pour enfants et familles.",
     facts: ["Centre historique parmi les plus grands d'Europe", "Aquarium parmi les plus grands d'Europe", "Palais des Rolli · UNESCO 2006"],
@@ -2882,6 +3152,7 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    nightEyebrow: "After dark", nightSub: "Where to go out: aperitivo, clubs, live music and casinos.", nightNote: "Opening hours and seasons change: always check the venue's channels before going.", nightTypes: {"club": "🪩 Clubs", "bar": "🍸 Bars & cocktails", "live": "🎷 Live music", "casino": "🎰 Casinos", "area": "🍹 Nightlife areas"},
     artSub: "Matisse, Picasso, Chagall, Renoir and Monet lived and worked here: their museums and foundations.",
     familySub: "Adventure and leisure parks for kids and families.",
     facts: ["One of Europe's largest old towns", "One of Europe's largest aquariums", "Rolli Palaces · UNESCO 2006"],
@@ -2924,6 +3195,7 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    nightEyebrow: "Nachtleben", nightSub: "Ausgehen am Abend: Aperitivo, Clubs, Livemusik und Casinos.", nightNote: "Öffnungszeiten und Saisons ändern sich: vorher beim Lokal nachsehen.", nightTypes: {"club": "🪩 Clubs", "bar": "🍸 Bars & Cocktails", "live": "🎷 Livemusik", "casino": "🎰 Casinos", "area": "🍹 Ausgehviertel"},
     artSub: "Matisse, Picasso, Chagall, Renoir und Monet lebten und arbeiteten hier: ihre Museen und Stiftungen.",
     familySub: "Abenteuer- und Freizeitparks für Kinder und Familien.",
     facts: ["Eine der größten Altstädte Europas", "Eines der größten Aquarien Europas", "Rolli-Paläste · UNESCO 2006"],
@@ -2966,6 +3238,7 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    nightEyebrow: "Uitgaan", nightSub: "Waar je 's avonds uitgaat: aperitivo, clubs, livemuziek en casino's.", nightNote: "Openingstijden en seizoenen veranderen: check altijd vooraf bij de zaak.", nightTypes: {"club": "🪩 Clubs", "bar": "🍸 Bars & cocktails", "live": "🎷 Livemuziek", "casino": "🎰 Casino's", "area": "🍹 Uitgaanswijken"},
     artSub: "Matisse, Picasso, Chagall, Renoir en Monet woonden en werkten hier: hun musea en stichtingen.",
     familySub: "Avonturen- en pretparken voor kinderen en gezinnen.",
     facts: ["Een van de grootste oude steden van Europa", "Een van de grootste aquaria van Europa", "Rolli-paleizen · UNESCO 2006"],
@@ -3008,6 +3281,7 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    nightEyebrow: "夜生活", nightSub: "晚上去哪儿：开胃酒、夜店、现场音乐与赌场。", nightNote: "营业时间和季节会变动，出发前请先查看场所的官方信息。", nightTypes: {"club": "🪩 夜店", "bar": "🍸 酒吧与鸡尾酒", "live": "🎷 现场音乐", "casino": "🎰 赌场", "area": "🍹 热闹街区"},
     artSub: "马蒂斯、毕加索、夏加尔、雷诺阿、莫奈曾在此生活创作：他们的博物馆与基金会。",
     familySub: "适合儿童与家庭的探险乐园和游乐园。",
     facts: ["欧洲最大老城之一", "欧洲最大水族馆之一", "罗利宫殿群 · 2006年世界遗产"],
@@ -3205,6 +3479,17 @@ $("#spotGenova").addEventListener("click", (ev) => {
   $("#cityChips").scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
+let nightType = "all";
+function renderNight() {
+  chips($("#nightChips"), T().nightTypes, nightType, (k) => { nightType = k; renderNight(); });
+  $("#nightGrid").innerHTML = NIGHT.filter((n) => ofRegion(n) && (nightType === "all" || n.type === nightType)).map((n, i) => `
+    <a class="nightcard" href="${maps(n.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
+      <span class="ic">${n.icon}</span>
+      <span><b>${esc(n.name)}</b><p>${esc(tx(n))}</p><small>📍 ${esc(n.place)} · ${esc(T().nightTypes[n.type].replace(/^\S+ /, ""))}</small></span>
+      <span class="go">↗</span>
+    </a>`).join("");
+}
+
 function renderArtists() {
   $("#artGrid").innerHTML = ARTISTS.filter(ofRegion).map((a, i) => `
     <a class="sport" href="${maps(a.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
@@ -3331,7 +3616,7 @@ function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
   $("#siteItLink").href = $("#menuRent").href = lang === "it" ? SITE_IT.it : SITE_IT.other;
-  renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderSpot(); renderCities(); renderArtists(); renderTodo(); renderSports(); renderHikes(); renderEat();
+  renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderSpot(); renderCities(); renderArtists(); renderNight(); renderTodo(); renderSports(); renderHikes(); renderEat();
 }
 
 $("#langList").addEventListener("click", (ev) => {
