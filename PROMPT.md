@@ -13,6 +13,9 @@ A monthly newsletter about what happens and what to do in the provinces of **Gen
 - Light animations (scrolling ticker, hover zoom on photos, sections fading in), respecting "reduced motion".
 - Must work perfectly on phones (no horizontal scrolling) and on desktop.
 
+## Two coasts, separate or together
+At the top of the page and right under the cover, the reader chooses **Liguria**, **Côte d'Azur** or **Both**, with two big photo buttons and a third "Both" button, plus a small switch always visible in the top bar. All sections (events, map, places, experiences, hiking, restaurants, dishes) then show only the chosen coast, so the information is never mixed up. Direct links open one coast (e.g. `?region=liguria`, `?region=azur`), and can be combined with the language.
+
 ## Languages
 At least **6 languages**, switchable from a menu at the top: **Italian, French, English, German, Dutch, Chinese**.
 - The page opens in the visitor's browser language and remembers the choice.

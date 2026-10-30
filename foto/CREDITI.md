@@ -33,3 +33,5 @@ Tutte le foto vengono da [Pexels](https://www.pexels.com) e sono usate secondo l
 - `foto/spiagge.jpg` — https://www.pexels.com/photo/30700488/
 - `foto/tramonto.jpg` — https://www.pexels.com/photo/28602937/
 - `foto/whale.jpg` — https://www.pexels.com/photo/892548/
+- `foto/genova-mare.jpg` — https://www.pexels.com/photo/30143084/
+- `foto/monaco-alto.jpg` — https://www.pexels.com/photo/31292749/

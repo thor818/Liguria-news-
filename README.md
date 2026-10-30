@@ -3,6 +3,12 @@
 Giornalino web in 6 lingue (italiano, français, English, Deutsch, Nederlands, 中文) con gli eventi di Genova, Savona, Imperia e Costa Azzurra.
 La pagina è `index.html`, le foto sono nella cartella `foto/`. Si apre con qualsiasi browser e si pubblica su qualsiasi hosting.
 
+## Liguria o Costa Azzurra
+
+In alto e sotto la copertina il lettore sceglie **Liguria**, **Costa Azzurra** o **tutte e due**: eventi, mappa, luoghi, esperienze, sentieri, ristoranti e piatti mostrano solo la costa scelta.
+Link diretti: `?region=liguria` oppure `?region=azur` (si possono unire alla lingua: `?region=azur&lang=fr`).
+Le esperienze (`TODO`) e i piatti (`DISHES`) hanno il campo costa: `lig`, `azur` o `both`; le altre voci usano `zone`.
+
 ## Le rubriche
 
 | Rubrica | Cosa contiene | Dove si modifica in `index.html` |

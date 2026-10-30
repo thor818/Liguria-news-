@@ -46,6 +46,9 @@
   .nav { display: flex; gap: 2px; }
   .nav a { text-decoration: none; font-size: .88rem; font-weight: 500; color: var(--muted); padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
   .nav a:hover { background: var(--bg); color: var(--ink); }
+  .reg { display: flex; background: var(--bg); border-radius: 999px; padding: 4px; gap: 2px; }
+  .reg button { border: 0; background: none; padding: 7px 12px; border-radius: 999px; font: 600 .8rem Inter, sans-serif; cursor: pointer; color: var(--muted); white-space: nowrap; }
+  .reg button.on { background: var(--coral); color: #fff; }
   .lang { position: relative; }
   .lang summary { list-style: none; cursor: pointer; background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 999px; font: 600 .85rem Inter, sans-serif; user-select: none; white-space: nowrap; }
   .lang summary::-webkit-details-marker { display: none; }
@@ -82,6 +85,28 @@
   .cover .stat div { flex: 1; background: rgba(255,255,255,.9); backdrop-filter: blur(8px); border-radius: 16px; padding: 12px 14px; }
   .cover .stat b { display: block; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1; }
   .cover .stat span { font-size: .75rem; color: var(--muted); font-weight: 500; }
+
+  /* ---------- Scelta della costa ---------- */
+  .choose-head { margin-top: 48px; display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; }
+  .choose-head h2 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; margin: 0; }
+  .choose-head p { margin: 0; color: var(--muted); }
+  .choose { display: grid; grid-template-columns: 1fr 1fr 190px; gap: 14px; margin-top: 18px; }
+  .pick { position: relative; isolation: isolate; overflow: hidden; border-radius: 24px; min-height: 200px; padding: 24px; color: #fff; text-align: left; border: 0; outline: 3px solid transparent; outline-offset: 3px; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; font: inherit; background: var(--navy); transition: outline-color .2s, transform .2s; }
+  .pick:hover { transform: translateY(-3px); }
+  .pick img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s; }
+  .pick::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(8,20,30,.78), rgba(8,20,30,.05) 70%); }
+  .pick:hover img { transform: scale(1.05); }
+  .pick.on { outline-color: var(--coral); }
+  .pick b { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2.8rem; line-height: 1; }
+  .pick .sub { font-size: .9rem; opacity: .92; }
+  .pick .check { position: absolute; top: 16px; right: 16px; background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 12px; font-size: .78rem; font-weight: 700; }
+  .pick:not(.on) .check { background: rgba(255,255,255,.2); color: #fff; }
+  .pick.both { background: var(--paper); color: var(--ink); border: 1px solid var(--line); align-items: center; justify-content: center; text-align: center; }
+  .pick.both::after { display: none; }
+  .pick.both b { font-size: 1.9rem; }
+  .pick.both .flags { font-size: 2rem; }
+  .pin.off { opacity: .3; }
+  .see .tile.w2 { grid-column: span 2; }
 
   /* ---------- Ticker ---------- */
   .ticker { margin: 56px -10px 0; background: var(--navy); color: #fff; overflow: hidden; white-space: nowrap; padding: 16px 0; transform: rotate(-1deg); }
@@ -125,7 +150,6 @@
   .see .tile { min-height: 0; }
   .see .tile:nth-child(1) { grid-column: span 2; grid-row: span 2; }
   .see .tile:nth-child(1) h3 { font-size: clamp(2.4rem, 4vw, 3.4rem); }
-  .see .tile:nth-child(4) { grid-column: span 2; }
 
   /* ---------- Filtri ---------- */
   .filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
@@ -258,11 +282,21 @@
     .reveal { opacity: 1; transform: none; }
   }
 
+  .reg .txt { display: none; }
+  @media (max-width: 1100px) and (min-width: 561px) { .reg .txt { display: inline; } }
+  @media (max-width: 560px) { .bar { padding-left: 16px; } .logo { font-size: 1.45rem; } .lang summary { padding: 10px 12px; } }
   @media (max-width: 1100px) { .nav { display: none; } .index { grid-template-columns: repeat(4, 1fr); } }
   @media (max-width: 900px) {
     .hero { padding-top: 96px; }
     .hero-grid, .news, footer .wrap, .eat, .guides { grid-template-columns: minmax(0, 1fr); }
     .cover { aspect-ratio: 4 / 3.6; }
+    .choose { grid-template-columns: 1fr 1fr; }
+    .pick { min-height: 160px; padding: 18px; }
+    .pick b { font-size: 1.55rem; }
+    .pick .check { top: 10px; right: 10px; padding: 4px 9px; font-size: .7rem; }
+    .pick:not(.on) .check { display: none; }
+    .pick.both { grid-column: span 2; min-height: 64px; flex-direction: row; gap: 12px; }
+    .pick.both b { font-size: 1.5rem; }
     .index { grid-template-columns: repeat(4, 1fr); gap: 8px; }
     .index a { padding: 12px 10px; }
     .index span { font-size: 1.1rem; }
@@ -271,7 +305,7 @@
     .tile.big .emo { font-size: 5.5rem; top: 26px; right: 28px; }
     .see { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
     .see .tile:nth-child(1) { grid-column: span 2; grid-row: span 1; min-height: 300px; }
-    .see .tile:nth-child(4) { grid-column: span 1; }
+    .see .tile.w2 { grid-column: span 1; }
     .see .tile { padding: 16px; }
     .see .tile h3 { font-size: 1.5rem; }
     .see .tile p { display: none; }
@@ -302,6 +336,7 @@
       <a href="#eat">Where to eat</a>
       <a href="#stay">Stay</a>
     </nav>
+    <div class="reg" id="regBar" role="group" aria-label="Riviera"></div>
     <details class="lang" id="langMenu">
       <summary aria-label="Language">🌐 <span id="langCur">IT</span> ▾</summary>
       <div class="lang-list" id="langList"></div>
@@ -314,7 +349,7 @@
   <div class="wrap hero-grid">
     <div>
       <span class="pill" data-i18n="issue"></span>
-      <h1>How to live <em>the Riviera</em><small>Liguria &amp; Côte d'Azur</small></h1>
+      <h1>How to live <em>the Riviera</em><small id="heroSub">Liguria &amp; Côte d'Azur</small></h1>
       <p data-i18n="heroLead"></p>
       <div class="cta">
         <a class="btn dark" href="#on"><span data-i18n="ctaEvents"></span> <span class="arr">→</span></a>
@@ -322,14 +357,23 @@
       </div>
     </div>
     <div class="cover">
-      <img src="foto/hero.jpg" alt="Portofino">
-      <span class="tag">📍 Portofino</span>
+      <img src="foto/hero.jpg" alt="" id="coverImg">
+      <span class="tag" id="coverTag">📍 Portofino</span>
       <div class="stat">
         <div><b id="statEvents">0</b><span data-i18n="statEvents"></span></div>
         <div><b id="statPlaces">0</b><span data-i18n="statPlaces"></span></div>
         <div><b id="statLangs">6</b><span data-i18n="statLangs"></span></div>
       </div>
     </div>
+  </div>
+
+  <!-- Scelta della costa: Liguria, Costa Azzurra o tutte e due -->
+  <div class="wrap">
+    <div class="choose-head">
+      <h2>Choose your <em>Riviera</em></h2>
+      <p data-i18n="chooseSub"></p>
+    </div>
+    <div class="choose" id="choose"></div>
   </div>
 
   <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
@@ -636,6 +680,13 @@ const SEE = [
     de: ["Monaco", "Der Felsen, der Fürstenpalast und die Jachten im Port Hercule."],
     nl: ["Monaco", "De Rots, het Prinselijk Paleis en de jachten van Port Hercule."],
     zh: ["摩纳哥", "摩纳哥岩、亲王宫和大力神港的游艇。"] } },
+  { zone: "genova", icon: "🌊", img: "foto/genova-mare.jpg", q: "Passeggiata Anita Garibaldi Nervi", t: {
+    it: ["Genova sul mare", "Nervi e Boccadasse: passeggiate e caffè affacciati sulle onde."],
+    fr: ["Gênes côté mer", "Nervi et Boccadasse : promenades et cafés face aux vagues."],
+    en: ["Genoa by the sea", "Nervi and Boccadasse: seaside walks and cafés over the waves."],
+    de: ["Genua am Meer", "Nervi und Boccadasse: Spaziergänge und Cafés direkt am Wasser."],
+    nl: ["Genua aan zee", "Nervi en Boccadasse: wandelingen en cafés aan de golven."],
+    zh: ["海边的热那亚", "内尔维与博卡达塞：海边漫步与临海咖啡馆。"] } },
   { zone: "azur", icon: "🍋", img: "foto/menton-vicoli.jpg", q: "Vieille ville Menton", t: {
     it: ["Mentone", "Case color pastello, giardini e limoni al confine con l'Italia."],
     fr: ["Menton", "Façades pastel, jardins et citronniers à la frontière italienne."],
@@ -661,27 +712,31 @@ const SEE = [
 
 /* ---------- WHAT TO DO: esperienze ---------- */
 const TODO = [
-  { icon: "🐋", img: "foto/whale.jpg", url: "#", t: {
+  { region: "lig", icon: "🐋", img: "foto/whale.jpg", url: "#", t: {
     it: ["Whale watching", "Santuario Pelagos, da Genova e Imperia"], fr: ["Whale watching", "Sanctuaire Pelagos, depuis Gênes et Imperia"],
     en: ["Whale watching", "Pelagos Sanctuary, from Genoa and Imperia"], de: ["Walbeobachtung", "Pelagos-Schutzgebiet, ab Genua und Imperia"],
     nl: ["Walvissen spotten", "Pelagos-reservaat, vanuit Genua en Imperia"], zh: ["出海观鲸", "派拉格斯海洋保护区，从热那亚和因佩里亚出发"] } },
-  { icon: "🚵", img: "foto/mtb.jpg", url: "#", t: {
+  { region: "lig", icon: "🚵", img: "foto/mtb.jpg", url: "#", t: {
     it: ["Bike a Finale", "Capitale europea della MTB"], fr: ["VTT à Finale", "Capitale européenne du VTT"],
     en: ["Biking in Finale", "Europe's mountain bike capital"], de: ["Biken in Finale", "Europas Mountainbike-Hauptstadt"],
     nl: ["Fietsen in Finale", "Europese hoofdstad van het mountainbiken"], zh: ["菲纳莱骑行", "欧洲山地车之都"] } },
-  { icon: "🤿", img: "foto/diving.jpg", url: "#", t: {
+  { region: "lig", icon: "🤿", img: "foto/diving.jpg", url: "#", t: {
     it: ["Snorkeling e diving", "Area marina di Portofino e Isola Gallinara"], fr: ["Snorkeling et plongée", "Aire marine de Portofino et île Gallinara"],
     en: ["Snorkelling & diving", "Portofino marine reserve and Gallinara Island"], de: ["Schnorcheln & Tauchen", "Meeresschutzgebiet Portofino und Insel Gallinara"],
     nl: ["Snorkelen & duiken", "Zeereservaat Portofino en het eiland Gallinara"], zh: ["浮潜与潜水", "波托菲诺海洋保护区与加利纳拉岛"] } },
-  { icon: "🏖️", img: "foto/spiagge.jpg", url: "#", t: {
+  { region: "both", icon: "🏖️", img: "foto/spiagge.jpg", url: "#", t: {
     it: ["Spiagge", "Dalla Baia del Silenzio a Paloma Beach"], fr: ["Plages", "De la Baia del Silenzio à Paloma Beach"],
     en: ["Beaches", "From Baia del Silenzio to Paloma Beach"], de: ["Strände", "Von der Baia del Silenzio bis Paloma Beach"],
     nl: ["Stranden", "Van de Baia del Silenzio tot Paloma Beach"], zh: ["海滩", "从静谧湾到帕洛玛海滩"] } },
-  { icon: "🌅", img: "foto/tramonto.jpg", url: "#", t: {
+  { region: "azur", icon: "🌅", img: "foto/tramonto.jpg", url: "#", t: {
     it: ["Aperitivo al tramonto", "Sulla Promenade o in un bar sul porto"], fr: ["Apéro au coucher du soleil", "Sur la Promenade ou sur le port"],
     en: ["Sunset aperitivo", "On the Promenade or by the harbour"], de: ["Aperitivo bei Sonnenuntergang", "Auf der Promenade oder am Hafen"],
     nl: ["Aperitivo bij zonsondergang", "Op de boulevard of aan de haven"], zh: ["日落开胃酒", "在海滨大道或港口小酒吧"] } },
-  { icon: "🏘️", img: "foto/borghi.jpg", url: "#", t: {
+  { region: "azur", icon: "🌴", img: "foto/monaco-alto.jpg", url: "#", t: {
+    it: ["Monaco dall'alto", "Il Jardin Exotique e la vista sul Rocher"], fr: ["Monaco vu d'en haut", "Le Jardin Exotique et la vue sur le Rocher"],
+    en: ["Monaco from above", "The Jardin Exotique and views of the Rock"], de: ["Monaco von oben", "Der Jardin Exotique und der Blick auf den Felsen"],
+    nl: ["Monaco van bovenaf", "De Jardin Exotique en het uitzicht op de Rots"], zh: ["俯瞰摩纳哥", "异域花园与摩纳哥岩美景"] } },
+  { region: "both", icon: "🏘️", img: "foto/borghi.jpg", url: "#", t: {
     it: ["Borghi dell'entroterra", "Apricale, Dolceacqua, Sainte-Agnès"], fr: ["Villages de l'arrière-pays", "Apricale, Dolceacqua, Sainte-Agnès"],
     en: ["Hill villages", "Apricale, Dolceacqua, Sainte-Agnès"], de: ["Bergdörfer", "Apricale, Dolceacqua, Sainte-Agnès"],
     nl: ["Bergdorpjes", "Apricale, Dolceacqua, Sainte-Agnès"], zh: ["内陆山村", "阿普里卡莱、多尔切阿夸、圣阿涅斯"] } }
@@ -779,11 +834,13 @@ const RESTAURANTS = [
     nl: "De banketbakkerij waar de Baci di Alassio zijn ontstaan.", zh: "阿拉西奥之吻巧克力饼干的诞生地。" } }
 ];
 
-/* Piatti tipici (nome e luogo) */
+/* Piatti tipici: icona, nome, luogo, costa (lig | azur | both) */
 const DISHES = [
-  ["🌿", "Pesto", "Genova"], ["🧀", "Focaccia di Recco", "Recco"], ["🔥", "Farinata · Socca", "Genova · Nice"],
-  ["🧅", "Pissaladière", "Nice"], ["🥗", "Salade niçoise", "Nice"], ["🐟", "Brandacujun", "Imperia"],
-  ["🦐", "Cappon magro", "Genova"], ["🥟", "Barbagiuai", "Dolceacqua"], ["🍫", "Baci di Alassio", "Alassio"], ["🫒", "Olio Taggiasco", "Imperia"]
+  ["🌿", "Pesto", "Genova", "lig"], ["🧀", "Focaccia di Recco", "Recco", "lig"], ["🔥", "Farinata · Socca", "Genova · Nice", "both"],
+  ["🐟", "Brandacujun", "Imperia", "lig"], ["🦐", "Cappon magro", "Genova", "lig"], ["🥟", "Barbagiuai", "Dolceacqua", "lig"],
+  ["🍫", "Baci di Alassio", "Alassio", "lig"], ["🫒", "Olio Taggiasco", "Imperia", "lig"],
+  ["🧅", "Pissaladière", "Nice", "azur"], ["🥗", "Salade niçoise", "Nice", "azur"], ["🥪", "Pan bagnat", "Nice", "azur"],
+  ["🥬", "Tourte de blettes", "Nice", "azur"], ["🥟", "Barbajuan", "Monaco", "azur"]
 ];
 
 /* Guide e siti dove escono recensioni e nuove aperture */
@@ -797,6 +854,8 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    chooseSub: "Guarda solo la Liguria, solo la Costa Azzurra, o tutte e due.", regions: { lig: "Liguria", azur: "Costa Azzurra", all: "Tutte e due" },
+    regionSub: { lig: "Genova · Savona · Imperia", azur: "Mentone · Monaco · Nizza · Cannes" }, selected: "Selezionata", pick: "Scegli",
     issue: "N° 1 · Novembre 2026",
     heroLead: "Cosa succede, dove andare, cosa vedere, cosa fare e dove mangiare tra Genova, Savona, Imperia e la Costa Azzurra.",
     ctaEvents: "Scopri gli eventi", ctaEat: "Dove mangiare",
@@ -827,6 +886,8 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    chooseSub: "Ne voir que la Ligurie, que la Côte d'Azur, ou les deux.", regions: { lig: "Ligurie", azur: "Côte d'Azur", all: "Les deux" },
+    regionSub: { lig: "Gênes · Savone · Imperia", azur: "Menton · Monaco · Nice · Cannes" }, selected: "Sélectionnée", pick: "Choisir",
     issue: "N° 1 · Novembre 2026",
     heroLead: "Ce qui se passe, où aller, que voir, que faire et où manger entre Gênes, Savone, Imperia et la Côte d'Azur.",
     ctaEvents: "Voir les événements", ctaEat: "Où manger",
@@ -857,6 +918,8 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    chooseSub: "See only Liguria, only the French Riviera, or both.", regions: { lig: "Liguria", azur: "French Riviera", all: "Both" },
+    regionSub: { lig: "Genoa · Savona · Imperia", azur: "Menton · Monaco · Nice · Cannes" }, selected: "Selected", pick: "Choose",
     issue: "No. 1 · November 2026",
     heroLead: "What's on, where to go, what to see, what to do and where to eat between Genoa, Savona, Imperia and the Côte d'Azur.",
     ctaEvents: "Discover events", ctaEat: "Where to eat",
@@ -887,6 +950,8 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    chooseSub: "Nur Ligurien, nur die Côte d'Azur oder beides ansehen.", regions: { lig: "Ligurien", azur: "Côte d'Azur", all: "Beides" },
+    regionSub: { lig: "Genua · Savona · Imperia", azur: "Menton · Monaco · Nizza · Cannes" }, selected: "Ausgewählt", pick: "Wählen",
     issue: "Nr. 1 · November 2026",
     heroLead: "Was los ist, wohin, was sehen, was tun und wo essen zwischen Genua, Savona, Imperia und der Côte d'Azur.",
     ctaEvents: "Events entdecken", ctaEat: "Wo essen",
@@ -917,6 +982,8 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    chooseSub: "Bekijk alleen Ligurië, alleen de Côte d'Azur, of allebei.", regions: { lig: "Ligurië", azur: "Côte d'Azur", all: "Allebei" },
+    regionSub: { lig: "Genua · Savona · Imperia", azur: "Menton · Monaco · Nice · Cannes" }, selected: "Gekozen", pick: "Kiezen",
     issue: "Nr. 1 · November 2026",
     heroLead: "Wat er te doen is, waar je heen gaat, wat je ziet en waar je eet tussen Genua, Savona, Imperia en de Côte d'Azur.",
     ctaEvents: "Ontdek evenementen", ctaEat: "Waar eten",
@@ -947,6 +1014,8 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    chooseSub: "只看利古里亚、只看蔚蓝海岸，或两者都看。", regions: { lig: "利古里亚", azur: "蔚蓝海岸", all: "两者都看" },
+    regionSub: { lig: "热那亚 · 萨沃纳 · 因佩里亚", azur: "芒通 · 摩纳哥 · 尼斯 · 戛纳" }, selected: "已选择", pick: "选择",
     issue: "第1期 · 2026年11月",
     heroLead: "热那亚、萨沃纳、因佩里亚与蔚蓝海岸：活动、去哪儿、看什么、玩什么、吃什么。",
     ctaEvents: "查看活动", ctaEat: "美食推荐",
@@ -991,6 +1060,17 @@ try { lang = pickLang(localStorage.getItem("riviera-lang")) || lang; } catch (e)
 lang = pickLang(new URLSearchParams(location.search).get("lang")) || lang;
 let zone = "all", cat = "all", tag = "all";
 
+/* Costa scelta: "lig" (Liguria), "azur" (Costa Azzurra) o "all" (tutte e due).
+   Link diretto: ?region=liguria oppure ?region=azur */
+const REGION_PARAM = { liguria: "lig", lig: "lig", azur: "azur", "cote-azur": "azur", all: "all" };
+let region = "all";
+try { region = REGION_PARAM[localStorage.getItem("riviera-region")] || region; } catch (e) {}
+region = REGION_PARAM[(new URLSearchParams(location.search).get("region") || "").toLowerCase()] || region;
+const regionOf = (z) => z === "azur" ? "azur" : "lig";
+const inRegion = (r) => region === "all" || r === "both" || r === region;
+const ofRegion = (item) => inRegion(item.region || regionOf(item.zone));
+const COVER = { all: ["foto/hero.jpg", "Portofino"], lig: ["foto/hero.jpg", "Portofino"], azur: ["foto/nizza.jpg", "Nice"] };
+
 const T = () => I18N[lang];
 const tx = (item) => item.t[lang] || item.t.en;
 const $ = (s) => document.querySelector(s);
@@ -1001,6 +1081,7 @@ const img = (src) => src ? `<img src="${esc(src)}" alt="" loading="lazy" onerror
 
 /* Eventi non ancora finiti, in ordine di data */
 const UPCOMING = EVENTS.filter((e) => day(e.end || e.date) >= today).sort((a, b) => a.date.localeCompare(b.date));
+const shown = () => UPCOMING.filter(ofRegion);
 
 function fmtDate(e) {
   const f = (iso, opt) => day(iso).toLocaleDateString(T().locale, opt);
@@ -1023,15 +1104,18 @@ function chips(el, items, current, onPick) {
 }
 
 function renderTicker() {
-  const items = UPCOMING.map((e) => `<span><small>${esc(fmtDate(e))}</small>${esc(tx(e)[0])}</span>`).join("");
+  const items = shown().map((e) => `<span><small>${esc(fmtDate(e))}</small>${esc(tx(e)[0])}</span>`).join("");
   $("#ticker").innerHTML = items + items;
-  $("#statEvents").textContent = UPCOMING.length;
-  $("#statPlaces").textContent = SEE.length + HIKES.length + RESTAURANTS.length;
+  $("#statEvents").textContent = shown().length;
+  $("#statPlaces").textContent = [...SEE, ...HIKES, ...RESTAURANTS].filter(ofRegion).length;
   $("#statLangs").textContent = Object.keys(LANGS).length;
 }
 
 function renderBento() {
-  const feat = UPCOMING.filter((e) => e.featured).sort((a, b) => a.featured - b.featured).slice(0, 3);
+  /* primo piano: gli eventi "featured" della costa scelta, completati con i prossimi eventi */
+  const list = shown(), feat = list.filter((e) => e.featured).sort((a, b) => a.featured - b.featured);
+  list.forEach((e) => { if (feat.length < 3 && !feat.includes(e)) feat.push(e); });
+  feat.splice(3);
   $("#bento").innerHTML = feat.map((e, i) => {
     const [title, place, text] = tx(e);
     return `<a class="tile ${i === 0 ? "big" : ""}" href="${esc(e.url)}" target="_blank" rel="noopener">
@@ -1043,10 +1127,10 @@ function renderBento() {
 }
 
 function renderEvents() {
-  const zoneLabels = Object.fromEntries(Object.entries(T().zones).map(([k, v]) => [k, "📍 " + v]));
+  const zoneLabels = Object.fromEntries(Object.entries(T().zones).filter(([k]) => inRegion(regionOf(k))).map(([k, v]) => [k, "📍 " + v]));
   chips($("#zoneChips"), zoneLabels, zone, (k) => { zone = k; renderPins(); renderEvents(); });
   chips($("#catChips"), T().cats, cat, (k) => { cat = k; renderEvents(); });
-  const list = UPCOMING.filter((e) => (zone === "all" || e.zone === zone) && (cat === "all" || e.cat === cat));
+  const list = shown().filter((e) => (zone === "all" || e.zone === zone) && (cat === "all" || e.cat === cat));
   $("#grid").innerHTML = list.length ? list.map((e, i) => {
     const [title, place, text] = tx(e), soon = countdown(e);
     return `<a class="card" href="${esc(e.url)}" target="_blank" rel="noopener" style="animation-delay:${i * 40}ms">
@@ -1069,23 +1153,25 @@ function renderPins() {
   $("#mapSea").textContent = T().map.sea;
   $("#pins").innerHTML = Object.entries(PINS).map(([k, [x, y, dx, dy]]) => {
     const n = UPCOMING.filter((e) => e.zone === k).length;
-    return `<g class="pin ${zone === k ? "on" : ""}" data-k="${k}" tabindex="0" role="button">
+    return `<g class="pin ${zone === k ? "on" : ""} ${inRegion(regionOf(k)) ? "" : "off"}" data-k="${k}" tabindex="0" role="button">
       <circle class="halo" cx="${x}" cy="${y}" r="22"/><circle class="dot" cx="${x}" cy="${y}" r="11"/>
       <text class="lbl" x="${x + dx}" y="${y + dy}">${esc(T().zones[k])}</text>
       <text class="n" x="${x + dx}" y="${y + dy + 18}">${n} ${n === 1 ? T().events1 : T().eventsN} →</text>
     </g>`;
   }).join("");
   $("#pins").querySelectorAll(".pin").forEach((p) => {
-    const go = () => { zone = p.dataset.k; renderPins(); renderEvents(); $("#grid").scrollIntoView({ behavior: "smooth", block: "start" }); };
+    const go = () => { zone = p.dataset.k; if (!inRegion(regionOf(zone))) { setRegion(regionOf(zone)); zone = p.dataset.k; } renderPins(); renderEvents(); $("#grid").scrollIntoView({ behavior: "smooth", block: "start" }); };
     p.addEventListener("click", go);
     p.addEventListener("keydown", (ev) => { if (ev.key === "Enter") go(); });
   });
 }
 
 function renderSee() {
-  $("#seeGrid").innerHTML = SEE.map((s) => {
+  /* il primo luogo è grande; gli ultimi si allargano per riempire le righe da 4 */
+  const list = SEE.filter(ofRegion), wide = (4 - (list.length + 3) % 4) % 4;
+  $("#seeGrid").innerHTML = list.map((s, i) => {
     const [title, text] = tx(s);
-    return `<a class="tile" href="${maps(s.q)}" target="_blank" rel="noopener">
+    return `<a class="tile ${i > 0 && i >= list.length - wide ? "w2" : ""}" href="${maps(s.q)}" target="_blank" rel="noopener">
       <div class="bg g-cultura">${img(s.img)}</div><span class="emo">${s.icon}</span>
       <span class="chip-z">📍 ${esc(T().zones[s.zone])}</span>
       <h3>${esc(title)}</h3><p>${esc(text)}</p>
@@ -1094,7 +1180,7 @@ function renderSee() {
 }
 
 function renderTodo() {
-  $("#rail").innerHTML = TODO.map((t, i) => {
+  $("#rail").innerHTML = TODO.filter(ofRegion).map((t, i) => {
     const [title, sub] = tx(t);
     return `<a class="exp" href="${esc(t.url)}" style="background:linear-gradient(160deg,#3fa7d6,#0b2a40)">
       ${img(t.img)}<span class="emo">${t.icon}</span><span class="n">0${i + 1}</span>
@@ -1104,7 +1190,7 @@ function renderTodo() {
 }
 
 function renderHikes() {
-  $("#hikeGrid").innerHTML = HIKES.map((h, i) => {
+  $("#hikeGrid").innerHTML = HIKES.filter(ofRegion).map((h, i) => {
     const [title, text] = tx(h);
     return `<a class="card" href="${maps(h.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 40}ms">
       <div class="media g-hike"><span class="emo">${h.icon}</span>${img(h.img)}
@@ -1123,9 +1209,9 @@ function renderHikes() {
 }
 
 function renderEat() {
-  $("#dishes").innerHTML = DISHES.map(([i, n, w]) => `<span class="dish">${i} ${esc(n)} <small>· ${esc(w)}</small></span>`).join("");
+  $("#dishes").innerHTML = DISHES.filter((d) => inRegion(d[3])).map(([i, n, w]) => `<span class="dish">${i} ${esc(n)} <small>· ${esc(w)}</small></span>`).join("");
   chips($("#tagChips"), T().tags, tag, (k) => { tag = k; renderEat(); });
-  $("#rests").innerHTML = RESTAURANTS.filter((r) => tag === "all" || r.tag === tag).map((r, i) => `
+  $("#rests").innerHTML = RESTAURANTS.filter((r) => ofRegion(r) && (tag === "all" || r.tag === tag)).map((r, i) => `
     <a class="rest" href="${maps(r.q)}" target="_blank" rel="noopener" style="animation-delay:${i * 30}ms">
       <span class="ic">${r.icon}</span>
       <div>
@@ -1138,6 +1224,30 @@ function renderEat() {
   $("#guides").innerHTML = GUIDES.map(([n, d, u]) => `<a href="${u}" target="_blank" rel="noopener">${esc(n)}<small>${esc(d)} ↗</small></a>`).join("");
 }
 
+function setRegion(r) {
+  region = r;
+  if (zone !== "all" && !inRegion(regionOf(zone))) zone = "all";
+  try { localStorage.setItem("riviera-region", r); } catch (e) {}
+  render();
+}
+
+function renderRegion() {
+  const R = T().regions;
+  $("#regBar").innerHTML = [["lig", "🇮🇹"], ["azur", "🇫🇷"], ["all", "🇮🇹🇫🇷"]]
+    .map(([k, f]) => `<button data-r="${k}" class="${region === k ? "on" : ""}" title="${esc(R[k])}">${f}<span class="txt"> ${esc(R[k])}</span></button>`).join("");
+  $("#choose").innerHTML = ["lig", "azur"].map((k) => `
+    <button class="pick ${region === k ? "on" : ""}" data-r="${k}">
+      <img src="${k === "lig" ? "foto/camogli.jpg" : "foto/nizza.jpg"}" alt="">
+      <span class="check">${region === k ? "✓" : esc(T().pick)}</span>
+      <b>${k === "lig" ? "🇮🇹" : "🇫🇷"} ${esc(R[k])}</b><span class="sub">${esc(T().regionSub[k])}</span>
+    </button>`).join("") + `
+    <button class="pick both ${region === "all" ? "on" : ""}" data-r="all"><span class="flags">🇮🇹🇫🇷</span><b>${esc(R.all)}</b></button>`;
+  const [src, place] = COVER[region];
+  $("#coverImg").src = src;
+  $("#coverTag").textContent = "📍 " + place;
+  $("#heroSub").textContent = region === "lig" ? "Liguria" : region === "azur" ? "Côte d'Azur" : "Liguria & Côte d'Azur";
+}
+
 function renderLangMenu() {
   $("#langCur").textContent = lang.toUpperCase();
   $("#langList").innerHTML = Object.entries(LANGS)
@@ -1148,7 +1258,7 @@ function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T()[el.dataset.i18n]; });
   $("#siteItLink").href = lang === "it" ? SITE_IT.it : SITE_IT.other;
-  renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderTodo(); renderHikes(); renderEat();
+  renderRegion(); renderLangMenu(); renderTicker(); renderBento(); renderEvents(); renderPins(); renderSee(); renderTodo(); renderHikes(); renderEat();
 }
 
 $("#langList").addEventListener("click", (ev) => {
@@ -1160,6 +1270,14 @@ $("#langList").addEventListener("click", (ev) => {
   render();
 });
 document.addEventListener("click", (ev) => { if (!ev.target.closest("#langMenu")) $("#langMenu").open = false; });
+
+$("#regBar").addEventListener("click", (ev) => { const b = ev.target.closest("button"); if (b) setRegion(b.dataset.r); });
+$("#choose").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button");
+  if (!b) return;
+  setRegion(b.dataset.r);
+  $("#on").scrollIntoView({ behavior: "smooth" });
+});
 
 document.querySelectorAll(".rail-nav button").forEach((b) => b.addEventListener("click", () => {
   $("#rail").scrollBy({ left: b.dataset.dir * 320, behavior: "smooth" });
