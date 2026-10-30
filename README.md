@@ -30,7 +30,7 @@ Tutti i contenuti sono in cima allo `<script>` di `index.html`, sotto **CONTENUT
 - `img`: foto nella cartella `foto/`; se vuota si usa un'illustrazione con l'emoji.
 - Eventi: `date` / `end` in formato `AAAA-MM-GG`; `featured: 1/2/3` per il primo piano. Gli eventi finiti spariscono da soli.
 - Luoghi, sentieri e ristoranti: `q` è la ricerca che apre Google Maps.
-- Ristoranti: `tag` = `michelin` | `trad` | `street` | `sweet`, `price` da `€` a `€€€€`.
+- Ristoranti: `tag` = `michelin` | `modern` | `trad` | `street` | `sweet`, `price` da `€` a `€€€€`.
 - Siti ufficiali e di prenotazione (lamialiguria.it, cotedazurfrance.fr, experiencecotedazur.com): oggetto `SITES`, con l'indirizzo per ogni lingua (`other` = versione inglese).
 - Testi dell'interfaccia: oggetto `I18N`, una sezione per lingua.
 

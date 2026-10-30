@@ -243,6 +243,7 @@
   .rest p { margin: 2px 0 0; font-size: .88rem; color: var(--muted); }
   .rest .meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 6px; font-size: .76rem; font-weight: 600; }
   .t-michelin { background: #fde8e1; color: #b33a1a; }
+  .t-modern { background: #e2ecf7; color: #1d4f7a; }
   .t-trad { background: #e8eedb; color: #4c5d23; }
   .t-street { background: #fff2c2; color: #7a5a00; }
   .t-sweet { background: #f6e1f0; color: #8a2b6c; }
@@ -251,7 +252,7 @@
   .guides { margin-top: 26px; background: var(--navy); color: #fff; border-radius: 24px; padding: 26px; display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: center; }
   .guides h3 { margin: 0; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 2rem; line-height: 1; }
   .guides p { margin: 6px 0 0; color: #b8c7d3; font-size: .9rem; }
-  .guides .links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .guides .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
   .guides .links a { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; padding: 14px; text-decoration: none; font-weight: 600; font-size: .9rem; transition: background .2s; }
   .guides .links a:hover { background: var(--coral); }
   .guides.book { margin-top: 8px; background: linear-gradient(120deg, var(--sea), var(--navy)); }
@@ -809,7 +810,7 @@ const HIKES = [
 ];
 
 /* ---------- WHERE TO EAT: ristoranti ----------
-   tag: michelin | trad | street | sweet — price: da € a €€€€ */
+   tag: michelin | modern | trad | street | sweet — price: da € a €€€€ */
 const RESTAURANTS = [
   { name: "Mirazur", place: "Menton", zone: "azur", tag: "michelin", price: "€€€€", icon: "⭐", q: "Mirazur Menton", t: {
     it: "Tre stelle Michelin: l'orto e il mare tra Italia e Francia.", fr: "Trois étoiles Michelin : le potager et la mer entre Italie et France.",
@@ -847,6 +848,14 @@ const RESTAURANTS = [
     it: "La socca croccante, dal 1923.", fr: "La socca croustillante, depuis 1923.",
     en: "Crispy socca since 1923.", de: "Knusprige Socca seit 1923.",
     nl: "Knapperige socca sinds 1923.", zh: "自1923年起的酥脆鹰嘴豆饼。" } },
+  { name: "L'Alchimie", place: "Nice, Rue Maccarani", zone: "azur", tag: "modern", price: "€€", icon: "✨", q: "Restaurant L'Alchimie 14 rue Maccarani Nice", t: {
+    it: "Cucina moderna segnalata dalla Michelin e tra le più votate dai viaggiatori.", fr: "Cuisine moderne distinguée par le Michelin et parmi les mieux notées par les voyageurs.",
+    en: "Modern cooking recommended by Michelin and among travellers' top rated.", de: "Moderne Küche, vom Michelin empfohlen und von Reisenden top bewertet.",
+    nl: "Moderne keuken, aanbevolen door Michelin en een van de best beoordeelde door reizigers.", zh: "米其林推荐的创意料理，旅行者评分名列前茅。" } },
+  { name: "L'Orangerie", place: "Menton, Rue de la Marne", zone: "azur", tag: "modern", price: "€€", icon: "🍊", q: "L'Orangerie restaurant 3 rue de la Marne Menton", t: {
+    it: "Cucina franco-giapponese con terrazza nel centro di Mentone.", fr: "Cuisine franco-japonaise avec terrasse au cœur de Menton.",
+    en: "French-Japanese cooking with a terrace in the heart of Menton.", de: "Französisch-japanische Küche mit Terrasse im Zentrum von Menton.",
+    nl: "Frans-Japanse keuken met terras in het centrum van Menton.", zh: "芒通市中心带露台的法日融合料理。" } },
   { name: "Balzola", place: "Alassio", zone: "savona", tag: "sweet", price: "€€", icon: "🍫", q: "Pasticceria Balzola Alassio", t: {
     it: "La pasticceria dove sono nati i Baci di Alassio.", fr: "La pâtisserie où sont nés les Baci di Alassio.",
     en: "The pastry shop where Baci di Alassio were born.", de: "Die Konditorei, in der die Baci di Alassio erfunden wurden.",
@@ -867,7 +876,8 @@ const GUIDES = [
   ["Guide Michelin", "guide.michelin.com", "https://guide.michelin.com"],
   ["Gambero Rosso", "gamberorosso.it", "https://www.gamberorosso.it"],
   ["Slow Food", "slowfood.it", "https://www.slowfood.it"],
-  ["Gault&Millau", "gaultmillau.com", "https://www.gaultmillau.com"]
+  ["Gault&Millau", "gaultmillau.com", "https://www.gaultmillau.com"],
+  ["Tripadvisor", "tripadvisor.com", "https://www.tripadvisor.com"]
 ];
 
 /* ======================= TESTI INTERFACCIA ======================= */
@@ -900,7 +910,7 @@ const I18N = {
     all: "Tutto", events1: "evento", eventsN: "eventi", maps: "Mappa",
     today: "Oggi", tomorrow: "Domani", inDays: (n) => `Tra ${n} giorni`, now: "In corso",
     lvl: ["Facile", "Media", "Impegnativa"],
-    tags: { michelin: "Stellato", trad: "Tradizione", street: "Street food", sweet: "Pasticceria" },
+    tags: { michelin: "Stellato", modern: "Cucina moderna", trad: "Tradizione", street: "Street food", sweet: "Pasticceria" },
     zones: { genova: "Genova", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Sagre", feste: "🎉 Feste", musica: "🎶 Musica", mercatini: "🎄 Mercatini", cultura: "🏛️ Cultura", sport: "🚵 Sport" },
     map: { italy: "ITALIA", france: "FRANCIA", sea: "Mar Ligure" },
@@ -934,7 +944,7 @@ const I18N = {
     all: "Tout", events1: "événement", eventsN: "événements", maps: "Carte",
     today: "Aujourd'hui", tomorrow: "Demain", inDays: (n) => `Dans ${n} jours`, now: "En cours",
     lvl: ["Facile", "Moyenne", "Difficile"],
-    tags: { michelin: "Étoilé", trad: "Tradition", street: "Street food", sweet: "Pâtisserie" },
+    tags: { michelin: "Étoilé", modern: "Cuisine moderne", trad: "Tradition", street: "Street food", sweet: "Pâtisserie" },
     zones: { genova: "Gênes", savona: "Savone", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Fêtes gourmandes", feste: "🎉 Fêtes", musica: "🎶 Musique", mercatini: "🎄 Marchés", cultura: "🏛️ Culture", sport: "🚵 Sport" },
     map: { italy: "ITALIE", france: "FRANCE", sea: "Mer Ligure" },
@@ -968,7 +978,7 @@ const I18N = {
     all: "All", events1: "event", eventsN: "events", maps: "Map",
     today: "Today", tomorrow: "Tomorrow", inDays: (n) => `In ${n} days`, now: "On now",
     lvl: ["Easy", "Moderate", "Challenging"],
-    tags: { michelin: "Michelin-starred", trad: "Traditional", street: "Street food", sweet: "Pastry" },
+    tags: { michelin: "Michelin-starred", modern: "Modern cuisine", trad: "Traditional", street: "Street food", sweet: "Pastry" },
     zones: { genova: "Genoa", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Food festivals", feste: "🎉 Celebrations", musica: "🎶 Music", mercatini: "🎄 Markets", cultura: "🏛️ Culture", sport: "🚵 Sport" },
     map: { italy: "ITALY", france: "FRANCE", sea: "Ligurian Sea" },
@@ -1002,7 +1012,7 @@ const I18N = {
     all: "Alle", events1: "Event", eventsN: "Events", maps: "Karte",
     today: "Heute", tomorrow: "Morgen", inDays: (n) => `In ${n} Tagen`, now: "Läuft gerade",
     lvl: ["Leicht", "Mittel", "Anspruchsvoll"],
-    tags: { michelin: "Sterneküche", trad: "Traditionell", street: "Streetfood", sweet: "Konditorei" },
+    tags: { michelin: "Sterneküche", modern: "Moderne Küche", trad: "Traditionell", street: "Streetfood", sweet: "Konditorei" },
     zones: { genova: "Genua", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Dorffeste", feste: "🎉 Feste", musica: "🎶 Musik", mercatini: "🎄 Märkte", cultura: "🏛️ Kultur", sport: "🚵 Sport" },
     map: { italy: "ITALIEN", france: "FRANKREICH", sea: "Ligurisches Meer" },
@@ -1036,7 +1046,7 @@ const I18N = {
     all: "Alles", events1: "evenement", eventsN: "evenementen", maps: "Kaart",
     today: "Vandaag", tomorrow: "Morgen", inDays: (n) => `Over ${n} dagen`, now: "Nu bezig",
     lvl: ["Makkelijk", "Gemiddeld", "Zwaar"],
-    tags: { michelin: "Sterrenrestaurant", trad: "Traditioneel", street: "Streetfood", sweet: "Banketbakker" },
+    tags: { michelin: "Sterrenrestaurant", modern: "Moderne keuken", trad: "Traditioneel", street: "Streetfood", sweet: "Banketbakker" },
     zones: { genova: "Genua", savona: "Savona", imperia: "Imperia", azur: "Côte d'Azur" },
     cats: { sagre: "🍝 Eetfeesten", feste: "🎉 Feesten", musica: "🎶 Muziek", mercatini: "🎄 Markten", cultura: "🏛️ Cultuur", sport: "🚵 Sport" },
     map: { italy: "ITALIË", france: "FRANKRIJK", sea: "Ligurische Zee" },
@@ -1070,7 +1080,7 @@ const I18N = {
     all: "全部", events1: "场活动", eventsN: "场活动", maps: "地图",
     today: "今天", tomorrow: "明天", inDays: (n) => `${n}天后`, now: "进行中",
     lvl: ["简单", "中等", "较难"],
-    tags: { michelin: "米其林星级", trad: "传统风味", street: "街头小吃", sweet: "甜点" },
+    tags: { michelin: "米其林星级", modern: "创意料理", trad: "传统风味", street: "街头小吃", sweet: "甜点" },
     zones: { genova: "热那亚", savona: "萨沃纳", imperia: "因佩里亚", azur: "蔚蓝海岸" },
     cats: { sagre: "🍝 美食节", feste: "🎉 节庆", musica: "🎶 音乐", mercatini: "🎄 集市", cultura: "🏛️ 文化", sport: "🚵 运动" },
     map: { italy: "意大利", france: "法国", sea: "利古里亚海" },
