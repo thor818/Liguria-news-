@@ -526,6 +526,11 @@
     </div>
     <div class="sports" id="sportGrid"></div>
     <div class="sub-head">
+      <h3>Family <em>fun</em></h3>
+      <p data-i18n="familySub"></p>
+    </div>
+    <div class="sports" id="familyGrid"></div>
+    <div class="sub-head">
       <h3>Hiking <em>trails</em></h3>
       <p data-i18n="hikeSub"></p>
     </div>
@@ -876,6 +881,7 @@ const CITIES = [
       nl: "De Rots, het casino en de haven: het prinsdom in één dag.", zh: "摩纳哥岩、赌场和港口：一天游遍公国。" },
     see: ["Palais Princier", "Casino de Monte-Carlo", "Jardin Exotique", "Port Hercule"],
     museums: ["Musée Océanographique", "Nouveau Musée National (Villa Sauber)"],
+    do: ["Opéra de Monte-Carlo", "Les Ballets de Monte-Carlo"],
     eat: ["Chez Roger (Marché de la Condamine)", "Stars'N'Bars", "Le Louis XV – Alain Ducasse", "Marché de la Condamine"] },
   { id: "eze", zone: "azur", img: "foto/capferrat.jpg", where: "Côte d'Azur",
     name: { en: "Èze, Cap Ferrat & Villefranche", zh: "埃兹、费拉角与滨海自由城" },
@@ -892,6 +898,7 @@ const CITIES = [
       nl: "De Promenade, de oude stad, markten en de musea van Matisse en Chagall.", zh: "海滨大道、老城、集市，以及马蒂斯与夏加尔博物馆。" },
     see: ["Promenade des Anglais", "Vieux-Nice", "Colline du Château", "Cours Saleya", "Place Masséna"],
     museums: ["Musée Matisse", "Musée national Marc Chagall", "MAMAC", "Fondation Maeght (Saint-Paul-de-Vence)"],
+    do: ["Promenade côtière en bateau (Trans Côte d'Azur)", "La Semeuse"],
     eat: ["Lou Pilha Leva", "Chez Thérésa (Cours Saleya)", "Acchiardo", "Le Safari", "Fenocchio", "La Merenda", "Chez Pipo", "L'Alchimie"] },
   { id: "antibes", zone: "azur", img: "foto/antibes.jpg", where: "Antibes",
     name: { en: "Antibes", zh: "昂蒂布" },
@@ -900,6 +907,7 @@ const CITIES = [
       nl: "Vestingmuren aan zee, de jachthaven en het Picassomuseum.", zh: "临海城墙、游艇港和毕加索博物馆。" },
     see: ["Vieil Antibes", "Fort Carré", "Port Vauban", "Cap d'Antibes"],
     museums: ["Musée Picasso", "Musée Escoffier de l'art culinaire (Villeneuve-Loubet)"],
+    do: ["Anthéa – Théâtre d'Antibes", "Le Minotaure (Vallauris)"],
     eat: ["Marché Provençal"] },
   { id: "cannes", zone: "azur", img: "foto/cannes.jpg", where: "Cannes",
     name: { en: "Cannes", zh: "戛纳" },
@@ -908,7 +916,7 @@ const CITIES = [
       nl: "De Croisette, het festival en de Lérins-eilanden vlak bij de haven.", zh: "十字大道、电影节宫，以及港口外的莱兰群岛。" },
     see: ["La Croisette", "Palais des Festivals", "Le Suquet", "Îles de Lérins"],
     museums: ["Musée des Explorations du Monde", "Musée de la Mer (Fort Royal)", "Centre de la photographie de Mougins", "Musées de Grasse", "Cloître de la cathédrale de Fréjus", "Abbaye du Thoronet"],
-    do: ["Spectacles au Palais des Festivals", "Office de Tourisme et Boutique officielle de Cannes", "Îles de Lérins en bateau"],
+    do: ["Théâtre de Grasse", "Spectacles au Palais des Festivals", "Office de Tourisme et Boutique officielle de Cannes", "Îles de Lérins en bateau"],
     eat: ["Aux Bons Enfants", "Marché Forville"] }
 ];
 
@@ -961,6 +969,29 @@ const SPORTS = [
   { region: "lig", icon: "🧗", site: "lamialiguria", place: "Rio Barbaira (Rocchetta Nervina)", t: { it: "Canyoning", fr: "Canyoning", en: "Canyoning", de: "Canyoning", nl: "Canyoning", zh: "溪降" } },
   { region: "lig", icon: "🥾", site: "lamialiguria", place: "Alta Via · Portofino", t: { it: "Trekking", fr: "Randonnée", en: "Hiking", de: "Wandern", nl: "Wandelen", zh: "徒步" } },
   { region: "lig", icon: "⛳", site: "lamialiguria", place: "Garlenda · Sanremo", t: { it: "Golf", fr: "Golf", en: "Golf", de: "Golf", nl: "Golf", zh: "高尔夫" } }
+,
+  { region: "azur", icon: "⛴️", site: "cotedazur", place: "Nice → Villefranche · Cap Ferrat", q: "Trans Côte d'Azur Nice", t: { it: "Mini crociera da Nizza", fr: "Promenade côtière en bateau", en: "Coastal boat trip from Nice", de: "Küstenfahrt ab Nizza", nl: "Kustvaart vanuit Nice", zh: "尼斯出发沿海游船" } },
+  { region: "azur", icon: "⛴️", site: "cotedazur", place: "Estérel · Île d'Or", url: "https://www.lesbateauxbleus.com", t: { it: "Gite in barca nell'Estérel", fr: "Balades en mer dans l'Estérel", en: "Boat trips in the Estérel", de: "Bootstouren im Estérel", nl: "Boottochten in de Estérel", zh: "埃斯特雷尔海上游" } },
+  { region: "azur", icon: "🏝️", site: "cotedazur", place: "Porquerolles · Port-Cros", q: "TLV TVM Porquerolles", t: { it: "Isole d'Oro in traghetto", fr: "Îles d'Or en bateau", en: "Golden Isles by ferry", de: "Goldene Inseln per Fähre", nl: "Gouden Eilanden per veerboot", zh: "渡轮游金岛" } },
+  { region: "azur", icon: "🚲", site: "cotedazur", place: "Le Perthus → Menton · 850 km", url: "https://www.lamediterraneeavelo.com", t: { it: "La Méditerranée à vélo", fr: "La Méditerranée à vélo", en: "Mediterranean by bike (EuroVelo 8)", de: "Mittelmeer-Radweg (EuroVelo 8)", nl: "Middellandse Zee per fiets (EuroVelo 8)", zh: "地中海骑行路线（EuroVelo 8）" } },
+  { region: "azur", icon: "🚴", site: "cotedazur", place: "Alpes-Maritimes", t: { it: "Giri in bici e cicloturismo", fr: "Boucles cyclotouristiques", en: "Cycling loops", de: "Radrundtouren", nl: "Fietsrondes", zh: "骑行环线" } },
+  { region: "azur", icon: "🦌", site: "cotedazur", place: "Alpes-Maritimes", q: "Parc national du Mercantour", t: { it: "Parco nazionale del Mercantour", fr: "Parc national du Mercantour", en: "Mercantour National Park", de: "Nationalpark Mercantour", nl: "Nationaal Park Mercantour", zh: "梅康图尔国家公园" } },
+  { region: "azur", icon: "🏔️", site: "cotedazur", place: "Saint-Martin-Vésubie", q: "Vesubia Mountain Park Saint-Martin-Vésubie", t: { it: "Vesúbia Mountain Park", fr: "Vesúbia Mountain Park", en: "Vesúbia Mountain Park", de: "Vesúbia Mountain Park", nl: "Vesúbia Mountain Park", zh: "维苏比亚山地乐园" } },
+  { region: "azur", icon: "🛷", site: "cotedazur", place: "Col de Turini", q: "Turini Camp d'Argent", t: { it: "Turini – Camp d'Argent", fr: "Turini – Camp d'Argent", en: "Turini – Camp d'Argent", de: "Turini – Camp d'Argent", nl: "Turini – Camp d'Argent", zh: "图里尼山口" } }
+];
+
+/* ---------- FAMILY FUN: parchi per bambini e famiglie ---------- */
+const FAMILY = [
+  { region: "azur", icon: "🌲", site: "cotedazur", place: "Villeneuve-Loubet", url: "https://www.canyonforest.com", t: { it: "Canyon Forest", fr: "Canyon Forest", en: "Canyon Forest", de: "Canyon Forest", nl: "Canyon Forest", zh: "Canyon Forest" } },
+  { region: "azur", icon: "🎪", site: "cotedazur", place: "Villeneuve-Loubet", q: "Le Village des Fous Villeneuve-Loubet", t: { it: "Le Village des Fous", fr: "Le Village des Fous", en: "Le Village des Fous", de: "Le Village des Fous", nl: "Le Village des Fous", zh: "Le Village des Fous" } },
+  { region: "azur", icon: "🧚", site: "cotedazur", place: "Villeneuve-Loubet", q: "Le Bois des Lutins Villeneuve-Loubet", t: { it: "Le Bois des Lutins", fr: "Le Bois des Lutins", en: "Le Bois des Lutins", de: "Le Bois des Lutins", nl: "Le Bois des Lutins", zh: "Le Bois des Lutins" } },
+  { region: "azur", icon: "🧒", site: "cotedazur", place: "Côte d'Azur", q: "Pitchoun Forest parcours aventure", t: { it: "Pitchoun Forest", fr: "Pitchoun Forest", en: "Pitchoun Forest", de: "Pitchoun Forest", nl: "Pitchoun Forest", zh: "Pitchoun Forest" } },
+  { region: "azur", icon: "🧗", site: "cotedazur", place: "Grasse", q: "Parcours Aventure Grasse Riviera Nature", t: { it: "Parcours Aventure Grasse", fr: "Parcours Aventure Grasse", en: "Parcours Aventure Grasse", de: "Parcours Aventure Grasse", nl: "Parcours Aventure Grasse", zh: "Parcours Aventure Grasse" } },
+  { region: "azur", icon: "🚵", site: "cotedazur", place: "Saint-Cézaire-sur-Siagne", url: "https://www.paca-adventure.com", t: { it: "Paca Aventure", fr: "Paca Aventure", en: "Paca Aventure", de: "Paca Aventure", nl: "Paca Aventure", zh: "Paca Aventure" } },
+  { region: "azur", icon: "🏙️", site: "cotedazur", place: "Grasse", q: "Palomano 129 route de la Paoute Grasse", t: { it: "Palomano", fr: "Palomano", en: "Palomano", de: "Palomano", nl: "Palomano", zh: "Palomano" } },
+  { region: "lig", icon: "🐠", site: "cotedazur", place: "Genova, Porto Antico", q: "Acquario di Genova", t: { it: "Acquario di Genova", fr: "Aquarium de Gênes", en: "Genoa Aquarium", de: "Aquarium von Genua", nl: "Aquarium van Genua", zh: "热那亚水族馆" } },
+  { region: "lig", icon: "🧪", site: "cotedazur", place: "Genova, Porto Antico", q: "Città dei Bambini e dei Ragazzi Genova", t: { it: "La Città dei Bambini e dei Ragazzi", fr: "La Città dei Bambini e dei Ragazzi", en: "La Città dei Bambini e dei Ragazzi", de: "La Città dei Bambini e dei Ragazzi", nl: "La Città dei Bambini e dei Ragazzi", zh: "La Città dei Bambini e dei Ragazzi" } },
+  { region: "lig", icon: "🌐", site: "cotedazur", place: "Genova, Porto Antico", q: "Biosfera Genova", t: { it: "Biosfera", fr: "Biosfera", en: "Biosfera", de: "Biosfera", nl: "Biosfera", zh: "Biosfera" } }
 ];
 
 /* ---------- WHAT TO DO: esperienze ----------
@@ -1146,6 +1177,7 @@ const GUIDES = [
 /* ======================= TESTI INTERFACCIA ======================= */
 const I18N = {
   it: {
+    familySub: "Parchi avventura e divertimento per bambini e famiglie.",
     facts: ["Centro storico tra i più grandi d'Europa", "Acquario tra i più grandi d'Europa", "Palazzi dei Rolli · UNESCO 2006"],
     aquarium: "Acquario",
     spotKicker: "La capitale della Liguria", spotText: "Uno dei centri storici medievali più grandi d'Europa, l'Acquario, i palazzi UNESCO, tanti musei, la focaccia e il mare.", spotCta: "Apri la guida di Genova",
@@ -1186,6 +1218,7 @@ const I18N = {
     locale: "it-IT"
   },
   fr: {
+    familySub: "Parcs aventure et de loisirs pour enfants et familles.",
     facts: ["Centre historique parmi les plus grands d'Europe", "Aquarium parmi les plus grands d'Europe", "Palais des Rolli · UNESCO 2006"],
     aquarium: "Aquarium",
     spotKicker: "La capitale de la Ligurie", spotText: "L'un des plus grands centres historiques médiévaux d'Europe, l'Aquarium, les palais UNESCO, de nombreux musées, la focaccia et la mer.", spotCta: "Ouvrir le guide de Gênes",
@@ -1226,6 +1259,7 @@ const I18N = {
     locale: "fr-FR"
   },
   en: {
+    familySub: "Adventure and leisure parks for kids and families.",
     facts: ["One of Europe's largest old towns", "One of Europe's largest aquariums", "Rolli Palaces · UNESCO 2006"],
     aquarium: "Aquarium",
     spotKicker: "Liguria's capital", spotText: "One of Europe's largest medieval old towns, the Aquarium, UNESCO palaces, many museums, focaccia and the sea.", spotCta: "Open the Genoa guide",
@@ -1266,6 +1300,7 @@ const I18N = {
     locale: "en-GB"
   },
   de: {
+    familySub: "Abenteuer- und Freizeitparks für Kinder und Familien.",
     facts: ["Eine der größten Altstädte Europas", "Eines der größten Aquarien Europas", "Rolli-Paläste · UNESCO 2006"],
     aquarium: "Aquarium",
     spotKicker: "Die Hauptstadt Liguriens", spotText: "Eine der größten mittelalterlichen Altstädte Europas, das Aquarium, UNESCO-Paläste, viele Museen, Focaccia und Meer.", spotCta: "Genua-Guide öffnen",
@@ -1306,6 +1341,7 @@ const I18N = {
     locale: "de-DE"
   },
   nl: {
+    familySub: "Avonturen- en pretparken voor kinderen en gezinnen.",
     facts: ["Een van de grootste oude steden van Europa", "Een van de grootste aquaria van Europa", "Rolli-paleizen · UNESCO 2006"],
     aquarium: "Aquarium",
     spotKicker: "De hoofdstad van Ligurië", spotText: "Een van de grootste middeleeuwse oude steden van Europa, het aquarium, UNESCO-paleizen, veel musea, focaccia en de zee.", spotCta: "Open de gids van Genua",
@@ -1346,6 +1382,7 @@ const I18N = {
     locale: "nl-NL"
   },
   zh: {
+    familySub: "适合儿童与家庭的探险乐园和游乐园。",
     facts: ["欧洲最大老城之一", "欧洲最大水族馆之一", "罗利宫殿群 · 2006年世界遗产"],
     aquarium: "水族馆",
     spotKicker: "利古里亚首府", spotText: "欧洲最大的中世纪老城之一，还有水族馆、世界遗产宫殿、众多博物馆、佛卡夏与大海。", spotCta: "打开热那亚指南",
@@ -1557,11 +1594,18 @@ function renderCities(all) {
     </article>`).join("");
 }
 
+const sportUrl = (sp) => sp.url || (sp.q ? maps(sp.q) : siteUrl(SITES[sp.site]));
 function renderSports() {
+  $("#familyGrid").innerHTML = FAMILY.filter(ofRegion).map((sp, i) => `
+    <a class="sport" href="${esc(sportUrl(sp))}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
+      <span class="ic">${sp.icon}</span>
+      <span><b>${esc(tx(sp))}</b><small>📍 ${esc(sp.place)}</small></span>
+      <span class="go">↗</span>
+    </a>`).join("");
   const list = SPORTS.filter(ofRegion);
   $("#sportSub").textContent = T().sportSub(list.length);
   $("#sportGrid").innerHTML = list.map((sp, i) => `
-    <a class="sport" href="${esc(siteUrl(SITES[sp.site]))}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
+    <a class="sport" href="${esc(sportUrl(sp))}" target="_blank" rel="noopener" style="animation-delay:${i * 20}ms">
       <span class="ic">${sp.icon}</span>
       <span><b>${esc(tx(sp))}</b><small>📍 ${esc(sp.place)}</small></span>
       <span class="go">↗</span>
