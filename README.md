@@ -13,7 +13,7 @@ Apri `index.html` e cerca **CONTENUTI DEL GIORNALINO**:
   - `cat`: `sagre` | `feste` | `musica` | `mercatini` | `cultura` | `sport`
   - `date`: data di inizio `AAAA-MM-GG` (serve per l'ordine e il badge)
   - `icon`: un'emoji
-  - `it` / `fr`: titolo, luogo, quando, una frase breve
+  - `it` / `fr`: titolo, luogo, una frase breve
   - `end`: data di fine (facoltativa, per eventi di più giorni)
   - `img`: foto facoltativa (es. `foto/olioliva.jpg`); se vuota si usa l'illustrazione
   - `url`: link alla pagina dell'evento o dell'organizzatore
