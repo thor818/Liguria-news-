@@ -1,0 +1,67 @@
+<title>Live Riviera Posters</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Galleria su parete chiara, come i poster appesi in boutique */
+  :root {
+    --wall: #f3ede3; --paper: #fffdf8; --ink: #1e2a33; --muted: #6b6258;
+    --line: #e2d8c8; --coral: #c94f3b; --navy: #14324a;
+    --display: "Bebas Neue", Impact, sans-serif; --body: "Josefin Sans", "Futura", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --wall: #1b1f24; --paper: #252a31; --ink: #f1ebe0; --muted: #b3a999; --line: #343a42; color-scheme: dark } }
+  :root[data-theme="dark"] { --wall: #1b1f24; --paper: #252a31; --ink: #f1ebe0; --muted: #b3a999; --line: #343a42; color-scheme: dark }
+  body { background: var(--wall); color: var(--ink); font-family: var(--body); line-height: 1.5; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 60px; }
+  header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 34px; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2.8rem, 8vw, 5rem); line-height: .9; letter-spacing: .04em; margin: 0; text-wrap: balance; }
+  h1 span { color: var(--coral); }
+  header p { margin: 8px 0 0; color: var(--muted); max-width: 52ch; }
+  .note { font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  h2 { font-family: var(--display); font-weight: 400; font-size: 2rem; letter-spacing: .06em; margin: 40px 0 16px; display: flex; align-items: center; gap: 12px; }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: 28px; }
+  figure { margin: 0; }
+  .frame { background: #fff; padding: 10px; box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 14px 30px rgba(30,42,51,.14); transition: transform .3s; }
+  .frame:hover { transform: translateY(-4px) rotate(-.4deg); }
+  .frame img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 7; }
+  figcaption { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; font-size: .9rem; }
+  figcaption b { font-weight: 700; letter-spacing: .05em; }
+  figcaption span { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .uses { margin-top: 44px; background: var(--paper); border: 1px solid var(--line); padding: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 16px; }
+  .uses div { min-width: 0; }
+  .uses b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.4rem; letter-spacing: .05em; }
+  .uses p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
+  @media (prefers-reduced-motion: reduce) { .frame { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="note">Collezione N° 1 · 50 × 70 cm</div>
+      <h1>Live <span>Riviera</span> posters</h1>
+      <p>Prima serie di poster in stile vintage: quattro città della Liguria e tre della Costa Azzurra, tutte nello stesso stile per formare una collezione.</p>
+    </div>
+  </header>
+
+  <h2>Liguria</h2>
+  <div class="grid">
+    <figure><div class="frame"><img src="web/liguria-genova.jpg" alt="Poster Genova: la Lanterna, il porto e la città colorata al tramonto"></div><figcaption><b>GENOVA</b><span>N° 01</span></figcaption></figure>
+    <figure><div class="frame"><img src="web/liguria-portofino.jpg" alt="Poster Portofino: case colorate sul porto, barche e promontorio verde"></div><figcaption><b>PORTOFINO</b><span>N° 02</span></figcaption></figure>
+    <figure><div class="frame"><img src="web/liguria-camogli.jpg" alt="Poster Camogli: case alte sul mare, ombrelloni e basilica"></div><figcaption><b>CAMOGLI</b><span>N° 03</span></figcaption></figure>
+    <figure><div class="frame"><img src="web/liguria-sanremo.jpg" alt="Poster Sanremo: campi di fiori, Casinò e la Pigna"></div><figcaption><b>SANREMO</b><span>N° 04</span></figcaption></figure>
+  </div>
+
+  <h2>Côte d'Azur</h2>
+  <div class="grid">
+    <figure><div class="frame"><img src="web/cotedazur-nice.jpg" alt="Poster Nice: sedie blu sulla Promenade des Anglais"></div><figcaption><b>NICE</b><span>N° 05</span></figcaption></figure>
+    <figure><div class="frame"><img src="web/cotedazur-menton.jpg" alt="Poster Menton: limoni e città vecchia color pastello"></div><figcaption><b>MENTON</b><span>N° 06</span></figcaption></figure>
+    <figure><div class="frame"><img src="web/cotedazur-monaco.jpg" alt="Poster Monaco: il Rocher con il Palazzo e il porto con gli yacht"></div><figcaption><b>MONACO</b><span>N° 07</span></figcaption></figure>
+  </div>
+
+  <div class="uses">
+    <div><b>Poster 50 × 70</b><p>File di stampa vettoriali pronti per la tipografia.</p></div>
+    <div><b>Magliette e tote bag</b><p>Lo stesso disegno, stampato su tela o cotone.</p></div>
+    <div><b>Cartoline e tazze</b><p>Formati piccoli per il punto informazioni del B&amp;B.</p></div>
+  </div>
+</div>
