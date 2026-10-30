@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Season — Riviera Rent Luxury</title>
+<meta name="description" content="The magazine of the Riviera's most exclusive season: Grand Prix de Monaco, Festival de Cannes, the Monte-Carlo galas, yachting and every Michelin-starred table.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* Rivista: pagine color avorio, nero inchiostro e oro; un solo aspetto, voluto */
+  :root {
+    --ivory: #f4efe5; --paper: #fbf8f1; --ink: #15130f; --muted: #6f675b; --line: #d9cfbd;
+    --gold: #a4803f; --gold-soft: #c9ac72; --night: #0e0f12;
+    --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+    --body: "Jost", "Futura", "Avenir Next", system-ui, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { margin: 0; background: var(--ivory); color: var(--ink); font-family: var(--body); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+  .label { font-family: var(--body); font-weight: 500; font-size: .7rem; letter-spacing: .32em; text-transform: uppercase; }
+  .gold { color: var(--gold); }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
+  em { font-style: italic; }
+  :focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
+
+  /* ---------- testata ---------- */
+  .mast { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(244,239,229,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--ivory); z-index: 31; }
+  .mast .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 64px; gap: 12px; }
+  .mast .issue { color: var(--muted); }
+  .brand { text-align: center; text-decoration: none; line-height: 1.05; }
+  .brand b { display: block; font-family: var(--display); font-weight: 500; font-size: 1.25rem; letter-spacing: .28em; }
+  .brand span { font-size: .6rem; letter-spacing: .5em; color: var(--gold); font-weight: 500; }
+  .langs { justify-self: end; display: flex; gap: 2px; }
+  .langs button { border: 0; background: none; font: 500 .72rem var(--body); letter-spacing: .2em; color: var(--muted); padding: 8px 8px; cursor: pointer; }
+  .langs button.on { color: var(--ink); border-bottom: 1px solid var(--gold); }
+
+  /* ---------- copertina ---------- */
+  .cover { position: relative; isolation: isolate; min-height: clamp(620px, 92vh, 980px); color: #f7f2e8; display: grid; overflow: hidden; background: var(--night); }
+  .cover > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.04); animation: slow 22s ease-in-out infinite alternate; }
+  @keyframes slow { to { transform: scale(1.1); } }
+  .cover::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,10,12,.55), rgba(10,10,12,.05) 30%, rgba(10,10,12,.1) 55%, rgba(10,10,12,.82)); }
+  .cover .wrap { display: grid; grid-template-rows: auto 1fr auto; padding-block: 34px 44px; width: 100%; }
+  .cover-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: rgba(247,242,232,.85); }
+  .cover h1 { align-self: center; font-size: clamp(5rem, 17vw, 15rem); line-height: .82; font-style: italic; letter-spacing: -.02em; text-align: center; }
+  .cover h1 small { display: block; font-style: normal; font-family: var(--body); font-weight: 400; font-size: clamp(.7rem, 1.3vw, .9rem); letter-spacing: .6em; margin-top: 22px; color: #f1dfb6; text-shadow: 0 1px 12px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.8); }
+  .lines { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; border-top: 1px solid rgba(247,242,232,.35); padding-top: 20px; }
+  .lines a { text-decoration: none; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
+  .lines b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(1.15rem, 2vw, 1.55rem); line-height: 1.15; }
+  .lines span { font-size: .78rem; color: rgba(247,242,232,.75); letter-spacing: .04em; }
+
+  /* ---------- sommario ---------- */
+  .toc { padding-block: 96px 40px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; }
+  .toc h2 { font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 1; }
+  .toc .letter { color: var(--muted); max-width: 46ch; margin-top: 22px; font-size: 1.02rem; }
+  .toc .sign { font-family: var(--display); font-style: italic; font-size: 1.15rem; margin-top: 18px; color: var(--ink); }
+  .toc ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+  .toc li a { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 14px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding .3s; }
+  .toc li a:hover { padding-left: 8px; }
+  .toc .n { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 1.3rem; }
+  .toc .t { font-family: var(--display); font-size: clamp(1.3rem, 2.3vw, 1.75rem); line-height: 1.15; }
+  .toc .p { font-size: .72rem; letter-spacing: .25em; color: var(--muted); }
+
+  /* ---------- servizi (feature) ---------- */
+  .feature { padding-block: 72px; }
+  .feature .hero-img { position: relative; overflow: hidden; aspect-ratio: 16 / 8; max-height: 78vh; width: 100%; }
+  .feature .hero-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s ease; }
+  .feature:hover .hero-img img { transform: scale(1.03); }
+  .feature .hero-img figcaption { position: absolute; left: 20px; bottom: 16px; color: #f7f2e8; font-size: .68rem; letter-spacing: .25em; text-transform: uppercase; }
+  .story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, .8fr); gap: 56px; margin-top: 48px; align-items: start; }
+  .story .kick { border-top: 1px solid var(--ink); padding-top: 14px; }
+  .story h2 { font-size: clamp(2.8rem, 5.6vw, 5rem); line-height: .95; margin-top: 14px; }
+  .story h2 em { color: var(--gold); }
+  .story .dek { font-family: var(--display); font-style: italic; font-size: 1.3rem; line-height: 1.4; margin: 0 0 18px; }
+  .story .body p { margin: 0 0 14px; font-size: 1rem; max-width: 62ch; }
+  .story .body p:first-of-type::first-letter { font-family: var(--display); float: left; font-size: 4.2rem; line-height: .8; padding: 6px 10px 0 0; color: var(--gold); }
+  .facts { border: 1px solid var(--line); background: var(--paper); padding: 22px; }
+  .facts dl { margin: 12px 0 0; display: grid; gap: 14px; }
+  .facts dt { font-size: .66rem; letter-spacing: .28em; text-transform: uppercase; color: var(--muted); }
+  .facts dd { margin: 2px 0 0; font-family: var(--display); font-size: 1.15rem; line-height: 1.25; }
+  .feature.reverse .story { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr) minmax(0, 1.25fr); }
+  .feature.reverse .facts { order: -1; }
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; background: var(--night); color: #f2ece0; }
+  .split img { width: 100%; height: 100%; object-fit: cover; min-height: 520px; }
+  .split .txt { padding: clamp(32px, 6vw, 80px); display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+  .split h2 { font-size: clamp(2.6rem, 5vw, 4.4rem); line-height: .98; }
+  .split h2 em { color: var(--gold-soft); }
+  .gala { border-top: 1px solid rgba(242,236,224,.25); padding-top: 18px; }
+  .gala h3 { font-size: 1.7rem; line-height: 1.1; }
+  .gala .when { color: var(--gold-soft); }
+  .gala p { margin: 6px 0 0; color: rgba(242,236,224,.78); font-size: .96rem; }
+
+  /* ---------- pubblicità ---------- */
+  .ad { margin-block: 40px; border: 1px solid var(--line); background: repeating-linear-gradient(135deg, var(--paper) 0 14px, #f6f1e7 14px 28px); min-height: 260px; display: grid; place-items: center; text-align: center; padding: 36px 20px; position: relative; }
+  .ad .label { position: absolute; top: 12px; left: 16px; color: var(--muted); }
+  .ad b { font-family: var(--display); font-weight: 400; font-style: italic; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1; display: block; }
+  .ad p { margin: 10px auto 18px; color: var(--muted); max-width: 48ch; }
+  .btn { display: inline-flex; align-items: center; gap: 12px; padding: 14px 26px; border: 1px solid var(--ink); text-decoration: none; font: 500 .72rem var(--body); letter-spacing: .28em; text-transform: uppercase; transition: background .3s, color .3s; background: transparent; color: var(--ink); cursor: pointer; }
+  .btn:hover { background: var(--ink); color: var(--ivory); }
+  .btn.light { border-color: #f2ece0; color: #f2ece0; }
+  .btn.light:hover { background: #f2ece0; color: var(--ink); }
+
+  /* ---------- calendario ---------- */
+  .season { padding-block: 96px; }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; border-bottom: 1px solid var(--ink); padding-bottom: 18px; }
+  .sec-head h2 { font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: .95; }
+  .sec-head p { margin: 0; color: var(--muted); max-width: 46ch; }
+  .cal { list-style: none; margin: 0; padding: 0; }
+  .cal li { display: grid; grid-template-columns: 170px minmax(0, 1fr) minmax(0, .55fr) 120px; gap: 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .cal .d { font-family: var(--display); font-style: italic; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+  .cal .e { font-family: var(--display); font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.15; }
+  .cal .e small { display: block; font-family: var(--body); font-size: .85rem; color: var(--muted); margin-top: 2px; }
+  .cal .w { font-size: .9rem; color: var(--muted); }
+  .cal .s { justify-self: end; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; padding: 5px 9px; border: 1px solid var(--gold); color: var(--gold); white-space: nowrap; }
+  .cal .s.tba { border-color: var(--line); color: var(--muted); }
+
+  /* ---------- tavole stellate ---------- */
+  .stars { padding-block: 96px; background: var(--paper); border-block: 1px solid var(--line); }
+  .three { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; margin-bottom: 48px; }
+  .three article { position: relative; isolation: isolate; color: #f5efe3; min-height: 420px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; overflow: hidden; }
+  .three img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .three article::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(transparent 30%, rgba(10,10,12,.85)); }
+  .three .st { color: var(--gold-soft); letter-spacing: .2em; font-size: 1.1rem; }
+  .three h3 { font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; margin: 8px 0 6px; }
+  .three p { margin: 0; color: rgba(245,239,227,.82); max-width: 46ch; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+  .filters button { border: 1px solid var(--line); background: transparent; padding: 9px 16px; font: 500 .7rem var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--muted); cursor: pointer; }
+  .filters button.on { border-color: var(--ink); color: var(--ink); background: var(--ivory); }
+  .tables { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr)); gap: 0 32px; }
+  .tables a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding .25s; }
+  .tables a:hover { padding-left: 6px; }
+  .tables b { font-family: var(--display); font-weight: 400; font-size: 1.3rem; line-height: 1.15; }
+  .tables i { font-style: normal; color: var(--gold); letter-spacing: .15em; white-space: nowrap; }
+  .tables span { grid-column: 1 / -1; font-size: .85rem; color: var(--muted); }
+  .source { margin-top: 26px; font-size: .82rem; color: var(--muted); }
+
+  /* ---------- soggiorno e media kit ---------- */
+  .stay { position: relative; isolation: isolate; color: #f5efe3; padding-block: clamp(90px, 14vw, 170px); text-align: center; overflow: hidden; }
+  .stay img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .stay::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(12,12,14,.55); }
+  .stay h2 { font-size: clamp(2.8rem, 7vw, 6rem); line-height: .95; font-style: italic; }
+  .stay p { max-width: 54ch; margin: 18px auto 30px; color: rgba(245,239,227,.88); font-size: 1.05rem; }
+  .kit { padding-block: 96px; }
+  .formats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 0; border-top: 1px solid var(--ink); }
+  .formats div { padding: 26px 22px 26px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+  .formats .n { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 1.2rem; }
+  .formats h3 { font-size: 1.6rem; line-height: 1.1; margin: 4px 0 6px; }
+  .formats p { margin: 0; color: var(--muted); font-size: .94rem; }
+  .kit .cta { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; border: 1px solid var(--ink); padding: 28px; }
+  .kit .cta p { margin: 0; font-family: var(--display); font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.2; max-width: 30ch; }
+
+  footer { background: var(--night); color: #bdb4a5; padding-block: 64px 48px; font-size: .86rem; }
+  footer .wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; }
+  footer .brand { text-align: left; color: #f2ece0; }
+  footer p { margin: 10px 0 0; max-width: 56ch; }
+
+  .reveal { animation: up 1s ease both; }
+  @keyframes up { from { opacity: 0; transform: translateY(16px); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  @media (max-width: 980px) {
+    .toc, .split, .three, footer .wrap { grid-template-columns: minmax(0, 1fr); }
+    .story, .feature.reverse .story { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+    .feature.reverse .facts { order: 0; }
+    .lines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cal li { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; }
+    .cal .d { grid-column: 1 / -1; }
+    .cal .w { grid-column: 1; }
+    .split img { min-height: 320px; }
+    .feature .hero-img { aspect-ratio: 4 / 3; }
+  }
+  @media (max-width: 560px) {
+    .mast .issue { display: none; }
+    .mast .wrap { grid-template-columns: 1fr auto; }
+    .brand { text-align: left; }
+    .brand b { font-size: 1.02rem; letter-spacing: .2em; }
+    .lines { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .cover h1 { font-size: clamp(4.2rem, 24vw, 7rem); }
+  }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <span class="issue label" data-t="issue"></span>
+    <a class="brand" href="#top"><b>RIVIERA RENT</b><span>LUXURY</span></a>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="en">EN</button><button data-lang="fr">FR</button><button data-lang="it">IT</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ COPERTINA ============ -->
+<section class="cover" id="top">
+  <img src="foto/monaco-notte.jpg" alt="">
+  <div class="wrap">
+    <div class="cover-top"><span class="label" data-t="coverKicker"></span><span class="label" data-t="issue"></span></div>
+    <h1>The Season<small>CÔTE D'AZUR · MONACO</small></h1>
+    <nav class="lines">
+      <a href="#gp"><b data-t="l1"></b><span data-t="l1s"></span></a>
+      <a href="#cannes"><b data-t="l2"></b><span data-t="l2s"></span></a>
+      <a href="#galas"><b data-t="l3"></b><span data-t="l3s"></span></a>
+      <a href="#tables"><b data-t="l4"></b><span data-t="l4s"></span></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ============ SOMMARIO E LETTERA ============ -->
+<section class="wrap toc reveal">
+  <div>
+    <span class="label gold" data-t="editorLabel"></span>
+    <h2 data-t="editorTitle"></h2>
+    <p class="letter" data-t="editorText"></p>
+    <p class="sign">— Riviera Rent Luxury</p>
+  </div>
+  <ol>
+    <li><a href="#gp"><span class="n">01</span><span class="t">Grand Prix de Monaco</span><span class="p label">Juin</span></a></li>
+    <li><a href="#cannes"><span class="n">02</span><span class="t">Festival de Cannes</span><span class="p label">Mai</span></a></li>
+    <li><a href="#galas"><span class="n">03</span><span class="t" data-t="tocGalas"></span><span class="p label">Mars · Juillet · Novembre</span></a></li>
+    <li><a href="#yachting"><span class="n">04</span><span class="t" data-t="tocYachts"></span><span class="p label">Septembre</span></a></li>
+    <li><a href="#season"><span class="n">05</span><span class="t" data-t="tocSeason"></span><span class="p label">2026 — 2027</span></a></li>
+    <li><a href="#tables"><span class="n">06</span><span class="t" data-t="tocTables"></span><span class="p label">Guide Michelin 2026</span></a></li>
+    <li><a href="#stay"><span class="n">07</span><span class="t" data-t="tocStay"></span><span class="p label">Riviera Rent Luxury</span></a></li>
+  </ol>
+</section>
+
+<!-- ============ 01 GRAND PRIX ============ -->
+<article class="wrap feature reveal" id="gp">
+  <figure class="hero-img" style="margin:0"><img src="foto/gp.jpg" alt="Le circuit de Monaco vu d'en haut, avec les tribunes et le port" loading="lazy"><figcaption>Circuit de Monaco</figcaption></figure>
+  <div class="story">
+    <div class="kick">
+      <span class="label gold">01 · <span data-t="gpKick"></span></span>
+      <h2>Grand Prix <em>de Monaco</em></h2>
+    </div>
+    <div class="body">
+      <p class="dek" data-t="gpDek"></p>
+      <p data-t="gpP1"></p>
+      <p data-t="gpP2"></p>
+    </div>
+    <aside class="facts">
+      <span class="label gold" data-t="essentials"></span>
+      <dl>
+        <div><dt data-t="dates"></dt><dd data-t="gpDates"></dd></div>
+        <div><dt data-t="where"></dt><dd>Circuit de Monaco · 3,337 km</dd></div>
+        <div><dt data-t="first"></dt><dd data-t="gpFirst"></dd></div>
+        <div><dt data-t="watch"></dt><dd data-t="gpWatch"></dd></div>
+      </dl>
+    </aside>
+  </div>
+</article>
+
+<!-- pubblicità -->
+<div class="wrap reveal">
+  <aside class="ad">
+    <span class="label" data-t="adLabel"></span>
+    <div>
+      <b data-t="adTitle"></b>
+      <p data-t="adText"></p>
+      <a class="btn" href="#kit" data-t="adBtn"></a>
+    </div>
+  </aside>
+</div>
+
+<!-- ============ 02 CANNES ============ -->
+<article class="wrap feature reverse reveal" id="cannes">
+  <figure class="hero-img" style="margin:0"><img src="foto/redcarpet.jpg" alt="Le marches couvertes de tapis rouge" loading="lazy"><figcaption>La montée des marches</figcaption></figure>
+  <div class="story">
+    <aside class="facts">
+      <span class="label gold" data-t="essentials"></span>
+      <dl>
+        <div><dt data-t="dates"></dt><dd data-t="cannesDates"></dd></div>
+        <div><dt data-t="where"></dt><dd>Palais des Festivals · La Croisette</dd></div>
+        <div><dt data-t="edition"></dt><dd data-t="cannesEdition"></dd></div>
+      </dl>
+    </aside>
+    <div class="kick">
+      <span class="label gold">02 · <span data-t="cannesKick"></span></span>
+      <h2>Festival <em>de Cannes</em></h2>
+    </div>
+    <div class="body">
+      <p class="dek" data-t="cannesDek"></p>
+      <p data-t="cannesP1"></p>
+      <p data-t="cannesP2"></p>
+    </div>
+  </div>
+</article>
+
+<!-- ============ 03 GALAS ============ -->
+<section class="split reveal" id="galas">
+  <img src="foto/champagne.jpg" alt="Deux coupes de champagne qui trinquent" loading="lazy">
+  <div class="txt">
+    <span class="label" style="color:var(--gold-soft)">03 · <span data-t="galasKick"></span></span>
+    <h2 data-t="galasTitle"></h2>
+    <div class="gala">
+      <span class="label when" data-t="roseWhen"></span>
+      <h3>Bal de la Rose</h3>
+      <p data-t="roseText"></p>
+    </div>
+    <div class="gala">
+      <span class="label when" data-t="crossWhen"></span>
+      <h3>Gala de la Croix-Rouge monégasque</h3>
+      <p data-t="crossText"></p>
+    </div>
+    <div class="gala">
+      <span class="label when" data-t="natWhen"></span>
+      <h3>Fête Nationale Monégasque</h3>
+      <p data-t="natText"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 YACHTING ============ -->
+<article class="wrap feature reveal" id="yachting">
+  <figure class="hero-img" style="margin:0"><img src="foto/monaco.jpg" alt="Yachts dans le port de Monaco" loading="lazy"><figcaption>Port Hercule, Monaco</figcaption></figure>
+  <div class="story">
+    <div class="kick">
+      <span class="label gold">04 · <span data-t="yachtKick"></span></span>
+      <h2>The <em>Yachting</em> Season</h2>
+    </div>
+    <div class="body">
+      <p class="dek" data-t="yachtDek"></p>
+      <p data-t="yachtP1"></p>
+      <p data-t="yachtP2"></p>
+    </div>
+    <aside class="facts">
+      <span class="label gold" data-t="essentials"></span>
+      <dl>
+        <div><dt>Cannes Yachting Festival</dt><dd data-t="cyfDates"></dd></div>
+        <div><dt>Monaco Yacht Show</dt><dd data-t="mysDates"></dd></div>
+        <div><dt data-t="regattas"></dt><dd>Les Voiles d'Antibes · Régates Royales de Cannes</dd></div>
+      </dl>
+    </aside>
+  </div>
+</article>
+
+<!-- ============ 05 CALENDARIO ============ -->
+<section class="wrap season reveal" id="season">
+  <div class="sec-head">
+    <div><span class="label gold">05</span><h2 data-t="seasonTitle"></h2></div>
+    <p data-t="seasonSub"></p>
+  </div>
+  <ol class="cal" id="cal"></ol>
+</section>
+
+<!-- ============ 06 TAVOLE STELLATE ============ -->
+<section class="stars reveal" id="tables">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label gold">06</span><h2 data-t="tablesTitle"></h2></div>
+      <p data-t="tablesSub"></p>
+    </div>
+    <div class="three">
+      <article>
+        <img src="foto/menton.jpg" alt="" loading="lazy">
+        <span class="st">✦ ✦ ✦</span>
+        <h3>Mirazur</h3>
+        <p data-t="mirazur"></p>
+      </article>
+      <article>
+        <img src="foto/dining.jpg" alt="" loading="lazy">
+        <span class="st">✦ ✦ ✦</span>
+        <h3>Le Louis XV – Alain Ducasse</h3>
+        <p data-t="louisxv"></p>
+      </article>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="tables" id="tablesList"></div>
+    <p class="source" data-t="tablesSource"></p>
+  </div>
+</section>
+
+<!-- pubblicità -->
+<div class="wrap reveal">
+  <aside class="ad">
+    <span class="label" data-t="adLabel"></span>
+    <div>
+      <b data-t="ad2Title"></b>
+      <p data-t="ad2Text"></p>
+      <a class="btn" href="#kit" data-t="adBtn"></a>
+    </div>
+  </aside>
+</div>
+
+<!-- ============ 07 SOGGIORNO ============ -->
+<section class="stay reveal" id="stay">
+  <img src="foto/villefranche.jpg" alt="" loading="lazy">
+  <div class="wrap">
+    <span class="label" style="color:var(--gold-soft)">07 · Riviera Rent Luxury</span>
+    <h2 data-t="stayTitle"></h2>
+    <p data-t="stayText"></p>
+    <a class="btn light" href="https://rivierarent.it/" id="stayLink" target="_blank" rel="noopener" data-t="stayBtn"></a>
+  </div>
+</section>
+
+<!-- ============ MEDIA KIT ============ -->
+<section class="wrap kit reveal" id="kit">
+  <div class="sec-head">
+    <div><span class="label gold">Media kit</span><h2 data-t="kitTitle"></h2></div>
+    <p data-t="kitSub"></p>
+  </div>
+  <div class="formats" id="formats"></div>
+  <div class="cta">
+    <p data-t="kitCta"></p>
+    <a class="btn" href="https://rivierarent.it/" target="_blank" rel="noopener" data-t="kitBtn"></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top"><b>RIVIERA RENT</b><span>LUXURY</span></a>
+      <p data-t="footer"></p>
+    </div>
+    <div>
+      <p data-t="disclaimer"></p>
+      <p data-t="credits"></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONTENUTI — The Season (Riviera Rent Luxury)
+   Lingue: en, fr, it. Date verificate a ottobre 2026: quelle con
+   status "tba" vanno confermate quando gli organizzatori le annunciano.
+   ============================================================ */
+
+/* Calendario della stagione: date, evento, luogo, stato (ok = annunciato, tba = da confermare) */
+const SEASON = [
+  { d: { en: "19 November 2026", fr: "19 novembre 2026", it: "19 novembre 2026" }, e: "Fête Nationale Monégasque", w: "Monaco", s: "ok" },
+  { d: { en: "31 December 2026", fr: "31 décembre 2026", it: "31 dicembre 2026" }, e: "Le Réveillon des Stars", w: "Palais des Festivals, Cannes", s: "ok" },
+  { d: { en: "January 2027", fr: "Janvier 2027", it: "Gennaio 2027" }, e: "Festival International du Cirque de Monte-Carlo", w: "Monaco", s: "tba" },
+  { d: { en: "21 – 24 January 2027", fr: "21 – 24 janvier 2027", it: "21 – 24 gennaio 2027" }, e: "Rallye Automobile Monte-Carlo", w: "Monaco · Alpes-Maritimes", s: "ok" },
+  { d: { en: "27 Jan – 3 Feb 2027", fr: "27 janv. – 3 févr. 2027", it: "27 gen – 3 feb 2027" }, e: "Rallye Monte-Carlo Historique", w: "Monaco", s: "ok" },
+  { d: { en: "February 2027", fr: "Février 2027", it: "Febbraio 2027" }, e: "Carnaval de Nice · Fête du Citron", w: "Nice · Menton", s: "tba" },
+  { d: { en: "March 2027", fr: "Mars 2027", it: "Marzo 2027" }, e: "Bal de la Rose", w: "Sporting Monte-Carlo", s: "tba" },
+  { d: { en: "3 – 11 April 2027", fr: "3 – 11 avril 2027", it: "3 – 11 aprile 2027" }, e: "Rolex Monte-Carlo Masters", w: "Monte-Carlo Country Club", s: "ok" },
+  { d: { en: "1 – 2 May 2027", fr: "1er – 2 mai 2027", it: "1 – 2 maggio 2027" }, e: "Monaco E-Prix", w: "Circuit de Monaco", s: "ok" },
+  { d: { en: "11 – 22 May 2027", fr: "11 – 22 mai 2027", it: "11 – 22 maggio 2027" }, e: "Festival de Cannes · 80e édition", w: "Palais des Festivals, Cannes", s: "ok" },
+  { d: { en: "3 – 6 June 2027", fr: "3 – 6 juin 2027", it: "3 – 6 giugno 2027" }, e: "Grand Prix de Monaco · Sprint", w: "Circuit de Monaco", s: "ok" },
+  { d: { en: "June 2027", fr: "Juin 2027", it: "Giugno 2027" }, e: "Les Voiles d'Antibes", w: "Port Vauban, Antibes", s: "tba" },
+  { d: { en: "July 2027", fr: "Juillet 2027", it: "Luglio 2027" }, e: "Jazz à Juan", w: "Pinède Gould, Juan-les-Pins", s: "tba" },
+  { d: { en: "July 2027", fr: "Juillet 2027", it: "Luglio 2027" }, e: "Gala de la Croix-Rouge monégasque", w: "Salle des Étoiles, Sporting Monte-Carlo", s: "tba" },
+  { d: { en: "July – August 2027", fr: "Juillet – août 2027", it: "Luglio – agosto 2027" }, e: "Monte-Carlo Summer Festival", w: "Salle des Étoiles, Sporting Monte-Carlo", s: "tba" },
+  { d: { en: "7 – 12 September 2027", fr: "7 – 12 septembre 2027", it: "7 – 12 settembre 2027" }, e: "Cannes Yachting Festival", w: "Vieux-Port & Port Canto, Cannes", s: "ok" },
+  { d: { en: "September 2027", fr: "Septembre 2027", it: "Settembre 2027" }, e: "Régates Royales de Cannes", w: "Cannes", s: "tba" },
+  { d: { en: "22 – 25 September 2027", fr: "22 – 25 septembre 2027", it: "22 – 25 settembre 2027" }, e: "Monaco Yacht Show", w: "Port Hercule, Monaco", s: "ok" }
+];
+
+/* Guide MICHELIN France & Monaco 2026 — Monaco e Alpes-Maritimes (stelle, nome, luogo, area) */
+const TABLES = [
+  [3, "Mirazur", "Menton", "azur"], [3, "Le Louis XV – Alain Ducasse à l'Hôtel de Paris", "Monaco", "mc"],
+  [2, "Les Ambassadeurs by Christophe Cussac", "Monaco", "mc"], [2, "Blue Bay Marcel Ravin", "Monaco", "mc"], [2, "L'Abysse Monte-Carlo", "Monaco", "mc"],
+  [2, "La Chèvre d'Or", "Èze", "azur"], [2, "Flaveur", "Nice", "azur"], [2, "La Villa Archange", "Le Cannet", "azur"],
+  [1, "Elsa Marcel Ravin", "Monaco", "mc"], [1, "Le Grill", "Monaco", "mc"], [1, "Pavyllon Monte-Carlo", "Monaco", "mc"],
+  [1, "La Table d'Antonio Salvatore au Rampoldi", "Monaco", "mc"], [1, "Robuchon Monaco", "Monaco", "mc"],
+  [1, "Louroc", "Antibes", "azur"], [1, "Les Pêcheurs", "Antibes", "azur"], [1, "La Passagère", "Juan-les-Pins", "azur"],
+  [1, "Le Restaurant des Rois", "Beaulieu-sur-Mer", "azur"], [1, "Les Terraillers", "Biot", "azur"], [1, "La Palme d'Or", "Cannes", "azur"],
+  [1, "Alain Llorca", "La Colle-sur-Loup", "azur"], [1, "Château Eza", "Èze", "azur"], [1, "La Table du Cap Estel", "Èze-Bord-de-Mer", "azur"],
+  [1, "Bessem", "Mandelieu-la-Napoule", "azur"], [1, "Les Agitateurs", "Nice", "azur"], [1, "L'Aromate", "Nice", "azur"],
+  [1, "Le Chantecler", "Nice", "azur"], [1, "Épicentre", "Nice", "azur"], [1, "JAN", "Nice", "azur"], [1, "ONICE", "Nice", "azur"],
+  [1, "Racines – Bruno Cirino", "Nice", "azur"], [1, "Auberge Quintessence", "Roubion", "azur"], [1, "Le Cap", "Saint-Jean-Cap-Ferrat", "azur"],
+  [1, "La Table de Pierre", "Saint-Paul-de-Vence", "azur"], [1, "Mareluna", "Théoule-sur-Mer", "azur"], [1, "L'Or Bleu", "Théoule-sur-Mer", "azur"],
+  [1, "Auberge de la Roche", "Valdeblore", "azur"], [1, "La Flibuste", "Villeneuve-Loubet", "azur"]
+];
+
+/* Formati pubblicitari del media kit */
+const FORMATS = {
+  en: [["Cover Partner", "One partner per issue, on the cover and the opening spread."], ["Double page", "A full spread opposite the main features."], ["Full page", "A page inside the season's stories."], ["Event Partner", "Your brand alongside the Grand Prix, Cannes or the galas."], ["Starred Table", "A showcase for restaurants, hotels and wine estates."], ["Digital", "Banners and sponsored stories in the online edition."]],
+  fr: [["Partenaire de couverture", "Un seul partenaire par numéro, en couverture et en ouverture."], ["Double page", "Une double page face aux grands reportages."], ["Pleine page", "Une page au cœur des récits de la saison."], ["Partenaire d'événement", "Votre marque aux côtés du Grand Prix, de Cannes ou des galas."], ["Table étoilée", "Une vitrine pour restaurants, hôtels et domaines viticoles."], ["Digital", "Bannières et contenus sponsorisés dans l'édition en ligne."]],
+  it: [["Partner di copertina", "Un solo partner per numero, in copertina e nell'apertura."], ["Doppia pagina", "Una doppia pagina accanto ai grandi servizi."], ["Pagina intera", "Una pagina dentro i racconti della stagione."], ["Partner d'evento", "Il tuo marchio accanto al Grand Prix, a Cannes o ai gala."], ["Tavola stellata", "Una vetrina per ristoranti, hotel e cantine."], ["Digitale", "Banner e contenuti sponsorizzati nell'edizione online."]]
+};
+
+const I18N = {
+  en: {
+    issue: "N° 01 · Season 2026 — 2027", coverKicker: "The magazine of the Riviera season",
+    l1: "Monaco's first Sprint", l1s: "Grand Prix · 3 – 6 June 2027", l2: "Cannes turns 80", l2s: "Festival · 11 – 22 May 2027",
+    l3: "The galas of Monte-Carlo", l3s: "Rose, Red Cross, National Day", l4: "37 starred tables", l4s: "Guide Michelin 2026",
+    editorLabel: "Editor's letter", editorTitle: "A season like no other",
+    editorText: "From the first rally of January to the last superyacht of September, the Côte d'Azur and Monaco host the most exclusive calendar in Europe. In these pages: the dates that matter, the evenings worth dressing for, and every table honoured by the Michelin Guide, from Menton to Théoule.",
+    tocGalas: "The Galas of Monte-Carlo", tocYachts: "The Yachting Season", tocSeason: "The Season at a Glance", tocTables: "The Starred Tables", tocStay: "Your Riviera Residence",
+    essentials: "Essentials", dates: "Dates", where: "Where", first: "A first", watch: "Where to watch", edition: "Edition", regattas: "Regattas",
+    gpKick: "Motorsport", gpDek: "For the first time in its history, Monaco hosts a Sprint race: two races, one legendary weekend.",
+    gpP1: "Since 1929 the Grand Prix has turned the streets of the Principality into the most glamorous circuit in the world. In 2027 the weekend runs from Thursday 3 to Sunday 6 June, and for the first time it includes a Sprint race alongside the Grand Prix.",
+    gpP2: "The real spectacle is off the track too: terraces above the Casino square, yachts moored in Port Hercule, evenings that run long after the chequered flag. The best positions are booked months in advance.",
+    gpDates: "3 – 6 June 2027", gpFirst: "Sprint race, the first ever in Monaco", gpWatch: "Grandstands, hotel terraces, yachts in Port Hercule",
+    adLabel: "Advertisement", adTitle: "Your brand, here.", adText: "A page in The Season places your name beside the Riviera's most exclusive events, in front of an international, high-end readership.", adBtn: "Advertise with us",
+    ad2Title: "Partner of the Season", ad2Text: "Hotels, maisons, jewellers, yachting, wine estates: reserve your page in the next issue.",
+    cannesKick: "Cinema", cannesDek: "The 80th edition of the world's most famous film festival.",
+    cannesP1: "From 11 to 22 May 2027, the red carpet of the Palais des Festivals once again becomes the centre of the cinema world. For its 80th edition, the Festival keeps its home on La Croisette, with premieres, the climb up the steps and the Palme d'Or.",
+    cannesP2: "Around the official selection, Cannes lives at night: beach dinners, private parties and hotel terraces facing the bay. Accommodation for the Festival weeks is among the most sought-after of the year.",
+    cannesDates: "11 – 22 May 2027", cannesEdition: "80th edition",
+    galasKick: "Society", galasTitle: "The galas of <em>Monte-Carlo</em>",
+    roseWhen: "Every March · Sporting Monte-Carlo", roseText: "The Rose Ball, founded by Princess Grace, raises funds for the Princess Grace Foundation in a new theme every year.",
+    crossWhen: "Every July · Salle des Étoiles", crossText: "The summer gala of the Monegasque Red Cross, presided over by the Princely Family. The 2026 edition was the 77th.",
+    natWhen: "19 November", natText: "Monaco's National Day: ceremonies at the Palace, a gala evening and fireworks over the harbour.",
+    yachtKick: "Yachting", yachtDek: "September belongs to the sea: the two great boat shows of the Riviera.",
+    yachtP1: "The Cannes Yachting Festival opens the month in the Vieux-Port and Port Canto, with hundreds of yachts on the water. Two weeks later, the Monaco Yacht Show gathers the world's finest superyachts in Port Hercule.",
+    yachtP2: "Between the two, the classic regattas: Les Voiles d'Antibes in June and the Régates Royales de Cannes in September, where vintage sailing yachts race against the backdrop of the Estérel.",
+    cyfDates: "7 – 12 September 2027", mysDates: "22 – 25 September 2027",
+    seasonTitle: "The Season at a <em>Glance</em>", seasonSub: "The high-level dates from November 2026 to September 2027.",
+    ok: "Announced", tba: "Date TBA",
+    tablesTitle: "The Starred <em>Tables</em>", tablesSub: "Every restaurant in Monaco and the Alpes-Maritimes honoured with Michelin stars.",
+    mirazur: "Menton · Mauro Colagreco. The garden, the sea and the mountains on one plate, on the border between France and Italy.",
+    louisxv: "Monaco · Hôtel de Paris. Riviera haute cuisine in the most celebrated dining room of Monte-Carlo.",
+    all: "All", s3: "3 stars", s2: "2 stars", s1: "1 star", mc: "Monaco", azur: "Côte d'Azur",
+    tablesSource: "Source: Guide MICHELIN France & Monaco 2026 (ceremony of 16 March 2026). Booking is essential.",
+    stayTitle: "Your Riviera residence", stayText: "Villas and residences for the Grand Prix, the Festival and the summer season, selected by Riviera Rent Luxury.", stayBtn: "Discover the residences",
+    kitTitle: "Advertise in <em>The Season</em>", kitSub: "A magazine for an international clientele that lives the Riviera at its highest level.",
+    kitCta: "Reserve your page in the next issue.", kitBtn: "Contact us",
+    footer: "The Season — the magazine of Riviera Rent Luxury. Côte d'Azur & Monaco.",
+    disclaimer: "Dates were checked in October 2026; those marked 'Date TBA' will be confirmed by the organisers. Always check before booking.",
+    credits: "Photos: Pexels. Restaurant list: Guide MICHELIN France & Monaco 2026."
+  },
+  fr: {
+    issue: "N° 01 · Saison 2026 — 2027", coverKicker: "Le magazine de la saison sur la Riviera",
+    l1: "Le premier Sprint de Monaco", l1s: "Grand Prix · 3 – 6 juin 2027", l2: "Cannes a 80 ans", l2s: "Festival · 11 – 22 mai 2027",
+    l3: "Les galas de Monte-Carlo", l3s: "Rose, Croix-Rouge, Fête Nationale", l4: "37 tables étoilées", l4s: "Guide Michelin 2026",
+    editorLabel: "Éditorial", editorTitle: "Une saison sans égale",
+    editorText: "Du premier rallye de janvier au dernier superyacht de septembre, la Côte d'Azur et Monaco accueillent le calendrier le plus exclusif d'Europe. Dans ces pages : les dates qui comptent, les soirées qui méritent une tenue de gala, et toutes les tables distinguées par le Guide Michelin, de Menton à Théoule.",
+    tocGalas: "Les Galas de Monte-Carlo", tocYachts: "La Saison du Yachting", tocSeason: "La Saison en un Regard", tocTables: "Les Tables Étoilées", tocStay: "Votre Résidence sur la Riviera",
+    essentials: "L'essentiel", dates: "Dates", where: "Lieu", first: "Une première", watch: "Où regarder", edition: "Édition", regattas: "Régates",
+    gpKick: "Sport automobile", gpDek: "Pour la première fois de son histoire, Monaco accueille une course Sprint : deux courses, un week-end de légende.",
+    gpP1: "Depuis 1929, le Grand Prix transforme les rues de la Principauté en circuit le plus glamour du monde. En 2027, le week-end se tient du jeudi 3 au dimanche 6 juin et comprend, pour la première fois, une course Sprint en plus du Grand Prix.",
+    gpP2: "Le spectacle est aussi hors de la piste : terrasses au-dessus de la place du Casino, yachts amarrés dans le Port Hercule, soirées qui se prolongent bien après le drapeau à damier. Les meilleures places se réservent des mois à l'avance.",
+    gpDates: "3 – 6 juin 2027", gpFirst: "Course Sprint, une première à Monaco", gpWatch: "Tribunes, terrasses d'hôtel, yachts au Port Hercule",
+    adLabel: "Publicité", adTitle: "Votre marque, ici.", adText: "Une page dans The Season associe votre nom aux événements les plus exclusifs de la Riviera, devant un lectorat international haut de gamme.", adBtn: "Annoncer avec nous",
+    ad2Title: "Partenaire de la Saison", ad2Text: "Hôtels, maisons, joailliers, yachting, domaines viticoles : réservez votre page dans le prochain numéro.",
+    cannesKick: "Cinéma", cannesDek: "La 80e édition du plus célèbre festival de cinéma au monde.",
+    cannesP1: "Du 11 au 22 mai 2027, le tapis rouge du Palais des Festivals redevient le centre du monde du cinéma. Pour sa 80e édition, le Festival reste sur la Croisette, avec ses premières, la montée des marches et la Palme d'Or.",
+    cannesP2: "Autour de la sélection officielle, Cannes vit la nuit : dîners sur la plage, soirées privées et terrasses d'hôtel face à la baie. Les hébergements pendant le Festival sont parmi les plus recherchés de l'année.",
+    cannesDates: "11 – 22 mai 2027", cannesEdition: "80e édition",
+    galasKick: "Mondanités", galasTitle: "Les galas de <em>Monte-Carlo</em>",
+    roseWhen: "Chaque mois de mars · Sporting Monte-Carlo", roseText: "Le Bal de la Rose, créé par la Princesse Grace, soutient la Fondation Princesse Grace avec un nouveau thème chaque année.",
+    crossWhen: "Chaque mois de juillet · Salle des Étoiles", crossText: "Le gala d'été de la Croix-Rouge monégasque, présidé par la Famille Princière. L'édition 2026 était la 77e.",
+    natWhen: "19 novembre", natText: "La Fête Nationale de Monaco : cérémonies au Palais, soirée de gala et feu d'artifice sur le port.",
+    yachtKick: "Yachting", yachtDek: "Septembre appartient à la mer : les deux grands salons nautiques de la Riviera.",
+    yachtP1: "Le Cannes Yachting Festival ouvre le mois dans le Vieux-Port et au Port Canto, avec des centaines de bateaux à flot. Deux semaines plus tard, le Monaco Yacht Show réunit les plus beaux superyachts du monde au Port Hercule.",
+    yachtP2: "Entre les deux, les régates classiques : les Voiles d'Antibes en juin et les Régates Royales de Cannes en septembre, où les voiliers de tradition s'affrontent face à l'Estérel.",
+    cyfDates: "7 – 12 septembre 2027", mysDates: "22 – 25 septembre 2027",
+    seasonTitle: "La Saison en un <em>Regard</em>", seasonSub: "Les grands rendez-vous de novembre 2026 à septembre 2027.",
+    ok: "Annoncé", tba: "Date à venir",
+    tablesTitle: "Les Tables <em>Étoilées</em>", tablesSub: "Tous les restaurants étoilés au Guide Michelin à Monaco et dans les Alpes-Maritimes.",
+    mirazur: "Menton · Mauro Colagreco. Le jardin, la mer et la montagne dans l'assiette, à la frontière entre la France et l'Italie.",
+    louisxv: "Monaco · Hôtel de Paris. La grande cuisine de la Riviera dans la salle la plus célèbre de Monte-Carlo.",
+    all: "Toutes", s3: "3 étoiles", s2: "2 étoiles", s1: "1 étoile", mc: "Monaco", azur: "Côte d'Azur",
+    tablesSource: "Source : Guide MICHELIN France & Monaco 2026 (cérémonie du 16 mars 2026). Réservation indispensable.",
+    stayTitle: "Votre résidence sur la Riviera", stayText: "Villas et résidences pour le Grand Prix, le Festival et la saison d'été, sélectionnées par Riviera Rent Luxury.", stayBtn: "Découvrir les résidences",
+    kitTitle: "Annoncer dans <em>The Season</em>", kitSub: "Un magazine pour une clientèle internationale qui vit la Riviera à son plus haut niveau.",
+    kitCta: "Réservez votre page dans le prochain numéro.", kitBtn: "Nous contacter",
+    footer: "The Season — le magazine de Riviera Rent Luxury. Côte d'Azur & Monaco.",
+    disclaimer: "Dates vérifiées en octobre 2026 ; celles indiquées « Date à venir » seront confirmées par les organisateurs. Vérifiez toujours avant de réserver.",
+    credits: "Photos : Pexels. Liste des restaurants : Guide MICHELIN France & Monaco 2026."
+  },
+  it: {
+    issue: "N° 01 · Stagione 2026 — 2027", coverKicker: "La rivista della stagione in Riviera",
+    l1: "La prima Sprint di Monaco", l1s: "Grand Prix · 3 – 6 giugno 2027", l2: "Cannes compie 80 anni", l2s: "Festival · 11 – 22 maggio 2027",
+    l3: "I gala di Monte-Carlo", l3s: "Rosa, Croce Rossa, Festa Nazionale", l4: "37 tavole stellate", l4s: "Guida Michelin 2026",
+    editorLabel: "Editoriale", editorTitle: "Una stagione senza eguali",
+    editorText: "Dal primo rally di gennaio all'ultimo superyacht di settembre, la Costa Azzurra e Monaco ospitano il calendario più esclusivo d'Europa. In queste pagine: le date che contano, le serate per cui vale l'abito da gala e tutte le tavole premiate dalla Guida Michelin, da Mentone a Théoule.",
+    tocGalas: "I Gala di Monte-Carlo", tocYachts: "La Stagione dello Yachting", tocSeason: "La Stagione in uno Sguardo", tocTables: "Le Tavole Stellate", tocStay: "La tua Residenza in Riviera",
+    essentials: "In breve", dates: "Date", where: "Dove", first: "Una prima volta", watch: "Dove vederlo", edition: "Edizione", regattas: "Regate",
+    gpKick: "Motori", gpDek: "Per la prima volta nella sua storia Monaco ospita una gara Sprint: due gare, un weekend leggendario.",
+    gpP1: "Dal 1929 il Gran Premio trasforma le strade del Principato nel circuito più glamour del mondo. Nel 2027 il weekend va da giovedì 3 a domenica 6 giugno e, per la prima volta, comprende una gara Sprint oltre al Gran Premio.",
+    gpP2: "Lo spettacolo è anche fuori dalla pista: terrazze sopra la piazza del Casinò, yacht ormeggiati a Port Hercule, serate che continuano ben dopo la bandiera a scacchi. I posti migliori si prenotano mesi prima.",
+    gpDates: "3 – 6 giugno 2027", gpFirst: "Gara Sprint, la prima a Monaco", gpWatch: "Tribune, terrazze d'hotel, yacht a Port Hercule",
+    adLabel: "Pubblicità", adTitle: "Il tuo marchio, qui.", adText: "Una pagina in The Season mette il tuo nome accanto agli eventi più esclusivi della Riviera, davanti a un pubblico internazionale di alto livello.", adBtn: "Pubblicità con noi",
+    ad2Title: "Partner della Stagione", ad2Text: "Hotel, maison, gioiellieri, yachting, cantine: prenota la tua pagina nel prossimo numero.",
+    cannesKick: "Cinema", cannesDek: "L'80ª edizione del festival del cinema più famoso del mondo.",
+    cannesP1: "Dall'11 al 22 maggio 2027 il tappeto rosso del Palais des Festivals torna al centro del mondo del cinema. Per l'80ª edizione il Festival resta sulla Croisette, con le anteprime, la salita dei gradini e la Palma d'Oro.",
+    cannesP2: "Intorno alla selezione ufficiale, Cannes vive di notte: cene in spiaggia, feste private e terrazze d'hotel sulla baia. Gli alloggi nelle settimane del Festival sono tra i più richiesti dell'anno.",
+    cannesDates: "11 – 22 maggio 2027", cannesEdition: "80ª edizione",
+    galasKick: "Mondanità", galasTitle: "I gala di <em>Monte-Carlo</em>",
+    roseWhen: "Ogni marzo · Sporting Monte-Carlo", roseText: "Il Ballo della Rosa, voluto dalla Principessa Grace, sostiene la Fondazione Principessa Grace con un tema diverso ogni anno.",
+    crossWhen: "Ogni luglio · Salle des Étoiles", crossText: "Il gala estivo della Croce Rossa monegasca, presieduto dalla Famiglia Principesca. L'edizione 2026 è stata la 77ª.",
+    natWhen: "19 novembre", natText: "La Festa Nazionale di Monaco: cerimonie a Palazzo, serata di gala e fuochi d'artificio sul porto.",
+    yachtKick: "Yachting", yachtDek: "Settembre appartiene al mare: i due grandi saloni nautici della Riviera.",
+    yachtP1: "Il Cannes Yachting Festival apre il mese nel Vieux-Port e a Port Canto, con centinaia di barche in acqua. Due settimane dopo, il Monaco Yacht Show riunisce a Port Hercule i superyacht più belli del mondo.",
+    yachtP2: "In mezzo, le regate classiche: Les Voiles d'Antibes a giugno e le Régates Royales di Cannes a settembre, con le barche d'epoca davanti all'Estérel.",
+    cyfDates: "7 – 12 settembre 2027", mysDates: "22 – 25 settembre 2027",
+    seasonTitle: "La Stagione in uno <em>Sguardo</em>", seasonSub: "I grandi appuntamenti da novembre 2026 a settembre 2027.",
+    ok: "Annunciato", tba: "Data da annunciare",
+    tablesTitle: "Le Tavole <em>Stellate</em>", tablesSub: "Tutti i ristoranti stellati Michelin di Monaco e delle Alpi Marittime.",
+    mirazur: "Mentone · Mauro Colagreco. L'orto, il mare e la montagna nel piatto, al confine tra Francia e Italia.",
+    louisxv: "Monaco · Hôtel de Paris. L'alta cucina della Riviera nella sala più celebre di Monte-Carlo.",
+    all: "Tutti", s3: "3 stelle", s2: "2 stelle", s1: "1 stella", mc: "Monaco", azur: "Costa Azzurra",
+    tablesSource: "Fonte: Guida MICHELIN France & Monaco 2026 (cerimonia del 16 marzo 2026). Prenotazione indispensabile.",
+    stayTitle: "La tua residenza in Riviera", stayText: "Ville e residenze per il Gran Premio, il Festival e la stagione estiva, selezionate da Riviera Rent Luxury.", stayBtn: "Scopri le residenze",
+    kitTitle: "Pubblicità su <em>The Season</em>", kitSub: "Una rivista per una clientela internazionale che vive la Riviera al suo livello più alto.",
+    kitCta: "Prenota la tua pagina nel prossimo numero.", kitBtn: "Contattaci",
+    footer: "The Season — la rivista di Riviera Rent Luxury. Costa Azzurra & Monaco.",
+    disclaimer: "Date verificate a ottobre 2026; quelle indicate «Data da annunciare» saranno confermate dagli organizzatori. Verifica sempre prima di prenotare.",
+    credits: "Foto: Pexels. Elenco ristoranti: Guida MICHELIN France & Monaco 2026."
+  }
+};
+
+/* ======================= LOGICA ======================= */
+const LANGS = ["en", "fr", "it"];
+const pick = (l) => (l = (l || "").slice(0, 2).toLowerCase(), LANGS.includes(l) ? l : null);
+let lang = pick(navigator.language) || "en";
+try { lang = pick(localStorage.getItem("season-lang")) || lang; } catch (e) {}
+lang = pick(new URLSearchParams(location.search).get("lang")) || lang;
+let starF = "all";
+const $ = (s) => document.querySelector(s);
+const T = () => I18N[lang];
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const maps = (q) => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+
+function renderTables() {
+  const F = [["all", T().all], ["3", T().s3], ["2", T().s2], ["1", T().s1], ["mc", T().mc], ["azur", T().azur]];
+  $("#filters").innerHTML = F.map(([k, v]) => `<button data-k="${k}" class="${k === starF ? "on" : ""}">${esc(v)}</button>`).join("");
+  const list = TABLES.filter(([s, , , a]) => starF === "all" || String(s) === starF || a === starF);
+  $("#tablesList").innerHTML = list.map(([s, n, p]) => `
+    <a href="${maps(n + " " + p)}" target="_blank" rel="noopener"><b>${esc(n)}</b><i>${"✦".repeat(s)}</i><span>${esc(p)}</span></a>`).join("");
+}
+
+function render() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach((el) => { const v = T()[el.dataset.t]; if (v != null) el.innerHTML = v; });
+  document.querySelectorAll(".langs button").forEach((b) => b.classList.toggle("on", b.dataset.lang === lang));
+  $("#cal").innerHTML = SEASON.map((x) => `
+    <li><span class="d">${esc(x.d[lang])}</span><span class="e">${esc(x.e)}</span><span class="w">${esc(x.w)}</span>
+    <span class="s ${x.s}">${esc(T()[x.s])}</span></li>`).join("");
+  $("#formats").innerHTML = FORMATS[lang].map(([h, p], i) => `<div><span class="n">0${i + 1}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
+  $("#stayLink").href = lang === "it" ? "https://rivierarent.it/" : "https://rivierarent.it/en/";
+  renderTables();
+}
+
+document.querySelector(".langs").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  lang = b.dataset.lang;
+  try { localStorage.setItem("season-lang", lang); } catch (e) {}
+  render();
+});
+$("#filters").addEventListener("click", (ev) => { const b = ev.target.closest("button"); if (b) { starF = b.dataset.k; renderTables(); } });
+
+render();
+</script>
+</body>
+</html>
