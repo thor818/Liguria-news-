@@ -227,3 +227,9 @@ h2 em, h3 em, .hero-title em { font-style: italic; font-weight: 300; color: var(
 .reveal.in { opacity: 1; transform: none; }
 .no-js .reveal { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+
+/* logo RR (rrluxury.fr), lo stesso del magazine */
+.rr-logo { display: block; height: 118px; width: auto; }
+.rr-mark { width: 72px; height: auto; flex: none; }
+.bar { min-height: 132px; }
+@media (max-width: 900px) { .rr-logo { height: 96px; } .bar { min-height: 108px; } }
