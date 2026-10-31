@@ -44,6 +44,10 @@
   .langs button { border: 0; background: none; font: 500 .72rem var(--body); letter-spacing: .2em; color: var(--muted); padding: 8px 8px; cursor: pointer; }
   .langs button.on { color: var(--ink); border-bottom: 1px solid var(--gold); }
 
+  .rr-ico { width: 40px; height: 34px; color: var(--ink); flex: none; }
+  .rr-ico use { stroke-width: 1; }
+  footer .rr-ico { color: var(--gold-soft); }
+  .cover-rr { display: block; width: clamp(110px, 14vw, 170px); height: auto; margin: 0 auto 26px; color: #f1dfb6; filter: drop-shadow(0 1px 10px rgba(0,0,0,.6)); }
   /* ---------- copertina ---------- */
   .cover { position: relative; isolation: isolate; min-height: clamp(620px, 92vh, 980px); color: #f7f2e8; display: grid; overflow: hidden; background: var(--night); }
   .cover > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.04); animation: slow 22s ease-in-out infinite alternate; }
@@ -255,11 +259,16 @@
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="rr" viewBox="-2 -2 242 206" overflow="visible"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"><path d="M10 0 V200 M10 0 H58 C96 0 112 22 112 52 C112 82 96 104 58 104 H10 M56 104 C80 140 96 172 108 190 C114 199 124 203 136 199" vector-effect="non-scaling-stroke"/><path d="M10 0 V200 M10 0 H58 C96 0 112 22 112 52 C112 82 96 104 58 104 H10 M56 104 C80 140 96 172 108 190 C114 199 124 203 136 199" transform="translate(100 0)" vector-effect="non-scaling-stroke"/></g></symbol>
+  <linearGradient id="rrFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".75" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <mask id="rrMask" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#rrFade)"/></mask>
+</defs></svg>
 
 <header class="mast">
   <div class="wrap">
     <span class="issue label" data-t="issue"></span>
-    <a class="brand" href="#top"><img src="foto/logo-luxury.svg" alt=""><span><b>RIVIERA RENT</b><span>LUXURY</span></span></a>
+    <a class="brand" href="#top"><svg class="rr-ico" viewBox="0 0 242 206" aria-hidden="true"><use href="#rr"/></svg><span><b>RIVIERA RENT</b><span>LUXURY</span></span></a>
     <div class="langs" role="group" aria-label="Language">
       <button data-lang="en">EN</button><button data-lang="fr">FR</button><button data-lang="it">IT</button>
     </div>
@@ -271,7 +280,7 @@
   <img src="foto/monaco-notte.jpg" alt="">
   <div class="wrap">
     <div class="cover-top"><span class="label" data-t="coverKicker"></span><span class="label" data-t="issue"></span></div>
-    <h1>Live the Riviera<small>by Riviera Rent Luxury</small></h1>
+    <h1><svg class="cover-rr" viewBox="0 0 242 430" aria-hidden="true"><use href="#rr" width="242" height="206"/><line x1="-20" y1="214" x2="262" y2="214" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" opacity=".7"/><g mask="url(#rrMask)" opacity=".8"><use href="#rr" width="242" height="206" transform="translate(0 428) scale(1 -1)"/></g></svg>Live the Riviera<small>by Riviera Rent Luxury</small></h1>
     <nav class="lines">
       <a href="#gp"><b data-t="l1"></b><span data-t="l1s"></span></a>
       <a href="#cannes"><b data-t="l2"></b><span data-t="l2s"></span></a>
@@ -653,7 +662,7 @@
 <footer>
   <div class="wrap">
     <div>
-      <a class="brand" href="#top"><b>RIVIERA RENT</b><span>LUXURY</span></a>
+      <a class="brand" href="#top"><svg class="rr-ico" viewBox="0 0 242 206" aria-hidden="true"><use href="#rr"/></svg><span><b>RIVIERA RENT</b><span>LUXURY</span></span></a>
       <p data-t="footer"></p>
     </div>
     <div>
