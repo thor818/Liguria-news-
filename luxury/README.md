@@ -9,7 +9,7 @@ Rivista di lusso sulla stagione della Costa Azzurra e di Monaco, in inglese, fra
 - Tavole stellate: tutti i 37 ristoranti stellati Guida MICHELIN 2026 di Monaco e Alpes-Maritimes (`TABLES`).
 - Pagine pubblicitarie dimostrative e media kit con i formati (`FORMATS`).
 - Stesso stile, logo, colori e caratteri (Cormorant Garamond, Montserrat) del sito Riviera Rent Luxury.
-- La collezione Riviera Rent Luxury (Villa Gabriella, La Dragonnière, Kristal Palace, Elidia Palace: `HOMES`) e la concierge su misura (9 servizi: `SERVICES`), con link al sito Luxury Liguria (rivierarent.it/lusso) e Costa Azzurra.
+- La concierge su misura (9 servizi: `SERVICES`), con link al sito Luxury Liguria (rivierarent.it/lusso) e Costa Azzurra. Nessuna residenza nel magazine.
 
 ## Da completare
 - Il sito Luxury Costa Azzurra (rivierarent.fr/luxury) non è ancora online: il pulsante punta all'anteprima. Aggiungere il contatto per la pubblicità.
