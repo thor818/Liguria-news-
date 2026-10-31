@@ -55,6 +55,7 @@
   .mast .wrap { height: auto !important; padding-block: 14px 6px; }
   .mast .brand { display: block; }
   .mast-logo { display: block; width: clamp(140px, 15vw, 185px); height: auto; margin: 0 auto; }
+  .cover-logo { font-style: normal; display: block; width: clamp(140px, 14vw, 190px); height: auto; margin: 10px auto 0; filter: drop-shadow(0 0 6px rgba(0,0,0,.7)) drop-shadow(0 1px 14px rgba(0,0,0,.5)); }
   /* ---------- copertina ---------- */
   .cover { position: relative; isolation: isolate; min-height: clamp(620px, 92vh, 980px); color: #f7f2e8; display: grid; overflow: hidden; background: var(--night); }
   .cover > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.04); animation: slow 22s ease-in-out infinite alternate; }
@@ -272,6 +273,7 @@
   <linearGradient id="rrFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".75" stop-color="#fff" stop-opacity="0"/></linearGradient>
   <mask id="rrMask" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#rrFade)"/></mask>
   <symbol id="hairRR" viewBox="-2 -2 242 206" overflow="visible"><path d="M10 0 V200 M10 0 H58 C96 0 112 22 112 52 C112 82 96 104 58 104 H10 M56 104 C80 140 96 172 108 190 C114 199 124 203 136 199" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 0 V200 M10 0 H58 C96 0 112 22 112 52 C112 82 96 104 58 104 H10 M56 104 C80 140 96 172 108 190 C114 199 124 203 136 199" transform="translate(100 0)" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="hairRRb" viewBox="-2 -2 242 206" overflow="visible"><path d="M10 0 V200 M10 0 H58 C96 0 112 22 112 52 C112 82 96 104 58 104 H10 M56 104 C80 140 96 172 108 190 C114 199 124 203 136 199" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 0 V200 M10 0 H58 C96 0 112 22 112 52 C112 82 96 104 58 104 H10 M56 104 C80 140 96 172 108 190 C114 199 124 203 136 199" transform="translate(100 0)" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </defs></svg>
 
 <header class="mast">
@@ -297,7 +299,7 @@
   <img src="foto/monaco-crepuscolo.jpg" alt="Port Hercule, Monaco, al crepuscolo">
   <div class="wrap">
     <div class="cover-top"><span class="label" data-t="coverKicker"></span><span class="label" data-t="issue"></span></div>
-    <h1>Live the Riviera<small style="text-transform:none;letter-spacing:.22em">by rrluxury.fr</small></h1>
+    <h1>Live the Riviera<small style="text-transform:none;letter-spacing:.22em">by</small><svg class="cover-logo" viewBox="0 0 400 460" aria-label="rrluxury.fr"><defs><linearGradient id="cvF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="cvM" maskUnits="userSpaceOnUse" x="0" y="210" width="400" height="180"><rect x="0" y="210" width="400" height="180" fill="url(#cvF)"/></mask></defs><use href="#hairRRb" x="100" y="30" width="200" height="170.2" style="color:#ffffff"/><line x1="60" y1="208" x2="340" y2="208" stroke="#ffffff" stroke-width="1.4" opacity=".9"/><g mask="url(#cvM)"><use href="#hairRRb" x="100" y="216" width="200" height="170.2" style="color:#ffffff" opacity=".5" transform="translate(0 602.2) scale(1 -1)"/></g><text x="200" y="404" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="300" font-size="26" letter-spacing="12" fill="#ffffff">LUXURY</text><text x="200" y="448" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="400" font-size="22" letter-spacing="4" fill="#ffffff">rrluxury.fr</text></svg></h1>
     <nav class="lines">
       <a href="#gp"><b data-t="l1"></b><span data-t="l1s"></span></a>
       <a href="#cannes"><b data-t="l2"></b><span data-t="l2s"></span></a>
