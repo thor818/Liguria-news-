@@ -16,7 +16,7 @@ Sei rubriche, raggiungibili anche dal menu a schermo intero (pulsante ☰ in alt
 | Rubrica | Cosa contiene | Dove si modifica in `index.html` |
 |---|---|---|
 | Explore | luoghi da vedere, Genova in evidenza, 44 City guides (da vedere, musei, da fare, dove mangiare, sapori), Artists' Riviera e mappa | `SEE`, `CITIES`, `ARTISTS`, `PINS` |
-| What to do | esperienze, "Book an activity", Sport & adventure, Family fun e sentieri (Hiking) | `TODO`, `SITES`, `SPORTS`, `FAMILY`, `HIKES` |
+| What to do | esperienze, "Book an activity", Sport & adventure, Family fun, sentieri (Hiking), Festival, Natura & grotte, Spiagge & mare | `TODO`, `SITES`, `SPORTS`, `FAMILY`, `HIKES`, `FESTIVALS`, `NATURE`, `BEACHES` |
 | Riviera by night | locali, club, musica dal vivo, casinò | `NIGHT` |
 | Where to eat | ristoranti, piatti tipici, guide gastronomiche | `RESTAURANTS`, `DISHES`, `GUIDES` |
 | Where to stay | link a Riviera Rent | sezione `#stay`, `SITE_IT` |
