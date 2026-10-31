@@ -213,6 +213,12 @@
   .cal .e a:hover { border-color: var(--gold); }
   .tables-block { margin-bottom: 8px; }
 
+  .places { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 0 32px; }
+  .places a { display: block; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding .25s; }
+  .places a:hover { padding-left: 6px; }
+  .places b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.35rem; line-height: 1.15; }
+  .places .pl { display: block; font-size: .64rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin: 4px 0 6px; }
+  .places p { margin: 0; font-size: .9rem; color: var(--muted); }
   footer { background: var(--night); color: #bdb4a5; padding-block: 64px 48px; font-size: .86rem; }
   footer .wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; }
   footer .brand { text-align: left; color: #f2ece0; }
@@ -296,7 +302,10 @@
     <li><a href="#music"><span class="n">08</span><span class="t" data-t="tocMusic"></span><span class="p label" data-t="bothShort"></span></a></li>
     <li><a href="#season"><span class="n">09</span><span class="t" data-t="tocSeason"></span><span class="p label">2026 — 2027</span></a></li>
     <li><a href="#tables"><span class="n">10</span><span class="t" data-t="tocTables"></span><span class="p label">Michelin 2026</span></a></li>
-    <li><a href="#concierge"><span class="n">11</span><span class="t" data-t="concLabel"></span><span class="p label">Riviera Rent Luxury</span></a></li>
+    <li><a href="#clubs"><span class="n">11</span><span class="t" data-t="tocClubs"></span><span class="p label" data-t="bothShort"></span></a></li>
+    <li><a href="#art"><span class="n">12</span><span class="t" data-t="tocArt"></span><span class="p label" data-t="bothShort"></span></a></li>
+    <li><a href="#golf"><span class="n">13</span><span class="t">Golf</span><span class="p label" data-t="bothShort"></span></a></li>
+    <li><a href="#concierge"><span class="n">14</span><span class="t" data-t="concLabel"></span><span class="p label">Riviera Rent Luxury</span></a></li>
   </ol>
 </section>
 
@@ -583,11 +592,41 @@
   </aside>
 </div>
 
-<!-- ============ 11 CONCIERGE ============ -->
+
+<!-- ============ 11 BEACH CLUB E NOTTI ============ -->
+<section class="wrap season reveal" id="clubs">
+  <div class="sec-head">
+    <div><span class="label gold">11</span><h2 data-t="clubsTitle"></h2></div>
+    <p data-t="clubsSub"></p>
+  </div>
+  <div id="clubsList"></div>
+</section>
+
+<!-- ============ 12 COLLEZIONI D'ARTE ============ -->
+<section class="stars reveal" id="art">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label gold">12</span><h2 data-t="artTitle"></h2></div>
+      <p data-t="artSub"></p>
+    </div>
+    <div id="artList"></div>
+  </div>
+</section>
+
+<!-- ============ 13 GOLF ============ -->
+<section class="wrap season reveal" id="golf">
+  <div class="sec-head">
+    <div><span class="label gold">13</span><h2 data-t="golfTitle"></h2></div>
+    <p data-t="golfSub"></p>
+  </div>
+  <div id="golfList"></div>
+</section>
+
+<!-- ============ 14 CONCIERGE ============ -->
 <section class="concierge reveal" id="concierge">
   <div class="wrap">
     <div class="sec-head">
-      <div><span class="label" style="color:var(--gold-soft)">11 · <span data-t="concLabel"></span></span><h2 data-t="concTitle"></h2></div>
+      <div><span class="label" style="color:var(--gold-soft)">14 · <span data-t="concLabel"></span></span><h2 data-t="concTitle"></h2></div>
       <p data-t="concSub"></p>
     </div>
     <ol class="services" id="services"></ol>
@@ -724,6 +763,63 @@ const MUSIC = [
   { r: "lig", d: D("All season", "Toute la saison", "Tutta la stagione"), e: "GOG · Giovine Orchestra Genovese", w: "Teatro Carlo Felice, Genova", g: "classical", s: "ok", u: "https://www.gog.it" }
 ];
 
+
+/* Beach club, lounge e locali — r: costa; q: ricerca su Google Maps */
+const CLUBS = [
+  { r: "azur", n: "Monte-Carlo Beach", p: "Roquebrune-Cap-Martin · Monaco", t: D("The legendary 1929 beach club: Olympic pool, cabanas and the Michelin-starred Elsa.", "Le beach club mythique de 1929 : piscine olympique, cabanes et le restaurant étoilé Elsa.", "Il leggendario beach club del 1929: piscina olimpionica, cabine e il ristorante stellato Elsa.") },
+  { r: "azur", n: "Plage Keller", p: "La Garoupe · Cap d'Antibes", t: D("The most discreet address on the Cap, in the bay of La Garoupe.", "L'adresse la plus discrète du Cap, dans la baie de la Garoupe.", "L'indirizzo più discreto del Cap, nella baia della Garoupe.") },
+  { r: "azur", n: "Paloma Beach", p: "Saint-Jean-Cap-Ferrat", t: D("Pebbles, yachts at anchor and lunch with a view of the whole Riviera.", "Galets, yachts au mouillage et déjeuner face à toute la Riviera.", "Ciottoli, yacht alla fonda e pranzo davanti a tutta la Riviera.") },
+  { r: "azur", n: "La Guérite", p: "Île Sainte-Marguerite · Cannes", t: D("Lunch and DJ on the island, reached by boat from Cannes.", "Déjeuner et DJ sur l'île, en bateau depuis Cannes.", "Pranzo e DJ sull'isola, in barca da Cannes.") },
+  { r: "azur", n: "Anjuna", p: "Èze-Bord-de-Mer", t: D("A Balinese-style beach club under the cliffs of Èze.", "Un beach club d'inspiration balinaise sous les falaises d'Èze.", "Un beach club in stile balinese sotto le scogliere di Èze.") },
+  { r: "azur", n: "Twiga Monte-Carlo", p: "Avenue Princesse Grace · Monaco", t: D("Dinner, then the club, facing the Larvotto.", "Dîner puis club, face au Larvotto.", "Cena e poi club, davanti al Larvotto.") },
+  { r: "azur", n: "Jimmy'z Monte-Carlo", p: "Sporting Monte-Carlo · Monaco", t: D("The Principality's most famous nightclub, with its summer garden by the lake.", "Le night-club le plus célèbre de la Principauté, et son jardin d'été au bord du lac.", "Il night-club più famoso del Principato, con il giardino estivo sul lago.") },
+  { r: "azur", n: "Le Bar Américain", p: "Hôtel de Paris · Monaco", t: D("Live jazz and cocktails in the Hôtel de Paris.", "Jazz live et cocktails à l'Hôtel de Paris.", "Jazz dal vivo e cocktail all'Hôtel de Paris.") },
+  { r: "azur", n: "Blue Gin · COYA", p: "Monte-Carlo Bay · Monaco", t: D("Sunset cocktails over the sea and Peruvian evenings.", "Cocktails au coucher du soleil sur la mer et soirées péruviennes.", "Cocktail al tramonto sul mare e serate peruviane.") },
+  { r: "azur", n: "La Rascasse", p: "Port Hercule · Monaco", t: D("On the Grand Prix bend: the place to be on race nights.", "Dans le virage du Grand Prix : l'adresse des soirs de course.", "Sulla curva del Gran Premio: il posto delle notti di gara.") },
+  { r: "azur", n: "Bâoli", p: "Port Pierre Canto · Cannes", t: D("Restaurant and club of the Festival and Cannes Lions nights.", "Restaurant et club des nuits du Festival et des Cannes Lions.", "Ristorante e club delle notti del Festival e dei Cannes Lions.") },
+  { r: "lig", n: "Bagni Fiore · Langosteria", p: "Paraggi · Portofino", t: D("The historic beach club of Paraggi (1927), with Langosteria's restaurant on the water.", "Le beach club historique de Paraggi (1927), avec le restaurant Langosteria les pieds dans l'eau.", "Lo storico stabilimento di Paraggi (1927), con il ristorante Langosteria sull'acqua.") },
+  { r: "lig", n: "Eight Hotel Paraggi", p: "Paraggi", t: D("A boutique hotel with a private beach club, April to November.", "Boutique-hôtel avec beach club privé, d'avril à novembre.", "Boutique hotel con beach club privato, da aprile a novembre.") },
+  { r: "lig", n: "Splendido Mare", p: "Piazzetta · Portofino", t: D("Aperitivo on the most famous piazzetta in the world.", "L'apéritif sur la piazzetta la plus célèbre du monde.", "L'aperitivo sulla piazzetta più famosa del mondo.") },
+  { r: "lig", n: "Covo di Nord Est", p: "Santa Margherita Ligure", t: D("The legend of the Eastern Riviera nights, with dinner-shows in the Covino privé.", "La légende des nuits de la Riviera du Levant, avec dîners-spectacles au Covino.", "La leggenda delle notti del Levante, con le cene spettacolo nel privé Covino.") },
+  { r: "lig", n: "Sirena", p: "Santa Margherita Ligure", t: D("A terrace over the Gulf of Tigullio for aperitivi and late dinners with music.", "Une terrasse sur le golfe du Tigullio pour l'apéritif et les dîners tardifs en musique.", "Una terrazza sul Golfo del Tigullio per aperitivi e cene tardi con musica.") },
+  { r: "lig", n: "Victory Morgana Bay", p: "Sanremo", t: D("Moored between the two harbours: the most glamorous address in Sanremo.", "Amarré entre les deux ports : l'adresse la plus glamour de Sanremo.", "Ormeggiato tra i due porti: l'indirizzo più glamour di Sanremo.") },
+  { r: "lig", n: "Le Vele", p: "Alassio", t: D("The club on the sea that defines summer nights on the Western Riviera.", "Le club sur la mer qui fait les nuits d'été de la Riviera du Ponant.", "Il club sul mare che fa le notti d'estate del Ponente.") },
+  { r: "lig", n: "La Suerte", p: "Laigueglia", t: D("Trendy and exclusive since 1996.", "Branché et exclusif depuis 1996.", "Trendy ed esclusivo dal 1996.") }
+];
+
+/* Collezioni d'arte e dimore storiche */
+const ART = [
+  { r: "azur", n: "Fondation Maeght", p: "Saint-Paul-de-Vence", t: D("Miró, Giacometti, Chagall and Braque in the pines: Europe's first private art foundation.", "Miró, Giacometti, Chagall et Braque dans les pins : la première fondation d'art privée d'Europe.", "Miró, Giacometti, Chagall e Braque tra i pini: la prima fondazione d'arte privata d'Europa.") },
+  { r: "azur", n: "Villa Ephrussi de Rothschild", p: "Saint-Jean-Cap-Ferrat", t: D("A Belle Époque palace, its collections and nine gardens between two bays.", "Un palais Belle Époque, ses collections et neuf jardins entre deux baies.", "Un palazzo Belle Époque, le sue collezioni e nove giardini tra due baie.") },
+  { r: "azur", n: "Villa Kérylos", p: "Beaulieu-sur-Mer", t: D("An ancient Greek villa rebuilt on the sea in 1908.", "Une villa grecque antique reconstruite sur la mer en 1908.", "Una villa dell'antica Grecia ricostruita sul mare nel 1908.") },
+  { r: "azur", n: "Musée Picasso", p: "Château Grimaldi · Antibes", t: D("The castle where Picasso painted in 1946, above the ramparts.", "Le château où Picasso peignit en 1946, sur les remparts.", "Il castello dove Picasso dipinse nel 1946, sopra i bastioni.") },
+  { r: "azur", n: "Musée Matisse · Musée Chagall", p: "Cimiez · Nice", t: D("Two masters, two museums on the hill of Cimiez.", "Deux maîtres, deux musées sur la colline de Cimiez.", "Due maestri, due musei sulla collina di Cimiez.") },
+  { r: "azur", n: "Musée Renoir", p: "Les Collettes · Cagnes-sur-Mer", t: D("The painter's house and studio among the olive trees.", "La maison et l'atelier du peintre parmi les oliviers.", "La casa e l'atelier del pittore tra gli ulivi.") },
+  { r: "azur", n: "Musée national Fernand Léger", p: "Biot", t: D("The great mosaics and colours of Léger.", "Les grandes mosaïques et les couleurs de Léger.", "I grandi mosaici e i colori di Léger.") },
+  { r: "azur", n: "Musée Jean Cocteau · Villa Santo Sospir", p: "Menton · Cap Ferrat", t: D("Cocteau's museum by the sea and the villa he tattooed with frescoes.", "Le musée Cocteau en bord de mer et la villa qu'il a « tatouée » de fresques.", "Il museo Cocteau sul mare e la villa che lui « tatuò » di affreschi.") },
+  { r: "azur", n: "Nouveau Musée National de Monaco", p: "Villa Paloma · Monaco", t: D("Contemporary art in a villa above the port; Victor Brauner until 3 January 2027.", "L'art contemporain dans une villa au-dessus du port ; Victor Brauner jusqu'au 3 janvier 2027.", "Arte contemporanea in una villa sopra il porto; Victor Brauner fino al 3 gennaio 2027.") },
+  { r: "azur", n: "Musée Océanographique", p: "Le Rocher · Monaco", t: D("Prince Albert I's temple of the sea, on the cliff since 1910.", "Le temple de la mer du Prince Albert Ier, sur la falaise depuis 1910.", "Il tempio del mare del Principe Alberto I, sulla scogliera dal 1910.") },
+  { r: "azur", n: "Monaco Top Cars Collection", p: "Fontvieille · Monaco", t: D("The Prince's collection of classic and racing cars.", "La collection de voitures anciennes et de course du Prince.", "La collezione di auto d'epoca e da corsa del Principe.") },
+  { r: "lig", n: "Galleria Nazionale di Palazzo Spinola", p: "Genova", t: D("A noble palace of 1593 with Rubens, Van Dyck and Antonello da Messina.", "Un palais noble de 1593 avec Rubens, Van Dyck et Antonello de Messine.", "Un palazzo nobiliare del 1593 con Rubens, Van Dyck e Antonello da Messina.") },
+  { r: "lig", n: "Palazzo Reale", p: "Via Balbi · Genova", t: D("Royal apartments, the Hall of Mirrors and the hanging garden.", "Appartements royaux, galerie des Glaces et jardin suspendu.", "Appartamenti reali, la Galleria degli Specchi e il giardino pensile.") },
+  { r: "lig", n: "Musei di Strada Nuova", p: "Via Garibaldi · Genova", t: D("Palazzo Rosso, Palazzo Bianco and Palazzo Tursi: the UNESCO Rolli palaces and their masterpieces.", "Palazzo Rosso, Palazzo Bianco et Palazzo Tursi : les palais des Rolli UNESCO et leurs chefs-d'œuvre.", "Palazzo Rosso, Palazzo Bianco e Palazzo Tursi: i Rolli UNESCO e i loro capolavori.") },
+  { r: "lig", n: "Museo d'Arte Orientale Chiossone", p: "Villetta Di Negro · Genova", t: D("One of Europe's great collections of Japanese art.", "L'une des grandes collections d'art japonais d'Europe.", "Una delle grandi collezioni d'arte giapponese d'Europa.") },
+  { r: "lig", n: "Wolfsoniana · Raccolte Frugone · GAM", p: "Parchi di Nervi · Genova", t: D("Four museums in the villas and gardens of Nervi, from Boldini to Art Déco.", "Quatre musées dans les villas et jardins de Nervi, de Boldini à l'Art déco.", "Quattro musei nelle ville e nei parchi di Nervi, da Boldini all'Art Déco.") },
+  { r: "lig", n: "Pinacoteca e Museo della Ceramica", p: "Savona", t: D("Five centuries of Savona and Albisola ceramics, beside the old masters.", "Cinq siècles de céramique de Savone et d'Albisola, à côté des maîtres anciens.", "Cinque secoli di ceramica di Savona e Albisola, accanto agli antichi maestri.") },
+  { r: "lig", n: "Giardini Botanici Hanbury", p: "La Mortola · Ventimiglia", t: D("A garden of the world on terraces down to the sea, founded in 1867.", "Un jardin du monde en terrasses jusqu'à la mer, fondé en 1867.", "Un giardino del mondo a terrazze fino al mare, fondato nel 1867.") },
+  { r: "lig", n: "Museo Bicknell", p: "Bordighera", t: D("The English Bordighera of the Belle Époque and the engravings of the Vallée des Merveilles.", "La Bordighera anglaise de la Belle Époque et les gravures de la Vallée des Merveilles.", "La Bordighera inglese della Belle Époque e le incisioni della Valle delle Meraviglie.") }
+];
+
+/* Golf */
+const GOLF = [
+  { r: "azur", n: "Monte-Carlo Golf Club", p: "Mont Agel · La Turbie", t: D("Since 1911, at 900 metres above Monaco. Closed from late October to early April.", "Depuis 1911, à 900 mètres au-dessus de Monaco. Fermé de fin octobre à début avril.", "Dal 1911, a 900 metri sopra Monaco. Chiuso da fine ottobre a inizio aprile.") },
+  { r: "azur", n: "Royal Mougins Golf Club", p: "Mougins", t: D("A championship course near Cannes, opened in 1993.", "Un parcours de championnat près de Cannes, ouvert en 1993.", "Un percorso da campionato vicino a Cannes, aperto nel 1993.") },
+  { r: "azur", n: "Golf de Cannes-Mougins", p: "Mougins", t: D("Since 1926, between two forests; home of the Cannes Open for 14 years.", "Depuis 1926, entre deux forêts ; le Cannes Open pendant 14 ans.", "Dal 1926, tra due foreste; sede del Cannes Open per 14 anni.") },
+  { r: "lig", n: "Golf Club Garlenda", p: "Garlenda · Alassio", t: D("Designed by Robert Von Hagge in the Lerrone valley, a few minutes from the sea.", "Dessiné par Robert Von Hagge dans la vallée du Lerrone, à quelques minutes de la mer.", "Disegnato da Robert Von Hagge in Val Lerrone, a pochi minuti dal mare.") },
+  { r: "lig", n: "Circolo Golf e Tennis Rapallo", p: "Rapallo", t: D("An English-style clubhouse and a mild climate all year round.", "Un club-house à l'anglaise et un climat doux toute l'année.", "Club house all'inglese e clima mite tutto l'anno.") },
+  { r: "lig", n: "Golf Club Sanremo · degli Ulivi", p: "Sanremo", t: D("Among the olive trees on the hill above the city of flowers.", "Parmi les oliviers sur la colline au-dessus de la ville des fleurs.", "Tra gli ulivi sulla collina sopra la città dei fiori.") }
+];
+
 /* Guide MICHELIN France & Monaco 2026 (Monaco e Alpes-Maritimes) e Guida MICHELIN Italia 2026 (Liguria) — stelle, nome, luogo, costa */
 const TABLES = [
   [3, "Mirazur", "Menton", "azur"], [3, "Le Louis XV – Alain Ducasse à l'Hôtel de Paris", "Monaco", "azur"],
@@ -761,6 +857,10 @@ const FORMATS = {
 
 const I18N = {
   en: {
+    tocClubs: "Beach Clubs & Nights", tocArt: "Art Collections",
+    clubsTitle: "Beach clubs <em>& nights</em>", clubsSub: "Where to spend the day by the sea and the night after: the addresses that count, coast by coast. Book ahead in summer.",
+    artTitle: "Art <em>Collections</em>", artSub: "Foundations, villas and palaces: the great collections of the two Rivieras. Nice's MAMAC is closed for renovation until 2028.",
+    golfTitle: "The <em>Golf</em> Clubs", golfSub: "Six historic courses between Cannes and Rapallo.",
     cats: { all: "All", sea: "Sea", sport: "Sport", gala: "Galas & nights", art: "Art", food: "Gastronomy", screen: "Cinema & TV", tradition: "Traditions" },
     partI: "Part I", partII: "Part II", partAzur: "Côte d'Azur & Monaco", partAzurText: "Monte-Carlo, Cannes, Nice and Menton: the Grand Prix, the Festival, the galas of the Principality and the great boat shows.",
     partLigText: "Sanremo, Genoa and Portofino: the song festival, the opera house of Genoa, the regattas of the Yacht Club Italiano and twelve starred tables.",
@@ -822,6 +922,10 @@ const I18N = {
     credits: "Photos: Pexels. Restaurant lists: Guide MICHELIN France & Monaco 2026 and Guida MICHELIN Italia 2026. Programmes: the theatres and festivals named, checked in October 2026."
   },
   fr: {
+    tocClubs: "Beach Clubs & Nuits", tocArt: "Collections d'Art",
+    clubsTitle: "Beach clubs <em>& nuits</em>", clubsSub: "Où passer la journée au bord de l'eau et la nuit qui suit : les adresses qui comptent, côte par côte. Réservez en été.",
+    artTitle: "Collections <em>d'Art</em>", artSub: "Fondations, villas et palais : les grandes collections des deux Rivieras. Le MAMAC de Nice est fermé pour travaux jusqu'en 2028.",
+    golfTitle: "Les <em>Golfs</em>", golfSub: "Six parcours historiques entre Cannes et Rapallo.",
     cats: { all: "Tout", sea: "Mer", sport: "Sport", gala: "Galas & soirées", art: "Art", food: "Gastronomie", screen: "Cinéma & TV", tradition: "Traditions" },
     partI: "Partie I", partII: "Partie II", partAzur: "Côte d'Azur & Monaco", partAzurText: "Monte-Carlo, Cannes, Nice et Menton : le Grand Prix, le Festival, les galas de la Principauté et les grands salons nautiques.",
     partLigText: "Sanremo, Gênes et Portofino : le festival de la chanson, l'opéra de Gênes, les régates du Yacht Club Italiano et douze tables étoilées.",
@@ -883,6 +987,10 @@ const I18N = {
     credits: "Photos : Pexels. Restaurants : Guide MICHELIN France & Monaco 2026 et Guida MICHELIN Italia 2026. Programmes : les théâtres et festivals cités, vérifiés en octobre 2026."
   },
   it: {
+    tocClubs: "Beach Club & Notti", tocArt: "Collezioni d'Arte",
+    clubsTitle: "Beach club <em>& notti</em>", clubsSub: "Dove passare la giornata sul mare e la notte dopo: gli indirizzi che contano, costa per costa. D'estate prenota.",
+    artTitle: "Collezioni <em>d'Arte</em>", artSub: "Fondazioni, ville e palazzi: le grandi collezioni delle due Riviere. Il MAMAC di Nizza è chiuso per lavori fino al 2028.",
+    golfTitle: "I <em>Golf</em> Club", golfSub: "Sei percorsi storici tra Cannes e Rapallo.",
     cats: { all: "Tutto", sea: "Mare", sport: "Sport", gala: "Gala e serate", art: "Arte", food: "Gastronomia", screen: "Cinema e TV", tradition: "Tradizioni" },
     partI: "Parte I", partII: "Parte II", partAzur: "Costa Azzurra & Monaco", partAzurText: "Monte-Carlo, Cannes, Nizza e Mentone: il Gran Premio, il Festival, i gala del Principato e i grandi saloni nautici.",
     partLigText: "Sanremo, Genova e Portofino: il festival della canzone, il teatro d'opera di Genova, le regate dello Yacht Club Italiano e dodici tavole stellate.",
@@ -969,6 +1077,9 @@ const blocks = (list, row) => REGIONS.map((r) => {
 }).join("");
 const calRow = (x) => `<li><span class="d">${esc(x.d[lang])}</span><span class="e">${x.u ? `<a href="${x.u}" target="_blank" rel="noopener">${esc(x.e)}</a>` : esc(x.e)}${x.g ? ` <small><span class="gen">${esc(T().g[x.g])}</span></small>` : x.cat ? ` <small><span class="gen">${esc(T().cats[x.cat])}</span></small>` : ""}</span><span class="w">${esc(x.w)}</span><span class="s ${x.s}">${esc(T()[x.s])}</span></li>`;
 
+const placeList = (list) => blocks(list, (items) => `<div class="places">${items.map((x) => `
+    <a href="${maps(x.n + " " + x.p)}" target="_blank" rel="noopener"><b>${esc(x.n)}</b><span class="pl">${esc(x.p)}</span><p>${esc(x.t[lang])}</p></a>`).join("")}</div>`);
+
 function renderTables() {
   const F = [["all", T().all], ["3", T().s3], ["2", T().s2], ["1", T().s1]];
   $("#filters").innerHTML = F.map(([k, v]) => `<button data-k="${k}" class="${k === starF ? "on" : ""}">${esc(v)}</button>`).join("");
@@ -998,6 +1109,9 @@ function render() {
   $("#formats").innerHTML = FORMATS[lang].map(([h, p], i) => `<div><span class="n">0${i + 1}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
   $("#services").innerHTML = SERVICES[lang].map(([b, p], i) => `<li><span class="n">${["I","II","III","IV","V","VI","VII","VIII","IX"][i]}</span><b>${esc(b)}</b><p>${esc(p)}</p></li>`).join("");
   renderTables();
+  $("#clubsList").innerHTML = placeList(CLUBS);
+  $("#artList").innerHTML = placeList(ART);
+  $("#golfList").innerHTML = placeList(GOLF);
   setRegion(region);
 }
 
