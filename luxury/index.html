@@ -540,6 +540,7 @@
     <div><span class="label gold">09</span><h2 data-t="seasonTitle"></h2></div>
     <p data-t="seasonSub"></p>
   </div>
+  <div class="filters" id="catFilters"></div>
   <div id="cal"></div>
 </section>
 
@@ -632,38 +633,60 @@
 
 const D = (en, fr, it) => ({ en, fr, it });
 
-/* Calendario della stagione — r: "azur" (Costa Azzurra e Monaco) o "lig" (Liguria); s: ok = annunciato, tba = da confermare */
+/* Calendario della stagione — r: "azur" (Costa Azzurra e Monaco) o "lig" (Liguria);
+   c: categoria (sea mare, sport, gala, art arte, food gastronomia, screen cinema e tv, tradition tradizioni);
+   s: ok = annunciato, tba = da confermare */
 const SEASON = [
-  { r: "azur", d: D("19 November 2026", "19 novembre 2026", "19 novembre 2026"), e: "Fête Nationale Monégasque", w: "Monaco", s: "ok" },
-  { r: "azur", d: D("18 – 29 November 2026", "18 – 29 novembre 2026", "18 – 29 novembre 2026"), e: "Monte-Carlo Jazz Festival · 20 ans", w: "Opéra Garnier, Monte-Carlo", s: "ok" },
-  { r: "azur", d: D("31 December 2026", "31 décembre 2026", "31 dicembre 2026"), e: "Le Réveillon des Stars", w: "Palais des Festivals, Cannes", s: "ok" },
-  { r: "azur", d: D("January 2027", "Janvier 2027", "Gennaio 2027"), e: "Festival International du Cirque de Monte-Carlo", w: "Monaco", s: "tba" },
-  { r: "azur", d: D("21 – 24 January 2027", "21 – 24 janvier 2027", "21 – 24 gennaio 2027"), e: "Rallye Automobile Monte-Carlo", w: "Monaco · Alpes-Maritimes", s: "ok" },
-  { r: "azur", d: D("27 Jan – 3 Feb 2027", "27 janv. – 3 févr. 2027", "27 gen – 3 feb 2027"), e: "Rallye Monte-Carlo Historique", w: "Monaco", s: "ok" },
-  { r: "azur", d: D("February 2027", "Février 2027", "Febbraio 2027"), e: "Carnaval de Nice · Fête du Citron", w: "Nice · Menton", s: "tba" },
-  { r: "azur", d: D("March 2027", "Mars 2027", "Marzo 2027"), e: "Bal de la Rose", w: "Sporting Monte-Carlo", s: "tba" },
-  { r: "azur", d: D("3 – 11 April 2027", "3 – 11 avril 2027", "3 – 11 aprile 2027"), e: "Rolex Monte-Carlo Masters", w: "Monte-Carlo Country Club", s: "ok" },
-  { r: "azur", d: D("1 – 2 May 2027", "1er – 2 mai 2027", "1 – 2 maggio 2027"), e: "Monaco E-Prix", w: "Circuit de Monaco", s: "ok" },
-  { r: "azur", d: D("5 – 9 May 2027", "5 – 9 mai 2027", "5 – 9 maggio 2027"), e: "Top Marques Monaco", w: "Grimaldi Forum, Monaco", s: "ok" },
-  { r: "azur", d: D("11 – 22 May 2027", "11 – 22 mai 2027", "11 – 22 maggio 2027"), e: "Festival de Cannes · 80e édition", w: "Palais des Festivals, Cannes", s: "ok" },
-  { r: "azur", d: D("3 – 6 June 2027", "3 – 6 juin 2027", "3 – 6 giugno 2027"), e: "Grand Prix de Monaco · Sprint", w: "Circuit de Monaco", s: "ok" },
-  { r: "azur", d: D("June 2027", "Juin 2027", "Giugno 2027"), e: "Les Voiles d'Antibes", w: "Port Vauban, Antibes", s: "tba" },
-  { r: "azur", d: D("July 2027", "Juillet 2027", "Luglio 2027"), e: "Jumping International de Monte-Carlo", w: "Port Hercule, Monaco", s: "tba" },
-  { r: "azur", d: D("July 2027", "Juillet 2027", "Luglio 2027"), e: "Gala de la Croix-Rouge monégasque", w: "Salle des Étoiles, Sporting Monte-Carlo", s: "tba" },
-  { r: "azur", d: D("8 – 11 September 2027", "8 – 11 septembre 2027", "8 – 11 settembre 2027"), e: "Monaco Classic Week · La Belle Classe", w: "Quai Louis II, Monaco", s: "ok" },
-  { r: "azur", d: D("7 – 12 September 2027", "7 – 12 septembre 2027", "7 – 12 settembre 2027"), e: "Cannes Yachting Festival", w: "Vieux-Port & Port Canto, Cannes", s: "ok" },
-  { r: "azur", d: D("September 2027", "Septembre 2027", "Settembre 2027"), e: "Régates Royales de Cannes", w: "Cannes", s: "tba" },
-  { r: "azur", d: D("22 – 25 September 2027", "22 – 25 septembre 2027", "22 – 25 settembre 2027"), e: "Monaco Yacht Show", w: "Port Hercule, Monaco", s: "ok" },
-  { r: "lig", d: D("16 – 20 February 2027", "16 – 20 février 2027", "16 – 20 febbraio 2027"), e: "Festival di Sanremo · 77ª edizione", w: "Teatro Ariston, Sanremo", s: "ok" },
-  { r: "lig", d: D("20 March 2027", "20 mars 2027", "20 marzo 2027"), e: "Milano – Sanremo", w: "Via Roma, Sanremo", s: "ok" },
-  { r: "lig", d: D("Spring 2027", "Printemps 2027", "Primavera 2027"), e: "Regate di Primavera · Maxi Yachts", w: "Yacht Club Italiano, Portofino", s: "tba" },
-  { r: "lig", d: D("June 2027", "Juin 2027", "Giugno 2027"), e: "Rolex Giraglia", w: "Sanremo · Saint-Tropez · Genova", s: "tba" },
-  { r: "lig", d: D("Late June – July 2027", "Fin juin – juillet 2027", "Fine giugno – luglio 2027"), e: "Nervi International Ballet Festival", w: "Parchi di Nervi, Genova", s: "tba" },
-  { r: "lig", d: D("July – August 2027", "Juillet – août 2027", "Luglio – agosto 2027"), e: "Festival di Musica da Camera di Cervo", w: "Piazza dei Corallini, Cervo", s: "tba" },
-  { r: "lig", d: D("Late Aug – Sept 2027", "Fin août – sept. 2027", "Fine agosto – settembre 2027"), e: "Vele d'Epoca di Imperia", w: "Porto di Imperia", s: "tba" },
-  { r: "lig", d: D("Autumn 2027", "Automne 2027", "Autunno 2027"), e: "Salone Nautico Internazionale", w: "Fiera di Genova", s: "tba" },
-  { r: "lig", d: D("October 2027", "Octobre 2027", "Ottobre 2027"), e: "Premio Tenco", w: "Teatro Ariston, Sanremo", s: "tba" },
-  { r: "lig", d: D("October 2027", "Octobre 2027", "Ottobre 2027"), e: "Rallye Sanremo", w: "Sanremo · Valle Argentina", s: "tba" }
+  { r: "azur", c: "food", d: D("14 November 2026", "14 novembre 2026", "14 novembre 2026"), e: "Festival des Étoilés · gala de clôture", w: "Salle Empire, Hôtel de Paris Monte-Carlo", s: "ok" },
+  { r: "azur", c: "gala", d: D("19 November 2026", "19 novembre 2026", "19 novembre 2026"), e: "Fête Nationale Monégasque", w: "Monaco", s: "ok" },
+  { r: "azur", c: "food", d: D("Late November 2026", "Fin novembre 2026", "Fine novembre 2026"), e: "Monte-Carlo Gastronomie", w: "Chapiteau de Fontvieille, Monaco", s: "tba" },
+  { r: "azur", c: "art", d: D("Until 3 January 2027", "Jusqu'au 3 janvier 2027", "Fino al 3 gennaio 2027"), e: "Victor Brauner · L'aventure magique", w: "NMNM · Villa Paloma, Monaco", s: "ok" },
+  { r: "azur", c: "gala", d: D("31 December 2026", "31 décembre 2026", "31 dicembre 2026"), e: "Le Réveillon des Stars", w: "Palais des Festivals, Cannes", s: "ok" },
+  { r: "azur", c: "gala", d: D("January 2027", "Janvier 2027", "Gennaio 2027"), e: "Festival International du Cirque de Monte-Carlo", w: "Chapiteau de Fontvieille, Monaco", s: "tba" },
+  { r: "azur", c: "sport", d: D("21 – 24 January 2027", "21 – 24 janvier 2027", "21 – 24 gennaio 2027"), e: "Rallye Automobile Monte-Carlo", w: "Monaco · Alpes-Maritimes", s: "ok" },
+  { r: "azur", c: "tradition", d: D("26 – 27 January 2027", "26 – 27 janvier 2027", "26 – 27 gennaio 2027"), e: "Fête de la Sainte-Dévote", w: "Monaco", s: "ok" },
+  { r: "azur", c: "sport", d: D("27 Jan – 3 Feb 2027", "27 janv. – 3 févr. 2027", "27 gen – 3 feb 2027"), e: "Rallye Monte-Carlo Historique", w: "Monaco", s: "ok" },
+  { r: "azur", c: "screen", d: D("11 – 16 February 2027", "11 – 16 février 2027", "11 – 16 febbraio 2027"), e: "Canneseries", w: "Palais des Festivals, Cannes", s: "ok" },
+  { r: "azur", c: "tradition", d: D("13 – 28 February 2027", "13 – 28 février 2027", "13 – 28 febbraio 2027"), e: "Fête du Citron · 93e édition", w: "Jardins Biovès & Promenade du Soleil, Menton", s: "ok" },
+  { r: "azur", c: "tradition", d: D("February 2027", "Février 2027", "Febbraio 2027"), e: "Carnaval de Nice · Bataille de fleurs", w: "Place Masséna & Promenade des Anglais, Nice", s: "tba" },
+  { r: "azur", c: "gala", d: D("March 2027", "Mars 2027", "Marzo 2027"), e: "Bal de la Rose", w: "Sporting Monte-Carlo", s: "tba" },
+  { r: "azur", c: "sport", d: D("3 – 11 April 2027", "3 – 11 avril 2027", "3 – 11 aprile 2027"), e: "Rolex Monte-Carlo Masters", w: "Monte-Carlo Country Club", s: "ok" },
+  { r: "azur", c: "art", d: D("April 2027", "Avril 2027", "Aprile 2027"), e: "Antibes Art Fair", w: "Esplanade du Pré-aux-Pêcheurs, Antibes", s: "tba" },
+  { r: "azur", c: "sport", d: D("1 – 2 May 2027", "1er – 2 mai 2027", "1 – 2 maggio 2027"), e: "Monaco E-Prix", w: "Circuit de Monaco", s: "ok" },
+  { r: "azur", c: "sport", d: D("5 – 9 May 2027", "5 – 9 mai 2027", "5 – 9 maggio 2027"), e: "Top Marques Monaco", w: "Grimaldi Forum, Monaco", s: "ok" },
+  { r: "azur", c: "tradition", d: D("May 2027", "Mai 2027", "Maggio 2027"), e: "Expo Rose", w: "Villa Fragonard, Grasse", s: "tba" },
+  { r: "azur", c: "screen", d: D("11 – 22 May 2027", "11 – 22 mai 2027", "11 – 22 maggio 2027"), e: "Festival de Cannes · 80e édition", w: "Palais des Festivals, Cannes", s: "ok" },
+  { r: "azur", c: "sport", d: D("3 – 6 June 2027", "3 – 6 juin 2027", "3 – 6 giugno 2027"), e: "Grand Prix de Monaco · Sprint", w: "Circuit de Monaco", s: "ok" },
+  { r: "azur", c: "sport", d: D("June 2027", "Juin 2027", "Giugno 2027"), e: "Jumping International de Cannes · Longines GCT", w: "Stade des Hespérides, Cannes", s: "tba" },
+  { r: "azur", c: "screen", d: D("11 – 15 June 2027", "11 – 15 juin 2027", "11 – 15 giugno 2027"), e: "Festival de Télévision de Monte-Carlo", w: "Grimaldi Forum, Monaco", s: "ok" },
+  { r: "azur", c: "sea", d: D("June 2027", "Juin 2027", "Giugno 2027"), e: "Les Voiles d'Antibes", w: "Port Vauban, Antibes", s: "tba" },
+  { r: "azur", c: "screen", d: D("21 – 25 June 2027", "21 – 25 juin 2027", "21 – 25 giugno 2027"), e: "Cannes Lions", w: "Palais des Festivals, Cannes", s: "ok" },
+  { r: "azur", c: "sport", d: D("9 July 2027", "9 juillet 2027", "9 luglio 2027"), e: "Meeting Herculis · 40 ans", w: "Stade Louis-II, Monaco", s: "ok" },
+  { r: "azur", c: "sport", d: D("July 2027", "Juillet 2027", "Luglio 2027"), e: "Jumping International de Monte-Carlo", w: "Port Hercule, Monaco", s: "tba" },
+  { r: "azur", c: "gala", d: D("July 2027", "Juillet 2027", "Luglio 2027"), e: "Gala de la Croix-Rouge monégasque", w: "Salle des Étoiles, Sporting Monte-Carlo", s: "tba" },
+  { r: "azur", c: "gala", d: D("July – August 2027", "Juillet – août 2027", "Luglio – agosto 2027"), e: "Festival d'Art Pyrotechnique", w: "Baie de Cannes", s: "tba" },
+  { r: "azur", c: "art", d: D("Summer 2027", "Été 2027", "Estate 2027"), e: "Magritte · la grande rétrospective", w: "Grimaldi Forum, Monaco", s: "tba" },
+  { r: "azur", c: "art", d: D("Summer 2027", "Été 2027", "Estate 2027"), e: "L'exposition d'été de la Fondation Maeght", w: "Saint-Paul-de-Vence", s: "tba" },
+  { r: "azur", c: "sea", d: D("8 – 11 September 2027", "8 – 11 septembre 2027", "8 – 11 settembre 2027"), e: "Monaco Classic Week · La Belle Classe", w: "Quai Louis II, Monaco", s: "ok" },
+  { r: "azur", c: "sea", d: D("7 – 12 September 2027", "7 – 12 septembre 2027", "7 – 12 settembre 2027"), e: "Cannes Yachting Festival", w: "Vieux-Port & Port Canto, Cannes", s: "ok" },
+  { r: "azur", c: "sea", d: D("September 2027", "Septembre 2027", "Settembre 2027"), e: "Régates Royales de Cannes", w: "Cannes", s: "tba" },
+  { r: "azur", c: "sea", d: D("22 – 25 September 2027", "22 – 25 septembre 2027", "22 – 25 settembre 2027"), e: "Monaco Yacht Show", w: "Port Hercule, Monaco", s: "ok" },
+  { r: "lig", c: "screen", d: D("16 – 20 February 2027", "16 – 20 février 2027", "16 – 20 febbraio 2027"), e: "Festival di Sanremo · 77ª edizione", w: "Teatro Ariston, Sanremo", s: "ok" },
+  { r: "lig", c: "sport", d: D("20 March 2027", "20 mars 2027", "20 marzo 2027"), e: "Milano – Sanremo", w: "Via Roma, Sanremo", s: "ok" },
+  { r: "lig", c: "tradition", d: D("March 2027", "Mars 2027", "Marzo 2027"), e: "Sanremo in Fiore · Corso fiorito", w: "Corso Imperatrice, Sanremo", s: "tba" },
+  { r: "lig", c: "art", d: D("Spring 2027", "Printemps 2027", "Primavera 2027"), e: "Rolli Days · i palazzi UNESCO aperti", w: "Via Garibaldi & Via Balbi, Genova", s: "tba" },
+  { r: "lig", c: "sea", d: D("Spring 2027", "Printemps 2027", "Primavera 2027"), e: "Regate di Primavera · Maxi Yachts", w: "Yacht Club Italiano, Portofino", s: "tba" },
+  { r: "lig", c: "tradition", d: D("23 April 2027", "23 avril 2027", "23 aprile 2027"), e: "Festa di San Giorgio · il falò", w: "Piazzetta, Portofino", s: "ok" },
+  { r: "lig", c: "food", d: D("May 2027", "Mai 2027", "Maggio 2027"), e: "Sagra del Pesce · la padella gigante", w: "Camogli", s: "tba" },
+  { r: "lig", c: "sea", d: D("June 2027", "Juin 2027", "Giugno 2027"), e: "Rolex Giraglia", w: "Sanremo · Saint-Tropez · Genova", s: "tba" },
+  { r: "lig", c: "tradition", d: D("June 2027", "Juin 2027", "Giugno 2027"), e: "Battaglia di Fiori", w: "Ventimiglia", s: "tba" },
+  { r: "lig", c: "gala", d: D("1 – 3 July 2027", "1er – 3 juillet 2027", "1 – 3 luglio 2027"), e: "Festa di Montallegro · fuochi sul golfo", w: "Rapallo", s: "tba" },
+  { r: "lig", c: "gala", d: D("15 August 2027", "15 août 2027", "15 agosto 2027"), e: "Ferragosto · fuochi dal Pontile Bestoso", w: "Alassio", s: "tba" },
+  { r: "lig", c: "sea", d: D("Late Aug – Sept 2027", "Fin août – sept. 2027", "Fine agosto – settembre 2027"), e: "Vele d'Epoca di Imperia", w: "Porto di Imperia", s: "tba" },
+  { r: "lig", c: "sea", d: D("Autumn 2027", "Automne 2027", "Autunno 2027"), e: "Salone Nautico Internazionale", w: "Fiera di Genova", s: "tba" },
+  { r: "lig", c: "art", d: D("October 2027", "Octobre 2027", "Ottobre 2027"), e: "Rolli Days d'autunno", w: "Genova", s: "tba" },
+  { r: "lig", c: "sport", d: D("October 2027", "Octobre 2027", "Ottobre 2027"), e: "Rallye Sanremo", w: "Sanremo · Valle Argentina", s: "tba" },
+  { r: "lig", c: "food", d: D("November 2027", "Novembre 2027", "Novembre 2027"), e: "Olioliva · la festa dell'olio nuovo", w: "Imperia", s: "tba" }
 ];
 
 /* Musica: opera, balletto, sinfonica, cameristica, jazz — g: opera | ballet | classical | jazz | festival; u: sito ufficiale */
@@ -680,8 +703,10 @@ const MUSIC = [
   { r: "azur", d: D("9 June 2027", "9 juin 2027", "9 giugno 2027"), e: "Le Château de Barbe-Bleue · Elīna Garanča", w: "Opéra de Monte-Carlo", g: "opera", s: "ok", u: "https://www.opera.mc" },
   { r: "azur", d: D("July 2027", "Juillet 2027", "Luglio 2027"), e: "Nice Jazz Festival · Jazz à Juan", w: "Nice · Juan-les-Pins", g: "jazz", s: "tba", u: "https://www.nicejazzfestival.fr" },
   { r: "azur", d: D("July – August 2027", "Juillet – août 2027", "Luglio – agosto 2027"), e: "Monte-Carlo Summer Festival", w: "Salle des Étoiles, Sporting Monte-Carlo", g: "festival", s: "tba", u: "https://www.montecarlosbm.com" },
+  { r: "azur", d: D("Late July 2027", "Fin juillet 2027", "Fine luglio 2027"), e: "Les Nuits Musicales du Suquet", w: "Parvis Notre-Dame d'Espérance, Cannes", g: "classical", s: "tba", u: "https://www.palaisdesfestivals.com" },
   { r: "azur", d: D("Late July – August 2027", "Fin juillet – août 2027", "Fine luglio – agosto 2027"), e: "Festival de Musique de Menton", w: "Parvis de la Basilique Saint-Michel, Menton", g: "classical", s: "tba", u: "https://www.festival-musique-menton.fr" },
   { r: "azur", d: D("All season, to 4 July 2027", "Toute la saison, jusqu'au 4 juillet 2027", "Tutta la stagione, fino al 4 luglio 2027"), e: "Orchestre Philharmonique de Monte-Carlo", w: "Auditorium Rainier III, Monaco", g: "classical", s: "ok", u: "https://opmc.mc" },
+  { r: "lig", d: D("Until 8 November 2026", "Jusqu'au 8 novembre 2026", "Fino all'8 novembre 2026"), e: "Ottobre Paganini · il festival del violino", w: "Palazzo Ducale e tutta la città, Genova", g: "classical", s: "ok", u: "https://www.visitgenoa.it" },
   { r: "lig", d: D("20 – 27 November 2026", "20 – 27 novembre 2026", "20 – 27 novembre 2026"), e: "I Capuleti e i Montecchi · Bellini", w: "Teatro Carlo Felice, Genova", g: "opera", s: "ok", u: "https://operacarlofelicegenova.it" },
   { r: "lig", d: D("3 – 6 December 2026", "3 – 6 décembre 2026", "3 – 6 dicembre 2026"), e: "Lo Schiaccianoci · Čajkovskij", w: "Teatro Carlo Felice, Genova", g: "ballet", s: "ok", u: "https://operacarlofelicegenova.it" },
   { r: "lig", d: D("11 – 13 December 2026", "11 – 13 décembre 2026", "11 – 13 dicembre 2026"), e: "Giselle · Astana Ballet", w: "Teatro Carlo Felice, Genova", g: "ballet", s: "ok", u: "https://operacarlofelicegenova.it" },
@@ -690,9 +715,11 @@ const MUSIC = [
   { r: "lig", d: D("8 – 10 January 2027", "8 – 10 janvier 2027", "8 – 10 gennaio 2027"), e: "Il lago dei cigni · Arena di Verona", w: "Teatro Carlo Felice, Genova", g: "ballet", s: "ok", u: "https://operacarlofelicegenova.it" },
   { r: "lig", d: D("22 – 31 January 2027", "22 – 31 janvier 2027", "22 – 31 gennaio 2027"), e: "Pagliacci · Leoncavallo", w: "Teatro Carlo Felice, Genova", g: "opera", s: "ok", u: "https://operacarlofelicegenova.it" },
   { r: "lig", d: D("28 Jan – 10 June 2027", "28 janv. – 10 juin 2027", "28 gen – 10 giugno 2027"), e: "Beethoven 200 · le sinfonie", w: "Teatro Carlo Felice, Genova", g: "classical", s: "ok", u: "https://operacarlofelicegenova.it" },
+  { r: "lig", d: D("December 2026", "Décembre 2026", "Dicembre 2026"), e: "Sanremo Giovani · la finale", w: "Casinò di Sanremo", g: "festival", s: "tba", u: "https://www.rai.it/festivaldisanremo/" },
   { r: "lig", d: D("16 – 20 February 2027", "16 – 20 février 2027", "16 – 20 febbraio 2027"), e: "Festival di Sanremo", w: "Teatro Ariston, Sanremo", g: "festival", s: "ok", u: "https://www.rai.it/festivaldisanremo/" },
   { r: "lig", d: D("Late June – July 2027", "Fin juin – juillet 2027", "Fine giugno – luglio 2027"), e: "Nervi International Ballet Festival", w: "Parchi di Nervi, Genova", g: "ballet", s: "tba", u: "https://operacarlofelicegenova.it" },
   { r: "lig", d: D("July – August 2027", "Juillet – août 2027", "Luglio – agosto 2027"), e: "Festival di Musica da Camera di Cervo", w: "Piazza dei Corallini, Cervo", g: "classical", s: "tba", u: "https://www.festivalcervo.it" },
+  { r: "lig", d: D("11 – 24 October 2027", "11 – 24 octobre 2027", "11 – 24 ottobre 2027"), e: "Premio Paganini · 59° concorso internazionale di violino", w: "Teatro Carlo Felice, Genova", g: "classical", s: "ok", u: "https://www.premiopaganini.it" },
   { r: "lig", d: D("October 2027", "Octobre 2027", "Ottobre 2027"), e: "Premio Tenco", w: "Teatro Ariston, Sanremo", g: "festival", s: "tba", u: "https://www.clubtenco.it" },
   { r: "lig", d: D("All season", "Toute la saison", "Tutta la stagione"), e: "GOG · Giovine Orchestra Genovese", w: "Teatro Carlo Felice, Genova", g: "classical", s: "ok", u: "https://www.gog.it" }
 ];
@@ -734,6 +761,7 @@ const FORMATS = {
 
 const I18N = {
   en: {
+    cats: { all: "All", sea: "Sea", sport: "Sport", gala: "Galas & nights", art: "Art", food: "Gastronomy", screen: "Cinema & TV", tradition: "Traditions" },
     partI: "Part I", partII: "Part II", partAzur: "Côte d'Azur & Monaco", partAzurText: "Monte-Carlo, Cannes, Nice and Menton: the Grand Prix, the Festival, the galas of the Principality and the great boat shows.",
     partLigText: "Sanremo, Genoa and Portofino: the song festival, the opera house of Genoa, the regattas of the Yacht Club Italiano and twelve starred tables.",
     chooseCoast: "Choose your Riviera", coastAzur: "Côte d'Azur & Monaco", coastLig: "Liguria", coastAll: "Both coasts", bothShort: "Both coasts",
@@ -780,7 +808,7 @@ const I18N = {
     yachtP1: "The Cannes Yachting Festival opens the month in the Vieux-Port and Port Canto, with hundreds of yachts on the water. Two weeks later, the Monaco Yacht Show gathers the world's finest superyachts in Port Hercule.",
     yachtP2: "Between the two, the classic regattas: Les Voiles d'Antibes in June and the Régates Royales de Cannes in September, where vintage sailing yachts race against the backdrop of the Estérel.",
     cyfDates: "7 – 12 September 2027", mysDates: "22 – 25 September 2027",
-    seasonTitle: "The Season at a <em>Glance</em>", seasonSub: "The high-level dates from November 2026 to October 2027, coast by coast.",
+    seasonTitle: "The Season at a <em>Glance</em>", seasonSub: "More than 50 high-level dates from November 2026 to November 2027, town by town and coast by coast. Filter by what you love.",
     ok: "Announced", tba: "Date TBA",
     tablesTitle: "The Starred <em>Tables</em>", tablesSub: "Every Michelin-starred restaurant in Monaco, the Alpes-Maritimes and Liguria: 37 on the Côte d'Azur, 12 in Liguria.",
     mirazur: "Menton · Mauro Colagreco. The garden, the sea and the mountains on one plate, on the border between France and Italy.",
@@ -794,6 +822,7 @@ const I18N = {
     credits: "Photos: Pexels. Restaurant lists: Guide MICHELIN France & Monaco 2026 and Guida MICHELIN Italia 2026. Programmes: the theatres and festivals named, checked in October 2026."
   },
   fr: {
+    cats: { all: "Tout", sea: "Mer", sport: "Sport", gala: "Galas & soirées", art: "Art", food: "Gastronomie", screen: "Cinéma & TV", tradition: "Traditions" },
     partI: "Partie I", partII: "Partie II", partAzur: "Côte d'Azur & Monaco", partAzurText: "Monte-Carlo, Cannes, Nice et Menton : le Grand Prix, le Festival, les galas de la Principauté et les grands salons nautiques.",
     partLigText: "Sanremo, Gênes et Portofino : le festival de la chanson, l'opéra de Gênes, les régates du Yacht Club Italiano et douze tables étoilées.",
     chooseCoast: "Choisissez votre Riviera", coastAzur: "Côte d'Azur & Monaco", coastLig: "Ligurie", coastAll: "Les deux côtes", bothShort: "Les deux côtes",
@@ -840,7 +869,7 @@ const I18N = {
     yachtP1: "Le Cannes Yachting Festival ouvre le mois dans le Vieux-Port et au Port Canto, avec des centaines de bateaux à flot. Deux semaines plus tard, le Monaco Yacht Show réunit les plus beaux superyachts du monde au Port Hercule.",
     yachtP2: "Entre les deux, les régates classiques : les Voiles d'Antibes en juin et les Régates Royales de Cannes en septembre, où les voiliers de tradition s'affrontent face à l'Estérel.",
     cyfDates: "7 – 12 septembre 2027", mysDates: "22 – 25 septembre 2027",
-    seasonTitle: "La Saison en un <em>Regard</em>", seasonSub: "Les grands rendez-vous de novembre 2026 à octobre 2027, côte par côte.",
+    seasonTitle: "La Saison en un <em>Regard</em>", seasonSub: "Plus de 50 grands rendez-vous de novembre 2026 à novembre 2027, ville par ville et côte par côte. Filtrez selon vos envies.",
     ok: "Annoncé", tba: "Date à venir",
     tablesTitle: "Les Tables <em>Étoilées</em>", tablesSub: "Tous les restaurants étoilés au Guide Michelin à Monaco, dans les Alpes-Maritimes et en Ligurie : 37 sur la Côte d'Azur, 12 en Ligurie.",
     mirazur: "Menton · Mauro Colagreco. Le jardin, la mer et la montagne dans l'assiette, à la frontière entre la France et l'Italie.",
@@ -854,6 +883,7 @@ const I18N = {
     credits: "Photos : Pexels. Restaurants : Guide MICHELIN France & Monaco 2026 et Guida MICHELIN Italia 2026. Programmes : les théâtres et festivals cités, vérifiés en octobre 2026."
   },
   it: {
+    cats: { all: "Tutto", sea: "Mare", sport: "Sport", gala: "Gala e serate", art: "Arte", food: "Gastronomia", screen: "Cinema e TV", tradition: "Tradizioni" },
     partI: "Parte I", partII: "Parte II", partAzur: "Costa Azzurra & Monaco", partAzurText: "Monte-Carlo, Cannes, Nizza e Mentone: il Gran Premio, il Festival, i gala del Principato e i grandi saloni nautici.",
     partLigText: "Sanremo, Genova e Portofino: il festival della canzone, il teatro d'opera di Genova, le regate dello Yacht Club Italiano e dodici tavole stellate.",
     chooseCoast: "Scegli la tua Riviera", coastAzur: "Costa Azzurra & Monaco", coastLig: "Liguria", coastAll: "Entrambe le coste", bothShort: "Entrambe le coste",
@@ -900,7 +930,7 @@ const I18N = {
     yachtP1: "Il Cannes Yachting Festival apre il mese nel Vieux-Port e a Port Canto, con centinaia di barche in acqua. Due settimane dopo, il Monaco Yacht Show riunisce a Port Hercule i superyacht più belli del mondo.",
     yachtP2: "In mezzo, le regate classiche: Les Voiles d'Antibes a giugno e le Régates Royales di Cannes a settembre, con le barche d'epoca davanti all'Estérel.",
     cyfDates: "7 – 12 settembre 2027", mysDates: "22 – 25 settembre 2027",
-    seasonTitle: "La Stagione in uno <em>Sguardo</em>", seasonSub: "I grandi appuntamenti da novembre 2026 a ottobre 2027, costa per costa.",
+    seasonTitle: "La Stagione in uno <em>Sguardo</em>", seasonSub: "Oltre 50 grandi appuntamenti da novembre 2026 a novembre 2027, città per città e costa per costa. Filtra per ciò che ami.",
     ok: "Annunciato", tba: "Data da annunciare",
     tablesTitle: "Le Tavole <em>Stellate</em>", tablesSub: "Tutti i ristoranti stellati Michelin di Monaco, delle Alpi Marittime e della Liguria: 37 in Costa Azzurra, 12 in Liguria.",
     mirazur: "Mentone · Mauro Colagreco. L'orto, il mare e la montagna nel piatto, al confine tra Francia e Italia.",
@@ -923,6 +953,7 @@ try { lang = pick(localStorage.getItem("season-lang")) || lang; } catch (e) {}
 lang = pick(new URLSearchParams(location.search).get("lang")) || lang;
 let starF = "all";
 let region = "all";
+let catF = "all";
 try { region = localStorage.getItem("season-region") || region; } catch (e) {}
 { const q = new URLSearchParams(location.search).get("region"); if (q) region = q === "liguria" ? "lig" : q; }
 const $ = (s) => document.querySelector(s);
@@ -936,7 +967,7 @@ const blocks = (list, row) => REGIONS.map((r) => {
   const items = list.filter((x) => (x.r || x[3]) === r);
   return items.length ? `<div class="block" data-region="${r}"><div class="block-head"><h3>${esc(regTitle(r))}</h3></div>${row(items)}</div>` : "";
 }).join("");
-const calRow = (x) => `<li><span class="d">${esc(x.d[lang])}</span><span class="e">${x.u ? `<a href="${x.u}" target="_blank" rel="noopener">${esc(x.e)}</a>` : esc(x.e)}${x.g ? ` <small><span class="gen">${esc(T().g[x.g])}</span></small>` : ""}</span><span class="w">${esc(x.w)}</span><span class="s ${x.s}">${esc(T()[x.s])}</span></li>`;
+const calRow = (x) => `<li><span class="d">${esc(x.d[lang])}</span><span class="e">${x.u ? `<a href="${x.u}" target="_blank" rel="noopener">${esc(x.e)}</a>` : esc(x.e)}${x.g ? ` <small><span class="gen">${esc(T().g[x.g])}</span></small>` : x.cat ? ` <small><span class="gen">${esc(T().cats[x.cat])}</span></small>` : ""}</span><span class="w">${esc(x.w)}</span><span class="s ${x.s}">${esc(T()[x.s])}</span></li>`;
 
 function renderTables() {
   const F = [["all", T().all], ["3", T().s3], ["2", T().s2], ["1", T().s1]];
@@ -944,6 +975,12 @@ function renderTables() {
   const list = TABLES.filter(([s]) => starF === "all" || String(s) === starF);
   $("#tablesList").innerHTML = blocks(list, (items) => `<div class="tables">${items.map(([s, n, p]) => `
     <a href="${maps(n + " " + p)}" target="_blank" rel="noopener"><b>${esc(n)}</b><i>${"✦".repeat(s)}</i><span>${esc(p)}</span></a>`).join("")}</div>`);
+}
+
+function renderSeason() {
+  $("#catFilters").innerHTML = Object.entries(T().cats).map(([k, v]) => `<button data-k="${k}" class="${k === catF ? "on" : ""}">${esc(v)}</button>`).join("");
+  const list = SEASON.filter((x) => catF === "all" || x.c === catF);
+  $("#cal").innerHTML = blocks(list, (items) => `<ol class="cal">${items.map((x) => calRow({ ...x, g: null, cat: x.c })).join("")}</ol>`);
 }
 
 function setRegion(r) {
@@ -956,7 +993,7 @@ function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-t]").forEach((el) => { const v = T()[el.dataset.t]; if (v != null) el.innerHTML = v; });
   document.querySelectorAll(".langs button").forEach((b) => b.classList.toggle("on", b.dataset.lang === lang));
-  $("#cal").innerHTML = blocks(SEASON, (items) => `<ol class="cal">${items.map(calRow).join("")}</ol>`);
+  renderSeason();
   $("#musicList").innerHTML = blocks(MUSIC, (items) => `<ol class="cal">${items.map(calRow).join("")}</ol>`);
   $("#formats").innerHTML = FORMATS[lang].map(([h, p], i) => `<div><span class="n">0${i + 1}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
   $("#services").innerHTML = SERVICES[lang].map(([b, p], i) => `<li><span class="n">${["I","II","III","IV","V","VI","VII","VIII","IX"][i]}</span><b>${esc(b)}</b><p>${esc(p)}</p></li>`).join("");
@@ -964,6 +1001,7 @@ function render() {
   setRegion(region);
 }
 
+$("#catFilters").addEventListener("click", (ev) => { const b = ev.target.closest("button"); if (b) { catF = b.dataset.k; renderSeason(); } });
 $("#coast").addEventListener("click", (ev) => {
   const b = ev.target.closest("button"); if (!b) return;
   setRegion(b.dataset.r);
