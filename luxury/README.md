@@ -17,3 +17,12 @@ Rivista di lusso sulla stagione della Costa Azzurra e di Monaco, in inglese, fra
 - Aggiornare `TABLES` a ogni nuova edizione della Guida Michelin (marzo).
 
 Foto: Pexels, vedi `foto/CREDITI.md`.
+
+## Due coste, sempre separate
+
+Il magazine è diviso in **Costa Azzurra & Monaco** e **Liguria**: sotto il sommario il lettore sceglie una costa o entrambe (link diretti: `?region=azur`, `?region=liguria`).
+- Parte I · Costa Azzurra & Monaco: Grand Prix, Cannes, gala di Monte-Carlo, yachting.
+- Parte II · Liguria: Festival di Sanremo, Teatro Carlo Felice di Genova, Portofino & il mare (Regate di Primavera, Rolex Giraglia, Vele d'Epoca, Salone Nautico).
+- Musica & Opera (`MUSIC`): opera, balletto, classica, jazz e festival, in blocchi per costa.
+- Calendario (`SEASON`) e tavole stellate (`TABLES`, 37 Costa Azzurra + 12 Liguria) sono divisi per costa.
+Ogni voce ha `r: "azur"` oppure `r: "lig"` (per `TABLES` il quarto valore). Le date con `s: "tba"` vanno confermate quando escono i programmi.
