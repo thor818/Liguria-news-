@@ -57,6 +57,19 @@
   .mast-logo { display: block; width: clamp(140px, 15vw, 185px); height: auto; margin: 0 auto; }
   .cover-logo { font-style: normal; display: block; width: clamp(140px, 14vw, 190px); height: auto; margin: 10px auto 0; filter: drop-shadow(0 0 6px rgba(0,0,0,.7)) drop-shadow(0 1px 14px rgba(0,0,0,.5)); }
   .cover-rr-inline { width: 1em; height: 1.28em; margin-top: .5em; color: #d9b26f; flex: none; }
+  /* ---------- scelta costa a due metà ---------- */
+  .choose { display: grid; grid-template-columns: 1fr 1fr; }
+  .choose .half { position: relative; isolation: isolate; min-height: clamp(380px, 70vh, 720px); display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 8px; padding: clamp(28px, 4vw, 56px); color: #f7f2e8; text-decoration: none; overflow: hidden; }
+  .choose .half img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.6s ease; }
+  .choose .half::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,10,12,.05) 30%, rgba(10,10,12,.78)); transition: background .6s; }
+  .choose .half:hover img { transform: scale(1.04); }
+  .choose .label { color: #f1dfb6; }
+  .choose b { font-family: var(--display); font-weight: 300; font-style: italic; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: .95; }
+  .choose small { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(247,242,232,.8); }
+  .choose em { margin-top: 14px; font-style: normal; font: 500 .7rem var(--body); letter-spacing: .28em; text-transform: uppercase; border: 1px solid rgba(247,242,232,.7); padding: 12px 20px; transition: background .3s, color .3s; }
+  .choose .half:hover em { background: #f7f2e8; color: var(--ink); }
+  .choose .half + .half { border-left: 1px solid rgba(247,242,232,.25); }
+  @media (max-width: 760px) { .choose { grid-template-columns: 1fr; } .choose .half { min-height: 52vh; } .choose .half + .half { border-left: 0; border-top: 1px solid rgba(247,242,232,.25); } }
   /* ---------- copertina ---------- */
   .cover { position: relative; isolation: isolate; min-height: clamp(620px, 92vh, 980px); color: #f7f2e8; display: grid; overflow: hidden; background: var(--night); }
   .cover > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.04); animation: slow 22s ease-in-out infinite alternate; }
@@ -318,6 +331,25 @@
       <a href="#music"><b data-t="l4"></b><span data-t="l4s"></span></a>
     </nav>
   </div>
+</section>
+
+
+<!-- ============ SCEGLI LA COSTA: due metà affiancate ============ -->
+<section class="choose" id="choose">
+  <a class="half" href="#azur" data-r="azur">
+    <img src="foto/monaco-crepuscolo.jpg" alt="" loading="lazy">
+    <span class="label" data-t="partI"></span>
+    <b data-t="coastAzur"></b>
+    <small>Monaco · Cannes · Nice · Menton</small>
+    <em data-t="enter"></em>
+  </a>
+  <a class="half" href="#liguria" data-r="lig">
+    <img src="foto/portofino-yacht.jpg" alt="" loading="lazy">
+    <span class="label" data-t="partII"></span>
+    <b data-t="coastLig"></b>
+    <small>Portofino · Genova · Sanremo · Alassio</small>
+    <em data-t="enter"></em>
+  </a>
 </section>
 
 <!-- ============ SOMMARIO E LETTERA ============ -->
@@ -896,6 +928,7 @@ const FORMATS = {
 
 const I18N = {
   en: {
+    enter: "Enter",
     tocClubs: "Beach Clubs & Nights", tocArt: "Art Collections",
     clubsTitle: "Beach clubs <em>& nights</em>", clubsSub: "Where to spend the day by the sea and the night after: the addresses that count, coast by coast. Book ahead in summer.",
     artTitle: "Art <em>Collections</em>", artSub: "Foundations, villas and palaces: the great collections of the two Rivieras. Nice's MAMAC is closed for renovation until 2028.",
@@ -961,6 +994,7 @@ const I18N = {
     credits: "Photos: Pexels. Restaurant lists: Guide MICHELIN France & Monaco 2026 and Guida MICHELIN Italia 2026. Programmes: the theatres and festivals named, checked in October 2026."
   },
   fr: {
+    enter: "Entrer",
     tocClubs: "Beach Clubs & Nuits", tocArt: "Collections d'Art",
     clubsTitle: "Beach clubs <em>& nuits</em>", clubsSub: "Où passer la journée au bord de l'eau et la nuit qui suit : les adresses qui comptent, côte par côte. Réservez en été.",
     artTitle: "Collections <em>d'Art</em>", artSub: "Fondations, villas et palais : les grandes collections des deux Rivieras. Le MAMAC de Nice est fermé pour travaux jusqu'en 2028.",
@@ -1026,6 +1060,7 @@ const I18N = {
     credits: "Photos : Pexels. Restaurants : Guide MICHELIN France & Monaco 2026 et Guida MICHELIN Italia 2026. Programmes : les théâtres et festivals cités, vérifiés en octobre 2026."
   },
   it: {
+    enter: "Entra",
     tocClubs: "Beach Club & Notti", tocArt: "Collezioni d'Arte",
     clubsTitle: "Beach club <em>& notti</em>", clubsSub: "Dove passare la giornata sul mare e la notte dopo: gli indirizzi che contano, costa per costa. D'estate prenota.",
     artTitle: "Collezioni <em>d'Arte</em>", artSub: "Fondazioni, ville e palazzi: le grandi collezioni delle due Riviere. Il MAMAC di Nizza è chiuso per lavori fino al 2028.",
@@ -1170,6 +1205,13 @@ document.querySelector(".langs").addEventListener("click", (ev) => {
   render();
 });
 $("#filters").addEventListener("click", (ev) => { const b = ev.target.closest("button"); if (b) { starF = b.dataset.k; renderTables(); } });
+
+document.querySelectorAll(".choose .half").forEach((a) => a.addEventListener("click", (ev) => {
+  ev.preventDefault();
+  setRegion(a.dataset.r);
+  try { localStorage.setItem("season-region", region); } catch (e) {}
+  document.getElementById(a.dataset.r === "lig" ? "liguria" : "azur").scrollIntoView({ behavior: "smooth" });
+}));
 
 render();
 </script>
