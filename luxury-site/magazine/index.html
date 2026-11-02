@@ -70,6 +70,19 @@
   .choose .half:hover em { background: #f7f2e8; color: var(--ink); }
   .choose .half + .half { border-left: 1px solid rgba(247,242,232,.25); }
   @media (max-width: 760px) { .choose { grid-template-columns: 1fr; } .choose .half { min-height: 52vh; } .choose .half + .half { border-left: 0; border-top: 1px solid rgba(247,242,232,.25); } }
+  /* ---------- dove soggiornare in Liguria ---------- */
+  .stays { padding-block: 40px 96px; }
+  .stay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 40px; }
+  .stay-card { display: block; text-decoration: none; color: inherit; }
+  .stay-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform 1.2s ease; }
+  .stay-card:hover img { transform: scale(1.02); }
+  .stay-card .pl { display: block; margin-top: 18px; font-size: .66rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+  .stay-card b { display: block; font-family: var(--display); font-weight: 300; font-size: clamp(1.9rem, 3vw, 2.5rem); line-height: 1.05; margin: 6px 0 10px; }
+  .stay-card b em { color: var(--gold); }
+  .stay-card p { margin: 0 0 12px; color: var(--muted); max-width: 52ch; }
+  .stay-card ul { list-style: none; margin: 0 0 18px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .stay-card li { border: 1px solid var(--line); padding: 6px 12px; font-size: .76rem; letter-spacing: .05em; }
+  .stay-card .go { display: inline-block; font: 500 .7rem var(--body); letter-spacing: .28em; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 6px; }
   /* ---------- copertina ---------- */
   .cover { position: relative; isolation: isolate; min-height: clamp(620px, 92vh, 980px); color: #f7f2e8; display: grid; overflow: hidden; background: var(--night); }
   .cover > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.04); animation: slow 22s ease-in-out infinite alternate; }
@@ -600,6 +613,32 @@
     </div>
   </div>
 </article>
+
+<!-- ============ DOVE SOGGIORNARE IN LIGURIA ============ -->
+<section class="wrap stays reveal" id="stays">
+  <div class="sec-head">
+    <div><span class="label gold" data-t="staysKick"></span><h2 data-t="staysTitle"></h2></div>
+    <p data-t="staysSub"></p>
+  </div>
+  <div class="stay-grid">
+    <a class="stay-card" href="https://www.alaxia.it/" target="_blank" rel="noopener">
+      <img src="foto/alaxia.jpg" alt="Alaxia Exclusive Apartments, Alassio" loading="lazy">
+      <span class="pl">Alassio</span>
+      <b>Alaxia <em>Exclusive Apartments</em></b>
+      <p data-t="alaxiaText"></p>
+      <ul><li data-t="alaxia1"></li><li data-t="alaxia2"></li><li data-t="alaxia3"></li></ul>
+      <span class="go" data-t="visitSite"></span>
+    </a>
+    <a class="stay-card" href="https://www.casadelmonteresort.it/" target="_blank" rel="noopener">
+      <img src="foto/casa-del-monte.jpg" alt="Casa del Monte 1553 Resort, Albenga" loading="lazy">
+      <span class="pl">Albenga</span>
+      <b>Casa del Monte <em>1553 Resort</em></b>
+      <p data-t="cdmText"></p>
+      <ul><li data-t="cdm1"></li><li data-t="cdm2"></li><li data-t="cdm3"></li></ul>
+      <span class="go" data-t="visitSite"></span>
+    </a>
+  </div>
+</section>
 </div>
 
 <!-- ============ 08 MUSICA ============ -->
@@ -928,6 +967,9 @@ const FORMATS = {
 
 const I18N = {
   en: {
+    staysKick: "Where to stay", staysTitle: "The Ligurian <em>collection</em>", staysSub: "Two addresses we recommend on the Western Riviera, between Alassio and Albenga.", visitSite: "Visit the website",
+    alaxiaText: "Thirteen exclusive apartments in a villa with palms, 200 metres from the sea in Alassio.", alaxia1: "Pool", alaxia2: "Spa · sauna · hot tub", alaxia3: "E-bikes · reserved beach",
+    cdmText: "A restored 16th-century manor among the olive groves above Albenga, with four suites and a view of the Gallinara island.", cdm1: "Sea-view pool", cdm2: "Spa", cdm3: "Timo Bistrot · garden aperitivo",
     enter: "Enter",
     tocClubs: "Beach Clubs & Nights", tocArt: "Art Collections",
     clubsTitle: "Beach clubs <em>& nights</em>", clubsSub: "Where to spend the day by the sea and the night after: the addresses that count, coast by coast. Book ahead in summer.",
@@ -994,6 +1036,9 @@ const I18N = {
     credits: "Photos: Pexels. Restaurant lists: Guide MICHELIN France & Monaco 2026 and Guida MICHELIN Italia 2026. Programmes: the theatres and festivals named, checked in October 2026."
   },
   fr: {
+    staysKick: "Où séjourner", staysTitle: "La collection <em>ligure</em>", staysSub: "Deux adresses que nous recommandons sur la Riviera du Ponant, entre Alassio et Albenga.", visitSite: "Voir le site",
+    alaxiaText: "Treize appartements exclusifs dans une villa entourée de palmiers, à 200 mètres de la mer à Alassio.", alaxia1: "Piscine", alaxia2: "Spa · sauna · jacuzzi", alaxia3: "Vélos électriques · plage réservée",
+    cdmText: "Un manoir du XVIe siècle restauré parmi les oliviers au-dessus d'Albenga, avec quatre suites et vue sur l'île de Gallinara.", cdm1: "Piscine vue mer", cdm2: "Spa", cdm3: "Timo Bistrot · apéritif au jardin",
     enter: "Entrer",
     tocClubs: "Beach Clubs & Nuits", tocArt: "Collections d'Art",
     clubsTitle: "Beach clubs <em>& nuits</em>", clubsSub: "Où passer la journée au bord de l'eau et la nuit qui suit : les adresses qui comptent, côte par côte. Réservez en été.",
@@ -1060,6 +1105,9 @@ const I18N = {
     credits: "Photos : Pexels. Restaurants : Guide MICHELIN France & Monaco 2026 et Guida MICHELIN Italia 2026. Programmes : les théâtres et festivals cités, vérifiés en octobre 2026."
   },
   it: {
+    staysKick: "Dove soggiornare", staysTitle: "La collezione <em>ligure</em>", staysSub: "Due indirizzi che consigliamo nella Riviera di Ponente, tra Alassio e Albenga.", visitSite: "Visita il sito",
+    alaxiaText: "Tredici appartamenti esclusivi in una villa tra le palme, a 200 metri dal mare di Alassio.", alaxia1: "Piscina", alaxia2: "Spa · sauna · idromassaggio", alaxia3: "E-bike · spiaggia riservata",
+    cdmText: "Una dimora del Cinquecento restaurata tra gli ulivi sopra Albenga, con quattro suite e vista sull'isola Gallinara.", cdm1: "Piscina vista mare", cdm2: "Spa", cdm3: "Timo Bistrot · aperitivo in giardino",
     enter: "Entra",
     tocClubs: "Beach Club & Notti", tocArt: "Collezioni d'Arte",
     clubsTitle: "Beach club <em>& notti</em>", clubsSub: "Dove passare la giornata sul mare e la notte dopo: gli indirizzi che contano, costa per costa. D'estate prenota.",
