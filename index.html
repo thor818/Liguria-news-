@@ -498,6 +498,11 @@
   .story-box { grid-column: 1 / -1; background: #fff7ee; border-left: 4px solid var(--coral, #ff6a00); padding: 14px 18px; border-radius: 12px; }
   .story-box h4 { margin: 0 0 6px; }
   .story-box p { margin: 0; line-height: 1.6; }
+  .city-lists li.row { display: flex; gap: 6px; }
+  .city-lists li.row > a:first-child { flex: 1; min-width: 0; }
+  .city-lists a.nav { flex: none; width: 42px; justify-content: center; padding: 9px 0; }
+  .city-lists a.nav::after { content: none; }
+  .city-lists a.nav:hover { background: #33ccff; }
 </style>
 </head>
 <body>
@@ -1237,6 +1242,8 @@ const STORY = {
   "en": "The Estérel massif, of red volcanic rock, was a brigands' hideout for centuries. The Château de la Napoule, restored in the 1920s by the American artists Henry and Marie Clews, faces the sea at Mandelieu."
  }
 };
+const waze = (q) => "https://waze.com/ul?q=" + encodeURIComponent(q) + "&navigate=yes";
+const NAV_LABEL = { it: "Come arrivare con Waze", fr: "Y aller avec Waze", en: "Get there with Waze", de: "Mit Waze hinfahren", nl: "Erheen met Waze", zh: "用 Waze 导航" };
 const STORY_LABEL = { it: "La storia", fr: "L'histoire", en: "The story", de: "Geschichte", nl: "Geschiedenis", zh: "历史" };
 const wiki = (q) => `https://${["it","fr","en","de","nl","zh"].includes(lang) ? lang : "en"}.wikipedia.org/w/index.php?search=${encodeURIComponent(q)}`;
 
@@ -4027,7 +4034,7 @@ function renderCities(all) {
   const groups = (c) => ["see", "museums", "do", "eat", "taste"].filter((g) => c[g] && c[g].length).map((g) => `
     <div><h4>${esc(T().cityLabels[g])}</h4>${g === "taste"
       ? `<div class="tastes">${c.taste.map((p) => `<span>${esc(p)}</span>`).join("")}</div>`
-      : `<ul>${c[g].map((p) => `<li><a href="${g === "eat" ? maps(p.replace(/[()]/g, "") + " " + c.where) : wiki(p.replace(/\(.*?\)/g, "").split(",")[0].trim())}" target="_blank" rel="noopener">${esc(p)}</a></li>`).join("")}</ul>`}</div>`).join("");
+      : `<ul>${c[g].map((p) => `<li class="row"><a href="${g === "eat" ? maps(p.replace(/[()]/g, "") + " " + c.where) : wiki(p.replace(/\(.*?\)/g, "").split(",")[0].trim())}" target="_blank" rel="noopener">${esc(p)}</a><a class="nav" href="${waze(p.replace(/[()]/g, "") + " " + c.where)}" target="_blank" rel="noopener" title="${esc(NAV_LABEL[lang] || NAV_LABEL.en)}" aria-label="${esc(NAV_LABEL[lang] || NAV_LABEL.en)}">🚗</a></li>`).join("")}</ul>`}</div>`).join("");
   const story = (c) => STORY[c.id] ? `<div class="story-box"><h4>${esc(STORY_LABEL[lang] || STORY_LABEL.en)}</h4><p>${esc(STORY[c.id][lang] || STORY[c.id].en)}</p></div>` : "";
   $("#cityPanels").innerHTML = list.filter((c) => all || c.id === city).map((c) => `
     <article class="city">
