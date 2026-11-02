@@ -495,6 +495,9 @@
     .map { padding: 8px; overflow-x: auto; scrollbar-width: none; }
     .map svg { min-width: 760px; }
   }
+  .story-box { grid-column: 1 / -1; background: #fff7ee; border-left: 4px solid var(--coral, #ff6a00); padding: 14px 18px; border-radius: 12px; }
+  .story-box h4 { margin: 0 0 6px; }
+  .story-box p { margin: 0; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -1011,6 +1014,232 @@ const SEE = [
    name: nome della città nelle varie lingue (se manca si usa "en")
    see / museums / eat: nomi propri, ognuno apre Google Maps; "where" aiuta la ricerca
    Per aggiungere un posto basta scriverne il nome nella lista giusta. */
+/* ---------- LA STORIA di ogni città (it, fr, en; le altre lingue usano l'inglese) ---------- */
+const STORY = {
+ "sestri": {
+  "it": "Borgo di pescatori sulla penisola dell'Isola, nel Medioevo fu conteso da Genova e dai Fieschi; qui Andersen soggiornò nel 1833 e la Baia delle Favole porta il suo ricordo. Chiavari, fondata da Genova nel 1178, è la città dei portici e delle sedie leggere 'Campanino'.",
+  "fr": "Village de pêcheurs sur la presqu'île, disputé au Moyen Âge entre Gênes et les Fieschi ; Andersen y séjourna en 1833 et la Baia delle Favole lui rend hommage. Chiavari, fondée par Gênes en 1178, est la ville des arcades et des chaises légères « Campanino ».",
+  "en": "A fishing village on its peninsula, fought over in the Middle Ages by Genoa and the Fieschi family; Andersen stayed here in 1833 and the Bay of Fables remembers him. Chiavari, founded by Genoa in 1178, is the town of arcades and of the light 'Campanino' chairs."
+ },
+ "santa": {
+  "it": "Santa Margherita nacque come borgo di pescatori di corallo; nell'Ottocento divenne una delle mete eleganti della Belle Époque. A Rapallo, nel 1920 e nel 1922, furono firmati due trattati che ridisegnarono l'Europa dopo la Grande Guerra.",
+  "fr": "Santa Margherita naquit comme village de pêcheurs de corail et devint au XIXe siècle une destination élégante de la Belle Époque. À Rapallo, en 1920 et 1922, furent signés deux traités qui redessinèrent l'Europe après la Grande Guerre.",
+  "en": "Santa Margherita began as a coral fishers' village and in the 1800s became one of the elegant Belle Époque resorts. In Rapallo, in 1920 and 1922, two treaties were signed that redrew Europe after the Great War."
+ },
+ "portofino": {
+  "it": "Il Portus Delphini dei Romani fu per secoli un piccolo porto di pescatori protetto dal Castello Brown, fortezza della Repubblica di Genova. Dagli anni Cinquanta divenne il borgo più fotografato d'Italia. Camogli era la 'città dei mille velieri', con una flotta più grande di quella di Amburgo nell'Ottocento.",
+  "fr": "Le Portus Delphini des Romains resta des siècles un petit port de pêcheurs protégé par le Castello Brown, forteresse de la République de Gênes. Dans les années 1950 il devint le village le plus photographié d'Italie. Camogli était la « ville des mille voiliers ».",
+  "en": "The Romans' Portus Delphini was for centuries a small fishing harbour guarded by Castello Brown, a fortress of the Republic of Genoa. From the 1950s it became Italy's most photographed village. Camogli was the 'town of a thousand sailing ships'."
+ },
+ "genova": {
+  "it": "La Superba fu per cinque secoli una repubblica marinara che commerciava dal Mar Nero alle Americhe; qui nacque Cristoforo Colombo. I banchieri genovesi finanziarono l'impero spagnolo e costruirono i Palazzi dei Rolli, oggi patrimonio UNESCO. Il centro storico è uno dei più grandi d'Europa.",
+  "fr": "« La Superbe » fut pendant cinq siècles une république maritime commerçant de la mer Noire aux Amériques ; Christophe Colomb y est né. Les banquiers génois financèrent l'empire espagnol et bâtirent les palais des Rolli, aujourd'hui inscrits à l'UNESCO. Son centre historique est l'un des plus grands d'Europe.",
+  "en": "'La Superba' was for five centuries a maritime republic trading from the Black Sea to the Americas; Christopher Columbus was born here. Genoese bankers financed the Spanish empire and built the Rolli palaces, now UNESCO-listed. Its old town is one of the largest in Europe."
+ },
+ "entroge": {
+  "it": "Le valli alle spalle di Genova erano la via del sale e delle merci verso la Pianura Padana; lungo i crinali corrono le antiche mulattiere e i forti costruiti per difendere la Repubblica. Campo Ligure è da secoli la capitale della filigrana d'argento.",
+  "fr": "Les vallées derrière Gênes étaient la route du sel et des marchandises vers la plaine du Pô ; sur les crêtes courent d'anciens chemins muletiers et les forts bâtis pour défendre la République. Campo Ligure est depuis des siècles la capitale du filigrane d'argent.",
+  "en": "The valleys behind Genoa were the salt and trade route to the Po plain; old mule tracks and the forts built to defend the Republic run along the ridges. Campo Ligure has been the capital of silver filigree for centuries."
+ },
+ "varazze": {
+  "it": "Varazze fu per secoli un grande cantiere navale in legno; Celle Ligure diede i natali a papa Sisto IV. Albisola è la capitale della ceramica dal Cinquecento, e nel Novecento vi lavorarono Lucio Fontana, Asger Jorn e i futuristi.",
+  "fr": "Varazze fut pendant des siècles un grand chantier naval en bois ; Celle Ligure vit naître le pape Sixte IV. Albisola est la capitale de la céramique depuis le XVIe siècle, où travaillèrent au XXe siècle Lucio Fontana, Asger Jorn et les futuristes.",
+  "en": "Varazze was a great wooden shipyard for centuries; Celle Ligure was the birthplace of Pope Sixtus IV. Albisola has been the capital of ceramics since the 1500s, and in the 1900s Lucio Fontana, Asger Jorn and the Futurists worked there."
+ },
+ "savona": {
+  "it": "Città rivale di Genova nel Medioevo, fu sconfitta nel 1528 e i genovesi interrarono il suo porto; la Fortezza del Priamar ne è il simbolo. Diede due papi, Sisto IV e Giulio II, quelli della Cappella Sistina, che qui fecero costruire la Cappella Sistina di Savona.",
+  "fr": "Rivale de Gênes au Moyen Âge, elle fut vaincue en 1528 et les Génois comblèrent son port ; la forteresse du Priamar en est le symbole. Elle donna deux papes, Sixte IV et Jules II, ceux de la chapelle Sixtine, qui firent bâtir ici la « Sixtine de Savone ».",
+  "en": "Genoa's rival in the Middle Ages, it was defeated in 1528 and the Genoese filled in its harbour; the Priamar fortress is its symbol. It gave the world two popes, Sixtus IV and Julius II, of Sistine Chapel fame, who built Savona's own Sistine Chapel."
+ },
+ "sassello": {
+  "it": "Borgo di montagna sulla via tra il mare e il Piemonte, vive da secoli di boschi e di dolci: gli amaretti morbidi di Sassello sono famosi dall'Ottocento. Il Beigua è un Geoparco UNESCO con rocce tra le più antiche della Liguria.",
+  "fr": "Village de montagne sur la route entre la mer et le Piémont, il vit depuis des siècles de ses forêts et de ses douceurs : les amaretti moelleux de Sassello sont célèbres depuis le XIXe siècle. Le Beigua est un géoparc UNESCO aux roches parmi les plus anciennes de Ligurie.",
+  "en": "A mountain village on the road from the sea to Piedmont, it has lived for centuries on its woods and sweets: Sassello's soft amaretti have been famous since the 1800s. The Beigua is a UNESCO Geopark with some of Liguria's oldest rocks."
+ },
+ "spotorno": {
+  "it": "Spotorno fu feudo dei vescovi di Savona; D. H. Lawrence vi scrisse negli anni Venti. Davanti a Bergeggi, l'isola ospitò un monastero medievale e oggi è il cuore di un'area marina protetta.",
+  "fr": "Spotorno fut un fief des évêques de Savone ; D. H. Lawrence y écrivit dans les années 1920. Face à Bergeggi, l'île abrita un monastère médiéval et forme aujourd'hui le cœur d'une aire marine protégée.",
+  "en": "Spotorno was a fief of the bishops of Savona; D. H. Lawrence wrote here in the 1920s. Off Bergeggi, the island once held a medieval monastery and is now the heart of a marine protected area."
+ },
+ "noli": {
+  "it": "Noli fu una piccola repubblica marinara indipendente dal 1192 al 1797, alleata di Genova; le sue torri medievali sono ancora in piedi. Dante la cita nel Purgatorio. Varigotti, borgo saraceno, conserva le case colorate sulla spiaggia.",
+  "fr": "Noli fut une petite république maritime indépendante de 1192 à 1797, alliée de Gênes ; ses tours médiévales sont toujours debout. Dante la cite dans le Purgatoire. Varigotti, village sarrasin, garde ses maisons colorées sur la plage.",
+  "en": "Noli was a tiny independent maritime republic from 1192 to 1797, allied with Genoa; its medieval towers still stand. Dante mentions it in Purgatory. Varigotti, a Saracen village, keeps its colourful houses on the beach."
+ },
+ "finale": {
+  "it": "Il Marchesato del Finale, dei Del Carretto, fu indipendente fino al 1598, poi spagnolo: Finalborgo, chiusa dalle mura, è tra i borghi più belli d'Italia. Le grotte dell'entroterra conservano tracce dell'uomo preistorico.",
+  "fr": "Le marquisat du Finale, des Del Carretto, resta indépendant jusqu'en 1598, puis devint espagnol : Finalborgo, ceint de remparts, est l'un des plus beaux villages d'Italie. Les grottes de l'arrière-pays gardent des traces de l'homme préhistorique.",
+  "en": "The Marquisate of Finale, ruled by the Del Carretto family, was independent until 1598, then Spanish: walled Finalborgo is one of Italy's most beautiful villages. Caves inland hold traces of prehistoric people."
+ },
+ "pietra": {
+  "it": "Pietra Ligure nacque attorno a un castello vescovile del Medioevo; Loano fu feudo dei Doria, che vi costruirono il loro palazzo. Borgio Verezzi è famosa per le grotte colorate e per il festival di teatro nella piazzetta sul mare.",
+  "fr": "Pietra Ligure naquit autour d'un château épiscopal médiéval ; Loano fut un fief des Doria, qui y bâtirent leur palais. Borgio Verezzi est célèbre pour ses grottes colorées et son festival de théâtre sur la place face à la mer.",
+  "en": "Pietra Ligure grew around a medieval bishop's castle; Loano was a fief of the Doria family, who built their palace there. Borgio Verezzi is famous for its colourful caves and its theatre festival on the square above the sea."
+ },
+ "balestrino": {
+  "it": "Balestrino fu abbandonato negli anni Cinquanta per una frana: il borgo fantasma sotto il castello dei Del Carretto è tra i più suggestivi della Liguria. A Toirano le grotte conservano impronte umane di 14.000 anni fa; Zuccarello fu feudo dei Del Carretto.",
+  "fr": "Balestrino fut abandonné dans les années 1950 à cause d'un glissement de terrain : le village fantôme sous le château des Del Carretto est l'un des plus saisissants de Ligurie. À Toirano, les grottes conservent des empreintes humaines vieilles de 14 000 ans.",
+  "en": "Balestrino was abandoned in the 1950s after a landslide: the ghost village below the Del Carretto castle is one of Liguria's most striking. In Toirano, the caves hold human footprints 14,000 years old; Zuccarello was a Del Carretto fief."
+ },
+ "valbormida": {
+  "it": "Terra di confine tra Liguria e Piemonte, la Val Bormida fu teatro delle prime vittorie di Napoleone nel 1796. Calizzano è il paese dei funghi e delle castagne, circondato da faggete secolari.",
+  "fr": "Terre de frontière entre Ligurie et Piémont, la Val Bormida fut le théâtre des premières victoires de Napoléon en 1796. Calizzano est le village des champignons et des châtaignes, entouré de hêtraies séculaires.",
+  "en": "A borderland between Liguria and Piedmont, the Bormida valley saw Napoleon's first victories in 1796. Calizzano is the village of mushrooms and chestnuts, surrounded by ancient beech woods."
+ },
+ "albenga": {
+  "it": "Albingaunum fu una città romana importante; il centro medievale, con le sue torri rosse e il battistero del V secolo, è uno dei meglio conservati della Liguria. Al largo, una nave romana carica di anfore fu scoperta nel 1950.",
+  "fr": "Albingaunum fut une importante cité romaine ; le centre médiéval, avec ses tours rouges et son baptistère du Ve siècle, est l'un des mieux conservés de Ligurie. Au large, une épave romaine chargée d'amphores fut découverte en 1950.",
+  "en": "Albingaunum was an important Roman city; the medieval centre, with its red towers and 5th-century baptistery, is one of Liguria's best preserved. Offshore, a Roman ship laden with amphorae was found in 1950."
+ },
+ "alassio": {
+  "it": "Borgo di pescatori che a fine Ottocento divenne la riviera preferita dagli inglesi, con ville, giardini e la biblioteca inglese. Dal 1951 il Muretto raccoglie le piastrelle firmate da artisti e celebrità; Laigueglia conserva le torri contro i pirati saraceni.",
+  "fr": "Village de pêcheurs devenu à la fin du XIXe siècle la riviera préférée des Anglais, avec villas, jardins et bibliothèque anglaise. Depuis 1951, le Muretto réunit les carreaux signés par artistes et célébrités ; Laigueglia garde ses tours contre les pirates sarrasins.",
+  "en": "A fishing village that in the late 1800s became the English community's favourite riviera, with villas, gardens and an English library. Since 1951 the Muretto has collected tiles signed by artists and celebrities; Laigueglia keeps its towers against Saracen pirates."
+ },
+ "andora": {
+  "it": "Il castello di Andora, del XII secolo, dominava la valle con la chiesa romanica dei Santi Giacomo e Filippo. Colla Micheri è il minuscolo borgo dove visse l'esploratore Thor Heyerdahl, quello del Kon-Tiki.",
+  "fr": "Le château d'Andora, du XIIe siècle, dominait la vallée avec l'église romane des Saints-Jacques-et-Philippe. Colla Micheri est le minuscule village où vécut l'explorateur Thor Heyerdahl, celui du Kon-Tiki.",
+  "en": "Andora's 12th-century castle overlooked the valley with the Romanesque church of Saints James and Philip. Colla Micheri is the tiny village where the explorer Thor Heyerdahl, of Kon-Tiki fame, lived."
+ },
+ "cervo": {
+  "it": "Cervo è un borgo medievale arroccato sul mare, dominato dalla chiesa barocca dei Corallini, costruita con i proventi della pesca del corallo. Diano Marina fu ricostruita dopo il terremoto del 1887.",
+  "fr": "Cervo est un village médiéval perché sur la mer, dominé par l'église baroque des Corallini, bâtie grâce à la pêche au corail. Diano Marina fut reconstruite après le tremblement de terre de 1887.",
+  "en": "Cervo is a medieval village perched over the sea, crowned by the baroque church of the Corallini, built with money from coral fishing. Diano Marina was rebuilt after the 1887 earthquake."
+ },
+ "imperia": {
+  "it": "Imperia nacque nel 1923 unendo Porto Maurizio e Oneglia, due città rivali: la prima fu genovese, la seconda dei Savoia. Oneglia è la patria dell'olio taggiasco e di Andrea Doria, l'ammiraglio della Repubblica.",
+  "fr": "Imperia naquit en 1923 de l'union de Porto Maurizio et d'Oneglia, deux villes rivales : la première était génoise, la seconde savoyarde. Oneglia est la patrie de l'huile taggiasca et d'Andrea Doria, l'amiral de la République.",
+  "en": "Imperia was born in 1923 by joining Porto Maurizio and Oneglia, two rival towns: one Genoese, the other ruled by the House of Savoy. Oneglia is the home of Taggiasca olive oil and of Andrea Doria, admiral of the Republic."
+ },
+ "entroim": {
+  "it": "Le valli dietro Imperia sono la terra degli ulivi a terrazze e dei borghi di pietra. Valloria è il 'paese delle porte dipinte', Dolcedo conserva i ponti medievali dei Cavalieri di Malta, Lingueglietta ha una chiesa fortificata contro i pirati.",
+  "fr": "Les vallées derrière Imperia sont la terre des oliviers en terrasses et des villages de pierre. Valloria est le « village des portes peintes », Dolcedo garde ses ponts médiévaux, Lingueglietta une église fortifiée contre les pirates.",
+  "en": "The valleys behind Imperia are the land of terraced olive groves and stone villages. Valloria is the 'village of painted doors', Dolcedo keeps its medieval bridges, and Lingueglietta has a church fortified against pirates."
+ },
+ "arroscia": {
+  "it": "Pieve di Teco era un centro di commerci sulla via del sale verso il Piemonte: lo dicono i suoi portici medievali, ancora pieni di botteghe. La Valle Arroscia è la terra dell'Ormeasco, il vino rosso di montagna.",
+  "fr": "Pieve di Teco était un centre de commerce sur la route du sel vers le Piémont, comme le montrent ses arcades médiévales encore pleines de boutiques. La Valle Arroscia est la terre de l'Ormeasco, le vin rouge de montagne.",
+  "en": "Pieve di Teco was a trading town on the salt road to Piedmont, as its medieval arcades, still full of shops, show. The Arroscia valley is the land of Ormeasco, the mountain red wine."
+ },
+ "taggia": {
+  "it": "Taggia diede il nome all'oliva taggiasca, portata secondo la tradizione dai monaci benedettini; il ponte romanico a sedici arcate è il suo simbolo. Triora è il 'paese delle streghe', per i processi del 1587.",
+  "fr": "Taggia a donné son nom à l'olive taggiasca, apportée selon la tradition par les moines bénédictins ; le pont roman à seize arches est son symbole. Triora est le « village des sorcières », à cause des procès de 1587.",
+  "en": "Taggia gave its name to the Taggiasca olive, brought, tradition says, by Benedictine monks; its 16-arch Romanesque bridge is its symbol. Triora is the 'witches' village', after the trials of 1587."
+ },
+ "sanremo": {
+  "it": "Nell'Ottocento Sanremo divenne la riviera d'inverno di zar, imperatrici e scrittori: qui soggiornarono l'imperatrice Maria Aleksandrovna e Alfred Nobel, che vi morì nel 1896. Il Casinò aprì nel 1905, il Festival della canzone nacque nel 1951.",
+  "fr": "Au XIXe siècle, Sanremo devint la riviera d'hiver des tsars, des impératrices et des écrivains : l'impératrice Maria Alexandrovna et Alfred Nobel, qui y mourut en 1896, y séjournèrent. Le Casino ouvrit en 1905, le Festival de la chanson naquit en 1951.",
+  "en": "In the 1800s Sanremo became the winter riviera of tsars, empresses and writers: Empress Maria Alexandrovna stayed here, and Alfred Nobel died here in 1896. The Casino opened in 1905 and the song festival began in 1951."
+ },
+ "bordighera": {
+  "it": "Bordighera fu scoperta dagli inglesi nell'Ottocento e Claude Monet vi dipinse nel 1884 le sue palme. Ha il privilegio di fornire le palme al Vaticano per la Domenica delle Palme. Seborga, sulle colline, si proclama ancora 'principato'.",
+  "fr": "Bordighera fut découverte par les Anglais au XIXe siècle et Claude Monet y peignit ses palmiers en 1884. Elle a le privilège de fournir les palmes du Vatican pour le dimanche des Rameaux. Seborga, sur les collines, se proclame toujours « principauté ».",
+  "en": "Bordighera was discovered by the English in the 1800s, and Claude Monet painted its palms here in 1884. It has the privilege of supplying the Vatican's palms for Palm Sunday. Seborga, in the hills, still calls itself a 'principality'."
+ },
+ "dolceacqua": {
+  "it": "Dolceacqua, con il ponte a schiena d'asino dipinto da Monet e il castello dei Doria, è la patria del Rossese. Apricale e Pigna sono borghi medievali arroccati, tra i più belli d'Italia.",
+  "fr": "Dolceacqua, avec son pont en dos d'âne peint par Monet et le château des Doria, est la patrie du Rossese. Apricale et Pigna sont des villages médiévaux perchés, parmi les plus beaux d'Italie.",
+  "en": "Dolceacqua, with its humpback bridge painted by Monet and the Doria castle, is the home of Rossese wine. Apricale and Pigna are perched medieval villages, among the most beautiful in Italy."
+ },
+ "ventimiglia": {
+  "it": "Albintimilium era una città romana: ne restano il teatro e le terme. La città alta medievale domina la foce del Roia; ai Balzi Rossi, al confine, sono state trovate sepolture preistoriche di 25.000 anni fa.",
+  "fr": "Albintimilium était une cité romaine dont subsistent le théâtre et les thermes. La ville haute médiévale domine l'embouchure de la Roya ; aux Balzi Rossi, à la frontière, ont été trouvées des sépultures préhistoriques vieilles de 25 000 ans.",
+  "en": "Albintimilium was a Roman city: its theatre and baths survive. The medieval upper town overlooks the mouth of the Roia; at the Balzi Rossi, on the border, prehistoric burials 25,000 years old were found."
+ },
+ "menton": {
+  "it": "Mentone appartenne ai Grimaldi di Monaco fino al 1848 e divenne francese nel 1861. Nell'Ottocento il suo clima mite attirò gli inglesi d'inverno; Jean Cocteau vi lasciò il suo museo e la Sala dei Matrimoni.",
+  "fr": "Menton appartint aux Grimaldi de Monaco jusqu'en 1848 et devint française en 1861. Au XIXe siècle son climat doux attira les Anglais l'hiver ; Jean Cocteau y laissa son musée et la Salle des mariages.",
+  "en": "Menton belonged to the Grimaldis of Monaco until 1848 and became French in 1861. In the 1800s its mild climate drew the English in winter; Jean Cocteau left his museum and the Wedding Hall here."
+ },
+ "roya": {
+  "it": "La valle della Roya fu italiana fino al 1947: Tenda e Briga divennero francesi solo allora. Nella Vallée des Merveilles, ai piedi del Monte Bego, ci sono 40.000 incisioni rupestri dell'età del bronzo.",
+  "fr": "La vallée de la Roya fut italienne jusqu'en 1947 : Tende et La Brigue ne devinrent françaises qu'alors. Dans la Vallée des Merveilles, au pied du mont Bego, se trouvent 40 000 gravures rupestres de l'âge du bronze.",
+  "en": "The Roya valley was Italian until 1947: Tende and La Brigue only became French then. In the Vallée des Merveilles, below Mont Bego, there are 40,000 Bronze Age rock engravings."
+ },
+ "roquebrune": {
+  "it": "Il castello di Roquebrune, del X secolo, è il più antico castello feudale di Francia. Sul Cap-Martin soggiornarono l'imperatrice Sissi e Churchill; qui Le Corbusier costruì il suo Cabanon e vi morì nel 1965.",
+  "fr": "Le château de Roquebrune, du Xe siècle, est le plus ancien château féodal de France. Au Cap-Martin séjournèrent l'impératrice Sissi et Churchill ; Le Corbusier y construisit son Cabanon et y mourut en 1965.",
+  "en": "Roquebrune's 10th-century castle is the oldest feudal castle in France. Empress Sissi and Churchill stayed on Cap-Martin, where Le Corbusier built his Cabanon and died in 1965."
+ },
+ "monaco": {
+  "it": "Nel 1297 Francesco Grimaldi, travestito da monaco, conquistò la rocca: da allora la famiglia regna sul Principato. Nel 1863 il principe Carlo III aprì il Casinò, che diede il nome a Monte-Carlo; nel 1956 Ranieri III sposò Grace Kelly.",
+  "fr": "En 1297, François Grimaldi, déguisé en moine, prit le Rocher : depuis, la famille règne sur la Principauté. En 1863 le prince Charles III ouvrit le Casino, qui donna son nom à Monte-Carlo ; en 1956 Rainier III épousa Grace Kelly.",
+  "en": "In 1297 Francesco Grimaldi, disguised as a monk, seized the Rock: the family has ruled the Principality ever since. In 1863 Prince Charles III opened the Casino, which gave Monte-Carlo its name; in 1956 Rainier III married Grace Kelly."
+ },
+ "eze": {
+  "it": "Èze è un nido d'aquila medievale a 427 metri sul mare, dove Nietzsche ideò parte di 'Così parlò Zarathustra'. A La Turbie il Trofeo di Augusto, del 6 a.C., celebra la conquista romana delle Alpi.",
+  "fr": "Èze est un nid d'aigle médiéval à 427 mètres au-dessus de la mer, où Nietzsche conçut une partie d'« Ainsi parlait Zarathoustra ». À La Turbie, le Trophée d'Auguste (6 av. J.-C.) célèbre la conquête romaine des Alpes.",
+  "en": "Èze is a medieval eagle's nest 427 metres above the sea, where Nietzsche conceived part of 'Thus Spoke Zarathustra'. At La Turbie, the Trophy of Augustus (6 BC) celebrates the Roman conquest of the Alps."
+ },
+ "beaulieu": {
+  "it": "Beaulieu fu una delle mete più eleganti della Belle Époque, frequentata da re e principi. Qui l'archeologo Théodore Reinach fece costruire Villa Kérylos, copia fedele di una casa dell'antica Grecia.",
+  "fr": "Beaulieu fut l'une des destinations les plus élégantes de la Belle Époque, fréquentée par rois et princes. L'archéologue Théodore Reinach y fit construire la Villa Kérylos, copie fidèle d'une maison de la Grèce antique.",
+  "en": "Beaulieu was one of the Belle Époque's most elegant resorts, visited by kings and princes. The archaeologist Théodore Reinach built Villa Kérylos here, a faithful copy of an ancient Greek house."
+ },
+ "villefranche": {
+  "it": "Villefranche fu fondata nel 1295 da Carlo II d'Angiò come porto franco; la sua rada profonda accolse per secoli flotte da guerra. Sul Cap Ferrat la baronessa Béatrice Ephrussi de Rothschild costruì la sua villa rosa.",
+  "fr": "Villefranche fut fondée en 1295 par Charles II d'Anjou comme port franc ; sa rade profonde accueillit des flottes de guerre pendant des siècles. Au Cap Ferrat, la baronne Béatrice Ephrussi de Rothschild bâtit sa villa rose.",
+  "en": "Villefranche was founded in 1295 by Charles II of Anjou as a free port; its deep bay sheltered war fleets for centuries. On Cap Ferrat, Baroness Béatrice Ephrussi de Rothschild built her pink villa."
+ },
+ "nice": {
+  "it": "Nizza fu fondata dai greci di Marsiglia, fu romana a Cimiez e poi per quasi cinque secoli dei Savoia: divenne francese solo nel 1860. Qui nacque Garibaldi. La Promenade des Anglais deve il nome agli inglesi che la finanziarono nel 1820.",
+  "fr": "Nice fut fondée par les Grecs de Marseille, fut romaine à Cimiez puis savoyarde pendant près de cinq siècles : elle ne devint française qu'en 1860. Garibaldi y est né. La Promenade des Anglais doit son nom aux Anglais qui la financèrent en 1820.",
+  "en": "Nice was founded by Greeks from Marseille, was Roman at Cimiez and then belonged to Savoy for almost five centuries: it only became French in 1860. Garibaldi was born here. The Promenade des Anglais is named after the English who funded it in 1820."
+ },
+ "cagnes": {
+  "it": "Il Castello Grimaldi domina dal 1309 il borgo alto di Cagnes. Renoir vi trascorse gli ultimi dodici anni di vita, nella tenuta delle Collettes, oggi museo tra gli ulivi.",
+  "fr": "Le château Grimaldi domine depuis 1309 le Haut-de-Cagnes. Renoir y passa les douze dernières années de sa vie, au domaine des Collettes, aujourd'hui musée parmi les oliviers.",
+  "en": "The Grimaldi castle has overlooked Haut-de-Cagnes since 1309. Renoir spent the last twelve years of his life here at Les Collettes, now a museum among the olive trees."
+ },
+ "saintpaul": {
+  "it": "Saint-Paul-de-Vence conserva le mura fatte costruire da Francesco I nel Cinquecento. Dal Novecento è il borgo degli artisti: Chagall vi è sepolto, e la Colombe d'Or ospitò Picasso, Matisse e Miró. A Vence c'è la Cappella del Rosario di Matisse.",
+  "fr": "Saint-Paul-de-Vence garde les remparts voulus par François Ier au XVIe siècle. Depuis le XXe siècle c'est le village des artistes : Chagall y repose, et la Colombe d'Or accueillit Picasso, Matisse et Miró. À Vence se trouve la chapelle du Rosaire de Matisse.",
+  "en": "Saint-Paul-de-Vence keeps the walls built by Francis I in the 1500s. Since the 1900s it has been the artists' village: Chagall is buried here, and La Colombe d'Or hosted Picasso, Matisse and Miró. Vence has Matisse's Chapel of the Rosary."
+ },
+ "tourrettes": {
+  "it": "Tourrettes-sur-Loup è la 'città delle violette', coltivate dall'Ottocento per i profumieri e le pasticcerie. Gourdon è un borgo arroccato a 760 metri sopra le gole del Loup, con un castello del XII secolo.",
+  "fr": "Tourrettes-sur-Loup est la « cité des violettes », cultivées depuis le XIXe siècle pour les parfumeurs et les confiseurs. Gourdon est un village perché à 760 mètres au-dessus des gorges du Loup, avec un château du XIIe siècle.",
+  "en": "Tourrettes-sur-Loup is the 'city of violets', grown since the 1800s for perfumers and confectioners. Gourdon is a village perched 760 metres above the Loup gorges, with a 12th-century castle."
+ },
+ "biot": {
+  "it": "Biot fu un centro di ceramiche e giare fin dal Medioevo; dal 1956 è famosa per il vetro soffiato a bolle. Qui sorge il museo nazionale di Fernand Léger.",
+  "fr": "Biot fut un centre de poteries et de jarres dès le Moyen Âge ; depuis 1956 il est célèbre pour son verre soufflé bullé. Ici se dresse le musée national Fernand Léger.",
+  "en": "Biot was a centre for pottery and jars from the Middle Ages; since 1956 it has been famous for its bubbled blown glass. The national Fernand Léger museum stands here."
+ },
+ "antibes": {
+  "it": "L'Antipolis dei greci, fortificata da Vauban, fu per secoli città di frontiera con Nizza sabauda. Nel 1946 Picasso dipinse nel Castello Grimaldi, oggi suo museo; a Juan-les-Pins nacque il jazz della Costa Azzurra e, negli anni Venti, la moda dell'estate al mare.",
+  "fr": "L'Antipolis des Grecs, fortifiée par Vauban, fut des siècles une ville-frontière face à la Nice savoyarde. En 1946, Picasso peignit au château Grimaldi, devenu son musée ; à Juan-les-Pins naquirent le jazz de la Côte d'Azur et, dans les années 1920, la mode de l'été à la mer.",
+  "en": "The Greeks' Antipolis, fortified by Vauban, was for centuries a border town facing Savoyard Nice. In 1946 Picasso painted in the Grimaldi castle, now his museum; Juan-les-Pins gave birth to Riviera jazz and, in the 1920s, to the fashion for summer by the sea."
+ },
+ "vallauris": {
+  "it": "Vallauris è da secoli città di vasai: nel 1948 Picasso vi si stabilì, rilanciò la ceramica e dipinse 'La Guerra e la Pace' nella cappella del castello. A Golfe-Juan sbarcò Napoleone nel 1815, di ritorno dall'Elba.",
+  "fr": "Vallauris est depuis des siècles une ville de potiers : en 1948 Picasso s'y installa, relança la céramique et peignit « La Guerre et la Paix » dans la chapelle du château. À Golfe-Juan débarqua Napoléon en 1815, au retour de l'île d'Elbe.",
+  "en": "Vallauris has been a potters' town for centuries: in 1948 Picasso settled here, revived its ceramics and painted 'War and Peace' in the castle chapel. Napoleon landed at Golfe-Juan in 1815 on his return from Elba."
+ },
+ "mougins": {
+  "it": "Mougins è un borgo medievale costruito a spirale sulla collina. Picasso vi visse gli ultimi dodici anni, fino al 1973; dagli anni Settanta è una capitale della gastronomia.",
+  "fr": "Mougins est un village médiéval construit en spirale sur la colline. Picasso y vécut ses douze dernières années, jusqu'en 1973 ; depuis les années 1970 c'est une capitale de la gastronomie.",
+  "en": "Mougins is a medieval village built in a spiral on its hill. Picasso spent his last twelve years here, until 1973; since the 1970s it has been a capital of fine dining."
+ },
+ "grasse": {
+  "it": "Grasse era una città di conciatori di pelle: nel Seicento i guanti profumati lanciarono l'arte del profumo. Oggi è la capitale mondiale della profumeria, e il suo saper fare è patrimonio UNESCO dal 2018.",
+  "fr": "Grasse était une ville de tanneurs : au XVIIe siècle, les gants parfumés lancèrent l'art du parfum. C'est aujourd'hui la capitale mondiale de la parfumerie, et son savoir-faire est inscrit à l'UNESCO depuis 2018.",
+  "en": "Grasse was a tanners' town: in the 1600s perfumed gloves launched the art of perfume. Today it is the world capital of perfumery, and its know-how has been on UNESCO's list since 2018."
+ },
+ "cannes": {
+  "it": "Cannes era un villaggio di pescatori finché Lord Brougham non vi si fermò nel 1834 e la fece scoprire agli inglesi. Il Festival del Cinema nacque nel 1946; il Suquet, la collina antica, guarda le isole di Lérins, dove fu imprigionata la Maschera di Ferro.",
+  "fr": "Cannes était un village de pêcheurs jusqu'à ce que Lord Brougham s'y arrête en 1834 et la fasse découvrir aux Anglais. Le Festival est né en 1946 ; le Suquet, la colline ancienne, regarde les îles de Lérins où fut emprisonné le Masque de fer.",
+  "en": "Cannes was a fishing village until Lord Brougham stopped here in 1834 and made it known to the English. The Film Festival began in 1946; the Suquet, the old hill, looks out to the Lérins islands, where the Man in the Iron Mask was imprisoned."
+ },
+ "esterel": {
+  "it": "Il Massiccio dell'Estérel, di roccia vulcanica rossa, fu per secoli rifugio di briganti. Il castello della Napoule, restaurato negli anni Venti dagli artisti americani Henry e Marie Clews, guarda il mare a Mandelieu.",
+  "fr": "Le massif de l'Estérel, en roche volcanique rouge, fut des siècles un repaire de brigands. Le château de la Napoule, restauré dans les années 1920 par les artistes américains Henry et Marie Clews, regarde la mer à Mandelieu.",
+  "en": "The Estérel massif, of red volcanic rock, was a brigands' hideout for centuries. The Château de la Napoule, restored in the 1920s by the American artists Henry and Marie Clews, faces the sea at Mandelieu."
+ }
+};
+const STORY_LABEL = { it: "La storia", fr: "L'histoire", en: "The story", de: "Geschichte", nl: "Geschiedenis", zh: "历史" };
+const wiki = (q) => `https://${["it","fr","en","de","nl","zh"].includes(lang) ? lang : "en"}.wikipedia.org/w/index.php?search=${encodeURIComponent(q)}`;
+
 const CITIES = [
  {
   "id": "sestri",
@@ -3740,7 +3969,7 @@ function renderSee() {
   grouped($("#seeGrid"), SEE.filter(ofRegion), "see", (s, i, k, list) => {
     const wide = (4 - (list.length + 3) % 4) % 4;
     const [title, text] = tx(s);
-    return `<a class="tile ${i > 0 && i >= list.length - wide ? "w2" : ""}" href="${maps(s.q)}" target="_blank" rel="noopener">
+    return `<a class="tile ${i > 0 && i >= list.length - wide ? "w2" : ""}" href="${wiki(s.q)}" target="_blank" rel="noopener">
       <div class="bg g-cultura">${img(s.img)}</div><span class="emo">${s.icon}</span>
       <span class="chip-z">📍 ${esc(T().zones[s.zone])}</span>
       <h3>${esc(title)}</h3><p>${esc(text)}</p>
@@ -3798,12 +4027,13 @@ function renderCities(all) {
   const groups = (c) => ["see", "museums", "do", "eat", "taste"].filter((g) => c[g] && c[g].length).map((g) => `
     <div><h4>${esc(T().cityLabels[g])}</h4>${g === "taste"
       ? `<div class="tastes">${c.taste.map((p) => `<span>${esc(p)}</span>`).join("")}</div>`
-      : `<ul>${c[g].map((p) => `<li><a href="${maps(p.replace(/[()]/g, "") + " " + c.where)}" target="_blank" rel="noopener">${esc(p)}</a></li>`).join("")}</ul>`}</div>`).join("");
+      : `<ul>${c[g].map((p) => `<li><a href="${g === "eat" ? maps(p.replace(/[()]/g, "") + " " + c.where) : wiki(p.replace(/\(.*?\)/g, "").split(",")[0].trim())}" target="_blank" rel="noopener">${esc(p)}</a></li>`).join("")}</ul>`}</div>`).join("");
+  const story = (c) => STORY[c.id] ? `<div class="story-box"><h4>${esc(STORY_LABEL[lang] || STORY_LABEL.en)}</h4><p>${esc(STORY[c.id][lang] || STORY[c.id].en)}</p></div>` : "";
   $("#cityPanels").innerHTML = list.filter((c) => all || c.id === city).map((c) => `
     <article class="city">
       <div class="city-cover">${img(c.img)}<span class="emo">${c.icon || "📍"}</span>
         <h3>${esc(cityName(c))}</h3><p>${esc(tx(c))}</p></div>
-      <div class="city-lists">${groups(c)}</div>
+      <div class="city-lists">${story(c)}${groups(c)}</div>
     </article>`).join("");
 }
 
